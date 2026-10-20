@@ -1,0 +1,29 @@
+{% set f = s.figure %}
+{% if f.kind == 'svg' %}
+<figure>{{ Markup(f.svg) }}{% if f.caption %}<figcaption>{{ f.caption }}</figcaption>{% endif %}</figure>
+{% elif f.kind == 'flow' %}
+<figure class="flow">
+  <div class="flow-box flow-start">All {{ f.unit.plural }}</div>
+  {% for it in f['items'] %}
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> {{ gl(it.text) }}{% if it.n %}<span class="flow-n">{{ '{:,}'.format(it.n) }} remain</span>{% endif %}</div>
+  {% endfor %}
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box flow-end">Counted in the denominator</div>
+</figure>
+{% elif f.kind == 'fraction' %}
+<figure class="fraction">
+  <div class="frac">
+    <div class="frac-top">{{ f.agg.numerator or 'total of the measure' }}{% if f.frac and f.frac.num %}<b>≈ {{ '{:,}'.format(f.frac.num) }}</b>{% endif %}</div>
+    <div class="frac-bar" aria-hidden="true"></div>
+    <div class="frac-bot">{{ f.agg.denominator or g.unit.plural }}{% if f.frac and f.frac.den %}<b>{{ '{:,}'.format(f.frac.den) }}</b>{% endif %}</div>
+  </div>
+  {% if f.frac %}<div class="frac-eq">= <b>{{ f.frac.value }}</b>{% if f.frac.group %}<small>{{ f.frac.group }}</small>{% endif %}</div>{% endif %}
+</figure>
+{% elif f.kind == 'adjust' %}
+<figure class="adjust">
+  {% if f.adj.balances_on %}<p class="chips-h">Made similar on:</p><ul class="chips">{% for b in f.adj.balances_on %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+  {{ Markup(f.svg) }}
+  {% if f.adj.diagnostics %}<figcaption>{{ f.adj.diagnostics }}</figcaption>{% endif %}
+</figure>
+{% endif %}

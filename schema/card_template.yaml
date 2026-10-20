@@ -1,0 +1,101 @@
+schema: metric-card/1
+id: REPLACE_ID
+title: "TODO: name of the number, in reader's words"
+subtitle: "TODO: method in one line"
+status: draft
+owner: "TODO"
+updated: "YYYY-MM-DD"
+question: >
+  TODO: the decision-relevant question this number answers.
+
+# Fill `grammar` first (SKILL.md steps 2-6). Write `gist` LAST.
+gist:
+  sentence: >
+    TODO (write last): who is counted, over what time, what counts. At most ~45 words.
+  headline:
+    value: 0
+    unit: percent          # pp | percent | share | count | days | ratio | currency | other
+    label: "TODO: what the number is"
+    context: "TODO: one line that gives scale"
+  frequency: "TODO: about N in every 1,000 …"
+  reading:
+    direction: neutral     # higher_is_better | higher_is_worse | neutral
+    say: "TODO: a sentence safe to repeat in a meeting"
+    dont_say: "TODO: the tempting wrong sentence"
+  key_caveat: "TODO: the one limitation a first-screen reader must not miss"
+  claim_strength: descriptive   # descriptive | associational | quasi-causal | causal
+
+grammar:
+  unit: {singular: member, plural: members, plain: "TODO", exact: "TODO", src: S1}
+  population:
+    - {id: rule1, plain: "TODO", exact: "TODO", src: S1}
+  anchor:
+    kind: per_unit_event    # calendar | per_unit_event
+    label: "TODO: time zero"
+    plain: "TODO"
+    exact: "TODO"
+    src: S1
+  windows:
+    - {id: outcome, label: "TODO", start: 0, end: 7, unit: day, role: outcome, plain: "TODO", exact: "TODO", src: S1}
+  measures:
+    - {id: m1, label: "TODO", kind: indicator, window: outcome, primary: true, plain: "TODO", exact: "TODO", src: S1}
+  aggregate:
+    kind: proportion
+    measure: m1
+    numerator: "TODO"
+    denominator: "TODO"
+    plain: "TODO"
+    exact: "TODO"
+    src: S1
+  groups:
+    - {id: g1, label: "TODO", role: focal, plain: "TODO"}
+
+results:
+  as_of: "YYYY-MM-DD"
+  unit: percent
+  data_complete_through: "YYYY-MM-DD"
+  latest_anchor: "YYYY-MM-DD"
+  cells:
+    - {group: g1, value: 0, n: 0}
+
+example:
+  name: "TODO"
+  anchor_date: "YYYY-MM-DD"
+  events:
+    - {at: 0, label: "TODO"}
+  outcome: "TODO"
+
+fine_print:
+  judgment_calls: []
+  caveats:
+    - {title: "TODO", text: "TODO", effect: limits_scope, severity: medium}
+  misreadings:
+    - {wrong: "TODO", right: "TODO"}
+  discrepancies: []
+
+spec:
+  estimand:
+    population: "TODO"
+    time_zero: "TODO"
+    variable: "TODO"
+    summary: "TODO"
+  parameters: []
+  lineage: []
+  code: []
+  reproduce:
+    steps: []
+    receipts: []
+
+glossary:
+  - {term: "TODO", plain: "TODO"}
+
+quiz:
+  - {kind: gist, q: "TODO", options: ["TODO", "TODO"], answer: 0, why: "TODO"}
+  - {kind: verbatim, q: "TODO", options: ["TODO", "TODO"], answer: 0, why: "TODO"}
+  - {kind: transfer, q: "TODO", options: ["TODO", "TODO"], answer: 0, why: "TODO"}
+
+changelog:
+  - {date: "YYYY-MM-DD", change: "Card created."}
+
+sources:
+  - {id: S1, path: "TODO/path/to/query.sql", lines: "1-10"}

@@ -1,0 +1,14 @@
+{
+  "name": "data-visual-explainer",
+  "owner": {
+    "name": "Bob Spunt",
+    "url": "https://github.com/spunt"
+  },
+  "plugins": [
+    {
+      "name": "data-visual-explainer",
+      "source": "./",
+      "description": "Explain one metric so non-specialists read it correctly and specialists can reproduce it. Your agent traces the number to the code that produced it, records where the written definition and the code disagree, and writes a Metric Card: a plain-language gist, caveats, likely misreadings and a reproducible spec, rendered as an HTML explainer, a one-page label and a Markdown methods section."
+    }
+  ]
+}

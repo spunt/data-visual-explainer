@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metric cards</title>
+<style>{{ css }}</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <h1>Metric cards</h1>
+    <p class="intro">Each card explains one number at four depths. Read as far as you need. Every view is generated from one spec file, so the plain words and the exact rules stay in step.</p>
+    <div class="layers">
+      <div><b>1 · The gist</b>What it means, how big it is, how much to trust it. 1 minute.</div>
+      <div><b>2 · How it's built</b>One worked example, then each rule step by step.</div>
+      <div><b>3 · Keep in mind</b>Caveats, misreadings and judgment calls.</div>
+      <div><b>4 · Reproduce it</b>Exact rules, data, code, and where docs and code disagree.</div>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="index-grid">
+  {% for r in rows %}
+    {% set errs = r.lint | selectattr('level', 'equalto', 'error') | list %}
+    <article class="index-card">
+      <div><span class="pill status-{{ r.c.status }}">{{ r.c.status }}</span>{% if r.claim %} <span class="muted" style="font-size:.85rem">· {{ r.claim[0] }}</span>{% endif %}</div>
+      <h2><a href="{{ r.c.id }}.html" style="color:inherit;text-decoration:none">{{ r.c.title }}</a></h2>
+      <p class="iq">{{ r.c.question }}</p>
+      <div><span class="hl">{{ r.headline }}</span> <span class="muted">{{ r.c.gist.headline.label if r.measured else '' }}</span></div>
+      {% if r.range %}<div class="muted" style="font-size:.88rem">Plausible range {{ r.range }}</div>{% endif %}
+      {% if errs %}<div class="maturity maturity-immature" style="font-size:.85rem">{{ errs | length }} quality error(s): see level 4</div>{% endif %}
+      <div class="links"><a href="{{ r.c.id }}.html">Explore</a><a href="{{ r.c.id }}.label.html">Label</a><a href="{{ r.c.id }}.methods.html">Methods</a></div>
+    </article>
+  {% endfor %}
+  </div>
+</main>
+</body>
+</html>

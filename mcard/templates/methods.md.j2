@@ -1,0 +1,128 @@
+{% autoescape false %}
+# {{ c.title }}: methods
+
+*Generated from `{{ yaml_name }}`. Status: {{ c.status }}. Owner: {{ c.owner or 'not stated' }}. Updated {{ c.updated or 'not stated' }}.*
+
+**Question.** {{ c.question }}
+
+**Definition.** {{ c.gist.sentence }}
+
+{% if measured %}**Result.** {{ c.gist.headline.label | capitalize }}: **{{ headline }}**{% if headline_range %} (plausible range {{ headline_range }}){% endif %}. {{ c.gist.headline.context or '' }}{% else %}**Result.** Not measured yet; this document specifies the metric only.{% endif %}
+
+## Population
+
+The unit of analysis is the {{ g.unit.singular }}{% if g.unit.exact %} ({{ g.unit.exact }}){% endif %}. Eligibility rules, in the order applied:
+
+{% for p in g.population %}
+{{ loop.index }}. {{ p.plain }}{% if p.exact %} *Implementation:* {{ p.exact }}{% endif %}{% if p.n_after %} (n = {{ '{:,}'.format(p.n_after) }}){% endif %}{% if p.src %} [{{ p.src if p.src is string else p.src | join(', ') }}]{% endif %}
+
+{% endfor %}
+
+## Time zero and windows
+
+Time zero is the {{ g.anchor.label | default('start') | lc_first }}: {{ g.anchor.plain }}{% if g.anchor.exact %} *Implementation:* {{ g.anchor.exact }}{% endif %}
+
+
+| Window | Role | Offsets (start inclusive, end exclusive) | Definition |
+|---|---|---|---|
+{% for w in g.windows %}
+| {{ w.label }} | {{ w.role }} | [{{ w.start }}, {{ w.end }}) {{ w.unit }}s | {{ (w.exact or w.plain) | replace('|', '\\|') | replace('\n', ' ') }} |
+{% endfor %}
+
+## Measures
+
+{% for m in g.measures %}
+- **{{ m.label }}**{% if m is sameas card.primary_measure %} (headline){% endif %} ({{ m.kind }}, {{ m.window }}): {{ m.plain }}{% if m.exact %} *Implementation:* {{ m.exact }}{% endif %}
+
+{% endfor %}
+
+## Aggregation{% if g.comparison %} and comparison{% endif %}
+
+
+{{ g.aggregate.plain }}{% if g.aggregate.exact %} `{{ g.aggregate.exact }}`{% endif %}
+
+
+{% if g.groups %}
+| Group | Definition | Value ({{ card.result_unit }}) | n |
+|---|---|---|---|
+{% for gr in g.groups %}{% set cell = card.cells.get(gr.id) %}
+| {{ gr.label }} | {{ (gr.exact or gr.plain) | replace('|', '\\|') }} | {{ cell.value if cell else '–' }} | {{ '{:,}'.format(cell.n) if cell and cell.n else '–' }} |
+{% endfor %}
+{% endif %}
+
+{% if g.comparison %}
+
+{{ g.comparison.plain }}{% if g.comparison.exact %} `{{ g.comparison.exact }}`{% endif %}{% if g.comparison.target %} Target: {{ g.comparison.target }} ({{ targets[g.comparison.target] | lower }}).{% endif %}
+{% if recompute[1] %}
+
+
+Recomputed from the group values: `{{ recompute[1] }}`.
+{% endif %}
+{% endif %}
+
+{% if g.adjustment %}
+## Adjustment
+
+{{ g.adjustment.plain }} Method: {{ g.adjustment.method }}.{% if g.adjustment.balances_on %} Balances on: {{ g.adjustment.balances_on | join(', ') }}.{% endif %}{% if g.adjustment.exact %} {{ g.adjustment.exact }}{% endif %}{% if g.adjustment.diagnostics %} Diagnostics: {{ g.adjustment.diagnostics }}{% endif %}
+
+
+{% endif %}
+{% if g.uncertainty %}
+## Uncertainty
+
+{{ g.uncertainty.plain }}{% if g.uncertainty.exact %} {{ g.uncertainty.exact }}{% endif %}{% if g.uncertainty.known_gaps %} **Not covered:** {{ g.uncertainty.known_gaps }}{% endif %}
+
+
+{% endif %}
+## Estimand
+
+| Attribute | Specification |
+|---|---|
+{% for k, v in c.spec.estimand.items() %}
+| {{ k | replace('_', ' ') | capitalize }} | {{ v | replace('|', '\\|') | replace('\n', ' ') }} |
+{% endfor %}
+
+{% if c.results.sensitivity %}
+## Sensitivity
+
+| Specification | Estimate | Interval | Note |
+|---|---|---|---|
+{% for r in c.results.sensitivity %}
+| {{ r.label }}{% if r.primary %} (headline){% endif %} | {{ r.value }} | {% if r.low is defined %}[{{ r.low }}, {{ r.high }}]{% else %}–{% endif %} | {{ r.note or '' }} |
+{% endfor %}
+
+{% endif %}
+## Limitations
+
+{% for cv in caveats_sorted %}
+- **{{ cv.title or 'Caveat' }}** ({{ effects[cv.effect][1] | lower }}{% if cv.severity %}; {{ cv.severity }}{% endif %}). {{ cv.text }}
+{% endfor %}
+
+{% if c.fine_print.discrepancies %}
+## Description vs implementation
+
+{% for d in c.fine_print.discrepancies %}
+- **{{ d.topic }}.** Described: {{ d.described }} Implemented: {{ d.implemented }}{% if d.impact %} Impact: {{ d.impact }}{% endif %}
+
+{% endfor %}
+{% endif %}
+
+## Reproduction
+
+{% for s in (c.spec.reproduce or {}).get('steps', []) %}
+{{ loop.index }}. {{ s }}
+{% endfor %}
+
+{% for r in (c.spec.reproduce or {}).get('receipts', []) %}
+- Receipt: {{ r }}
+{% endfor %}
+
+**Completeness.** {{ maturity.text }}
+
+## Sources
+
+{% for s in c.sources %}
+- [{{ s.id }}] `{{ s.path }}`{% if s.lines %}, lines {{ s.lines }}{% endif %}{% if s.note %}. {{ s.note }}{% endif %}
+
+{% endfor %}
+{% endautoescape %}

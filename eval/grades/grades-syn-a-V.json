@@ -1,0 +1,26 @@
+{
+  "V": {
+    "A1": {
+      "pass": true,
+      "evidence": "Headline/gist says \"14.3%\" and \"6,894 of 48,210 trial users had a positive charge in the implemented window.\""
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "Rules section states `product = 'PIXELPRESS_PRO'`, platform IN ('ios', 'android'), MIN(trial_start_date) per user, cohort from 2026-03-02 through 2026-03-09 inclusive, b.amount_usd > 0, day offsets 0 through 14 inclusive, distinct converted/cohort users, and data complete through 2026-04-17 with every window fully observed."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4", "D5"],
+      "evidence": "Where-code-disagrees section lists 30 days vs 14 days; README 2026-03-02 through 2026-03-08 vs SQL through 2026-03-09; no internal/test-account filter; no refund/net-paid filter; and SQL first takes MIN(trial_start_date) per user before filtering the cohort."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "Rejects causal overclaim: \"The files show a March rate and a quoted February comparison, but no design that isolates the onboarding effect\" and says the fixture supports \"a descriptive March rate, not a causal onboarding claim.\""
+    }
+  }
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Run mcard from any directory: bin/mcard lint <card.yaml> | build <dir> -o <out> | new <id> --dir <dir>
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MCARD_PROG="$0" PYTHONPATH="$HERE${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m mcard "$@"

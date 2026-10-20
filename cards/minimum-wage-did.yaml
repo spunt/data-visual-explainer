@@ -1,0 +1,436 @@
+schema: metric-card/1
+id: minimum-wage-did
+title: Fast-food jobs after New Jersey's 1992 minimum-wage rise
+subtitle: Difference-in-differences in average full-time-equivalent employment per store, New Jersey vs eastern Pennsylvania
+status: provisional
+owner: data-visual-explainer worked example (public data)
+updated: "2026-10-07"
+question: >
+  When New Jersey raised its minimum wage in April 1992, did fast-food restaurants there cut
+  jobs compared with similar restaurants just across the border in Pennsylvania, where the wage
+  did not change?
+
+gist:
+  sentence: >
+    We counted staff at fast-food restaurants in early 1992 and again late in the year. New
+    Jersey raised its minimum wage on 1 April; nearby Pennsylvania did not. We compare how the
+    average staff per restaurant changed in each state.
+  headline:
+    value: 2.75
+    low: 0.09
+    high: 5.42
+    unit: other
+    decimals: 2
+    label: more full-time-equivalent workers per New Jersey restaurant than the Pennsylvania trend predicts
+    context: "New Jersey restaurants averaged 20.4 full-time-equivalent workers before the rise, so this is about 13% of a typical store."
+  frequency: >
+    Picture an average New Jersey restaurant with about 20 full-time-equivalent workers. If it
+    had followed Pennsylvania's path it would have ended the year with about 18; it ended with
+    about 21.
+  reading:
+    direction: neutral
+    say: >
+      "Employment in New Jersey fast-food restaurants did not fall relative to Pennsylvania after
+      the 1992 rise; it grew by about 2.75 full-time-equivalent workers per store more."
+    dont_say: >
+      "Raising the minimum wage creates jobs," or "New Jersey restaurants hired 2.75 more people."
+  key_caveat: >
+    Pennsylvania staffing fell over the year, so most of the gap comes from Pennsylvania
+    shrinking, not New Jersey growing. The design assumes both states would otherwise have moved
+    alike, and the interval's width depends on a calculation the paper does not describe.
+  claim_strength: quasi-causal
+
+grammar:
+  unit:
+    singular: restaurant
+    plural: restaurants
+    plain: One fast-food restaurant from one of four large burger or chicken chains.
+    exact: >
+      One row per store in public.dat (410 rows); CHAIN 1 = Burger King, 2 = KFC, 3 = Roy Rogers,
+      4 = Wendy's. SHEET is documented as the unique store id, but
+      sheet 407 is used by two different stores; rows, not SHEET values, are the unit.
+    src: [S3, S6]
+  population:
+    - id: frame
+      plain: >
+        Fast-food restaurants in New Jersey and eastern Pennsylvania from four chains that took
+        part in the first telephone survey.
+      exact: "public.dat: 410 stores, STATE = 1 (NJ, 331) or 0 (PA, 79)."
+      n_after: 410
+      src: [S1, S3]
+    - id: has_staff_count
+      plain: >
+        Reported staff numbers in that survey round. Each round's average uses every restaurant
+        with a count for that round, so the two rounds are not exactly the same restaurants.
+      exact: >
+        Wave-1 mean over stores with non-missing fte1 (PA 77, NJ 321); wave-2 mean over stores
+        with non-missing fte2 (PA 77, NJ 319). "All available observations" (Table 3 rows 1–2).
+      src: [S1, S5]
+    - id: closures
+      plain: >
+        Restaurants that closed for good by the second round count as having zero staff. The four
+        that were closed only temporarily are left out of the second round.
+      exact: >
+        STATUS2 = 3 (6 stores): wave-2 employment fields are already 0 in public.dat. STATUS2 in
+        (2, 4, 5) (4 stores, all NJ): wave-2 fields missing, so excluded from the wave-2 mean.
+      src: [S1, S3, S6]
+  anchor:
+    kind: calendar
+    label: Wage rise
+    plain: New Jersey's minimum wage went from $4.25 to $5.05 an hour on 1 April 1992.
+    exact: "1992-04-01 (paper, introduction and section I). Pennsylvania stayed at the federal $4.25."
+    src: S1
+  windows:
+    - id: wave1
+      label: First survey round
+      start: -46
+      end: -27
+      unit: day
+      role: observation
+      plain: The telephone survey from 15 February to 4 March 1992, before the rise.
+      exact: "Wave 1: February 15 – March 4, 1992 (Table 1)."
+      src: S1
+    - id: wave2
+      label: Second survey round
+      start: 218
+      end: 275
+      unit: day
+      role: outcome
+      plain: The follow-up survey from 5 November to 31 December 1992, about 7 to 9 months after the rise.
+      exact: "Wave 2: November 5 – December 31, 1992 (Table 1); DATE2 in the file spans 110592–123192."
+      src: [S1, S6]
+  measures:
+    - id: fte_before
+      label: Staff before
+      kind: value
+      window: wave1
+      plain: Full-time workers, including managers, plus half the number of part-time workers.
+      exact: "EMPTOT = EMPPT*.5 + EMPFT + NMGRS (check.sas line 54)."
+      src: [S2, S1]
+    - id: fte_after
+      label: Staff after
+      kind: value
+      window: wave2
+      primary: true
+      plain: The same count, taken in the second survey round.
+      exact: "EMPTOT2 = EMPPT2*.5 + EMPFT2 + NMGRS2 (check.sas line 55)."
+      src: S2
+  aggregate:
+    kind: mean
+    measure: fte_after
+    numerator: total full-time-equivalent workers across restaurants with a count
+    denominator: restaurants with a count in that round
+    plain: Average the staff count over restaurants in each state and survey round.
+    exact: "PROC MEANS of EMPTOT and EMPTOT2 BY NJ (check.sas lines 128–131, 'PART OF TABLE 3')."
+    src: [S2, S5]
+  groups:
+    - id: pa_pre
+      label: Pennsylvania, Feb–Mar
+      role: baseline
+      period: pre
+      year: "1992"
+      series: Pennsylvania
+      plain: Pennsylvania restaurants in the first round.
+      exact: "STATE = 0, non-missing EMPTOT (n = 77)."
+    - id: pa_post
+      label: Pennsylvania, Nov–Dec
+      role: baseline
+      period: post
+      year: "1992"
+      series: Pennsylvania
+      plain: Pennsylvania restaurants in the second round.
+      exact: "STATE = 0, non-missing EMPTOT2 (n = 77)."
+    - id: nj_pre
+      label: New Jersey, Feb–Mar
+      role: focal
+      period: pre
+      year: "1992"
+      series: New Jersey
+      plain: New Jersey restaurants in the first round, before the rise.
+      exact: "STATE = 1, non-missing EMPTOT (n = 321)."
+    - id: nj_post
+      label: New Jersey, Nov–Dec
+      role: focal
+      period: post
+      year: "1992"
+      series: New Jersey
+      plain: New Jersey restaurants in the second round, after the rise.
+      exact: "STATE = 1, non-missing EMPTOT2 (n = 319)."
+  comparison:
+    kind: difference_in_differences
+    target: ATT
+    plain: >
+      Take New Jersey's change in average staff between the two rounds. Subtract Pennsylvania's
+      change over the same months. What is left is the change Pennsylvania's path does not
+      explain.
+    exact: "(NJ wave 2 − NJ wave 1) − (PA wave 2 − PA wave 1), FTE per store (Table 3, row 3, column iii)."
+    formula: "(NJ₂ − NJ₁) − (PA₂ − PA₁)"
+    src: [S1, S5]
+  uncertainty:
+    method: As published (t statistic), method not stated
+    level: 0.95
+    plain: >
+      The paper reports a t statistic of 2.03 for this number. We turned that into a 95% range
+      of 0.09 to 5.42 workers. The paper does not say how it computed the spread.
+    exact: >
+      SE = 2.76 / 2.03 ≈ 1.36 (paper, section III.A); interval = 2.754 ± 1.96 × 1.36. Treating
+      the four state-by-round means as independent gives SE 1.80 (interval −0.78 to 6.28). The
+      balanced-sample change (row 4) gives SE 1.34.
+    known_gaps: >
+      The calculation behind the published spread is not stated, and check.sas does not compute
+      it. Restaurants appear in both rounds, so the four averages are not independent; the
+      simplest formula that ignores this gives a range that includes zero. Nothing here covers
+      the assumption that both states would have moved alike.
+    src: [S1, S5]
+
+results:
+  as_of: "1994-09 (published); recomputed 2026-10-07"
+  unit: other
+  latest_anchor: "1992-04-01"
+  data_complete_through: "1992-12-31"
+  cells:
+    - {group: pa_pre, value: 23.3312, n: 77}
+    - {group: pa_post, value: 21.1656, n: 77}
+    - {group: nj_pre, value: 20.4394, n: 321}
+    - {group: nj_post, value: 21.0274, n: 319}
+  estimate: {value: 2.75, low: 0.09, high: 5.42}
+  sensitivity:
+    - {label: "Same restaurants in both rounds (row 4)", value: 2.75, low: 0.12, high: 5.38, note: "384 restaurants with a count in both rounds; SE 1.34.", src: S5}
+    - {label: "All restaurants with a count (row 3, headline)", value: 2.75, low: 0.09, high: 5.42, primary: true, src: [S1, S5]}
+    - {label: "Temporarily closed counted as zero (row 5)", value: 2.51, low: -0.13, high: 5.15, note: "Paper: 'only slightly smaller'.", src: S5}
+    - {label: "Regression, Table 4 sample", value: 2.33, low: 0.0, high: 4.66, note: "357 restaurants with wage data in both rounds; coefficient 2.33 (SE 1.19).", src: [S1, S5]}
+
+example:
+  name: A Wendy's in Camden County
+  intro: >
+    A hypothetical New Jersey Wendy's paying the old $4.25 starting wage has 8 full-time staff,
+    2 managers and 20 part-timers in February 1992.
+  anchor_date: "1992-04-01"
+  events:
+    - {at: -40, label: "First survey call: 8 + 2 + 20 × 0.5 = 20 full-time-equivalent workers"}
+    - {at: 0, label: "Minimum wage rises to $5.05"}
+    - {at: 225, label: "Second survey: 9 full-time, 2 managers, 22 part-time = 22", counts: true}
+  outcome: >
+    The restaurant adds +2 to New Jersey's change. If it had shut for renovation in November, it
+    would drop out of the second-round average entirely. If it had closed for good, it would
+    count as 0 workers.
+
+fine_print:
+  judgment_calls:
+    - decision: Comparison group
+      choice: Restaurants in eastern Pennsylvania, near the border.
+      alternatives: New Jersey restaurants already paying $5.00 or more, who were barely affected.
+      why: Similar markets and seasons, with no wage change.
+      impact: >
+        The paper reports both. High-wage New Jersey stores changed by −2.16, almost the same as
+        Pennsylvania's −2.28 (balanced sample), which supports the Pennsylvania comparison.
+      src: [S1, S5]
+    - decision: Part-time workers count as half
+      choice: Full-time equivalent = full-time + managers + 0.5 × part-time.
+      alternatives: Count heads; weight part-timers 0.4 or 0.6; exclude managers.
+      why: A simple, stated convention.
+      impact: >
+        Table 5 rows 3–5 report little effect on the regression for the change in employment
+        when managers are dropped or part-timers weighted 0.4 or 0.6; not re-run here.
+      src: [S1, S2]
+    - decision: Which restaurants enter each average
+      choice: Every restaurant with a count in that round (rows 1–3).
+      alternatives: Only restaurants counted in both rounds (row 4).
+      why: Uses all the data.
+      impact: The headline barely moves (2.754 vs 2.750).
+      src: S5
+  caveats:
+    - title: Pennsylvania fell more than New Jersey rose
+      text: >
+        New Jersey's average went up by 0.59 workers while Pennsylvania's fell by 2.17. Most of
+        the gap is Pennsylvania shrinking. The paper attributes this to a worsening regional
+        economy, which the design assumes hit both states equally.
+      effect: limits_scope
+      severity: high
+      src: [S1, S5]
+    - title: The spread depends on an unstated calculation
+      text: >
+        The published t statistic implies a 95% range of about 0.1 to 5.4 workers. A simple
+        calculation that treats the two rounds as separate samples gives −0.8 to 6.3, which
+        includes no effect. Counting only restaurants seen in both rounds gives 0.1 to 5.4 again.
+      effect: wider_uncertainty
+      severity: medium
+      src: [S1, S5]
+    - title: Self-reported counts from a phone survey
+      text: >
+        Managers reported staff numbers by phone. The paper estimates the reliability of this
+        measure at 0.70 by reinterviewing a subset of stores, so some changes are noise.
+      effect: wider_uncertainty
+      severity: medium
+      src: S1
+    - title: One region, one industry, one rise
+      text: >
+        This is four fast-food chains in New Jersey and eastern Pennsylvania in 1992, after an
+        80-cent rise. It says nothing directly about other industries, larger rises or other places.
+      effect: limits_scope
+      severity: medium
+  misreadings:
+    - wrong: "Each New Jersey restaurant hired 2.75 more people."
+      right: >
+        It is 2.75 more full-time-equivalent workers on average, relative to Pennsylvania's trend.
+        Part-timers count as half, and New Jersey's own average rose by only 0.59.
+    - wrong: "This proves minimum-wage rises create jobs."
+      right: >
+        It shows employment did not fall relative to the comparison state in this setting. The
+        design rests on both states sharing a trend, and the result is specific to this case.
+    - wrong: "Employment rose 13%."
+      right: >
+        The gap is 13% of a typical New Jersey store's starting staff. New Jersey's own average
+        rose about 3%.
+  discrepancies:
+    - topic: Store identifier
+      described: "Codebook: SHEET is the 'sheet number (unique store id)'."
+      implemented: "Sheet 407 appears twice in public.dat: a Pennsylvania KFC and a New Jersey Wendy's."
+      impact: >
+        Anyone deduplicating or joining on SHEET loses or mixes one store. The paper's
+        averages, which treat rows as stores, are unaffected.
+      src: [S3, S5]
+    - topic: Where closed stores become zero
+      described: "Table 3 note: 'Employment at six closed stores is set to zero.'"
+      implemented: >
+        check.sas never sets anything to zero; the six STATUS2 = 3 rows already carry 0 in the
+        wave-2 employment fields of public.dat.
+      impact: >
+        None for the published numbers. A re-analysis that recodes STATUS2 itself, or treats 0
+        as missing, will silently change the headline.
+      src: [S1, S2, S5]
+    - topic: Headline value
+      described: "Text: 'The relative gain … is 2.76 FTE employees (or 13 percent), with a t statistic of 2.03.'"
+      implemented: >
+        The public data give 2.754, which rounds to 2.75. Rows 4 and 5 and Table 4 reproduce to
+        the published decimals.
+      impact: Rounding only. It is likely the text was computed from rounded table entries.
+      src: [S1, S5]
+    - topic: How the headline's uncertainty was computed
+      described: "A t statistic of 2.03; no method given."
+      implemented: >
+        check.sas computes only per-state means (PROC MEANS), not the standard error of the
+        difference. The independent-samples formula gives t = 1.53; the balanced-sample formula
+        gives t = 2.05.
+      impact: Unknown. It decides whether the headline is distinguishable from zero.
+      src: [S1, S2, S5]
+    - topic: Restaurants without a starting wage
+      described: "Table 3 notes give New Jersey wage-group counts of 101, 140 and 73."
+      implemented: >
+        Those sum to 314 of 331 New Jersey stores. The 17 with no wave-1 starting wage go to
+        check.sas's 'NJ STORE, BAD WAGE' group and are not mentioned in the text.
+      impact: Affects only the within-New Jersey columns (iv)–(viii), not the headline.
+      src: [S1, S2, S5]
+
+spec:
+  estimand:
+    population: >
+      Burger King, KFC, Wendy's and Roy Rogers restaurants in New Jersey and eastern Pennsylvania
+      in the 1992 sample frame that responded in wave 1 and reported employment in the given wave.
+    exposure: Being in New Jersey when its minimum wage rose from $4.25 to $5.05 on 1992-04-01.
+    time_zero: 1992-04-01.
+    variable: >
+      FTE employment per store = full-time + managers + 0.5 × part-time, in wave 2 (Nov 5 – Dec 31,
+      1992) minus wave 1 (Feb 15 – Mar 4, 1992).
+    intercurrent_events: >
+      Permanent closures count as zero employment; temporary closures (4) are missing in wave 2.
+    summary: >
+      Difference in state mean changes (unbalanced means), FTE workers per store; interval from
+      the published t statistic.
+  parameters:
+    - {name: old_minimum, value: "$4.25", meaning: "Federal and NJ rate before 1992-04-01"}
+    - {name: new_minimum, value: "$5.05", meaning: "NJ rate from 1992-04-01"}
+    - {name: part_time_weight, value: 0.5, meaning: Each part-time worker counts as half}
+    - {name: temporarily_closed_status, value: "2, 4, 5", meaning: "STATUS2 codes treated as missing in wave 2"}
+  lineage:
+    - name: public.dat
+      role: One row per store, both survey waves
+      grain: store
+      src: [S3, S6]
+    - name: check.sas
+      role: Authors' program; computes FTE and the per-state means of Table 3
+      grain: store → state × wave
+      src: S2
+    - name: examples/minimum-wage/analysis.py
+      role: Python reproduction of Table 3 rows 1–5 and Table 4 column (i)
+      grain: state × wave
+      src: S5
+  code:
+    - purpose: FTE employment in each wave (authors' SAS)
+      lang: sas
+      src: S2
+      excerpt: |
+        EMPTOT=EMPPT*.5 + EMPFT + NMGRS;
+        EMPTOT2=EMPPT2*.5 + EMPFT2 + NMGRS2;
+        DEMP=EMPTOT2-EMPTOT;;
+    - purpose: Difference-in-differences and the independent-samples standard error (reproduction)
+      lang: python
+      src: S5
+      excerpt: |
+        did = (lv["NJ_post"]["value"] - lv["NJ_pre"]["value"]) - (lv["PA_post"]["value"] - lv["PA_pre"]["value"])
+        se_indep = np.sqrt(sum(r["se"] ** 2 for r in rows))
+  reproduce:
+    steps:
+      - "python examples/fetch_data.py minimum-wage (downloads and checks the data and paper)."
+      - "python examples/minimum-wage/analysis.py (writes results/table3.csv and results/checks.csv)."
+    receipts:
+      - "2026-10-07: PA 23.33 → 21.17, NJ 20.44 → 21.03; DiD 2.754. Row 4 2.750 (SE 1.342), row 5 2.509."
+      - "2026-10-07: Table 4 column (i) 2.326 (SE 1.192), n = 357, mean change −0.238, SD 8.825; the paper prints 2.33 (1.19), −0.237, 8.825."
+    tests: "examples/minimum-wage/results/checks.csv compares each reproduced figure with the paper."
+
+glossary:
+  - term: full-time equivalent
+    aliases: [FTE, full-time-equivalent]
+    plain: >
+      A staff count where each part-time worker counts as half a full-time worker. Managers count
+      as full-time.
+  - term: difference-in-differences
+    aliases: [DiD]
+    plain: >
+      Compare one group's change with another group's change over the same time. The difference
+      between the two changes is the part a shared trend does not explain.
+  - term: minimum wage
+    plain: The lowest hourly pay an employer may legally offer.
+  - term: 95% range
+    aliases: [95% interval, confidence interval]
+    plain: >
+      The values that fit the data well, given random noise. It does not cover the assumption
+      that both states would have moved alike.
+  - term: t statistic
+    plain: >
+      The estimate divided by its standard error. Values above about 2 are usually read as
+      unlikely to be pure noise.
+
+quiz:
+  - kind: verbatim
+    q: "The headline is +2.75. What does it count?"
+    options:
+      - "New Jersey restaurants hired 2.75 more people each."
+      - "New Jersey's change in average full-time-equivalent staff per restaurant was 2.75 larger than Pennsylvania's change."
+      - "Employment in New Jersey rose 2.75%."
+    answer: 1
+    why: It is a difference between two changes, in full-time-equivalent workers per restaurant.
+  - kind: gist
+    q: "Where does most of the 2.75 come from?"
+    options:
+      - "New Jersey restaurants adding staff."
+      - "Pennsylvania restaurants losing staff over the same months."
+    answer: 1
+    why: New Jersey rose by about 0.6; Pennsylvania fell by about 2.2.
+  - kind: transfer
+    q: "A New Jersey restaurant closed for renovations during the second survey. How is it counted?"
+    options: ["As zero workers", "It is left out of the second-round average", "As its first-round staff"]
+    answer: 1
+    why: Only permanently closed restaurants count as zero; the four temporary closures are treated as missing.
+
+changelog:
+  - {date: "1994-09-01", change: "Published in the American Economic Review 84(4)."}
+  - {date: "2026-10-07", change: "Metric card written from the public data and the authors' check.sas; five discrepancies recorded."}
+
+sources:
+  - {id: S1, path: "examples/minimum-wage/data/njmin-aer.pdf", note: "Card & Krueger (1994), AER 84(4): intro, section I, Table 1, section III.A, Tables 3–4 notes"}
+  - {id: S2, path: "examples/minimum-wage/data/check.sas", lines: "54-59, 128-139, 150-163"}
+  - {id: S3, path: "examples/minimum-wage/data/codebook", note: "Column definitions; STATUS2 codes"}
+  - {id: S4, path: "examples/minimum-wage/data/read.me", note: "Says the files support Myth and Measurement, chapter 2"}
+  - {id: S5, path: "examples/minimum-wage/analysis.py", lines: "30-103", note: "Outputs in examples/minimum-wage/results/"}
+  - {id: S6, path: "examples/minimum-wage/data/public.dat", note: "410 rows; downloaded from davidcard.berkeley.edu/data_sets.html"}

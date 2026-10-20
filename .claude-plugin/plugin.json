@@ -1,0 +1,24 @@
+{
+  "name": "data-visual-explainer",
+  "version": "0.1.0",
+  "description": "Explain one metric so non-specialists read it correctly and specialists can reproduce it. Your agent traces the number to the code that produced it, records where the written definition and the code disagree, and writes a Metric Card: a plain-language gist, caveats, likely misreadings and a reproducible spec, rendered as an HTML explainer, a one-page label and a Markdown methods section.",
+  "author": {
+    "name": "Bob Spunt",
+    "url": "https://github.com/spunt"
+  },
+  "homepage": "https://github.com/spunt/data-visual-explainer",
+  "repository": "https://github.com/spunt/data-visual-explainer",
+  "license": "Apache-2.0",
+  "keywords": [
+    "agent-skill",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-skill",
+    "metrics",
+    "kpi",
+    "data-documentation",
+    "methodology",
+    "reproducibility",
+    "causal-inference"
+  ]
+}

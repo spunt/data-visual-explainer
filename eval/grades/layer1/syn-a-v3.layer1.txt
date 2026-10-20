@@ -1,0 +1,18 @@
+1 The gist · for everyone
+What share of people who start a PixelPress Pro free trial become paying subscribers?
+14.3%
+mobile trial conversion rate
+Among PixelPress Pro mobile users whose first recorded trial started from 2 through 9 March 2026, 14.3% had a positive charge on days 0-14 after trial start.
+6,894 of 48,210 trial users had a positive charge in the implemented window.
+≈About 14 in every 100 users in the implemented first-trial mobile cohort had a positive charge by day 14.        
+What kind of claim: Describes a level. This number describes what happened in one group. It does not compare groups or explain why.
+        Divide users with a positive charge by all users in the implemented cohort.
+✓ Safe to say
+"In the saved March run, 14.3% of first recorded PixelPress Pro mobile trial users had a positive charge on days 0-14 after trial start."
+✗ Not this
+"The new onboarding caused a 1.4-point lift," or "the metric used a 30-day window ending 8 March."      
+! Before you repeat it
+The SQL does not match the readout: it uses a 14-day parameter, includes starts on 9 March, and does not show the test-account or refund exclusions described in the README.
+      2Who exactly is counted, and when?Follow one user through the rules
+      3What could make this misleading?5 caveats · 5 common misreadings
+      4How would I rebuild it?Exact rules, data, code · 6 doc-vs-code gaps

@@ -1,0 +1,1245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weight gain from quitting smoking · Metric card</title>
+<meta name="description" content="We followed 1,566 adult smokers from a health check in 1971–75 to a second visit in 1982. We compare weight change in people who quit with people who did not, after reweighting so the two groups match on nine traits.">
+<style>:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1b1f29; --ink-2:#4a5262; --muted:#6b7385; --line:#e3e4e0; --line-2:#d2d4ce;
+  --focal:#2650d8; --focal-soft:#e7ecfd; --base:#9aa1b0; --base-soft:#eef0f3;
+  --accent:#c2410c; --accent-soft:#fdede4; --good:#13795b; --good-soft:#e5f4ee; --bad:#b42318; --bad-soft:#fdeceb;
+  --warn:#a15c00; --warn-soft:#fff4dc;
+  --win-out:#2650d8; --win-exp:#7c3aed; --win-look:#9aa1b0;
+  --serif: "Charter","Iowan Old Style","Source Serif Pro",Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#111318; --paper:#181b22; --ink:#eceef3; --ink-2:#c3c8d3; --muted:#9aa2b2; --line:#2a2f3a; --line-2:#363c49;
+    --focal:#7d9bff; --focal-soft:#1f2a4d; --base:#7d8596; --base-soft:#232733; --accent:#ff8a4c; --accent-soft:#3a2418;
+    --good:#4cc79c; --good-soft:#15302a; --bad:#ff7b72; --bad-soft:#3a1d1d; --warn:#f2b84b; --warn-soft:#352a12;
+    --win-out:#7d9bff; --win-exp:#b79cff; --win-look:#7d8596; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+a{color:var(--focal)}
+code{font:0.88em/1.4 var(--mono); background:var(--base-soft); padding:1px 5px; border-radius:5px}
+.muted{color:var(--muted)}
+.note{color:var(--muted); font-size:.92rem}
+.skip{position:absolute; left:-999px}.skip:focus{left:12px; top:12px; background:var(--paper); padding:8px 12px; z-index:99}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+
+/* masthead */
+.masthead{padding:36px 0 22px; background:var(--paper); border-bottom:1px solid var(--line)}
+.crumbs{font-size:.85rem; color:var(--muted)} .crumbs a{color:var(--muted); text-decoration:none}
+.masthead h1{font:600 2.3rem/1.15 var(--serif); margin:.35rem 0 .3rem; letter-spacing:-.01em}
+.subtitle{margin:0; color:var(--ink-2); font-size:1.08rem}
+.meta{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--muted); font-size:.88rem; align-items:center}
+.pill{display:inline-block; padding:2px 10px; border-radius:99px; font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; background:var(--base-soft); color:var(--ink-2)}
+.status-validated,.status-in-use{background:var(--good-soft); color:var(--good)}
+.status-provisional,.status-proposed,.status-draft{background:var(--warn-soft); color:var(--warn)}
+.status-superseded{background:var(--bad-soft); color:var(--bad)}
+
+/* depth rail */
+.rail{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.rail-inner{display:flex; align-items:center; gap:14px; min-height:54px}
+.rail-title{font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+.rail ol{list-style:none; display:flex; gap:4px; margin:0; padding:0; overflow-x:auto}
+.rail a{display:flex; align-items:center; gap:7px; padding:7px 12px; border-radius:10px; text-decoration:none; color:var(--ink-2); white-space:nowrap; font-size:.92rem}
+.rail a b{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--base-soft); font-size:.78rem}
+.rail a small{color:var(--muted); font-size:.75rem}
+.rail a:hover{background:var(--base-soft)}
+.rail a.active{background:var(--focal-soft); color:var(--focal)} .rail a.active b{background:var(--focal); color:#fff}
+.rail .rail-extra a{color:var(--muted)}
+.progress{height:2px; background:transparent}.progress span{display:block; height:2px; width:0; background:var(--focal); transition:width .1s}
+
+/* levels */
+.level{padding:56px 0; border-bottom:1px solid var(--line)}
+.level-1{background:var(--paper)}
+.level-3{background:var(--paper)}
+.eyebrow{font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 6px; display:flex; align-items:center; gap:8px}
+.lvl{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper); font-weight:700; letter-spacing:0}
+.level h2{font:600 1.85rem/1.2 var(--serif); margin:0 0 22px; letter-spacing:-.01em}
+.level h2.question{font-size:1.65rem; color:var(--ink-2); font-weight:500; max-width:52ch}
+h3.sub{font:600 1.15rem/1.3 var(--sans); margin:38px 0 12px}
+
+/* gist */
+.gist-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:44px; align-items:start}
+.headline{margin:4px 0 18px}
+.hl-number{font:700 4.4rem/1 var(--serif); letter-spacing:-.03em; color:var(--focal)}
+.hl-label{font-size:1.15rem; color:var(--ink); margin-top:6px; font-weight:500}
+.hl-range{margin-top:8px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.hl-range span{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-right:6px}
+.lede{font:400 1.2rem/1.55 var(--serif); margin:0 0 12px}
+.context{color:var(--ink-2); margin:0 0 10px}
+.frequency{background:var(--base-soft); border-radius:10px; padding:10px 14px 10px 36px; margin:0 0 14px; position:relative}
+.frequency .icon{font-weight:700; color:var(--focal); position:absolute; left:14px}
+.claim{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--line-2); border-radius:12px; padding:12px 14px; font-size:.95rem}
+.claim-meter{display:flex; gap:3px; padding-top:6px}
+.claim-meter span{width:14px; height:8px; border-radius:2px; background:var(--line-2)}
+.claim-meter span.on{background:var(--ink-2)}
+.gist-fig{margin:0; background:var(--bg); border-radius:var(--r); padding:18px 16px 12px}
+.gist-fig figcaption{font-size:.9rem; color:var(--ink-2); margin-top:8px}
+.trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+.trio>div{border-radius:var(--r); padding:14px 16px}
+.trio h3{margin:0 0 6px; font-size:.8rem; text-transform:uppercase; letter-spacing:.08em}
+.trio p{margin:0}
+.say{background:var(--good-soft)} .say h3{color:var(--good)}
+.dont{background:var(--bad-soft)} .dont h3{color:var(--bad)}
+.caveat{background:var(--warn-soft)} .caveat h3{color:var(--warn)}
+.deeper{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px}
+.deeper a{display:grid; grid-template-columns:auto 1fr; gap:2px 12px; padding:14px 16px; border:1px solid var(--line-2); border-radius:var(--r); text-decoration:none; color:var(--ink); transition:border-color .15s, transform .15s}
+.deeper a:hover{border-color:var(--focal); transform:translateY(-2px)}
+.deeper span{grid-row:span 2; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--base-soft); font-weight:700}
+.deeper small{color:var(--muted)}
+
+/* figures */
+.fig{width:100%; height:auto; display:block; font-family:var(--sans); overflow:visible}
+.v-label{font-size:12.5px; fill:var(--ink-2)} .v-strong{font-weight:650; fill:var(--ink)}
+.v-tick{font-size:11px; fill:var(--muted)}
+.v-axis{stroke:var(--line-2); stroke-width:1.2} .v-grid{stroke:var(--line); stroke-width:1}
+.v-zero{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:3 3}
+.v-break{stroke:var(--muted); stroke-width:1.4; fill:none}
+.v-anchor{stroke:var(--ink); stroke-width:1.6}
+.v-win-outcome{fill:var(--win-out); fill-opacity:.16; stroke:var(--win-out); stroke-width:1.2}
+.v-win-exposure{fill:var(--win-exp); fill-opacity:.15; stroke:var(--win-exp); stroke-width:1.2}
+.v-win-look{fill:var(--win-look); fill-opacity:.16; stroke:var(--win-look); stroke-width:1.2}
+.v-dim{opacity:.35}
+.v-on-band{fill:var(--ink)}
+.v-event{fill:var(--paper); stroke:var(--ink-2); stroke-width:1.5}
+.v-event-on{fill:var(--accent); stroke:var(--accent)}
+.v-event-num{font-size:10.5px; font-weight:700; fill:var(--ink)}
+.v-event-on + .v-event-num{fill:#fff}
+.v-event-stem{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:2 3; opacity:.6}
+.v-line-base{stroke:var(--base); stroke-width:2.5}
+.v-line-focal{stroke:var(--focal); stroke-width:3.5}
+.v-line-cf{stroke:var(--focal); stroke-width:2; stroke-dasharray:6 5; opacity:.6}
+.v-dot-base{fill:var(--base)} .v-dot-focal{fill:var(--focal)} .v-dot-cf{fill:var(--paper); stroke:var(--focal); stroke-width:2}
+.v-base-text{fill:var(--muted)} .v-focal-text{fill:var(--focal)} .v-cf-text{fill:var(--focal); opacity:.75}
+.v-accent-text{fill:var(--accent)}
+.v-bracket{stroke:var(--accent); stroke-width:2; fill:none}
+.v-bar-focal{fill:var(--focal)} .v-bar-base{fill:var(--base)} .v-bar-adj{fill:var(--ink-2)} .v-bar-raw{fill:var(--base); opacity:.45}
+.v-bar-rest{fill:var(--base-soft); stroke:var(--line-2)}
+.v-qdot{fill:var(--focal); fill-opacity:.85}
+.v-whisker{stroke:var(--base); stroke-width:3; stroke-linecap:round} .v-whisker-focal{stroke:var(--focal)}
+
+/* example */
+.example{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:22px 24px; margin-bottom:36px}
+.example h3{margin:0 0 6px; font:600 1.25rem/1.3 var(--serif)}
+.example figure{margin:12px 0}
+.events{list-style:none; padding:0; margin:6px 0 10px; display:grid; gap:6px}
+.events li{display:flex; gap:10px; align-items:baseline}
+.events .num{display:inline-grid; place-items:center; min-width:22px; height:22px; border-radius:50%; border:1.5px solid var(--ink-2); font-size:.75rem; font-weight:700}
+.events li.counts .num{background:var(--accent); border-color:var(--accent); color:#fff}
+.events .when{font:600 .8rem var(--mono); color:var(--muted); min-width:58px}
+.tag{font-style:normal; font-size:.72rem; font-weight:700; text-transform:uppercase; color:var(--accent); letter-spacing:.06em}
+.outcome{background:var(--base-soft); padding:10px 14px; border-radius:10px; margin:0}
+.lead-in{color:var(--ink-2); max-width:62ch}
+
+/* scrolly */
+.scrolly{display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:40px; align-items:start}
+.steps{list-style:none; margin:0; padding:0}
+.step{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px; margin:0 0 22px; transition:border-color .2s, box-shadow .2s, opacity .2s}
+.step h3{margin:2px 0 8px; font:600 1.2rem/1.3 var(--serif)}
+.kicker{margin:0; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.windows,.measures{padding-left:0; list-style:none; display:grid; gap:6px}
+.swatch{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; background:var(--win-look); opacity:.6}
+.swatch.role-outcome,.swatch.role-observation{background:var(--win-out)} .swatch.role-exposure{background:var(--win-exp)}
+.formula{font:600 1.05rem var(--mono); background:var(--base-soft); padding:8px 12px; border-radius:8px; display:inline-block}
+.worked code{font-size:.85rem}
+.target{background:var(--focal-soft); padding:8px 12px; border-radius:8px}
+.gaps{background:var(--warn-soft); padding:8px 12px; border-radius:8px}
+details.exact{margin-top:10px; border-top:1px dashed var(--line-2); padding-top:8px}
+details.exact summary{cursor:pointer; font-weight:600; color:var(--focal); font-size:.9rem}
+details.exact p{font-size:.93rem; color:var(--ink-2)}
+.src{display:inline-block; font:600 .72rem var(--mono); background:var(--base-soft); color:var(--ink-2); border:1px solid var(--line-2); border-radius:6px; padding:0 6px; margin-right:4px; cursor:help; text-decoration:none}
+.step-fig figure{margin:14px 0 0}
+.step-fig figcaption,.stage figcaption{font-size:.85rem; color:var(--muted)}
+.stage{display:none}
+.js .scrolly .stage{display:block; position:sticky; top:84px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px; min-height:240px}
+.stage figure{margin:0}
+.js .scrolly .step .step-fig{display:none}
+.js .scrolly .step{opacity:.55}
+.js .scrolly .step.active{opacity:1; border-color:var(--focal); box-shadow:0 6px 24px -14px var(--focal)}
+.stage .fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+.flow{display:flex; flex-direction:column; align-items:stretch; gap:0; margin:0}
+.flow-box{border:1.5px solid var(--line-2); border-radius:10px; padding:10px 12px; background:var(--paper); font-size:.93rem; display:flex; flex-direction:column; gap:2px}
+.flow-start{background:var(--base-soft); font-weight:600}
+.flow-end{background:var(--focal-soft); border-color:var(--focal); color:var(--focal); font-weight:600}
+.flow-k{font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.flow-n{font:600 .85rem var(--mono); color:var(--focal)}
+.flow-arrow{height:18px; width:2px; background:var(--line-2); margin:0 auto; position:relative}
+.flow-arrow:after{content:""; position:absolute; bottom:-2px; left:-4px; border:5px solid transparent; border-top-color:var(--line-2)}
+.fraction{display:flex; align-items:center; gap:22px; margin:6px 0}
+.frac{flex:1; text-align:center}
+.frac-top,.frac-bot{display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px; color:var(--ink-2)}
+.frac b{font:700 1.5rem var(--serif); color:var(--ink)}
+.frac-bar{height:3px; background:var(--ink); border-radius:2px}
+.frac-eq{font:400 1.4rem var(--serif)} .frac-eq b{font-size:2.2rem; color:var(--focal)} .frac-eq small{display:block; font:.8rem var(--sans); color:var(--muted)}
+.chips-h{margin:0 0 6px; font-weight:600; font-size:.9rem}
+.chips{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
+.chips li{background:var(--base-soft); border-radius:99px; padding:3px 10px; font-size:.82rem}
+.literal{margin-top:26px; border-left:4px solid var(--ink-2); padding:6px 0 6px 20px}
+.literal h3{margin:0; font-size:1.05rem}
+.literal ol{color:var(--ink-2); font-size:.95rem}
+
+/* level 3 */
+.maturity{border-radius:var(--r); padding:12px 16px; margin-bottom:6px}
+.maturity-ok{background:var(--good-soft)} .maturity-immature{background:var(--bad-soft)} .maturity-unknown{background:var(--warn-soft)}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.82rem; color:var(--muted); margin-bottom:12px}
+.fx{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:7px; font-weight:800; font-size:.9rem; background:var(--base-soft); color:var(--ink-2); flex:none}
+.fx-overstates{background:var(--bad-soft); color:var(--bad)} .fx-understates{background:var(--focal-soft); color:var(--focal)}
+.fx-wider_uncertainty{background:var(--warn-soft); color:var(--warn)}
+.caveats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.cav{display:flex; gap:12px; border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.cav.sev-high{border-left:4px solid var(--bad)} .cav.sev-medium{border-left:4px solid var(--warn)} .cav.sev-low{border-left:4px solid var(--line-2)}
+.cav h4{margin:0 0 4px; font-size:1rem}
+.cav p{margin:0 0 6px}
+.cav-meta{font-size:.82rem; color:var(--muted)}
+table{border-collapse:collapse; width:100%; font-size:.94rem}
+th,td{text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--line)}
+thead th{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1.5px solid var(--line-2)}
+.misread td:first-child{color:var(--bad); text-decoration:line-through; text-decoration-color:color-mix(in srgb, var(--bad) 45%, transparent)}
+.calls{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.calls article{border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.calls h4{margin:0 0 6px} .calls p{margin:4px 0; font-size:.94rem}
+.sens-notes{font-size:.9rem; color:var(--ink-2)}
+
+/* level 4 */
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px; background:var(--ink); color:var(--paper); border:1px solid var(--ink); font:600 .9rem var(--sans); text-decoration:none; cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+.btn:hover{filter:brightness(1.1)}
+.kv th{width:200px; color:var(--ink-2)}
+.discrep{display:grid; gap:14px}
+.discrep article{border:1px solid var(--line-2); border-radius:var(--r); padding:14px 16px; background:var(--paper)}
+.discrep h4{margin:0 0 8px}
+.dv{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.dv>div{background:var(--bg); border-radius:10px; padding:10px 12px}
+.dv span{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.dv>div:last-child{background:var(--focal-soft)}
+.dv p{margin:4px 0 0; font-size:.93rem}
+.impact{font-size:.93rem; margin:10px 0 4px}
+.rules th{width:200px}
+.lineage{list-style:none; padding:0; position:relative}
+.lineage li{counter-increment:l; position:relative; padding:0 0 14px 42px}
+.lineage li:before{content:counter(l); position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; font-size:.8rem; font-weight:700}
+.lineage li:not(:last-child):after{content:""; position:absolute; left:12px; top:28px; bottom:2px; width:2px; background:var(--line-2)}
+.lineage{counter-reset:l}
+.lineage p{margin:2px 0}
+figure.code{margin:12px 0 18px; border:1px solid var(--line-2); border-radius:12px; overflow:hidden}
+figure.code figcaption{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:8px 12px; background:var(--base-soft); font-size:.85rem}
+figure.code .path{font:.78rem var(--mono); color:var(--muted)}
+figure.code .copy{margin-left:auto; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); border-radius:7px; padding:2px 10px; cursor:pointer; font-size:.8rem}
+figure.code pre{margin:0; padding:14px 16px; overflow:auto; background:var(--paper); font:.84rem/1.55 var(--mono)}
+figure.code pre code{background:none; padding:0}
+.checklist{list-style:none; padding:0} .checklist li{margin:6px 0}
+.sources{padding-left:0; list-style:none} .sources li{margin:4px 0; font-size:.9rem}
+.changelog{list-style:none; padding:0} .changelog time{font:600 .82rem var(--mono); color:var(--muted); margin-right:8px}
+details.quality{margin-top:30px; border:1px dashed var(--line-2); border-radius:12px; padding:10px 14px; font-size:.9rem}
+details.quality summary{cursor:pointer; font-weight:600}
+.lint-error b{color:var(--bad)} .lint-warn b{color:var(--warn)} .lint-info b{color:var(--muted)}
+
+/* check */
+.quiz{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+.q{border:1px solid var(--line); border-radius:var(--r); padding:16px; margin:0; background:var(--paper)}
+.q legend{font-weight:600; padding:0; margin-bottom:8px; float:left; width:100%}
+.q legend + *{clear:both}
+.qkind{display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-bottom:4px}
+.q label{display:flex; gap:8px; align-items:flex-start; padding:6px 8px; border-radius:8px; cursor:pointer}
+.q label:hover{background:var(--base-soft)}
+.q label.right{background:var(--good-soft)} .q label.wrong{background:var(--bad-soft)}
+.why{font-size:.92rem; color:var(--ink-2); border-top:1px solid var(--line); padding-top:8px}
+.teachback{margin-top:24px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:18px 20px}
+.teachback h3{margin:0 0 4px}
+.teachback textarea{width:100%; border:1px solid var(--line-2); border-radius:10px; padding:10px; font:inherit; background:var(--bg); color:var(--ink); margin:6px 0 10px}
+.tb-list{list-style:none; padding:0} .tb-list li{margin:6px 0}
+
+/* glossary */
+.glossary dl{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; margin:0}
+.glossary dt{font-weight:650} .glossary dd{margin:2px 0 0; color:var(--ink-2)}
+.term{all:unset; cursor:help; border-bottom:1.5px dotted var(--focal); color:inherit}
+.term:focus-visible{outline:2px solid var(--focal); outline-offset:2px; border-radius:2px}
+.tip{position:absolute; z-index:50; max-width:340px; background:var(--ink); color:var(--paper); padding:10px 12px; border-radius:10px; font-size:.88rem; line-height:1.45; box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.tip b{display:block; margin-bottom:2px}
+.foot{padding:28px 0 60px; color:var(--muted); font-size:.85rem}
+.linkish{all:unset; color:var(--focal); cursor:pointer; text-decoration:underline}
+
+/* index */
+.index-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:18px; padding:30px 0 60px}
+.index-card{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:10px; transition:transform .15s, box-shadow .15s}
+.index-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px -20px rgba(0,0,0,.35)}
+.index-card h2{font:600 1.25rem/1.25 var(--serif); margin:0}
+.index-card .iq{color:var(--ink-2); font-size:.95rem; margin:0}
+.index-card .hl{font:700 2.2rem/1 var(--serif); color:var(--focal)}
+.index-card .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; font-size:.9rem}
+.intro{max-width:70ch; color:var(--ink-2)}
+.layers{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 0}
+.layers div{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:.9rem}
+.layers b{display:block}
+
+@media (max-width: 900px){
+  .gist-grid,.scrolly,.trio,.deeper,.caveats,.calls,.dv,.glossary dl,.layers{grid-template-columns:1fr}
+  .js .scrolly .stage{display:none} .js .scrolly .step .step-fig{display:block} .js .scrolly .step{opacity:1}
+  .hl-number{font-size:3.4rem}
+  .rail a small{display:none}
+}
+@media print{
+  .rail,.actions,.skip,.teachback,.foot button,.stage{display:none !important}
+  body{background:#fff} .level{padding:24px 0}
+  .js .scrolly .step .step-fig{display:block !important} .js .scrolly .step{opacity:1 !important}
+  .scrolly{grid-template-columns:1fr}
+  .q .why{display:block !important}
+}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important; scroll-behavior:auto !important} }
+.headline.not-run .hl-number{font-size:2.4rem; color:var(--muted)}
+</style>
+</head>
+<body class="explorer">
+<a class="skip" href="#gist">Skip to the gist</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Metric cards</a> <span aria-hidden="true">/</span> <span>smoking-cessation-ipw</span></div>
+    <h1>Weight gain from quitting smoking</h1>
+<p class="subtitle">Inverse-probability-weighted difference in 10-year weight change, quitters vs non-quitters (NHEFS)</p>    <ul class="meta">
+      <li><span class="pill status-provisional">provisional</span></li>
+<li>Owner: data-visual-explainer worked example (public data)</li><li>Updated 2026-10-07</li><li>Data as of Hernán &amp; Robins, What If (version of 19 Aug 2026); recomputed 2026-10-07</li>      <li><a href="smoking-cessation-ipw.label.html">One-page label</a></li>
+      <li><a href="smoking-cessation-ipw.methods.html">Methods section</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Depth">
+  <div class="wrap rail-inner">
+    <span class="rail-title">Depth</span>
+    <ol>
+      <li><a href="#gist" data-level="1"><b>1</b> The gist <small>1 min</small></a></li>
+      <li><a href="#build" data-level="2"><b>2</b> How it's built <small>4 min</small></a></li>
+      <li><a href="#mind" data-level="3"><b>3</b> Keep in mind <small>3 min</small></a></li>
+      <li><a href="#reproduce" data-level="4"><b>4</b> Reproduce it <small>1 min</small></a></li>
+      <li class="rail-extra"><a href="#check">Check yourself</a></li>
+      <li class="rail-extra"><a href="#glossary">Glossary</a></li>
+    </ol>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</nav>
+
+<main>
+
+<section id="gist" class="level level-1" aria-labelledby="gist-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">1</span> The gist · for everyone</p>
+    <h2 id="gist-h" class="question">If every smoker in this study had quit, how much more weight would they have gained over about ten years than if none had quit?</h2>
+    <div class="gist-grid">
+      <div class="gist-main">
+        <div class="headline" aria-label="Headline result">
+          <div class="hl-number">+3.44</div>
+          <div class="hl-label">kg more weight gain from quitting, averaged over everyone in the study</div>
+<div class="hl-range"><span>Plausible range</span> +2.41 to +4.47</div>        </div>
+        <p class="lede">We followed 1,566 adult smokers from a health check in 1971–75 to a second visit in 1982. We compare weight change in people who quit with people who did not, after <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">reweighting</button> so the two groups match on nine traits.</p>
+<p class="context">Without the reweighting the gap is 2.54 kg. Non-quitters gained about 2 kg on their own.</p><p class="frequency"><span class="icon" aria-hidden="true">≈</span>Picture two groups of 100 smokers who are alike in every measured way. Over about ten years the group that quits gains about 340 kg more in total than the group that keeps smoking: roughly 3.4 kg each.</p>        <div class="claim claim-quasi-causal">
+          <div class="claim-meter" aria-hidden="true">
+<span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span>          </div>
+          <div><strong>What kind of claim: Points toward a cause, with assumptions.</strong> The design removes some alternative explanations, not all. Read it as a cause only if its assumptions hold.</div>
+        </div>
+      </div>
+      <figure class="gist-fig">
+        <svg viewBox="0 0 520 158" role="img" aria-label="Comparison of groups" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="156.0" x2="156.0" y1="10" y2="106" class="v-grid"/><text x="156.0" y="122.0" class="v-tick" text-anchor="middle" >0</text><line x1="236.0" x2="236.0" y1="10" y2="106" class="v-grid"/><text x="236.0" y="122.0" class="v-tick" text-anchor="middle" >2</text><line x1="316.1" x2="316.1" y1="10" y2="106" class="v-grid"/><text x="316.1" y="122.0" class="v-tick" text-anchor="middle" >4</text><rect x="156" y="22" width="208.9" height="26" rx="4" class="v-bar-focal"/><text x="146.0" y="39.0" class="v-label" text-anchor="end" >Quitters, reweighted</text><text x="372.9" y="39.0" class="v-label v-strong" text-anchor="start" >5.22  ·  n=403</text><rect x="156" y="68" width="71.2" height="26" rx="4" class="v-bar-adj"/><text x="146.0" y="85.0" class="v-label" text-anchor="end" >Non-quitters, reweighted</text><text x="235.2" y="85.0" class="v-label" text-anchor="start" >1.78  ·  n=1,163</text><text x="156.0" y="146.0" class="v-label v-accent-text v-strong" text-anchor="start" >Difference vs Non-quitters, reweighted: +3.44</text></svg>
+        <figcaption>Compare the two reweighted groups. Because both are made to resemble the whole study, the gap estimates what quitting would do on average across all of these smokers.</figcaption>
+      </figure>
+    </div>
+
+    <div class="trio">
+      <div class="say"><h3><span aria-hidden="true">✓</span> Safe to say</h3><p>&quot;Under the study&#x27;s assumptions, quitting smoking added about 3.4 kg (2.4 to 4.5) of weight gain over roughly ten years, on average across these smokers.&quot;</p></div>
+<div class="dont"><h3><span aria-hidden="true">✗</span> Not this</h3><p>&quot;Quitters gained 3.4 kg,&quot; or &quot;every smoker who quits will gain 3.4 kg.&quot;</p></div>      <div class="caveat"><h3><span aria-hidden="true">!</span> Before you repeat it</h3><p>This is only causal if the nine traits capture everything that made people both quit and gain weight. The study also kept only people alive and measured in 1982, which the authors flag as a possible source of bias they chose not to fix.</p></div>
+    </div>
+
+    <div class="deeper" aria-label="Go deeper">
+      <a href="#build"><span>2</span><b>Who exactly is counted, and when?</b><small>Follow one person through the rules</small></a>
+      <a href="#mind"><span>3</span><b>What could make this misleading?</b><small>4 caveats · 3 common misreadings</small></a>
+      <a href="#reproduce"><span>4</span><b>How would I rebuild it?</b><small>Exact rules, data, code · 4 doc-vs-code gaps</small></a>
+    </div>
+  </div>
+</section>
+
+
+<section id="build" class="level level-2" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">2</span> How it's built · for the curious</p>
+    <h2 id="build-h">How the number is made</h2>
+
+    <article class="example">
+      <h3>Follow one person: Ruth</h3>
+<p>Ruth is a 45-year-old smoker at her 1973 health check, weighing 68 kg. Women like her, with her smoking history, quit less often than average.</p>      <figure><svg viewBox="0 0 1000 150" role="img" aria-label="Timeline of windows relative to First health check" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="70.6" y1="120" y2="120" class="v-axis"/><line x1="96.6" x2="980.0" y1="120" y2="120" class="v-axis"/><path d="M76.6,126 l5,-12 M84.6,126 l5,-12" class="v-break"/><rect x="143.9" y="34" width="397.1" height="30" rx="5" class="v-win-exposure"/><text x="151.9" y="53.0" class="v-label v-on-band" text-anchor="start" >Time to quit · months 1–73</text><rect x="541.1" y="74" width="391.6" height="30" rx="5" class="v-win-outcome"/><text x="549.1" y="93.0" class="v-label v-on-band" text-anchor="start" >1982 visit · months 73–144</text><line x1="39.0" x2="39.0" y1="12" y2="124" class="v-anchor"/><text x="29.0" y="140.0" class="v-label v-strong" text-anchor="start" >First health check (day 0)</text><circle cx="45.3" cy="20" r="9" class="v-event"/><text x="45.3" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="45.3" x2="45.3" y1="29" y2="120" class="v-event-stem"/><circle cx="403.1" cy="20" r="9" class="v-event"/><text x="403.1" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="403.1" x2="403.1" y1="29" y2="120" class="v-event-stem"/><circle cx="728.3" cy="20" r="9" class="v-event-on"/><text x="728.3" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="728.3" x2="728.3" y1="29" y2="120" class="v-event-stem"/><line x1="541.1" x2="541.1" y1="120" y2="124" class="v-axis"/><text x="541.1" y="140.0" class="v-tick" text-anchor="middle" >month 73</text><line x1="932.7" x2="932.7" y1="120" y2="124" class="v-axis"/><text x="932.7" y="140.0" class="v-tick" text-anchor="middle" >month 144</text></svg></figure>
+      <ol class="events">
+        <li class=""><span class="num">1</span><span class="when">day 0</span> First health check: smokes, weighs 68 kg</li>
+        <li class=""><span class="num">2</span><span class="when">day 1460</span> Quits smoking (around 1977)</li>
+        <li class="counts"><span class="num">3</span><span class="when">day 3255</span> 1982 visit: weighs 75 kg, a 7 kg gain <em class="tag">counts</em></li>
+      </ol>
+      <p class="outcome"><strong>Result:</strong> Ruth adds 7 kg to the quitters&#x27; average. Because people like her rarely quit, she counts for more than one person in the <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">reweighted</button> quitter group. Had she missed the 1982 weigh-in, she would not count at all.</p>
+    </article>
+
+    <p class="lead-in">Now the general rule, one step at a time. Each step has the plain version, with the exact version one click away.</p>
+    <div class="scrolly">
+      <ol class="steps">
+        <li class="step" id="step-who" data-step="0">
+          <p class="kicker">Step 1 · Who is counted</p>
+          <h3>Start with people, then apply each rule</h3>
+<p>One adult who smoked at the first health check.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>One row per seqn in nhefs.csv (1,629 rows).</p>
+<span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span>          </details>
+          <div class="step-fig"><figure class="flow">
+  <div class="flow-box flow-start">All people</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Adults aged 25–74 who smoked at the first health check and had the basic facts recorded (sex, age, race, weight, height, education, alcohol use, smoking intensity).<span class="flow-n">1,629 remain</span></div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Had their weight measured at the 1982 visit.<span class="flow-n">1,566 remain</span></div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box flow-end">Counted in the denominator</div>
+</figure>
+</div>
+        </li>
+        <li class="step" id="step-clock" data-step="1">
+          <p class="kicker">Step 2 · When the clock starts</p>
+          <h3>Time zero: first health check</h3>
+<p>Each person&#x27;s first health check, held some time between 1971 and 1975.</p>          <ul class="windows"><li><span class="swatch role-exposure" aria-hidden="true"></span><b>Time to quit</b>: Any time between the first health check and the 1982 visit. Quitting counts if the person reported having quit by 1982. <span class="muted">(from 1 to 73 months (up to, not including, 73))</span></li><li><span class="swatch role-observation" aria-hidden="true"></span><b>1982 visit</b>: The second visit in 1982, roughly 7 to 11 years after the first, depending on when that was. <span class="muted">(from 73 to 144 months (up to, not including, 144))</span></li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>Baseline visit 1971–75 (§12.1 margin note). Visit dates are not in nhefs.csv.</p>
+<span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 130" role="img" aria-label="Timeline of windows relative to First health check" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="45.7" y1="100" y2="100" class="v-axis"/><line x1="71.7" x2="520.0" y1="100" y2="100" class="v-axis"/><path d="M51.7,106 l5,-12 M59.7,106 l5,-12" class="v-break"/><rect x="95.7" y="14" width="201.5" height="30" rx="5" class="v-win-exposure"/><text x="103.7" y="33.0" class="v-label v-on-band" text-anchor="start" >Time to quit · months 1–73</text><rect x="297.2" y="54" width="198.7" height="30" rx="5" class="v-win-outcome"/><text x="305.2" y="73.0" class="v-label v-on-band" text-anchor="start" >1982 visit · months 73–144</text><line x1="29.6" x2="29.6" y1="8" y2="104" class="v-anchor"/><text x="19.6" y="120.0" class="v-label v-strong" text-anchor="start" >First health check (day 0)</text><line x1="297.2" x2="297.2" y1="100" y2="104" class="v-axis"/><text x="297.2" y="120.0" class="v-tick" text-anchor="middle" >month 73</text><line x1="496.0" x2="496.0" y1="100" y2="104" class="v-axis"/><text x="496.0" y="120.0" class="v-tick" text-anchor="middle" >month 144</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-counts" data-step="2">
+          <p class="kicker">Step 3 · What counts</p>
+          <h3>Weight change</h3>
+<p>Body weight at the 1982 visit minus body weight at the first health check, in kilograms.</p>          <p class="also">Also measured the same way:</p>
+          <ul class="measures"><li><b>Quit smoking</b>: Reported in 1982 having quit smoking.</li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>wt82_71 = wt82 − wt71 (kg); matches the difference of the two columns to 1e-14.</p>
+<span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 150" role="img" aria-label="Timeline of windows relative to First health check" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="45.7" y1="120" y2="120" class="v-axis"/><line x1="71.7" x2="520.0" y1="120" y2="120" class="v-axis"/><path d="M51.7,126 l5,-12 M59.7,126 l5,-12" class="v-break"/><rect x="95.7" y="34" width="201.5" height="30" rx="5" class="v-win-exposure v-dim"/><text x="103.7" y="53.0" class="v-label v-on-band v-dim" text-anchor="start" >Time to quit · months 1–73</text><rect x="297.2" y="74" width="198.7" height="30" rx="5" class="v-win-outcome"/><text x="305.2" y="93.0" class="v-label v-on-band" text-anchor="start" >1982 visit · months 73–144</text><line x1="29.6" x2="29.6" y1="12" y2="124" class="v-anchor"/><text x="19.6" y="140.0" class="v-label v-strong" text-anchor="start" >First health check (day 0)</text><circle cx="32.8" cy="20" r="9" class="v-event"/><text x="32.8" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="32.8" x2="32.8" y1="29" y2="120" class="v-event-stem"/><circle cx="227.2" cy="20" r="9" class="v-event"/><text x="227.2" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="227.2" x2="227.2" y1="29" y2="120" class="v-event-stem"/><circle cx="392.3" cy="20" r="9" class="v-event-on"/><text x="392.3" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="392.3" x2="392.3" y1="29" y2="120" class="v-event-stem"/><line x1="297.2" x2="297.2" y1="120" y2="124" class="v-axis"/><text x="297.2" y="140.0" class="v-tick" text-anchor="middle" >month 73</text><line x1="496.0" x2="496.0" y1="120" y2="124" class="v-axis"/><text x="496.0" y="140.0" class="v-tick" text-anchor="middle" >month 144</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-combine" data-step="3">
+          <p class="kicker">Step 4 · Combine</p>
+          <h3>Average across people</h3>
+<p>Average weight change in each group, with each person counted according to their weight.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>Weighted least squares of wt82_71 on qsmk; the intercept is the weighted mean for non-quitters and intercept + slope the weighted mean for quitters.</p>
+<span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span>          </details>
+          <div class="step-fig"><figure class="fraction">
+  <div class="frac">
+    <div class="frac-top">weighted sum of weight change in the group</div>
+    <div class="frac-bar" aria-hidden="true"></div>
+    <div class="frac-bot">sum of the weights in the group<b>403</b></div>
+  </div>
+<div class="frac-eq">= <b>5.22</b><small>Quitters, reweighted</small></div></figure>
+</div>
+        </li>
+        <li class="step" id="step-compare" data-step="4">
+          <p class="kicker">Step 5 · Compare</p>
+          <h3>Compare with a matched group</h3>
+<p>Compare the two reweighted groups. Because both are made to resemble the whole study, the gap estimates what quitting would do on average across all of these smokers.</p><p class="formula">mean if all quit − mean if none quit</p><p class="worked">With the real numbers: <code>5.221 − 1.78 = 3.441</code></p><p class="target"><b>Whose effect?</b> Average effect if everyone did it.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>θ₁ in E[Y | A] = θ₀ + θ₁A fitted to the pseudo-population (§12.2–12.3).</p>
+<span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 158" role="img" aria-label="Comparison of groups" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="162.0" x2="162.0" y1="10" y2="106" class="v-grid"/><text x="162.0" y="122.0" class="v-tick" text-anchor="middle" >0</text><line x1="246.8" x2="246.8" y1="10" y2="106" class="v-grid"/><text x="246.8" y="122.0" class="v-tick" text-anchor="middle" >2</text><line x1="331.6" x2="331.6" y1="10" y2="106" class="v-grid"/><text x="331.6" y="122.0" class="v-tick" text-anchor="middle" >4</text><rect x="162" y="22" width="221.4" height="26" rx="4" class="v-bar-focal"/><text x="152.0" y="39.0" class="v-label" text-anchor="end" >Quitters, reweighted</text><text x="391.4" y="39.0" class="v-label v-strong" text-anchor="start" >5.22  ·  n=403</text><rect x="162" y="68" width="75.5" height="26" rx="4" class="v-bar-adj"/><text x="152.0" y="85.0" class="v-label" text-anchor="end" >Non-quitters, reweighted</text><text x="245.5" y="85.0" class="v-label" text-anchor="start" >1.78  ·  n=1,163</text><text x="162.0" y="146.0" class="v-label v-accent-text v-strong" text-anchor="start" >Difference vs Non-quitters, reweighted: +3.44</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-adjust" data-step="5">
+          <p class="kicker">Step 6 · Make it fair</p>
+          <h3>Reweight the comparison group</h3>
+<p>People who were more likely to quit, given their traits, count for less; people unlikely to quit who did quit count for more. This balances the nine traits across the two groups.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>Logistic model for qsmk on the nine confounders, with squared terms for age, intensity, duration and weight, no interactions (Program 12.3, lines 93–97). Numerator: intercept-only logistic model (403/1566).</p>
+<span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span>          </details>
+          <div class="step-fig"><figure class="adjust">
+<p class="chips-h">Made similar on:</p><ul class="chips"><li>sex</li><li>race</li><li>age (linear and squared)</li><li>education (5 levels)</li><li>cigarettes per day (linear and squared)</li><li>years smoking (linear and squared)</li><li>exercise (3 levels)</li><li>how active day to day (3 levels)</li><li>baseline weight (linear and squared)</li></ul>  <svg viewBox="0 0 540 158" role="img" aria-label="Comparison of groups" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="162.0" x2="162.0" y1="10" y2="106" class="v-grid"/><text x="162.0" y="122.0" class="v-tick" text-anchor="middle" >0</text><line x1="246.8" x2="246.8" y1="10" y2="106" class="v-grid"/><text x="246.8" y="122.0" class="v-tick" text-anchor="middle" >2</text><line x1="331.6" x2="331.6" y1="10" y2="106" class="v-grid"/><text x="331.6" y="122.0" class="v-tick" text-anchor="middle" >4</text><rect x="162" y="22" width="221.4" height="26" rx="4" class="v-bar-focal"/><text x="152.0" y="39.0" class="v-label" text-anchor="end" >Quitters, reweighted</text><text x="391.4" y="39.0" class="v-label v-strong" text-anchor="start" >5.22  ·  n=403</text><rect x="162" y="68" width="75.5" height="26" rx="4" class="v-bar-adj"/><text x="152.0" y="85.0" class="v-label" text-anchor="end" >Non-quitters, reweighted</text><text x="245.5" y="85.0" class="v-label" text-anchor="start" >1.78  ·  n=1,163</text><text x="162.0" y="146.0" class="v-label v-accent-text v-strong" text-anchor="start" >Difference vs Non-quitters, reweighted: +3.44</text></svg>
+<figcaption>Stabilized weights range 0.33 to 4.30 with mean 1.00 (book: 0.33 to 4.30, mean 1.00). Nonstabilized weights range 1.05 to 16.7 with mean 2.00. Program 12.2 tabulates one stratum (white women, by age) as a positivity check; the book recommends checking that stabilized weights average 1.</figcaption></figure>
+</div>
+        </li>
+        <li class="step" id="step-sure" data-step="6">
+          <p class="kicker">Step 7 · How sure</p>
+          <h3>Show the range of plausible values</h3>
+<p>The range 2.4 to 4.5 kg uses a standard formula that allows for the weighting. The authors describe it as slightly wider than necessary.</p><p class="gaps"><b>Not covered by this range:</b> Treats the propensity model as correct and the weights as known. It does not cover unmeasured confounding, the selection of people who survived to 1982, or the 63 people with no 1982 weight.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>geeglm(wt82_71 ~ qsmk, weights = sw, id = seqn, corstr = &quot;independence&quot;); β ± 1.96 SE. Reproduced with weighted least squares and HC0 standard errors: SE 0.525.</p>
+<span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 154" role="img" aria-label="Twenty equally likely values for the kg more weight gain from quitting, averaged over everyone in the study" xmlns="http://www.w3.org/2000/svg" class="fig"><circle cx="239.0" cy="111.0" r="9" class="v-qdot"/><circle cx="258.0" cy="111.0" r="9" class="v-qdot"/><circle cx="277.0" cy="111.0" r="9" class="v-qdot"/><circle cx="277.0" cy="92.0" r="9" class="v-qdot"/><circle cx="277.0" cy="73.0" r="9" class="v-qdot"/><circle cx="296.0" cy="111.0" r="9" class="v-qdot"/><circle cx="296.0" cy="92.0" r="9" class="v-qdot"/><circle cx="296.0" cy="73.0" r="9" class="v-qdot"/><circle cx="315.0" cy="111.0" r="9" class="v-qdot"/><circle cx="315.0" cy="92.0" r="9" class="v-qdot"/><circle cx="315.0" cy="73.0" r="9" class="v-qdot"/><circle cx="334.0" cy="111.0" r="9" class="v-qdot"/><circle cx="334.0" cy="92.0" r="9" class="v-qdot"/><circle cx="334.0" cy="73.0" r="9" class="v-qdot"/><circle cx="353.0" cy="111.0" r="9" class="v-qdot"/><circle cx="353.0" cy="92.0" r="9" class="v-qdot"/><circle cx="353.0" cy="73.0" r="9" class="v-qdot"/><circle cx="372.0" cy="111.0" r="9" class="v-qdot"/><circle cx="391.0" cy="111.0" r="9" class="v-qdot"/><circle cx="410.0" cy="111.0" r="9" class="v-qdot"/><line x1="30" x2="510" y1="124" y2="124" class="v-axis"/><line x1="30.0" x2="30.0" y1="124" y2="129" class="v-axis"/><text x="30.0" y="144.0" class="v-tick" text-anchor="middle" >0.0</text><line x1="114.1" x2="114.1" y1="124" y2="129" class="v-axis"/><text x="114.1" y="144.0" class="v-tick" text-anchor="middle" >+1.0</text><line x1="198.2" x2="198.2" y1="124" y2="129" class="v-axis"/><text x="198.2" y="144.0" class="v-tick" text-anchor="middle" >+2.0</text><line x1="282.4" x2="282.4" y1="124" y2="129" class="v-axis"/><text x="282.4" y="144.0" class="v-tick" text-anchor="middle" >+3.0</text><line x1="366.5" x2="366.5" y1="124" y2="129" class="v-axis"/><text x="366.5" y="144.0" class="v-tick" text-anchor="middle" >+4.0</text><line x1="450.6" x2="450.6" y1="124" y2="129" class="v-axis"/><text x="450.6" y="144.0" class="v-tick" text-anchor="middle" >+5.0</text><line x1="30.0" x2="30.0" y1="40" y2="124" class="v-zero"/><text x="30.0" y="36.0" class="v-tick" text-anchor="middle" >no difference</text></svg><figcaption>Each dot is one of 20 equally likely values, given sampling noise alone (normal approximation to the interval).</figcaption></figure>
+</div>
+        </li>
+      </ol>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+
+    <aside class="literal">
+      <h3>The same definition, assembled mechanically from the spec</h3>
+      <p class="note">Generated from the structured definition, not written by hand. If it disagrees with the summary above, the summary is wrong.</p>
+      <ol><li>The unit is one person. One adult who smoked at the first health check.</li><li>Keep people that meet every rule, in order: adults aged 25–74 who smoked at the first health check and had the basic facts recorded (sex, age, race, weight, height, education, alcohol use, smoking intensity); had their weight measured at the 1982 visit.</li><li>Time zero is the first health check: Each person&#39;s first health check, held some time between 1971 and 1975.</li><li>Time to quit (exposure): from 1 months after the first health check up to, but not including, 73 months after.</li><li>1982 visit (observation): from 73 months after the first health check up to, but not including, 144 months after.</li><li>For each person, record weight change (headline) as a value within the 1982 visit: Body weight at the 1982 visit minus body weight at the first health check, in kilograms.</li><li>For each person, record quit smoking as yes/no within the time to quit: Reported in 1982 having quit smoking.</li><li>Average weight change in each group, with each person counted according to their weight.</li><li>Do this separately for each group: Quitters, reweighted, Non-quitters, reweighted.</li><li>Compare the two reweighted groups. Because both are made to resemble the whole study, the gap estimates what quitting would do on average across all of these smokers.</li><li>People who were more likely to quit, given their traits, count for less; people unlikely to quit who did quit count for more. This balances the nine traits across the two groups.</li><li>The range 2.4 to 4.5 kg uses a standard formula that allows for the weighting. The authors describe it as slightly wider than necessary.</li></ol>
+    </aside>
+  </div>
+</section>
+
+
+<section id="mind" class="level level-3" aria-labelledby="mind-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">3</span> Keep in mind · before you act on it</p>
+    <h2 id="mind-h">What could make this misleading</h2>
+
+    <div class="maturity maturity-unknown">
+      <strong>Completeness not stated.</strong>
+      The card does not state when the data were complete, so we cannot confirm every window was fully observed.
+    </div>
+
+    <h3 class="sub">Caveats</h3>
+    <div class="legend"><span><b class="fx fx-overstates">↑</b> May make the number look bigger than it really is</span><span><b class="fx fx-understates">↓</b> May make the number look smaller than it really is</span><span><b class="fx fx-wider_uncertainty">±</b> The true uncertainty is larger than shown</span><span><b class="fx fx-unknown_direction">↕</b> Could push the number either way</span><span><b class="fx fx-limits_scope">◎</b> Limits what the number can be used to conclude</span></div>
+    <div class="caveats">
+      <article class="cav sev-high">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Only as good as the nine traits</h4>          <p><button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">Reweighting</button> removes differences in the nine measured traits. If something else, such as health worries, made people both quit and gain weight, it is still mixed into the number.</p>
+          <p class="cav-meta">Could push the number either way · high importance <span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Survivors only</h4>          <p>Only people who lived to 1982 and came back could report quitting. If quitting affects survival, the groups are selected after the fact. The authors flag this and leave it unfixed.</p>
+          <p class="cav-meta">Could push the number either way · medium importance <span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>Quitting happened at different times</h4>          <p>Someone who quit in 1972 and someone who quit just before 1982 both count as quitters. The number averages over very different amounts of time without smoking.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · medium importance <span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></p>
+        </div>
+      </article>
+      <article class="cav sev-low">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>The interval is wider than it needs to be</h4>          <p>The robust formula behind 2.4 to 4.5 kg covers the true value more than 95% of the time, according to the authors. It still assumes the model for quitting is right.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · low importance <span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub">Common misreadings</h3>
+    <table class="misread">
+      <thead><tr><th scope="col">Tempting, but wrong</th><th scope="col">Accurate</th></tr></thead>
+      <tbody><tr><td>Quitters gained 3.4 kg.</td><td>Quitters gained about 4.5 kg on average. 3.4 kg is the extra gain attributed to quitting after balancing the groups.</td></tr><tr><td>This is the effect for people who actually quit.</td><td>It is the average effect if everyone in the study had quit, compared with nobody quitting (the <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">average treatment effect</button>), not just the effect among quitters.</td></tr><tr><td>The raw gap of 2.5 kg is the effect of quitting.</td><td>The raw gap mixes in age and smoking history differences. Reweighting moves it to 3.4 kg.</td></tr></tbody>
+    </table>
+
+    <h3 class="sub">Same question, other reasonable choices</h3>
+    <p class="note">Each row reruns the analysis with one choice changed. If the rows disagree a lot, the headline depends on that choice.</p>
+    <figure><svg viewBox="0 0 1000 190" role="img" aria-label="Estimate under alternative reasonable choices" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="327.6" x2="327.6" y1="8" y2="164" class="v-grid"/><text x="327.6" y="180.0" class="v-tick" text-anchor="middle" >0.0</text><line x1="590.2" x2="590.2" y1="8" y2="164" class="v-grid"/><text x="590.2" y="180.0" class="v-tick" text-anchor="middle" >+2.0</text><line x1="852.8" x2="852.8" y1="8" y2="164" class="v-grid"/><text x="852.8" y="180.0" class="v-tick" text-anchor="middle" >+4.0</text><line x1="327.6" x2="327.6" y1="6" y2="164" class="v-zero"/><line x1="545.6" x2="778.0" y1="31.0" y2="31.0" class="v-whisker"/><circle cx="661.1" cy="31.0" r="6" class="v-dot-base"/><text x="266.0" y="35.0" class="v-label" text-anchor="end" >No adjustment (raw difference)</text><line x1="644.0" x2="914.5" y1="69.0" y2="69.0" class="v-whisker v-whisker-focal"/><circle cx="779.3" cy="69.0" r="7" class="v-dot-focal"/><text x="266.0" y="73.0" class="v-label v-strong" text-anchor="end" >Stabilized weights (headline)</text><line x1="644.0" x2="914.5" y1="107.0" y2="107.0" class="v-whisker"/><circle cx="779.3" cy="107.0" r="6" class="v-dot-base"/><text x="266.0" y="111.0" class="v-label" text-anchor="end" >Nonstabilized weights</text><line x1="651.9" x2="922.4" y1="145.0" y2="145.0" class="v-whisker"/><circle cx="787.2" cy="145.0" r="6" class="v-dot-base"/><text x="266.0" y="149.0" class="v-label" text-anchor="end" >Also weighting for missing 1982 weights</text></svg></figure>
+    <ul class="sens-notes"><li><b>No adjustment (raw difference):</b> Program 12.1: quitters 4.53 kg, non-quitters 1.98 kg.</li><li><b>Nonstabilized weights:</b> Program 12.2; same estimate here.</li><li><b>Also weighting for missing 1982 weights:</b> Program 12.7; book: 3.5 (2.5, 4.5).</li></ul>
+
+    <h3 class="sub">Judgment calls</h3>
+    <div class="calls">
+      <article>
+        <h4>Which traits to balance</h4>
+        <p><b>Chose:</b> Nine traits measured at the first check, with squared terms for the continuous ones.</p>
+<p><b>Could have chosen:</b> More traits, interactions, or flexible models.</p><p><b>Why:</b> A standard, transparent model for a teaching example.</p><p><b>What it changes:</b> If an important cause of both quitting and weight gain is missing, the estimate is biased by an unknown amount.</p>      </article>
+      <article>
+        <h4>Stabilized or plain weights</h4>
+        <p><b>Chose:</b> Stabilized.</p>
+<p><b>Could have chosen:</b> Plain inverse-probability weights.</p><p><b>Why:</b> Usually narrower intervals.</p><p><b>What it changes:</b> None here; both give 3.44 (2.41, 4.47).</p>      </article>
+      <article>
+        <h4>People with no 1982 weight</h4>
+        <p><b>Chose:</b> Left out of the headline.</p>
+<p><b>Could have chosen:</b> Add weights for being measured (Program 12.7).</p><p><b>Why:</b> Simpler first analysis; the book adds them in §12.6.</p><p><b>What it changes:</b> 3.44 becomes 3.50.</p>      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="reproduce" class="level level-4" aria-labelledby="rep-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">4</span> Reproduce it · for specialists</p>
+    <h2 id="rep-h">The exact specification</h2>
+    <div class="actions">
+      <a class="btn" href="data:text/yaml;base64,c2NoZW1hOiBtZXRyaWMtY2FyZC8xCmlkOiBzbW9raW5nLWNlc3NhdGlvbi1pcHcKdGl0bGU6IFdlaWdodCBnYWluIGZyb20gcXVpdHRpbmcgc21va2luZwpzdWJ0aXRsZTogSW52ZXJzZS1wcm9iYWJpbGl0eS13ZWlnaHRlZCBkaWZmZXJlbmNlIGluIDEwLXllYXIgd2VpZ2h0IGNoYW5nZSwgcXVpdHRlcnMgdnMgbm9uLXF1aXR0ZXJzIChOSEVGUykKc3RhdHVzOiBwcm92aXNpb25hbApvd25lcjogZGF0YS12aXN1YWwtZXhwbGFpbmVyIHdvcmtlZCBleGFtcGxlIChwdWJsaWMgZGF0YSkKdXBkYXRlZDogIjIwMjYtMTAtMDciCnF1ZXN0aW9uOiA+CiAgSWYgZXZlcnkgc21va2VyIGluIHRoaXMgc3R1ZHkgaGFkIHF1aXQsIGhvdyBtdWNoIG1vcmUgd2VpZ2h0IHdvdWxkIHRoZXkgaGF2ZSBnYWluZWQgb3ZlciBhYm91dAogIHRlbiB5ZWFycyB0aGFuIGlmIG5vbmUgaGFkIHF1aXQ/CgpnaXN0OgogIHNlbnRlbmNlOiA+CiAgICBXZSBmb2xsb3dlZCAxLDU2NiBhZHVsdCBzbW9rZXJzIGZyb20gYSBoZWFsdGggY2hlY2sgaW4gMTk3MeKAkzc1IHRvIGEgc2Vjb25kIHZpc2l0IGluIDE5ODIuCiAgICBXZSBjb21wYXJlIHdlaWdodCBjaGFuZ2UgaW4gcGVvcGxlIHdobyBxdWl0IHdpdGggcGVvcGxlIHdobyBkaWQgbm90LCBhZnRlciByZXdlaWdodGluZyBzbwogICAgdGhlIHR3byBncm91cHMgbWF0Y2ggb24gbmluZSB0cmFpdHMuCiAgaGVhZGxpbmU6CiAgICB2YWx1ZTogMy40NAogICAgbG93OiAyLjQxCiAgICBoaWdoOiA0LjQ3CiAgICB1bml0OiBvdGhlcgogICAgZGVjaW1hbHM6IDIKICAgIGxhYmVsOiBrZyBtb3JlIHdlaWdodCBnYWluIGZyb20gcXVpdHRpbmcsIGF2ZXJhZ2VkIG92ZXIgZXZlcnlvbmUgaW4gdGhlIHN0dWR5CiAgICBjb250ZXh0OiAiV2l0aG91dCB0aGUgcmV3ZWlnaHRpbmcgdGhlIGdhcCBpcyAyLjU0IGtnLiBOb24tcXVpdHRlcnMgZ2FpbmVkIGFib3V0IDIga2cgb24gdGhlaXIgb3duLiIKICBmcmVxdWVuY3k6ID4KICAgIFBpY3R1cmUgdHdvIGdyb3VwcyBvZiAxMDAgc21va2VycyB3aG8gYXJlIGFsaWtlIGluIGV2ZXJ5IG1lYXN1cmVkIHdheS4gT3ZlciBhYm91dCB0ZW4geWVhcnMgdGhlIGdyb3VwIHRoYXQKICAgIHF1aXRzIGdhaW5zIGFib3V0IDM0MCBrZyBtb3JlIGluIHRvdGFsIHRoYW4gdGhlIGdyb3VwIHRoYXQga2VlcHMgc21va2luZzogcm91Z2hseSAzLjQga2cgZWFjaC4KICByZWFkaW5nOgogICAgZGlyZWN0aW9uOiBuZXV0cmFsCiAgICBzYXk6ID4KICAgICAgIlVuZGVyIHRoZSBzdHVkeSdzIGFzc3VtcHRpb25zLCBxdWl0dGluZyBzbW9raW5nIGFkZGVkIGFib3V0IDMuNCBrZyAoMi40IHRvIDQuNSkgb2Ygd2VpZ2h0CiAgICAgIGdhaW4gb3ZlciByb3VnaGx5IHRlbiB5ZWFycywgb24gYXZlcmFnZSBhY3Jvc3MgdGhlc2Ugc21va2Vycy4iCiAgICBkb250X3NheTogPgogICAgICAiUXVpdHRlcnMgZ2FpbmVkIDMuNCBrZywiIG9yICJldmVyeSBzbW9rZXIgd2hvIHF1aXRzIHdpbGwgZ2FpbiAzLjQga2cuIgogIGtleV9jYXZlYXQ6ID4KICAgIFRoaXMgaXMgb25seSBjYXVzYWwgaWYgdGhlIG5pbmUgdHJhaXRzIGNhcHR1cmUgZXZlcnl0aGluZyB0aGF0IG1hZGUgcGVvcGxlIGJvdGggcXVpdCBhbmQKICAgIGdhaW4gd2VpZ2h0LiBUaGUgc3R1ZHkgYWxzbyBrZXB0IG9ubHkgcGVvcGxlIGFsaXZlIGFuZCBtZWFzdXJlZCBpbiAxOTgyLCB3aGljaCB0aGUgYXV0aG9ycwogICAgZmxhZyBhcyBhIHBvc3NpYmxlIHNvdXJjZSBvZiBiaWFzIHRoZXkgY2hvc2Ugbm90IHRvIGZpeC4KICBjbGFpbV9zdHJlbmd0aDogcXVhc2ktY2F1c2FsCgpncmFtbWFyOgogIHVuaXQ6CiAgICBzaW5ndWxhcjogcGVyc29uCiAgICBwbHVyYWw6IHBlb3BsZQogICAgcGxhaW46IE9uZSBhZHVsdCB3aG8gc21va2VkIGF0IHRoZSBmaXJzdCBoZWFsdGggY2hlY2suCiAgICBleGFjdDogIk9uZSByb3cgcGVyIHNlcW4gaW4gbmhlZnMuY3N2ICgxLDYyOSByb3dzKS4iCiAgICBzcmM6IFtTMywgUzFdCiAgcG9wdWxhdGlvbjoKICAgIC0gaWQ6IGVsaWdpYmxlCiAgICAgIHBsYWluOiA+CiAgICAgICAgQWR1bHRzIGFnZWQgMjXigJM3NCB3aG8gc21va2VkIGF0IHRoZSBmaXJzdCBoZWFsdGggY2hlY2sgYW5kIGhhZCB0aGUgYmFzaWMgZmFjdHMgcmVjb3JkZWQKICAgICAgICAoc2V4LCBhZ2UsIHJhY2UsIHdlaWdodCwgaGVpZ2h0LCBlZHVjYXRpb24sIGFsY29ob2wgdXNlLCBzbW9raW5nIGludGVuc2l0eSkuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgTWFyZ2luIG5vdGUgdG8gwqcxMi4xLiBBcHBsaWVkIGJlZm9yZSBkaXN0cmlidXRpb246IG5oZWZzLmNzdiBhbHJlYWR5IGhvbGRzIG9ubHkgdGhlc2UKICAgICAgICAxLDYyOSBwZW9wbGUsIGFuZCBubyBjb2RlIHJlc3RyaWN0cyBvbiB0aGVzZSBmaWVsZHMuCiAgICAgIG5fYWZ0ZXI6IDE2MjkKICAgICAgc3JjOiBbUzEsIFMzXQogICAgLSBpZDogd2VpZ2hlZF8xOTgyCiAgICAgIHBsYWluOiBIYWQgdGhlaXIgd2VpZ2h0IG1lYXN1cmVkIGF0IHRoZSAxOTgyIHZpc2l0LgogICAgICBleGFjdDogIm5oZWZzLm5tdiA8LSBuaGVmc1t3aGljaCghaXMubmEobmhlZnMkd3Q4MikpLF0gKGNoYXB0ZXIxMi5SIGxpbmUgMTIpLiBEcm9wcyA2MyBwZW9wbGUuIgogICAgICBuX2FmdGVyOiAxNTY2CiAgICAgIHNyYzogW1MyLCBTMV0KICBhbmNob3I6CiAgICBraW5kOiBwZXJfdW5pdF9ldmVudAogICAgbGFiZWw6IEZpcnN0IGhlYWx0aCBjaGVjawogICAgcGxhaW46IEVhY2ggcGVyc29uJ3MgZmlyc3QgaGVhbHRoIGNoZWNrLCBoZWxkIHNvbWUgdGltZSBiZXR3ZWVuIDE5NzEgYW5kIDE5NzUuCiAgICBleGFjdDogIkJhc2VsaW5lIHZpc2l0IDE5NzHigJM3NSAowqcxMi4xIG1hcmdpbiBub3RlKS4gVmlzaXQgZGF0ZXMgYXJlIG5vdCBpbiBuaGVmcy5jc3YuIgogICAgc3JjOiBTMQogIHdpbmRvd3M6CiAgICAtIGlkOiBxdWl0X3BlcmlvZAogICAgICBsYWJlbDogVGltZSB0byBxdWl0CiAgICAgIHN0YXJ0OiAxCiAgICAgIGVuZDogNzMKICAgICAgdW5pdDogbW9udGgKICAgICAgcm9sZTogZXhwb3N1cmUKICAgICAgcGxhaW46ID4KICAgICAgICBBbnkgdGltZSBiZXR3ZWVuIHRoZSBmaXJzdCBoZWFsdGggY2hlY2sgYW5kIHRoZSAxOTgyIHZpc2l0LiBRdWl0dGluZyBjb3VudHMgaWYgdGhlIHBlcnNvbgogICAgICAgIHJlcG9ydGVkIGhhdmluZyBxdWl0IGJ5IDE5ODIuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgcXNtayA9IDEgaWYgdGhlIHBlcnNvbiByZXBvcnRlZCBpbiAxOTgyIGhhdmluZyBxdWl0ICjCpzEyLjEpLiBUaGUgcXVpdCBkYXRlIGlzIG5vdCB1c2VkOwogICAgICAgIHRoZSBhdXRob3JzIG5vdGUgaXQgaXMgcmVhbGx5IGEgdGltZS12YXJ5aW5nIHRyZWF0bWVudCB0aGV5IGlnbm9yZSAoRmluZSBQb2ludCAxMi4xKS4KICAgICAgICBUaGUgd2luZG93IHNob3duIGlzIHRoZSBzaG9ydGVzdCBwb3NzaWJsZSBnYXAgKDE5NzUg4oaSIDE5ODIpLgogICAgICBzcmM6IFMxCiAgICAtIGlkOiBmb2xsb3d1cAogICAgICBsYWJlbDogMTk4MiB2aXNpdAogICAgICBzdGFydDogNzMKICAgICAgZW5kOiAxNDQKICAgICAgdW5pdDogbW9udGgKICAgICAgcm9sZTogb2JzZXJ2YXRpb24KICAgICAgcGxhaW46IFRoZSBzZWNvbmQgdmlzaXQgaW4gMTk4Miwgcm91Z2hseSA3IHRvIDExIHllYXJzIGFmdGVyIHRoZSBmaXJzdCwgZGVwZW5kaW5nIG9uIHdoZW4gdGhhdCB3YXMuCiAgICAgIGV4YWN0OiAiRm9sbG93LXVwIHZpc2l0IGluIDE5ODIgKMKnMTIuMSk7IHBlci1wZXJzb24gZ2FwIGJldHdlZW4gNzMgYW5kIDE0MyBtb250aHMsIG5vdCByZWNvcmRlZCBpbiB0aGUgZmlsZS4iCiAgICAgIHNyYzogW1MxLCBTM10KICBtZWFzdXJlczoKICAgIC0gaWQ6IHdlaWdodF9nYWluCiAgICAgIGxhYmVsOiBXZWlnaHQgY2hhbmdlCiAgICAgIGtpbmQ6IHZhbHVlCiAgICAgIHdpbmRvdzogZm9sbG93dXAKICAgICAgcHJpbWFyeTogdHJ1ZQogICAgICBwbGFpbjogQm9keSB3ZWlnaHQgYXQgdGhlIDE5ODIgdmlzaXQgbWludXMgYm9keSB3ZWlnaHQgYXQgdGhlIGZpcnN0IGhlYWx0aCBjaGVjaywgaW4ga2lsb2dyYW1zLgogICAgICBleGFjdDogInd0ODJfNzEgPSB3dDgyIOKIkiB3dDcxIChrZyk7IG1hdGNoZXMgdGhlIGRpZmZlcmVuY2Ugb2YgdGhlIHR3byBjb2x1bW5zIHRvIDFlLTE0LiIKICAgICAgc3JjOiBbUzEsIFMzXQogICAgLSBpZDogcXVpdAogICAgICBsYWJlbDogUXVpdCBzbW9raW5nCiAgICAgIGtpbmQ6IGluZGljYXRvcgogICAgICB3aW5kb3c6IHF1aXRfcGVyaW9kCiAgICAgIHBsYWluOiBSZXBvcnRlZCBpbiAxOTgyIGhhdmluZyBxdWl0IHNtb2tpbmcuCiAgICAgIGV4YWN0OiAicXNtayAoMC8xKTsgNDAzIG9mIDEsNTY2ID0gMS4iCiAgICAgIHNyYzogW1MxLCBTM10KICBhZ2dyZWdhdGU6CiAgICBraW5kOiBtZWFuCiAgICBtZWFzdXJlOiB3ZWlnaHRfZ2FpbgogICAgbnVtZXJhdG9yOiB3ZWlnaHRlZCBzdW0gb2Ygd2VpZ2h0IGNoYW5nZSBpbiB0aGUgZ3JvdXAKICAgIGRlbm9taW5hdG9yOiBzdW0gb2YgdGhlIHdlaWdodHMgaW4gdGhlIGdyb3VwCiAgICBwbGFpbjogQXZlcmFnZSB3ZWlnaHQgY2hhbmdlIGluIGVhY2ggZ3JvdXAsIHdpdGggZWFjaCBwZXJzb24gY291bnRlZCBhY2NvcmRpbmcgdG8gdGhlaXIgd2VpZ2h0LgogICAgZXhhY3Q6ID4KICAgICAgV2VpZ2h0ZWQgbGVhc3Qgc3F1YXJlcyBvZiB3dDgyXzcxIG9uIHFzbWs7IHRoZSBpbnRlcmNlcHQgaXMgdGhlIHdlaWdodGVkIG1lYW4gZm9yCiAgICAgIG5vbi1xdWl0dGVycyBhbmQgaW50ZXJjZXB0ICsgc2xvcGUgdGhlIHdlaWdodGVkIG1lYW4gZm9yIHF1aXR0ZXJzLgogICAgc3JjOiBbUzIsIFM0XQogIGdyb3VwczoKICAgIC0gaWQ6IHF1aXR0ZXJzCiAgICAgIGxhYmVsOiBRdWl0dGVycywgcmV3ZWlnaHRlZAogICAgICByb2xlOiB0cmVhdGVkCiAgICAgIHBsYWluOiBUaGUgNDAzIHBlb3BsZSB3aG8gcXVpdCwgcmV3ZWlnaHRlZCB0byBsb29rIGxpa2UgdGhlIHdob2xlIHN0dWR5LgogICAgICBleGFjdDogInFzbWsgPSAxLCBzdGFiaWxpemVkIHdlaWdodHMgUHJbQT0xXSAvIFByW0E9MSB8IExdLiIKICAgICAgc3JjOiBbUzIsIFM0XQogICAgLSBpZDogbm9uX3F1aXR0ZXJzCiAgICAgIGxhYmVsOiBOb24tcXVpdHRlcnMsIHJld2VpZ2h0ZWQKICAgICAgcm9sZTogYWRqdXN0ZWRfY29udHJvbAogICAgICBwbGFpbjogVGhlIDEsMTYzIHBlb3BsZSB3aG8gZGlkIG5vdCBxdWl0LCByZXdlaWdodGVkIHRvIGxvb2sgbGlrZSB0aGUgd2hvbGUgc3R1ZHkuCiAgICAgIGV4YWN0OiAicXNtayA9IDAsIHN0YWJpbGl6ZWQgd2VpZ2h0cyAoMSDiiJIgUHJbQT0xXSkgLyAoMSDiiJIgUHJbQT0xIHwgTF0pLiIKICAgICAgc3JjOiBbUzIsIFM0XQogIGNvbXBhcmlzb246CiAgICBraW5kOiBhZGp1c3RlZF9kaWZmZXJlbmNlCiAgICB0YXJnZXQ6IEFURQogICAgcGxhaW46ID4KICAgICAgQ29tcGFyZSB0aGUgdHdvIHJld2VpZ2h0ZWQgZ3JvdXBzLiBCZWNhdXNlIGJvdGggYXJlIG1hZGUgdG8gcmVzZW1ibGUgdGhlIHdob2xlIHN0dWR5LCB0aGUKICAgICAgZ2FwIGVzdGltYXRlcyB3aGF0IHF1aXR0aW5nIHdvdWxkIGRvIG9uIGF2ZXJhZ2UgYWNyb3NzIGFsbCBvZiB0aGVzZSBzbW9rZXJzLgogICAgZXhhY3Q6ICLOuOKCgSBpbiBFW1kgfCBBXSA9IM644oKAICsgzrjigoFBIGZpdHRlZCB0byB0aGUgcHNldWRvLXBvcHVsYXRpb24gKMKnMTIuMuKAkzEyLjMpLiIKICAgIGZvcm11bGE6ICJtZWFuIGlmIGFsbCBxdWl0IOKIkiBtZWFuIGlmIG5vbmUgcXVpdCIKICAgIHNyYzogW1MxLCBTMl0KICBhZGp1c3RtZW50OgogICAgbWV0aG9kOiBJbnZlcnNlLXByb2JhYmlsaXR5IHdlaWdodGluZyB3aXRoIHN0YWJpbGl6ZWQgd2VpZ2h0cywgYXZlcmFnZSB0cmVhdG1lbnQgZWZmZWN0CiAgICBiYWxhbmNlc19vbjoKICAgICAgLSBzZXgKICAgICAgLSByYWNlCiAgICAgIC0gYWdlIChsaW5lYXIgYW5kIHNxdWFyZWQpCiAgICAgIC0gZWR1Y2F0aW9uICg1IGxldmVscykKICAgICAgLSBjaWdhcmV0dGVzIHBlciBkYXkgKGxpbmVhciBhbmQgc3F1YXJlZCkKICAgICAgLSB5ZWFycyBzbW9raW5nIChsaW5lYXIgYW5kIHNxdWFyZWQpCiAgICAgIC0gZXhlcmNpc2UgKDMgbGV2ZWxzKQogICAgICAtIGhvdyBhY3RpdmUgZGF5IHRvIGRheSAoMyBsZXZlbHMpCiAgICAgIC0gYmFzZWxpbmUgd2VpZ2h0IChsaW5lYXIgYW5kIHNxdWFyZWQpCiAgICBkaWFnbm9zdGljczogPgogICAgICBTdGFiaWxpemVkIHdlaWdodHMgcmFuZ2UgMC4zMyB0byA0LjMwIHdpdGggbWVhbiAxLjAwIChib29rOiAwLjMzIHRvIDQuMzAsIG1lYW4gMS4wMCkuCiAgICAgIE5vbnN0YWJpbGl6ZWQgd2VpZ2h0cyByYW5nZSAxLjA1IHRvIDE2Ljcgd2l0aCBtZWFuIDIuMDAuIFByb2dyYW0gMTIuMiB0YWJ1bGF0ZXMgb25lIHN0cmF0dW0KICAgICAgKHdoaXRlIHdvbWVuLCBieSBhZ2UpIGFzIGEgcG9zaXRpdml0eSBjaGVjazsgdGhlIGJvb2sgcmVjb21tZW5kcyBjaGVja2luZyB0aGF0IHN0YWJpbGl6ZWQKICAgICAgd2VpZ2h0cyBhdmVyYWdlIDEuCiAgICBwbGFpbjogPgogICAgICBQZW9wbGUgd2hvIHdlcmUgbW9yZSBsaWtlbHkgdG8gcXVpdCwgZ2l2ZW4gdGhlaXIgdHJhaXRzLCBjb3VudCBmb3IgbGVzczsgcGVvcGxlIHVubGlrZWx5CiAgICAgIHRvIHF1aXQgd2hvIGRpZCBxdWl0IGNvdW50IGZvciBtb3JlLiBUaGlzIGJhbGFuY2VzIHRoZSBuaW5lIHRyYWl0cyBhY3Jvc3MgdGhlIHR3byBncm91cHMuCiAgICBleGFjdDogPgogICAgICBMb2dpc3RpYyBtb2RlbCBmb3IgcXNtayBvbiB0aGUgbmluZSBjb25mb3VuZGVycywgd2l0aCBzcXVhcmVkIHRlcm1zIGZvciBhZ2UsIGludGVuc2l0eSwKICAgICAgZHVyYXRpb24gYW5kIHdlaWdodCwgbm8gaW50ZXJhY3Rpb25zIChQcm9ncmFtIDEyLjMsIGxpbmVzIDkz4oCTOTcpLiBOdW1lcmF0b3I6IGludGVyY2VwdC1vbmx5CiAgICAgIGxvZ2lzdGljIG1vZGVsICg0MDMvMTU2NikuCiAgICBzcmM6IFtTMSwgUzIsIFM0XQogIHVuY2VydGFpbnR5OgogICAgbWV0aG9kOiBSb2J1c3QgKHNhbmR3aWNoKSB2YXJpYW5jZSwgYXMgZnJvbSBhIGdlbmVyYWxpemVkIGVzdGltYXRpbmcgZXF1YXRpb25zIGZpdCB3aXRoIGluZGVwZW5kZW5jZQogICAgbGV2ZWw6IDAuOTUKICAgIHBsYWluOiA+CiAgICAgIFRoZSByYW5nZSAyLjQgdG8gNC41IGtnIHVzZXMgYSBzdGFuZGFyZCBmb3JtdWxhIHRoYXQgYWxsb3dzIGZvciB0aGUgd2VpZ2h0aW5nLiBUaGUgYXV0aG9ycwogICAgICBkZXNjcmliZSBpdCBhcyBzbGlnaHRseSB3aWRlciB0aGFuIG5lY2Vzc2FyeS4KICAgIGV4YWN0OiA+CiAgICAgIGdlZWdsbSh3dDgyXzcxIH4gcXNtaywgd2VpZ2h0cyA9IHN3LCBpZCA9IHNlcW4sIGNvcnN0ciA9ICJpbmRlcGVuZGVuY2UiKTsgzrIgwrEgMS45NiBTRS4KICAgICAgUmVwcm9kdWNlZCB3aXRoIHdlaWdodGVkIGxlYXN0IHNxdWFyZXMgYW5kIEhDMCBzdGFuZGFyZCBlcnJvcnM6IFNFIDAuNTI1LgogICAga25vd25fZ2FwczogPgogICAgICBUcmVhdHMgdGhlIHByb3BlbnNpdHkgbW9kZWwgYXMgY29ycmVjdCBhbmQgdGhlIHdlaWdodHMgYXMga25vd24uIEl0IGRvZXMgbm90IGNvdmVyCiAgICAgIHVubWVhc3VyZWQgY29uZm91bmRpbmcsIHRoZSBzZWxlY3Rpb24gb2YgcGVvcGxlIHdobyBzdXJ2aXZlZCB0byAxOTgyLCBvciB0aGUgNjMgcGVvcGxlIHdpdGgKICAgICAgbm8gMTk4MiB3ZWlnaHQuCiAgICBzcmM6IFtTMSwgUzIsIFM0XQoKcmVzdWx0czoKICBhc19vZjogIkhlcm7DoW4gJiBSb2JpbnMsIFdoYXQgSWYgKHZlcnNpb24gb2YgMTkgQXVnIDIwMjYpOyByZWNvbXB1dGVkIDIwMjYtMTAtMDciCiAgdW5pdDogb3RoZXIKICBjZWxsczoKICAgIC0ge2dyb3VwOiBxdWl0dGVycywgdmFsdWU6IDUuMjIxLCBuOiA0MDN9CiAgICAtIHtncm91cDogbm9uX3F1aXR0ZXJzLCB2YWx1ZTogMS43ODAsIG46IDExNjN9CiAgZXN0aW1hdGU6IHt2YWx1ZTogMy40NCwgbG93OiAyLjQxLCBoaWdoOiA0LjQ3fQogIHNlbnNpdGl2aXR5OgogICAgLSB7bGFiZWw6ICJObyBhZGp1c3RtZW50IChyYXcgZGlmZmVyZW5jZSkiLCB2YWx1ZTogMi41NCwgbG93OiAxLjY2LCBoaWdoOiAzLjQzLCBub3RlOiAiUHJvZ3JhbSAxMi4xOiBxdWl0dGVycyA0LjUzIGtnLCBub24tcXVpdHRlcnMgMS45OCBrZy4iLCBzcmM6IFtTMSwgUzRdfQogICAgLSB7bGFiZWw6ICJTdGFiaWxpemVkIHdlaWdodHMgKGhlYWRsaW5lKSIsIHZhbHVlOiAzLjQ0LCBsb3c6IDIuNDEsIGhpZ2g6IDQuNDcsIHByaW1hcnk6IHRydWUsIHNyYzogW1MxLCBTNF19CiAgICAtIHtsYWJlbDogIk5vbnN0YWJpbGl6ZWQgd2VpZ2h0cyIsIHZhbHVlOiAzLjQ0LCBsb3c6IDIuNDEsIGhpZ2g6IDQuNDcsIG5vdGU6ICJQcm9ncmFtIDEyLjI7IHNhbWUgZXN0aW1hdGUgaGVyZS4iLCBzcmM6IFtTMSwgUzRdfQogICAgLSB7bGFiZWw6ICJBbHNvIHdlaWdodGluZyBmb3IgbWlzc2luZyAxOTgyIHdlaWdodHMiLCB2YWx1ZTogMy41MCwgbG93OiAyLjQ3LCBoaWdoOiA0LjUzLCBub3RlOiAiUHJvZ3JhbSAxMi43OyBib29rOiAzLjUgKDIuNSwgNC41KS4iLCBzcmM6IFtTMSwgUzRdfQoKZXhhbXBsZToKICBuYW1lOiBSdXRoCiAgaW50cm86ID4KICAgIFJ1dGggaXMgYSA0NS15ZWFyLW9sZCBzbW9rZXIgYXQgaGVyIDE5NzMgaGVhbHRoIGNoZWNrLCB3ZWlnaGluZyA2OCBrZy4gV29tZW4gbGlrZSBoZXIsIHdpdGgKICAgIGhlciBzbW9raW5nIGhpc3RvcnksIHF1aXQgbGVzcyBvZnRlbiB0aGFuIGF2ZXJhZ2UuCiAgYW5jaG9yX2RhdGU6ICIxOTczLTA2LTAxIgogIGV2ZW50czoKICAgIC0ge2F0OiAwLCBsYWJlbDogIkZpcnN0IGhlYWx0aCBjaGVjazogc21va2VzLCB3ZWlnaHMgNjgga2cifQogICAgLSB7YXQ6IDE0NjAsIGxhYmVsOiAiUXVpdHMgc21va2luZyAoYXJvdW5kIDE5NzcpIn0KICAgIC0ge2F0OiAzMjU1LCBsYWJlbDogIjE5ODIgdmlzaXQ6IHdlaWdocyA3NSBrZywgYSA3IGtnIGdhaW4iLCBjb3VudHM6IHRydWV9CiAgb3V0Y29tZTogPgogICAgUnV0aCBhZGRzIDcga2cgdG8gdGhlIHF1aXR0ZXJzJyBhdmVyYWdlLiBCZWNhdXNlIHBlb3BsZSBsaWtlIGhlciByYXJlbHkgcXVpdCwgc2hlIGNvdW50cyBmb3IKICAgIG1vcmUgdGhhbiBvbmUgcGVyc29uIGluIHRoZSByZXdlaWdodGVkIHF1aXR0ZXIgZ3JvdXAuIEhhZCBzaGUgbWlzc2VkIHRoZSAxOTgyIHdlaWdoLWluLCBzaGUKICAgIHdvdWxkIG5vdCBjb3VudCBhdCBhbGwuCgpmaW5lX3ByaW50OgogIGp1ZGdtZW50X2NhbGxzOgogICAgLSBkZWNpc2lvbjogV2hpY2ggdHJhaXRzIHRvIGJhbGFuY2UKICAgICAgY2hvaWNlOiBOaW5lIHRyYWl0cyBtZWFzdXJlZCBhdCB0aGUgZmlyc3QgY2hlY2ssIHdpdGggc3F1YXJlZCB0ZXJtcyBmb3IgdGhlIGNvbnRpbnVvdXMgb25lcy4KICAgICAgYWx0ZXJuYXRpdmVzOiBNb3JlIHRyYWl0cywgaW50ZXJhY3Rpb25zLCBvciBmbGV4aWJsZSBtb2RlbHMuCiAgICAgIHdoeTogQSBzdGFuZGFyZCwgdHJhbnNwYXJlbnQgbW9kZWwgZm9yIGEgdGVhY2hpbmcgZXhhbXBsZS4KICAgICAgaW1wYWN0OiBJZiBhbiBpbXBvcnRhbnQgY2F1c2Ugb2YgYm90aCBxdWl0dGluZyBhbmQgd2VpZ2h0IGdhaW4gaXMgbWlzc2luZywgdGhlIGVzdGltYXRlIGlzIGJpYXNlZCBieSBhbiB1bmtub3duIGFtb3VudC4KICAgICAgc3JjOiBTMQogICAgLSBkZWNpc2lvbjogU3RhYmlsaXplZCBvciBwbGFpbiB3ZWlnaHRzCiAgICAgIGNob2ljZTogU3RhYmlsaXplZC4KICAgICAgYWx0ZXJuYXRpdmVzOiBQbGFpbiBpbnZlcnNlLXByb2JhYmlsaXR5IHdlaWdodHMuCiAgICAgIHdoeTogVXN1YWxseSBuYXJyb3dlciBpbnRlcnZhbHMuCiAgICAgIGltcGFjdDogTm9uZSBoZXJlOyBib3RoIGdpdmUgMy40NCAoMi40MSwgNC40NykuCiAgICAgIHNyYzogW1MxLCBTNF0KICAgIC0gZGVjaXNpb246IFBlb3BsZSB3aXRoIG5vIDE5ODIgd2VpZ2h0CiAgICAgIGNob2ljZTogTGVmdCBvdXQgb2YgdGhlIGhlYWRsaW5lLgogICAgICBhbHRlcm5hdGl2ZXM6IEFkZCB3ZWlnaHRzIGZvciBiZWluZyBtZWFzdXJlZCAoUHJvZ3JhbSAxMi43KS4KICAgICAgd2h5OiBTaW1wbGVyIGZpcnN0IGFuYWx5c2lzOyB0aGUgYm9vayBhZGRzIHRoZW0gaW4gwqcxMi42LgogICAgICBpbXBhY3Q6IDMuNDQgYmVjb21lcyAzLjUwLgogICAgICBzcmM6IFtTMSwgUzRdCiAgY2F2ZWF0czoKICAgIC0gdGl0bGU6IE9ubHkgYXMgZ29vZCBhcyB0aGUgbmluZSB0cmFpdHMKICAgICAgdGV4dDogPgogICAgICAgIFJld2VpZ2h0aW5nIHJlbW92ZXMgZGlmZmVyZW5jZXMgaW4gdGhlIG5pbmUgbWVhc3VyZWQgdHJhaXRzLiBJZiBzb21ldGhpbmcgZWxzZSwgc3VjaCBhcwogICAgICAgIGhlYWx0aCB3b3JyaWVzLCBtYWRlIHBlb3BsZSBib3RoIHF1aXQgYW5kIGdhaW4gd2VpZ2h0LCBpdCBpcyBzdGlsbCBtaXhlZCBpbnRvIHRoZSBudW1iZXIuCiAgICAgIGVmZmVjdDogdW5rbm93bl9kaXJlY3Rpb24KICAgICAgc2V2ZXJpdHk6IGhpZ2gKICAgICAgc3JjOiBTMQogICAgLSB0aXRsZTogU3Vydml2b3JzIG9ubHkKICAgICAgdGV4dDogPgogICAgICAgIE9ubHkgcGVvcGxlIHdobyBsaXZlZCB0byAxOTgyIGFuZCBjYW1lIGJhY2sgY291bGQgcmVwb3J0IHF1aXR0aW5nLiBJZiBxdWl0dGluZyBhZmZlY3RzCiAgICAgICAgc3Vydml2YWwsIHRoZSBncm91cHMgYXJlIHNlbGVjdGVkIGFmdGVyIHRoZSBmYWN0LiBUaGUgYXV0aG9ycyBmbGFnIHRoaXMgYW5kIGxlYXZlIGl0IHVuZml4ZWQuCiAgICAgIGVmZmVjdDogdW5rbm93bl9kaXJlY3Rpb24KICAgICAgc2V2ZXJpdHk6IG1lZGl1bQogICAgICBzcmM6IFMxCiAgICAtIHRpdGxlOiBRdWl0dGluZyBoYXBwZW5lZCBhdCBkaWZmZXJlbnQgdGltZXMKICAgICAgdGV4dDogPgogICAgICAgIFNvbWVvbmUgd2hvIHF1aXQgaW4gMTk3MiBhbmQgc29tZW9uZSB3aG8gcXVpdCBqdXN0IGJlZm9yZSAxOTgyIGJvdGggY291bnQgYXMgcXVpdHRlcnMuCiAgICAgICAgVGhlIG51bWJlciBhdmVyYWdlcyBvdmVyIHZlcnkgZGlmZmVyZW50IGFtb3VudHMgb2YgdGltZSB3aXRob3V0IHNtb2tpbmcuCiAgICAgIGVmZmVjdDogbGltaXRzX3Njb3BlCiAgICAgIHNldmVyaXR5OiBtZWRpdW0KICAgICAgc3JjOiBTMQogICAgLSB0aXRsZTogVGhlIGludGVydmFsIGlzIHdpZGVyIHRoYW4gaXQgbmVlZHMgdG8gYmUKICAgICAgdGV4dDogPgogICAgICAgIFRoZSByb2J1c3QgZm9ybXVsYSBiZWhpbmQgMi40IHRvIDQuNSBrZyBjb3ZlcnMgdGhlIHRydWUgdmFsdWUgbW9yZSB0aGFuIDk1JSBvZiB0aGUgdGltZSwKICAgICAgICBhY2NvcmRpbmcgdG8gdGhlIGF1dGhvcnMuIEl0IHN0aWxsIGFzc3VtZXMgdGhlIG1vZGVsIGZvciBxdWl0dGluZyBpcyByaWdodC4KICAgICAgZWZmZWN0OiBsaW1pdHNfc2NvcGUKICAgICAgc2V2ZXJpdHk6IGxvdwogICAgICBzcmM6IFMxCiAgbWlzcmVhZGluZ3M6CiAgICAtIHdyb25nOiAiUXVpdHRlcnMgZ2FpbmVkIDMuNCBrZy4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgUXVpdHRlcnMgZ2FpbmVkIGFib3V0IDQuNSBrZyBvbiBhdmVyYWdlLiAzLjQga2cgaXMgdGhlIGV4dHJhIGdhaW4gYXR0cmlidXRlZCB0byBxdWl0dGluZwogICAgICAgIGFmdGVyIGJhbGFuY2luZyB0aGUgZ3JvdXBzLgogICAgLSB3cm9uZzogIlRoaXMgaXMgdGhlIGVmZmVjdCBmb3IgcGVvcGxlIHdobyBhY3R1YWxseSBxdWl0LiIKICAgICAgcmlnaHQ6ID4KICAgICAgICBJdCBpcyB0aGUgYXZlcmFnZSBlZmZlY3QgaWYgZXZlcnlvbmUgaW4gdGhlIHN0dWR5IGhhZCBxdWl0LCBjb21wYXJlZCB3aXRoIG5vYm9keSBxdWl0dGluZwogICAgICAgICh0aGUgYXZlcmFnZSB0cmVhdG1lbnQgZWZmZWN0KSwgbm90IGp1c3QgdGhlIGVmZmVjdCBhbW9uZyBxdWl0dGVycy4KICAgIC0gd3Jvbmc6ICJUaGUgcmF3IGdhcCBvZiAyLjUga2cgaXMgdGhlIGVmZmVjdCBvZiBxdWl0dGluZy4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgVGhlIHJhdyBnYXAgbWl4ZXMgaW4gYWdlIGFuZCBzbW9raW5nIGhpc3RvcnkgZGlmZmVyZW5jZXMuIFJld2VpZ2h0aW5nIG1vdmVzIGl0IHRvIDMuNCBrZy4KICBkaXNjcmVwYW5jaWVzOgogICAgLSB0b3BpYzogV2hvIGlzIGluIHRoZSBzdHVkeQogICAgICBkZXNjcmliZWQ6ID4KICAgICAgICBCb29rIG1hcmdpbiBub3RlOiByZXN0cmljdGVkIHRvIHBlb3BsZSB3aXRoIGtub3duIHNleCwgYWdlLCByYWNlLCB3ZWlnaHQsIGhlaWdodCwKICAgICAgICBlZHVjYXRpb24sIGFsY29ob2wgdXNlIGFuZCBzbW9raW5nIGludGVuc2l0eSwgd2hvIGFuc3dlcmVkIHRoZSBtZWRpY2FsIGhpc3RvcnkgcXVlc3Rpb25uYWlyZS4KICAgICAgaW1wbGVtZW50ZWQ6ID4KICAgICAgICBObyBjb2RlIGFwcGxpZXMgdGhlc2UgcnVsZXMuIFRoZSBkb3dubG9hZGFibGUgbmhlZnMuY3N2IGFscmVhZHkgY29udGFpbnMgb25seSB0aGUgMSw2MjkKICAgICAgICBlbGlnaWJsZSBwZW9wbGU7IHRoZSBjb2RlJ3Mgb25seSByZXN0cmljdGlvbiBpcyBhIG5vbi1taXNzaW5nIDE5ODIgd2VpZ2h0LgogICAgICBpbXBhY3Q6ID4KICAgICAgICBUaGUgZWxpZ2liaWxpdHkgcnVsZXMgY2Fubm90IGJlIGNoZWNrZWQgb3IgdmFyaWVkIGZyb20gdGhlIGRpc3RyaWJ1dGVkIGZpbGVzLgogICAgICBzcmM6IFtTMSwgUzIsIFMzXQogICAgLSB0b3BpYzogVHJlYXRtZW50IG1vZGVsIGluIHRoZSBjZW5zb3JpbmcgYW5hbHlzaXMKICAgICAgZGVzY3JpYmVkOiA+CiAgICAgICAgwqcxMi42IHNheXMgdGhlIG1vZGVsIGZvciBiZWluZyBtZWFzdXJlZCBpbiAxOTgyIHdhcyBmaXQgdG8gYWxsIDEsNjI5IHBlb3BsZS4gSXQgZG9lcyBub3QKICAgICAgICBzYXkgdGhlIG1vZGVsIGZvciBxdWl0dGluZyB3YXMgcmVmaXQuCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgUHJvZ3JhbSAxMi43IHJlZml0cyB0aGUgcXVpdHRpbmcgbW9kZWwgb24gYWxsIDEsNjI5IHBlb3BsZSAoZGF0YSA9IG5oZWZzKSwgbm90IHRoZSAxLDU2NgogICAgICAgIHVzZWQgZm9yIHRoZSBoZWFkbGluZS4KICAgICAgaW1wYWN0OiBTbWFsbC4gVGhlIGNlbnNvcmluZy13ZWlnaHRlZCBlc3RpbWF0ZSBpcyAzLjUwIHZzIDMuNDQuCiAgICAgIHNyYzogW1MxLCBTMl0KICAgIC0gdG9waWM6IElucHV0IGZpbGUKICAgICAgZGVzY3JpYmVkOiAiVGhlIGJvb2sncyBzaXRlIHByb3ZpZGVzIG5oZWZzLmNzdiwgTkhFRlMueGxzIGFuZCBuaGVmcy5kdGEuIgogICAgICBpbXBsZW1lbnRlZDogPgogICAgICAgIGNoYXB0ZXIxMi5SIHJlYWRzICJYWFhYL25oZWZzLnhscyIgd2l0aCByZWFkeGw7IG90aGVyIGNoYXB0ZXJzIHBvaW50IHRvIGEgY29udHJpYnV0b3IncwogICAgICAgIGxvY2FsIFdpbmRvd3MgcGF0aC4KICAgICAgaW1wYWN0OiBOb25lIGZvciB0aGUgbnVtYmVyczsgcmVwcm9kdWNlcnMgbXVzdCBlZGl0IHRoZSBwYXRoLgogICAgICBzcmM6IFtTMiwgUzVdCiAgICAtIHRvcGljOiBZZWFyIGxhYmVscwogICAgICBkZXNjcmliZWQ6ICJCYXNlbGluZSB2aXNpdHMgcmFuIDE5NzHigJM3NSAowqcxMi4xKS4iCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgQ29sdW1ucyBhcmUgbmFtZWQgd3Q3MSBhbmQgd3Q4Ml83MSwgYW5kIGNoYXB0ZXIxNS5SIGxhYmVscyBncm91cHMgIlF1aXQgU21va2luZyAxOTcxLTE5ODIiLgogICAgICBpbXBhY3Q6IENvc21ldGljLCBidXQgcmVhZGVycyBvZiB0aGUgY29kZSBtYXkgYXNzdW1lIGEgZml4ZWQgMTEteWVhciBnYXAuCiAgICAgIHNyYzogW1MxLCBTMywgUzVdCgpzcGVjOgogIGVzdGltYW5kOgogICAgcG9wdWxhdGlvbjogPgogICAgICBOSEVGUyBwYXJ0aWNpcGFudHMgYWdlZCAyNeKAkzc0IHdobyBzbW9rZWQgYXQgdGhlIDE5NzHigJM3NSBiYXNlbGluZSB2aXNpdCwgbWV0IHRoZSBib29rJ3MKICAgICAgY29tcGxldGVuZXNzIHJlc3RyaWN0aW9ucywgYW5kIGhhZCB3ZWlnaHQgbWVhc3VyZWQgYXQgdGhlIDE5ODIgZm9sbG93LXVwLgogICAgZXhwb3N1cmU6IFJlcG9ydGVkIGhhdmluZyBxdWl0IHNtb2tpbmcgYnkgdGhlIDE5ODIgZm9sbG93LXVwIChxc21rID0gMSkgdnMgbm90LgogICAgdGltZV96ZXJvOiBCYXNlbGluZSB2aXNpdCwgMTk3MeKAkzc1LgogICAgdmFyaWFibGU6IFdlaWdodCBhdCBmb2xsb3ctdXAgbWludXMgd2VpZ2h0IGF0IGJhc2VsaW5lLCBrZyAod3Q4Ml83MSkuCiAgICBpbnRlcmN1cnJlbnRfZXZlbnRzOiA+CiAgICAgIERlYXRoIG9yIGxvc3MgdG8gZm9sbG93LXVwIGJlZm9yZSAxOTgyIGV4Y2x1ZGVzIHRoZSBwZXJzb24gZnJvbSB0cmVhdG1lbnQgY2xhc3NpZmljYXRpb24KICAgICAgKEZpbmUgUG9pbnQgMTIuMSk7IDYzIGVsaWdpYmxlIHBlb3BsZSBsYWNrIGEgMTk4MiB3ZWlnaHQgYW5kIGFyZSBleGNsdWRlZCBmcm9tIHRoZSBoZWFkbGluZS4KICAgIHN1bW1hcnk6ID4KICAgICAgRGlmZmVyZW5jZSBpbiBJUC13ZWlnaHRlZCBtZWFucywgRVtZXnthPTF9XSDiiJIgRVtZXnthPTB9XSwga2c7IHJvYnVzdCA5NSUgaW50ZXJ2YWwuCiAgcGFyYW1ldGVyczoKICAgIC0ge25hbWU6IHdlaWdodHMsIHZhbHVlOiBzdGFiaWxpemVkLCBtZWFuaW5nOiAiUHJbQV0vUHJbQXxMXSBmb3IgcXVpdHRlcnMsICgx4oiSUHJbQV0pLygx4oiSUHJbQXxMXSkgb3RoZXJ3aXNlIn0KICAgIC0ge25hbWU6IGNvbmZvdW5kZXJzLCB2YWx1ZTogOSwgbWVhbmluZzogInNleCwgcmFjZSwgYWdlLCBlZHVjYXRpb24sIGludGVuc2l0eSwgZHVyYXRpb24sIGV4ZXJjaXNlLCBhY3Rpdml0eSwgd2VpZ2h0In0KICAgIC0ge25hbWU6IHZhcmlhbmNlLCB2YWx1ZTogcm9idXN0LCBtZWFuaW5nOiAiR0VFIGluZGVwZW5kZW5jZSB3b3JraW5nIGNvcnJlbGF0aW9uIChSKSwgSEMwIChQeXRob24pIn0KICBsaW5lYWdlOgogICAgLSBuYW1lOiBuaGVmcy5jc3YKICAgICAgcm9sZTogT25lIHJvdyBwZXIgZWxpZ2libGUgcGVyc29uOyBiYXNlbGluZSB0cmFpdHMsIHFzbWssIHd0NzEsIHd0ODIKICAgICAgZ3JhaW46IHBlcnNvbgogICAgICBzcmM6IFMzCiAgICAtIG5hbWU6IGNoYXB0ZXIxMi5SCiAgICAgIHJvbGU6IEF1dGhvcnMnIGNvZGUgZm9yIFByb2dyYW1zIDEyLjHigJMxMi43CiAgICAgIGdyYWluOiBwZXJzb24g4oaSIHR3byB3ZWlnaHRlZCBtZWFucwogICAgICBzcmM6IFMyCiAgICAtIG5hbWU6IGV4YW1wbGVzL25oZWZzLWlwdy9hbmFseXNpcy5weQogICAgICByb2xlOiBQeXRob24gcmVwcm9kdWN0aW9uIG9mIFByb2dyYW1zIDEyLjHigJMxMi4zIGFuZCAxMi43CiAgICAgIGdyYWluOiBwZXJzb24g4oaSIGVzdGltYXRlcwogICAgICBzcmM6IFM0CiAgY29kZToKICAgIC0gcHVycG9zZTogU3RhYmlsaXplZCB3ZWlnaHRzIGFuZCB0aGUgd2VpZ2h0ZWQgbW9kZWwgKGF1dGhvcnMnIFIsIFByb2dyYW0gMTIuMykKICAgICAgbGFuZzogcgogICAgICBzcmM6IFMyCiAgICAgIGV4Y2VycHQ6IHwKICAgICAgICBwZC5xc21rIDwtIHByZWRpY3QoZGVub20uZml0LCB0eXBlID0gInJlc3BvbnNlIikKICAgICAgICBudW1lci5maXQgPC0gZ2xtKHFzbWt+MSwgZmFtaWx5ID0gYmlub21pYWwoKSwgZGF0YSA9IG5oZWZzLm5tdikKICAgICAgICBwbi5xc21rIDwtIHByZWRpY3QobnVtZXIuZml0LCB0eXBlID0gInJlc3BvbnNlIikKICAgICAgICBuaGVmcy5ubXYkc3cgPC0gaWZlbHNlKG5oZWZzLm5tdiRxc21rID09IDAsICgoMS1wbi5xc21rKS8oMS1wZC5xc21rKSksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAocG4ucXNtay9wZC5xc21rKSkKICAgICAgICBtc20uc3cgPC0gZ2VlZ2xtKHd0ODJfNzEgfiBxc21rLCBkYXRhPW5oZWZzLm5tdiwgd2VpZ2h0cz1zdywgaWQ9c2VxbiwKICAgICAgICAgICAgICAgICAgICAgICAgY29yc3RyPSJpbmRlcGVuZGVuY2UiKQogICAgLSBwdXJwb3NlOiBUaGUgc2FtZSBlc3RpbWF0ZSBpbiBQeXRob24KICAgICAgbGFuZzogcHl0aG9uCiAgICAgIHNyYzogUzQKICAgICAgZXhjZXJwdDogfAogICAgICAgIHN3ID0gbnAud2hlcmUodW5jLnFzbWsgPT0gMSwgcG4gLyBwLCAoMSAtIHBuKSAvICgxIC0gcCkpCiAgICAgICAgZml0ID0gc21mLndscygid3Q4Ml83MSB+IHFzbWsiLCBkZiwgd2VpZ2h0cz13ZWlnaHRzKS5maXQoY292X3R5cGU9IkhDMCIpCiAgcmVwcm9kdWNlOgogICAgc3RlcHM6CiAgICAgIC0gInB5dGhvbiBleGFtcGxlcy9mZXRjaF9kYXRhLnB5IG5oZWZzLWlwdyAoZG93bmxvYWRzIGFuZCBjaGVja3MgdGhlIGRhdGEsIFIgY29kZSBhbmQgYm9vaykuIgogICAgICAtICJweXRob24gZXhhbXBsZXMvbmhlZnMtaXB3L2FuYWx5c2lzLnB5ICh3cml0ZXMgcmVzdWx0cy9lc3RpbWF0ZXMuY3N2IGFuZCByZXN1bHRzL3dlaWdodHMuY3N2KS4iCiAgICByZWNlaXB0czoKICAgICAgLSAiMjAyNi0xMC0wNzogc3RhYmlsaXplZCBJUFcgMy40NDEgKDIuNDExLCA0LjQ3MCk7IGJvb2sgMy40ICgyLjQsIDQuNSkuIFdlaWdodHMgMC4zMzHigJM0LjI5OCwgbWVhbiAwLjk5OS4iCiAgICAgIC0gIjIwMjYtMTAtMDc6IHVuYWRqdXN0ZWQgMi41NDEgKDEuNjU2LCAzLjQyNSksIGJvb2sgMi41ICgxLjcsIDMuNCk7IFByb2dyYW0gMTIuNyAzLjQ5NiAoMi40NjYsIDQuNTI3KSwgYm9vayAzLjUgKDIuNSwgNC41KS4iCiAgICB0ZXN0czogIlJlcHJvZHVjZWQgZmlndXJlcyBhcmUgY29tcGFyZWQgd2l0aCB0aGUgYm9vaydzIHRleHQgYnkgaGFuZDsgc2VlIHRoZSByZWNlaXB0cy4iCgpnbG9zc2FyeToKICAtIHRlcm06IGludmVyc2UtcHJvYmFiaWxpdHkgd2VpZ2h0aW5nCiAgICBhbGlhc2VzOiBbSVAgd2VpZ2h0aW5nLCBJUFcsIHJld2VpZ2h0aW5nLCByZXdlaWdodGVkXQogICAgcGxhaW46ID4KICAgICAgQ291bnRpbmcgZWFjaCBwZXJzb24gbW9yZSBvciBsZXNzIHNvIHRoYXQgdGhlIGdyb3VwcyBiZWluZyBjb21wYXJlZCBsb29rIGFsaWtlIG9uIG1lYXN1cmVkCiAgICAgIHRyYWl0cy4gUGVvcGxlIHdob3NlIGNob2ljZSB3YXMgdW51c3VhbCBmb3Igc29tZW9uZSBsaWtlIHRoZW0gY291bnQgbW9yZS4KICAtIHRlcm06IGF2ZXJhZ2UgdHJlYXRtZW50IGVmZmVjdAogICAgYWxpYXNlczogW0FURV0KICAgIHBsYWluOiBUaGUgYXZlcmFnZSBkaWZmZXJlbmNlIGlmIGV2ZXJ5b25lIGhhZCBxdWl0IGNvbXBhcmVkIHdpdGggaWYgbm9ib2R5IGhhZCBxdWl0LgogIC0gdGVybTogc3RhYmlsaXplZCB3ZWlnaHRzCiAgICBwbGFpbjogQSB2ZXJzaW9uIG9mIHRoZSB3ZWlnaHRzIHNjYWxlZCB0byBhdmVyYWdlIGFib3V0IDEsIHdoaWNoIHVzdWFsbHkgZ2l2ZXMgYSB0aWdodGVyIHJhbmdlLgogIC0gdGVybTogOTUlIHJhbmdlCiAgICBhbGlhc2VzOiBbOTUlIGludGVydmFsLCBjb25maWRlbmNlIGludGVydmFsXQogICAgcGxhaW46ID4KICAgICAgVGhlIHZhbHVlcyB0aGF0IGZpdCB0aGUgZGF0YSB3ZWxsLCBnaXZlbiByYW5kb20gbm9pc2UgYW5kIHRoZSBtb2RlbC4gSXQgZG9lcyBub3QgY292ZXIKICAgICAgdHJhaXRzIG5vYm9keSBtZWFzdXJlZC4KICAtIHRlcm06IHJvYnVzdCB2YXJpYW5jZQogICAgYWxpYXNlczogW3NhbmR3aWNoXQogICAgcGxhaW46IEEgd2F5IG9mIGNvbXB1dGluZyB0aGUgcmFuZ2UgdGhhdCBzdGF5cyB2YWxpZCB3aGVuIHBlb3BsZSBhcmUgY291bnRlZCB3aXRoIGRpZmZlcmVudCB3ZWlnaHRzLgoKcXVpejoKICAtIGtpbmQ6IHZlcmJhdGltCiAgICBxOiAiVGhlIGhlYWRsaW5lIGlzIDMuNCBrZy4gV2hpY2ggc3RhdGVtZW50IGlzIHJpZ2h0PyIKICAgIG9wdGlvbnM6CiAgICAgIC0gIlF1aXR0ZXJzIGdhaW5lZCAzLjQga2cgb24gYXZlcmFnZS4iCiAgICAgIC0gIlF1aXR0aW5nIGFkZGVkIGFib3V0IDMuNCBrZyBvZiBnYWluLCBhdmVyYWdlZCBvdmVyIGV2ZXJ5b25lIGluIHRoZSBzdHVkeSwgYWZ0ZXIgYmFsYW5jaW5nIG5pbmUgdHJhaXRzLiIKICAgICAgLSAiRXZlcnkgc21va2VyIHdobyBxdWl0cyBnYWlucyAzLjQga2cuIgogICAgYW5zd2VyOiAxCiAgICB3aHk6IFF1aXR0ZXJzIGdhaW5lZCBhYm91dCA0LjUga2c7IDMuNCBrZyBpcyB0aGUgZ2FwIGFmdGVyIHJld2VpZ2h0aW5nLCBhbmQgaXQgaXMgYW4gYXZlcmFnZS4KICAtIGtpbmQ6IGdpc3QKICAgIHE6ICJXaGF0IHdvdWxkIG1ha2UgdGhpcyBudW1iZXIgd3JvbmcgYXMgYSBjYXVzYWwgZWZmZWN0PyIKICAgIG9wdGlvbnM6CiAgICAgIC0gIkEgdHJhaXQgdGhhdCBkcml2ZXMgYm90aCBxdWl0dGluZyBhbmQgd2VpZ2h0IGdhaW4gYnV0IGlzIG5vdCBhbW9uZyB0aGUgbmluZS4iCiAgICAgIC0gIlVzaW5nIHN0YWJpbGl6ZWQgaW5zdGVhZCBvZiBwbGFpbiB3ZWlnaHRzLiIKICAgIGFuc3dlcjogMAogICAgd2h5OiBSZXdlaWdodGluZyBvbmx5IGJhbGFuY2VzIG1lYXN1cmVkIHRyYWl0cy4gU3RhYmlsaXplZCBhbmQgcGxhaW4gd2VpZ2h0cyBnaXZlIHRoZSBzYW1lIGFuc3dlciBoZXJlLgogIC0ga2luZDogdHJhbnNmZXIKICAgIHE6ICJBIHBhcnRpY2lwYW50IHF1aXQgaW4gMTk4MCBidXQgbWlzc2VkIHRoZSAxOTgyIHdlaWdoLWluLiBJcyBzaGUgaW4gdGhlIGhlYWRsaW5lPyIKICAgIG9wdGlvbnM6IFsiWWVzLCBhcyBhIHF1aXR0ZXIiLCAiTm8sIHNoZSBpcyBsZWZ0IG91dCIsICJZZXMsIGFzIGEgbm9uLXF1aXR0ZXIiXQogICAgYW5zd2VyOiAxCiAgICB3aHk6IFRoZSBoZWFkbGluZSB1c2VzIG9ubHkgdGhlIDEsNTY2IHBlb3BsZSB3ZWlnaGVkIGluIDE5ODI7IFByb2dyYW0gMTIuNyByZXdlaWdodHMgdG8gYWNjb3VudCBmb3IgdGhlIDYzIHdobyB3ZXJlIG5vdC4KCmNoYW5nZWxvZzoKICAtIHtkYXRlOiAiMjAyNi0wOC0xOSIsIGNoYW5nZTogIkJvb2sgdmVyc2lvbiB1c2VkIGZvciB0aGUgY2l0ZWQgdGV4dCBhbmQgZmlndXJlcy4ifQogIC0ge2RhdGU6ICIyMDI2LTEwLTA3IiwgY2hhbmdlOiAiTWV0cmljIGNhcmQgd3JpdHRlbiBmcm9tIG5oZWZzLmNzdiBhbmQgY2hhcHRlcjEyLlI7IGZvdXIgZGlzY3JlcGFuY2llcyByZWNvcmRlZC4ifQoKc291cmNlczoKICAtIHtpZDogUzEsIHBhdGg6ICJleGFtcGxlcy9uaGVmcy1pcHcvZGF0YS9oZXJuYW5yb2JpbnNfV2hhdElmXzE5YXVnMjYucGRmIiwgbm90ZTogIkhlcm7DoW4gJiBSb2JpbnMsIENhdXNhbCBJbmZlcmVuY2U6IFdoYXQgSWYsIGNoYXB0ZXIgMTIgKMKnMTIuMeKAkzEyLjMsIDEyLjYsIEZpbmUgUG9pbnQgMTIuMSkifQogIC0ge2lkOiBTMiwgcGF0aDogImV4YW1wbGVzL25oZWZzLWlwdy9kYXRhL2NoYXB0ZXIxMi5SIiwgbGluZXM6ICI5LTE2LCA1MS03NiwgOTItMTIyLCAyMzEtMjkyIn0KICAtIHtpZDogUzMsIHBhdGg6ICJleGFtcGxlcy9uaGVmcy1pcHcvZGF0YS9uaGVmcy5jc3YiLCBub3RlOiAiMSw2Mjkgcm93czsgZG93bmxvYWRlZCBmcm9tIG1pZ3VlbGhlcm5hbi5vcmcvd2hhdGlmYm9vayJ9CiAgLSB7aWQ6IFM0LCBwYXRoOiAiZXhhbXBsZXMvbmhlZnMtaXB3L2FuYWx5c2lzLnB5IiwgbGluZXM6ICIyMi03NyIsIG5vdGU6ICJPdXRwdXRzIGluIGV4YW1wbGVzL25oZWZzLWlwdy9yZXN1bHRzLyJ9CiAgLSB7aWQ6IFM1LCBwYXRoOiAiZXhhbXBsZXMvbmhlZnMtaXB3L2RhdGEvY2hhcHRlcjE1LlIiLCBsaW5lczogIjExLCA4Mi04MyJ9Cg==" download="smoking-cessation-ipw.yaml">Download the spec (YAML)</a>
+      <button class="btn ghost" type="button" data-copy="#spec-yaml">Copy spec</button>
+      <a class="btn ghost" href="smoking-cessation-ipw.methods.html">Methods section</a>
+    </div>
+    <textarea id="spec-yaml" hidden>schema: metric-card/1
+id: smoking-cessation-ipw
+title: Weight gain from quitting smoking
+subtitle: Inverse-probability-weighted difference in 10-year weight change, quitters vs non-quitters (NHEFS)
+status: provisional
+owner: data-visual-explainer worked example (public data)
+updated: &#34;2026-10-07&#34;
+question: &gt;
+  If every smoker in this study had quit, how much more weight would they have gained over about
+  ten years than if none had quit?
+
+gist:
+  sentence: &gt;
+    We followed 1,566 adult smokers from a health check in 1971–75 to a second visit in 1982.
+    We compare weight change in people who quit with people who did not, after reweighting so
+    the two groups match on nine traits.
+  headline:
+    value: 3.44
+    low: 2.41
+    high: 4.47
+    unit: other
+    decimals: 2
+    label: kg more weight gain from quitting, averaged over everyone in the study
+    context: &#34;Without the reweighting the gap is 2.54 kg. Non-quitters gained about 2 kg on their own.&#34;
+  frequency: &gt;
+    Picture two groups of 100 smokers who are alike in every measured way. Over about ten years the group that
+    quits gains about 340 kg more in total than the group that keeps smoking: roughly 3.4 kg each.
+  reading:
+    direction: neutral
+    say: &gt;
+      &#34;Under the study&#39;s assumptions, quitting smoking added about 3.4 kg (2.4 to 4.5) of weight
+      gain over roughly ten years, on average across these smokers.&#34;
+    dont_say: &gt;
+      &#34;Quitters gained 3.4 kg,&#34; or &#34;every smoker who quits will gain 3.4 kg.&#34;
+  key_caveat: &gt;
+    This is only causal if the nine traits capture everything that made people both quit and
+    gain weight. The study also kept only people alive and measured in 1982, which the authors
+    flag as a possible source of bias they chose not to fix.
+  claim_strength: quasi-causal
+
+grammar:
+  unit:
+    singular: person
+    plural: people
+    plain: One adult who smoked at the first health check.
+    exact: &#34;One row per seqn in nhefs.csv (1,629 rows).&#34;
+    src: [S3, S1]
+  population:
+    - id: eligible
+      plain: &gt;
+        Adults aged 25–74 who smoked at the first health check and had the basic facts recorded
+        (sex, age, race, weight, height, education, alcohol use, smoking intensity).
+      exact: &gt;
+        Margin note to §12.1. Applied before distribution: nhefs.csv already holds only these
+        1,629 people, and no code restricts on these fields.
+      n_after: 1629
+      src: [S1, S3]
+    - id: weighed_1982
+      plain: Had their weight measured at the 1982 visit.
+      exact: &#34;nhefs.nmv &lt;- nhefs[which(!is.na(nhefs$wt82)),] (chapter12.R line 12). Drops 63 people.&#34;
+      n_after: 1566
+      src: [S2, S1]
+  anchor:
+    kind: per_unit_event
+    label: First health check
+    plain: Each person&#39;s first health check, held some time between 1971 and 1975.
+    exact: &#34;Baseline visit 1971–75 (§12.1 margin note). Visit dates are not in nhefs.csv.&#34;
+    src: S1
+  windows:
+    - id: quit_period
+      label: Time to quit
+      start: 1
+      end: 73
+      unit: month
+      role: exposure
+      plain: &gt;
+        Any time between the first health check and the 1982 visit. Quitting counts if the person
+        reported having quit by 1982.
+      exact: &gt;
+        qsmk = 1 if the person reported in 1982 having quit (§12.1). The quit date is not used;
+        the authors note it is really a time-varying treatment they ignore (Fine Point 12.1).
+        The window shown is the shortest possible gap (1975 → 1982).
+      src: S1
+    - id: followup
+      label: 1982 visit
+      start: 73
+      end: 144
+      unit: month
+      role: observation
+      plain: The second visit in 1982, roughly 7 to 11 years after the first, depending on when that was.
+      exact: &#34;Follow-up visit in 1982 (§12.1); per-person gap between 73 and 143 months, not recorded in the file.&#34;
+      src: [S1, S3]
+  measures:
+    - id: weight_gain
+      label: Weight change
+      kind: value
+      window: followup
+      primary: true
+      plain: Body weight at the 1982 visit minus body weight at the first health check, in kilograms.
+      exact: &#34;wt82_71 = wt82 − wt71 (kg); matches the difference of the two columns to 1e-14.&#34;
+      src: [S1, S3]
+    - id: quit
+      label: Quit smoking
+      kind: indicator
+      window: quit_period
+      plain: Reported in 1982 having quit smoking.
+      exact: &#34;qsmk (0/1); 403 of 1,566 = 1.&#34;
+      src: [S1, S3]
+  aggregate:
+    kind: mean
+    measure: weight_gain
+    numerator: weighted sum of weight change in the group
+    denominator: sum of the weights in the group
+    plain: Average weight change in each group, with each person counted according to their weight.
+    exact: &gt;
+      Weighted least squares of wt82_71 on qsmk; the intercept is the weighted mean for
+      non-quitters and intercept + slope the weighted mean for quitters.
+    src: [S2, S4]
+  groups:
+    - id: quitters
+      label: Quitters, reweighted
+      role: treated
+      plain: The 403 people who quit, reweighted to look like the whole study.
+      exact: &#34;qsmk = 1, stabilized weights Pr[A=1] / Pr[A=1 | L].&#34;
+      src: [S2, S4]
+    - id: non_quitters
+      label: Non-quitters, reweighted
+      role: adjusted_control
+      plain: The 1,163 people who did not quit, reweighted to look like the whole study.
+      exact: &#34;qsmk = 0, stabilized weights (1 − Pr[A=1]) / (1 − Pr[A=1 | L]).&#34;
+      src: [S2, S4]
+  comparison:
+    kind: adjusted_difference
+    target: ATE
+    plain: &gt;
+      Compare the two reweighted groups. Because both are made to resemble the whole study, the
+      gap estimates what quitting would do on average across all of these smokers.
+    exact: &#34;θ₁ in E[Y | A] = θ₀ + θ₁A fitted to the pseudo-population (§12.2–12.3).&#34;
+    formula: &#34;mean if all quit − mean if none quit&#34;
+    src: [S1, S2]
+  adjustment:
+    method: Inverse-probability weighting with stabilized weights, average treatment effect
+    balances_on:
+      - sex
+      - race
+      - age (linear and squared)
+      - education (5 levels)
+      - cigarettes per day (linear and squared)
+      - years smoking (linear and squared)
+      - exercise (3 levels)
+      - how active day to day (3 levels)
+      - baseline weight (linear and squared)
+    diagnostics: &gt;
+      Stabilized weights range 0.33 to 4.30 with mean 1.00 (book: 0.33 to 4.30, mean 1.00).
+      Nonstabilized weights range 1.05 to 16.7 with mean 2.00. Program 12.2 tabulates one stratum
+      (white women, by age) as a positivity check; the book recommends checking that stabilized
+      weights average 1.
+    plain: &gt;
+      People who were more likely to quit, given their traits, count for less; people unlikely
+      to quit who did quit count for more. This balances the nine traits across the two groups.
+    exact: &gt;
+      Logistic model for qsmk on the nine confounders, with squared terms for age, intensity,
+      duration and weight, no interactions (Program 12.3, lines 93–97). Numerator: intercept-only
+      logistic model (403/1566).
+    src: [S1, S2, S4]
+  uncertainty:
+    method: Robust (sandwich) variance, as from a generalized estimating equations fit with independence
+    level: 0.95
+    plain: &gt;
+      The range 2.4 to 4.5 kg uses a standard formula that allows for the weighting. The authors
+      describe it as slightly wider than necessary.
+    exact: &gt;
+      geeglm(wt82_71 ~ qsmk, weights = sw, id = seqn, corstr = &#34;independence&#34;); β ± 1.96 SE.
+      Reproduced with weighted least squares and HC0 standard errors: SE 0.525.
+    known_gaps: &gt;
+      Treats the propensity model as correct and the weights as known. It does not cover
+      unmeasured confounding, the selection of people who survived to 1982, or the 63 people with
+      no 1982 weight.
+    src: [S1, S2, S4]
+
+results:
+  as_of: &#34;Hernán &amp; Robins, What If (version of 19 Aug 2026); recomputed 2026-10-07&#34;
+  unit: other
+  cells:
+    - {group: quitters, value: 5.221, n: 403}
+    - {group: non_quitters, value: 1.780, n: 1163}
+  estimate: {value: 3.44, low: 2.41, high: 4.47}
+  sensitivity:
+    - {label: &#34;No adjustment (raw difference)&#34;, value: 2.54, low: 1.66, high: 3.43, note: &#34;Program 12.1: quitters 4.53 kg, non-quitters 1.98 kg.&#34;, src: [S1, S4]}
+    - {label: &#34;Stabilized weights (headline)&#34;, value: 3.44, low: 2.41, high: 4.47, primary: true, src: [S1, S4]}
+    - {label: &#34;Nonstabilized weights&#34;, value: 3.44, low: 2.41, high: 4.47, note: &#34;Program 12.2; same estimate here.&#34;, src: [S1, S4]}
+    - {label: &#34;Also weighting for missing 1982 weights&#34;, value: 3.50, low: 2.47, high: 4.53, note: &#34;Program 12.7; book: 3.5 (2.5, 4.5).&#34;, src: [S1, S4]}
+
+example:
+  name: Ruth
+  intro: &gt;
+    Ruth is a 45-year-old smoker at her 1973 health check, weighing 68 kg. Women like her, with
+    her smoking history, quit less often than average.
+  anchor_date: &#34;1973-06-01&#34;
+  events:
+    - {at: 0, label: &#34;First health check: smokes, weighs 68 kg&#34;}
+    - {at: 1460, label: &#34;Quits smoking (around 1977)&#34;}
+    - {at: 3255, label: &#34;1982 visit: weighs 75 kg, a 7 kg gain&#34;, counts: true}
+  outcome: &gt;
+    Ruth adds 7 kg to the quitters&#39; average. Because people like her rarely quit, she counts for
+    more than one person in the reweighted quitter group. Had she missed the 1982 weigh-in, she
+    would not count at all.
+
+fine_print:
+  judgment_calls:
+    - decision: Which traits to balance
+      choice: Nine traits measured at the first check, with squared terms for the continuous ones.
+      alternatives: More traits, interactions, or flexible models.
+      why: A standard, transparent model for a teaching example.
+      impact: If an important cause of both quitting and weight gain is missing, the estimate is biased by an unknown amount.
+      src: S1
+    - decision: Stabilized or plain weights
+      choice: Stabilized.
+      alternatives: Plain inverse-probability weights.
+      why: Usually narrower intervals.
+      impact: None here; both give 3.44 (2.41, 4.47).
+      src: [S1, S4]
+    - decision: People with no 1982 weight
+      choice: Left out of the headline.
+      alternatives: Add weights for being measured (Program 12.7).
+      why: Simpler first analysis; the book adds them in §12.6.
+      impact: 3.44 becomes 3.50.
+      src: [S1, S4]
+  caveats:
+    - title: Only as good as the nine traits
+      text: &gt;
+        Reweighting removes differences in the nine measured traits. If something else, such as
+        health worries, made people both quit and gain weight, it is still mixed into the number.
+      effect: unknown_direction
+      severity: high
+      src: S1
+    - title: Survivors only
+      text: &gt;
+        Only people who lived to 1982 and came back could report quitting. If quitting affects
+        survival, the groups are selected after the fact. The authors flag this and leave it unfixed.
+      effect: unknown_direction
+      severity: medium
+      src: S1
+    - title: Quitting happened at different times
+      text: &gt;
+        Someone who quit in 1972 and someone who quit just before 1982 both count as quitters.
+        The number averages over very different amounts of time without smoking.
+      effect: limits_scope
+      severity: medium
+      src: S1
+    - title: The interval is wider than it needs to be
+      text: &gt;
+        The robust formula behind 2.4 to 4.5 kg covers the true value more than 95% of the time,
+        according to the authors. It still assumes the model for quitting is right.
+      effect: limits_scope
+      severity: low
+      src: S1
+  misreadings:
+    - wrong: &#34;Quitters gained 3.4 kg.&#34;
+      right: &gt;
+        Quitters gained about 4.5 kg on average. 3.4 kg is the extra gain attributed to quitting
+        after balancing the groups.
+    - wrong: &#34;This is the effect for people who actually quit.&#34;
+      right: &gt;
+        It is the average effect if everyone in the study had quit, compared with nobody quitting
+        (the average treatment effect), not just the effect among quitters.
+    - wrong: &#34;The raw gap of 2.5 kg is the effect of quitting.&#34;
+      right: &gt;
+        The raw gap mixes in age and smoking history differences. Reweighting moves it to 3.4 kg.
+  discrepancies:
+    - topic: Who is in the study
+      described: &gt;
+        Book margin note: restricted to people with known sex, age, race, weight, height,
+        education, alcohol use and smoking intensity, who answered the medical history questionnaire.
+      implemented: &gt;
+        No code applies these rules. The downloadable nhefs.csv already contains only the 1,629
+        eligible people; the code&#39;s only restriction is a non-missing 1982 weight.
+      impact: &gt;
+        The eligibility rules cannot be checked or varied from the distributed files.
+      src: [S1, S2, S3]
+    - topic: Treatment model in the censoring analysis
+      described: &gt;
+        §12.6 says the model for being measured in 1982 was fit to all 1,629 people. It does not
+        say the model for quitting was refit.
+      implemented: &gt;
+        Program 12.7 refits the quitting model on all 1,629 people (data = nhefs), not the 1,566
+        used for the headline.
+      impact: Small. The censoring-weighted estimate is 3.50 vs 3.44.
+      src: [S1, S2]
+    - topic: Input file
+      described: &#34;The book&#39;s site provides nhefs.csv, NHEFS.xls and nhefs.dta.&#34;
+      implemented: &gt;
+        chapter12.R reads &#34;XXXX/nhefs.xls&#34; with readxl; other chapters point to a contributor&#39;s
+        local Windows path.
+      impact: None for the numbers; reproducers must edit the path.
+      src: [S2, S5]
+    - topic: Year labels
+      described: &#34;Baseline visits ran 1971–75 (§12.1).&#34;
+      implemented: &gt;
+        Columns are named wt71 and wt82_71, and chapter15.R labels groups &#34;Quit Smoking 1971-1982&#34;.
+      impact: Cosmetic, but readers of the code may assume a fixed 11-year gap.
+      src: [S1, S3, S5]
+
+spec:
+  estimand:
+    population: &gt;
+      NHEFS participants aged 25–74 who smoked at the 1971–75 baseline visit, met the book&#39;s
+      completeness restrictions, and had weight measured at the 1982 follow-up.
+    exposure: Reported having quit smoking by the 1982 follow-up (qsmk = 1) vs not.
+    time_zero: Baseline visit, 1971–75.
+    variable: Weight at follow-up minus weight at baseline, kg (wt82_71).
+    intercurrent_events: &gt;
+      Death or loss to follow-up before 1982 excludes the person from treatment classification
+      (Fine Point 12.1); 63 eligible people lack a 1982 weight and are excluded from the headline.
+    summary: &gt;
+      Difference in IP-weighted means, E[Y^{a=1}] − E[Y^{a=0}], kg; robust 95% interval.
+  parameters:
+    - {name: weights, value: stabilized, meaning: &#34;Pr[A]/Pr[A|L] for quitters, (1−Pr[A])/(1−Pr[A|L]) otherwise&#34;}
+    - {name: confounders, value: 9, meaning: &#34;sex, race, age, education, intensity, duration, exercise, activity, weight&#34;}
+    - {name: variance, value: robust, meaning: &#34;GEE independence working correlation (R), HC0 (Python)&#34;}
+  lineage:
+    - name: nhefs.csv
+      role: One row per eligible person; baseline traits, qsmk, wt71, wt82
+      grain: person
+      src: S3
+    - name: chapter12.R
+      role: Authors&#39; code for Programs 12.1–12.7
+      grain: person → two weighted means
+      src: S2
+    - name: examples/nhefs-ipw/analysis.py
+      role: Python reproduction of Programs 12.1–12.3 and 12.7
+      grain: person → estimates
+      src: S4
+  code:
+    - purpose: Stabilized weights and the weighted model (authors&#39; R, Program 12.3)
+      lang: r
+      src: S2
+      excerpt: |
+        pd.qsmk &lt;- predict(denom.fit, type = &#34;response&#34;)
+        numer.fit &lt;- glm(qsmk~1, family = binomial(), data = nhefs.nmv)
+        pn.qsmk &lt;- predict(numer.fit, type = &#34;response&#34;)
+        nhefs.nmv$sw &lt;- ifelse(nhefs.nmv$qsmk == 0, ((1-pn.qsmk)/(1-pd.qsmk)),
+                            (pn.qsmk/pd.qsmk))
+        msm.sw &lt;- geeglm(wt82_71 ~ qsmk, data=nhefs.nmv, weights=sw, id=seqn,
+                        corstr=&#34;independence&#34;)
+    - purpose: The same estimate in Python
+      lang: python
+      src: S4
+      excerpt: |
+        sw = np.where(unc.qsmk == 1, pn / p, (1 - pn) / (1 - p))
+        fit = smf.wls(&#34;wt82_71 ~ qsmk&#34;, df, weights=weights).fit(cov_type=&#34;HC0&#34;)
+  reproduce:
+    steps:
+      - &#34;python examples/fetch_data.py nhefs-ipw (downloads and checks the data, R code and book).&#34;
+      - &#34;python examples/nhefs-ipw/analysis.py (writes results/estimates.csv and results/weights.csv).&#34;
+    receipts:
+      - &#34;2026-10-07: stabilized IPW 3.441 (2.411, 4.470); book 3.4 (2.4, 4.5). Weights 0.331–4.298, mean 0.999.&#34;
+      - &#34;2026-10-07: unadjusted 2.541 (1.656, 3.425), book 2.5 (1.7, 3.4); Program 12.7 3.496 (2.466, 4.527), book 3.5 (2.5, 4.5).&#34;
+    tests: &#34;Reproduced figures are compared with the book&#39;s text by hand; see the receipts.&#34;
+
+glossary:
+  - term: inverse-probability weighting
+    aliases: [IP weighting, IPW, reweighting, reweighted]
+    plain: &gt;
+      Counting each person more or less so that the groups being compared look alike on measured
+      traits. People whose choice was unusual for someone like them count more.
+  - term: average treatment effect
+    aliases: [ATE]
+    plain: The average difference if everyone had quit compared with if nobody had quit.
+  - term: stabilized weights
+    plain: A version of the weights scaled to average about 1, which usually gives a tighter range.
+  - term: 95% range
+    aliases: [95% interval, confidence interval]
+    plain: &gt;
+      The values that fit the data well, given random noise and the model. It does not cover
+      traits nobody measured.
+  - term: robust variance
+    aliases: [sandwich]
+    plain: A way of computing the range that stays valid when people are counted with different weights.
+
+quiz:
+  - kind: verbatim
+    q: &#34;The headline is 3.4 kg. Which statement is right?&#34;
+    options:
+      - &#34;Quitters gained 3.4 kg on average.&#34;
+      - &#34;Quitting added about 3.4 kg of gain, averaged over everyone in the study, after balancing nine traits.&#34;
+      - &#34;Every smoker who quits gains 3.4 kg.&#34;
+    answer: 1
+    why: Quitters gained about 4.5 kg; 3.4 kg is the gap after reweighting, and it is an average.
+  - kind: gist
+    q: &#34;What would make this number wrong as a causal effect?&#34;
+    options:
+      - &#34;A trait that drives both quitting and weight gain but is not among the nine.&#34;
+      - &#34;Using stabilized instead of plain weights.&#34;
+    answer: 0
+    why: Reweighting only balances measured traits. Stabilized and plain weights give the same answer here.
+  - kind: transfer
+    q: &#34;A participant quit in 1980 but missed the 1982 weigh-in. Is she in the headline?&#34;
+    options: [&#34;Yes, as a quitter&#34;, &#34;No, she is left out&#34;, &#34;Yes, as a non-quitter&#34;]
+    answer: 1
+    why: The headline uses only the 1,566 people weighed in 1982; Program 12.7 reweights to account for the 63 who were not.
+
+changelog:
+  - {date: &#34;2026-08-19&#34;, change: &#34;Book version used for the cited text and figures.&#34;}
+  - {date: &#34;2026-10-07&#34;, change: &#34;Metric card written from nhefs.csv and chapter12.R; four discrepancies recorded.&#34;}
+
+sources:
+  - {id: S1, path: &#34;examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf&#34;, note: &#34;Hernán &amp; Robins, Causal Inference: What If, chapter 12 (§12.1–12.3, 12.6, Fine Point 12.1)&#34;}
+  - {id: S2, path: &#34;examples/nhefs-ipw/data/chapter12.R&#34;, lines: &#34;9-16, 51-76, 92-122, 231-292&#34;}
+  - {id: S3, path: &#34;examples/nhefs-ipw/data/nhefs.csv&#34;, note: &#34;1,629 rows; downloaded from miguelhernan.org/whatifbook&#34;}
+  - {id: S4, path: &#34;examples/nhefs-ipw/analysis.py&#34;, lines: &#34;22-77&#34;, note: &#34;Outputs in examples/nhefs-ipw/results/&#34;}
+  - {id: S5, path: &#34;examples/nhefs-ipw/data/chapter15.R&#34;, lines: &#34;11, 82-83&#34;}
+</textarea>
+
+    <h3 class="sub">Estimand</h3>
+    <table class="kv">
+      <tr><th scope="row">Population</th><td>NHEFS participants aged 25–74 who smoked at the 1971–75 baseline visit, met the book&#x27;s completeness restrictions, and had weight measured at the 1982 follow-up.</td></tr>
+<tr><th scope="row">Exposure / contrast</th><td>Reported having quit smoking by the 1982 follow-up (qsmk = 1) vs not.</td></tr><tr><th scope="row">Time zero</th><td>Baseline visit, 1971–75.</td></tr>      <tr><th scope="row">Variable</th><td>Weight at follow-up minus weight at baseline, kg (wt82_71).</td></tr>
+<tr><th scope="row">Intercurrent events</th><td>Death or loss to follow-up before 1982 excludes the person from treatment classification (Fine Point 12.1); 63 eligible people lack a 1982 weight and are excluded from the headline.</td></tr>      <tr><th scope="row">Summary measure</th><td>Difference in IP-weighted means, E[Y^{a=1}] − E[Y^{a=0}], kg; robust 95% interval.</td></tr>
+<tr><th scope="row">Target</th><td>ATE: Average effect if everyone did it</td></tr>    </table>
+
+    <h3 class="sub">Where the description and the code disagree</h3>
+    <div class="discrep">
+      <article>
+        <h4>Who is in the study</h4>
+        <div class="dv"><div><span>Described</span><p>Book margin note: restricted to people with known sex, age, race, weight, height, education, alcohol use and smoking intensity, who answered the medical history questionnaire.</p></div><div><span>Implemented</span><p>No code applies these rules. The downloadable nhefs.csv already contains only the 1,629 eligible people; the code&#x27;s only restriction is a non-missing 1982 weight.</p></div></div>
+<p class="impact"><b>Impact:</b> The eligibility rules cannot be checked or varied from the distributed files.</p><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span>      </article>
+      <article>
+        <h4>Treatment model in the censoring analysis</h4>
+        <div class="dv"><div><span>Described</span><p>§12.6 says the model for being measured in 1982 was fit to all 1,629 people. It does not say the model for quitting was refit.</p></div><div><span>Implemented</span><p>Program 12.7 refits the quitting model on all 1,629 people (data = nhefs), not the 1,566 used for the headline.</p></div></div>
+<p class="impact"><b>Impact:</b> Small. The censoring-weighted estimate is 3.50 vs 3.44.</p><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span>      </article>
+      <article>
+        <h4>Input file</h4>
+        <div class="dv"><div><span>Described</span><p>The book&#x27;s site provides nhefs.csv, NHEFS.xls and nhefs.dta.</p></div><div><span>Implemented</span><p>chapter12.R reads &quot;XXXX/nhefs.xls&quot; with readxl; other chapters point to a contributor&#x27;s local Windows path.</p></div></div>
+<p class="impact"><b>Impact:</b> None for the numbers; reproducers must edit the path.</p><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/data/chapter15.R">S5</span>      </article>
+      <article>
+        <h4>Year labels</h4>
+        <div class="dv"><div><span>Described</span><p>Baseline visits ran 1971–75 (§12.1).</p></div><div><span>Implemented</span><p>Columns are named wt71 and wt82_71, and chapter15.R labels groups &quot;Quit Smoking 1971-1982&quot;.</p></div></div>
+<p class="impact"><b>Impact:</b> Cosmetic, but readers of the code may assume a fixed 11-year gap.</p><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span><span class="src" title="examples/nhefs-ipw/data/chapter15.R">S5</span>      </article>
+    </div>
+
+    <h3 class="sub">Rules as implemented</h3>
+    <table class="rules">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Exact rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+<tr><th scope="row">Eligibility 1<br><span class="muted">1,629 remain</span></th><td>Margin note to §12.1. Applied before distribution: nhefs.csv already holds only these 1,629 people, and no code restricts on these fields.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span></td></tr><tr><th scope="row">Eligibility 2<br><span class="muted">1,566 remain</span></th><td>nhefs.nmv &lt;- nhefs[which(!is.na(nhefs$wt82)),] (chapter12.R line 12). Drops 63 people.</td><td><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></td></tr>      <tr><th scope="row">Time zero</th><td>Baseline visit 1971–75 (§12.1 margin note). Visit dates are not in nhefs.csv.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></td></tr>
+<tr><th scope="row">Time to quit<br><span class="muted">[1, 73) months</span></th><td>qsmk = 1 if the person reported in 1982 having quit (§12.1). The quit date is not used; the authors note it is really a time-varying treatment they ignore (Fine Point 12.1). The window shown is the shortest possible gap (1975 → 1982).</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span></td></tr><tr><th scope="row">1982 visit<br><span class="muted">[73, 144) months</span></th><td>Follow-up visit in 1982 (§12.1); per-person gap between 73 and 143 months, not recorded in the file.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span></td></tr><tr><th scope="row">Weight change<br><span class="muted">value</span></th><td>wt82_71 = wt82 − wt71 (kg); matches the difference of the two columns to 1e-14.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span></td></tr><tr><th scope="row">Quit smoking<br><span class="muted">indicator</span></th><td>qsmk (0/1); 403 of 1,566 = 1.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/nhefs.csv">S3</span></td></tr>      <tr><th scope="row">Aggregate</th><td>Weighted least squares of wt82_71 on qsmk; the intercept is the weighted mean for non-quitters and intercept + slope the weighted mean for quitters.</td><td><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span></td></tr>
+<tr><th scope="row">Comparison</th><td>θ₁ in E[Y | A] = θ₀ + θ₁A fitted to the pseudo-population (§12.2–12.3).</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span></td></tr><tr><th scope="row">Adjustment</th><td>Logistic model for qsmk on the nine confounders, with squared terms for age, intensity, duration and weight, no interactions (Program 12.3, lines 93–97). Numerator: intercept-only logistic model (403/1566).<br><b>Balances on:</b> sex, race, age (linear and squared), education (5 levels), cigarettes per day (linear and squared), years smoking (linear and squared), exercise (3 levels), how active day to day (3 levels), baseline weight (linear and squared)<br><b>Diagnostics:</b> Stabilized weights range 0.33 to 4.30 with mean 1.00 (book: 0.33 to 4.30, mean 1.00). Nonstabilized weights range 1.05 to 16.7 with mean 2.00. Program 12.2 tabulates one stratum (white women, by age) as a positivity check; the book recommends checking that stabilized weights average 1.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span></td></tr><tr><th scope="row">Uncertainty</th><td>geeglm(wt82_71 ~ qsmk, weights = sw, id = seqn, corstr = &quot;independence&quot;); β ± 1.96 SE. Reproduced with weighted least squares and HC0 standard errors: SE 0.525.</td><td><span class="src" title="examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf">S1</span><span class="src" title="examples/nhefs-ipw/data/chapter12.R">S2</span><span class="src" title="examples/nhefs-ipw/analysis.py">S4</span></td></tr>      </tbody>
+    </table>
+
+    <h3 class="sub">Numbers per group</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Group</th><th scope="col">Definition</th><th scope="col">Value</th><th scope="col">n</th></tr></thead>
+      <tbody><tr><th scope="row">Quitters, reweighted</th><td>qsmk = 1, stabilized weights Pr[A=1] / Pr[A=1 | L].</td><td>5.221</td><td>403</td></tr><tr><th scope="row">Non-quitters, reweighted</th><td>qsmk = 0, stabilized weights (1 − Pr[A=1]) / (1 − Pr[A=1 | L]).</td><td>1.78</td><td>1,163</td></tr></tbody>
+    </table>
+<p class="note">Check: <code>5.221 − 1.78 = 3.441</code> (headline 3.44).</p>
+    <h3 class="sub">Parameters</h3>
+    <table class="data"><thead><tr><th scope="col">Name</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead>
+      <tbody><tr><td><code>weights</code></td><td>stabilized</td><td>Pr[A]/Pr[A|L] for quitters, (1−Pr[A])/(1−Pr[A|L]) otherwise</td></tr><tr><td><code>confounders</code></td><td>9</td><td>sex, race, age, education, intensity, duration, exercise, activity, weight</td></tr><tr><td><code>variance</code></td><td>robust</td><td>GEE independence working correlation (R), HC0 (Python)</td></tr></tbody></table>
+
+    <h3 class="sub">Data lineage</h3>
+    <ol class="lineage">
+      <li><code>nhefs.csv</code><p>One row per eligible person; baseline traits, qsmk, wt71, wt82</p><p class="muted">Grain: person</p></li>
+      <li><code>chapter12.R</code><p>Authors&#x27; code for Programs 12.1–12.7</p><p class="muted">Grain: person → two weighted means</p></li>
+      <li><code>examples/nhefs-ipw/analysis.py</code><p>Python reproduction of Programs 12.1–12.3 and 12.7</p><p class="muted">Grain: person → estimates</p></li>
+    </ol>
+
+    <h3 class="sub">Code that defines it</h3>
+    <figure class="code">
+      <figcaption><span>Stabilized weights and the weighted model (authors&#39; R, Program 12.3)</span><span class="path">examples/nhefs-ipw/data/chapter12.R:9-16, 51-76, 92-122, 231-292</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-r">pd.qsmk &lt;- predict(denom.fit, type = &#34;response&#34;)
+numer.fit &lt;- glm(qsmk~1, family = binomial(), data = nhefs.nmv)
+pn.qsmk &lt;- predict(numer.fit, type = &#34;response&#34;)
+nhefs.nmv$sw &lt;- ifelse(nhefs.nmv$qsmk == 0, ((1-pn.qsmk)/(1-pd.qsmk)),
+                    (pn.qsmk/pd.qsmk))
+msm.sw &lt;- geeglm(wt82_71 ~ qsmk, data=nhefs.nmv, weights=sw, id=seqn,
+                corstr=&#34;independence&#34;)</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>The same estimate in Python</span><span class="path">examples/nhefs-ipw/analysis.py:22-77</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-python">sw = np.where(unc.qsmk == 1, pn / p, (1 - pn) / (1 - p))
+fit = smf.wls(&#34;wt82_71 ~ qsmk&#34;, df, weights=weights).fit(cov_type=&#34;HC0&#34;)</code></pre>
+    </figure>
+
+    <h3 class="sub">Rebuild it</h3>
+<ol class="checklist"><li><label><input type="checkbox"> python examples/fetch_data.py nhefs-ipw (downloads and checks the data, R code and book).</label></li><li><label><input type="checkbox"> python examples/nhefs-ipw/analysis.py (writes results/estimates.csv and results/weights.csv).</label></li></ol><p><b>Receipts:</b></p><ul><li>2026-10-07: stabilized IPW 3.441 (2.411, 4.470); book 3.4 (2.4, 4.5). Weights 0.331–4.298, mean 0.999.</li><li>2026-10-07: unadjusted 2.541 (1.656, 3.425), book 2.5 (1.7, 3.4); Program 12.7 3.496 (2.466, 4.527), book 3.5 (2.5, 4.5).</li></ul><p><b>Tests:</b> Reproduced figures are compared with the book&#x27;s text by hand; see the receipts.</p>
+    <h3 class="sub">Sources</h3>
+    <ol class="sources"><li id="src-S1"><span class="src">S1</span> <code>examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf</code> · Hernán &amp; Robins, Causal Inference: What If, chapter 12 (§12.1–12.3, 12.6, Fine Point 12.1)</li><li id="src-S2"><span class="src">S2</span> <code>examples/nhefs-ipw/data/chapter12.R</code> <span class="muted">lines 9-16, 51-76, 92-122, 231-292</span></li><li id="src-S3"><span class="src">S3</span> <code>examples/nhefs-ipw/data/nhefs.csv</code> · 1,629 rows; downloaded from miguelhernan.org/whatifbook</li><li id="src-S4"><span class="src">S4</span> <code>examples/nhefs-ipw/analysis.py</code> <span class="muted">lines 22-77</span> · Outputs in examples/nhefs-ipw/results/</li><li id="src-S5"><span class="src">S5</span> <code>examples/nhefs-ipw/data/chapter15.R</code> <span class="muted">lines 11, 82-83</span></li></ol>
+
+    <h3 class="sub">Change log</h3>
+    <ul class="changelog"><li><time>2026-08-19</time> Book version used for the cited text and figures.</li><li><time>2026-10-07</time> Metric card written from nhefs.csv and chapter12.R; four discrepancies recorded.</li></ul>
+
+    <details class="quality">
+      <summary>Card quality checks: 0 errors · 1 warnings</summary>
+      <ul><li class="lint-info"><b>info</b> <code>recompute</code> estimate reproduced from cells: 5.221 − 1.78 = 3.441</li><li class="lint-warn"><b>warn</b> <code>maturity</code> The card does not state when the data were complete, so we cannot confirm every window was fully observed.</li></ul>
+    </details>
+  </div>
+</section>
+
+
+<section id="check" class="level level-check" aria-labelledby="check-h">
+  <div class="wrap">
+    <p class="eyebrow">Check yourself</p>
+    <h2 id="check-h">Could you explain it to a colleague?</h2>
+    <div class="quiz">
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Detail</span>The headline is 3.4 kg. Which statement is right?</legend>
+<label><input type="radio" name="q0" value="0"> Quitters gained 3.4 kg on average.</label><label><input type="radio" name="q0" value="1"> Quitting added about 3.4 kg of gain, averaged over everyone in the study, after balancing nine traits.</label><label><input type="radio" name="q0" value="2"> Every smoker who quits gains 3.4 kg.</label>        <p class="why" hidden>Quitters gained about 4.5 kg; 3.4 kg is the gap after reweighting, and it is an average.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="0">
+        <legend><span class="qkind">Big picture</span>What would make this number wrong as a causal effect?</legend>
+<label><input type="radio" name="q1" value="0"> A trait that drives both quitting and weight gain but is not among the nine.</label><label><input type="radio" name="q1" value="1"> Using stabilized instead of plain weights.</label>        <p class="why" hidden>Reweighting only balances measured traits. Stabilized and plain weights give the same answer here.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Apply it</span>A participant quit in 1980 but missed the 1982 weigh-in. Is she in the headline?</legend>
+<label><input type="radio" name="q2" value="0"> Yes, as a quitter</label><label><input type="radio" name="q2" value="1"> No, she is left out</label><label><input type="radio" name="q2" value="2"> Yes, as a non-quitter</label>        <p class="why" hidden>The headline uses only the 1,566 people weighed in 1982; Program 12.7 reweights to account for the 63 who were not.</p>
+      </fieldset>
+    </div>
+    <div class="teachback">
+      <h3>Explain it back</h3>
+      <p>Write one or two sentences as if telling a colleague. Then compare with the checklist.</p>
+      <label class="sr" for="tb">Your explanation</label>
+      <textarea id="tb" rows="3" placeholder="This number is…"></textarea>
+      <button type="button" class="btn" data-reveal="#tb-check">Compare</button>
+      <div id="tb-check" hidden>
+        <p>A complete explanation mentions:</p>
+        <ul class="tb-list"><li><label><input type="checkbox"> <b>Who is counted</b> — adults aged 25–74 who smoked at the first health check and had the basic facts recorded (sex, age, race, weight, height, education, alcohol use, smoking intensity); had their weight measured at the 1982 visit</label></li><li><label><input type="checkbox"> <b>What counts</b> — Body weight at the 1982 visit minus body weight at the first health check, in kilograms.</label></li><li><label><input type="checkbox"> <b>Compared with what</b> — Compare the two reweighted groups. Because both are made to resemble the whole study, the gap estimates what quitting would do on average across all of these smokers.</label></li><li><label><input type="checkbox"> <b>The main limitation</b> — This is only causal if the nine traits capture everything that made people both quit and gain weight. The study also kept only people alive and measured in 1982, which the authors flag as a possible source of bias they chose not to fix.</label></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="glossary" class="level glossary" aria-labelledby="gl-h">
+  <div class="wrap">
+    <h2 id="gl-h">Glossary</h2>
+    <dl>
+      <div><dt>95% range <span class="muted">(95% interval, confidence interval)</span></dt><dd>The values that fit the data well, given random noise and the model. It does not cover traits nobody measured.</dd></div>
+      <div><dt>average treatment effect <span class="muted">(ATE)</span></dt><dd>The average difference if everyone had quit compared with if nobody had quit.</dd></div>
+      <div><dt>inverse-probability weighting <span class="muted">(IP weighting, IPW, reweighting, reweighted)</span></dt><dd>Counting each person more or less so that the groups being compared look alike on measured traits. People whose choice was unusual for someone like them count more.</dd></div>
+      <div><dt>robust variance <span class="muted">(sandwich)</span></dt><dd>A way of computing the range that stays valid when people are counted with different weights.</dd></div>
+      <div><dt>stabilized weights</dt><dd>A version of the weights scaled to average about 1, which usually gives a tighter range.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Generated from <code>smoking-cessation-ipw.yaml</code> by mcard. Self-contained: works offline, prints cleanly. <button type="button" class="linkish" onclick="window.print()">Print</button></div></footer>
+
+<div class="tips">
+  <div class="tip" role="tooltip" id="tip-g0" hidden><b>inverse-probability weighting</b> Counting each person more or less so that the groups being compared look alike on measured traits. People whose choice was unusual for someone like them count more.</div>
+  <div class="tip" role="tooltip" id="tip-g1" hidden><b>average treatment effect</b> The average difference if everyone had quit compared with if nobody had quit.</div>
+  <div class="tip" role="tooltip" id="tip-g2" hidden><b>stabilized weights</b> A version of the weights scaled to average about 1, which usually gives a tighter range.</div>
+  <div class="tip" role="tooltip" id="tip-g3" hidden><b>95% range</b> The values that fit the data well, given random noise and the model. It does not cover traits nobody measured.</div>
+  <div class="tip" role="tooltip" id="tip-g4" hidden><b>robust variance</b> A way of computing the range that stays valid when people are counted with different weights.</div>
+</div>
+<script>(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var wide = window.matchMedia("(min-width: 901px)");
+
+  // ---- depth rail: active section + reading progress
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  var bar = document.querySelector(".progress span");
+  function onScroll() {
+    var y = window.scrollY + 90, current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s; });
+    links.forEach(function (a) { a.classList.toggle("active", current && a.getAttribute("href") === "#" + current.id); });
+    if (bar) {
+      var max = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? Math.min(100, 100 * window.scrollY / max) : 0) + "%";
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ---- scrollytelling: the sticky stage shows the active step's figure
+  var stage = document.querySelector(".scrolly .stage");
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".scrolly .step"));
+  function activate(step) {
+    if (!step || step.classList.contains("active")) return;
+    steps.forEach(function (s) { s.classList.remove("active"); });
+    step.classList.add("active");
+    if (stage && wide.matches) {
+      var fig = step.querySelector(".step-fig");
+      stage.innerHTML = '<div class="fade">' + (fig ? fig.innerHTML : "") + "</div>";
+      stage.setAttribute("aria-hidden", "true");
+      bindTerms(stage);
+    }
+  }
+  if ("IntersectionObserver" in window && steps.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    steps.forEach(function (s) { io.observe(s); });
+    activate(steps[0]);
+  }
+
+  // ---- glossary toggletips (WCAG 2.2 SC 1.4.13: dismissible, hoverable, persistent)
+  var openTip = null, pinned = false, hideTimer = null;
+  function place(tip, trigger) {
+    var r = trigger.getBoundingClientRect();
+    tip.hidden = false;
+    var w = tip.offsetWidth;
+    var left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8));
+    tip.style.left = left + "px";
+    tip.style.top = (window.scrollY + r.bottom + 8) + "px";
+  }
+  function show(trigger, pin) {
+    clearTimeout(hideTimer);
+    var tip = document.getElementById("tip-" + trigger.getAttribute("data-tip"));
+    if (!tip) return;
+    if (openTip && openTip !== tip) openTip.hidden = true;
+    openTip = tip; pinned = !!pin;
+    place(tip, trigger);
+    trigger.setAttribute("aria-expanded", "true");
+  }
+  function hide(force) {
+    if (!openTip || (pinned && !force)) return;
+    openTip.hidden = true; openTip = null; pinned = false;
+    document.querySelectorAll('.term[aria-expanded="true"]').forEach(function (t) { t.setAttribute("aria-expanded", "false"); });
+  }
+  function bindTerms(root) {
+    root.querySelectorAll(".term").forEach(function (t) {
+      if (t.dataset.bound) return;
+      t.dataset.bound = "1";
+      t.setAttribute("aria-expanded", "false");
+      t.addEventListener("mouseenter", function () { show(t, false); });
+      t.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 250); });
+      t.addEventListener("focus", function () { show(t, false); });
+      t.addEventListener("blur", function () { hideTimer = setTimeout(function () { hide(false); }, 150); });
+      t.addEventListener("click", function (ev) { ev.stopPropagation(); if (openTip && pinned) { hide(true); } else { show(t, true); } });
+    });
+  }
+  bindTerms(document);
+  document.querySelectorAll(".tip").forEach(function (tip) {
+    tip.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+    tip.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 200); });
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
+  document.addEventListener("click", function (e) { if (openTip && !openTip.contains(e.target)) hide(true); });
+
+  // ---- quiz
+  document.querySelectorAll("fieldset.q").forEach(function (fs) {
+    var answer = fs.getAttribute("data-answer");
+    fs.addEventListener("change", function (e) {
+      fs.querySelectorAll("label").forEach(function (l) { l.classList.remove("right", "wrong"); });
+      var label = e.target.closest("label");
+      label.classList.add(e.target.value === answer ? "right" : "wrong");
+      var correct = fs.querySelector('input[value="' + answer + '"]');
+      if (correct) correct.closest("label").classList.add("right");
+      var why = fs.querySelector(".why");
+      if (why) { why.hidden = false; why.setAttribute("role", "status"); }
+    });
+  });
+
+  // ---- reveal + copy
+  document.querySelectorAll("[data-reveal]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-reveal")); if (t) t.hidden = false; });
+  });
+  function copy(text, btn) {
+    var done = function () { var o = btn.textContent; btn.textContent = "Copied"; setTimeout(function () { btn.textContent = o; }, 1400); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done); return; }
+    var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-copy")); if (t) copy(t.value || t.textContent, b); });
+  });
+  document.querySelectorAll("[data-copy-next]").forEach(function (b) {
+    b.addEventListener("click", function () { var pre = b.closest("figure").querySelector("pre"); if (pre) copy(pre.textContent, b); });
+  });
+})();
+</script>
+</body>
+</html>

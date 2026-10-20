@@ -1,0 +1,18 @@
+1 The gist · for everyone
+What share of people who start a PixelPress Pro free trial become paying subscribers?
+14.3%
+trial users converted to paid
+In the saved March mobile trial group, 14.3% of PixelPress Pro trial users had a positive charge by day 14.
+6,894 of 48,210 trial users converted in the saved summary.
+≈About 14 in every 100 trial users converted to paid in the saved summary.        
+What kind of claim: Describes a level. This number describes what happened in one group. It does not compare groups or explain why.
+        Divide converted trial users by all trial users in the cohort and report it as a percent.
+✓ Safe to say
+"In the saved March mobile cohort summary, 14.3% of PixelPress Pro trial users converted to paid."
+✗ Not this
+"The new onboarding flow drove a 1.4-point lift," or "this is a 30-day conversion rate."      
+! Before you repeat it
+The saved query uses a 14-day conversion parameter and includes cohort end date 2026-03-09; the prose says 30 days and 2026-03-02 through 2026-03-08.
+      2Who exactly is counted, and when?Follow one trial user through the rules
+      3What could make this misleading?4 caveats · 4 common misreadings
+      4How would I rebuild it?Exact rules, data, code · 5 doc-vs-code gaps

@@ -1,0 +1,14 @@
+check,value,reference
+Stores in file,410,Paper: 410
+Table 4 sample (n),357,Paper: 357
+Table 4 col (i) NJ coefficient,2.326,Paper: 2.33
+Table 4 col (i) SE,1.192,Paper: 1.19
+Table 4 mean change,-0.238,Paper: -0.237
+Table 4 SD of change,8.825,Paper: 8.825
+SHEET values used twice,407,Codebook: 'sheet number (unique store id)'
+Permanently closed stores (STATUS2=3),6,Paper: six
+  of which wave-2 FTE already 0 in the file,6,"Zeroing is in the data, not in check.sas"
+Temporarily closed stores,4,Paper: four
+  of which in NJ,4,
+NJ stores without a wave-1 starting wage,17,Excluded from Table 3 cols (iv)-(vi)
+Wave-2 interview dates,110592 to 123192 (MMDDYY),"Paper: Nov 5 - Dec 31, 1992"

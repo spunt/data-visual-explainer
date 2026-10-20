@@ -1,0 +1,13 @@
+row,group,value,se,n,note
+"FTE before, all available",PA_pre,23.3312,1.3511,77.0,
+"FTE after, all available",PA_post,21.1656,0.9432,77.0,
+"FTE before, all available",NJ_pre,20.4394,0.5083,321.0,
+"FTE after, all available",NJ_post,21.0274,0.5203,319.0,
+Row 3 DiD (difference of mean changes),NJ-PA,2.7536,1.8012,,SE assumes the four means are independent samples
+"Row 4 change, balanced sample",PA,-2.2833,1.2533,75.0,
+"Row 4 change, balanced sample",NJ,0.4667,0.4808,309.0,
+"Row 4 DiD, balanced sample",NJ-PA,2.75,1.3423,384.0,
+"Row 5 DiD, temporarily closed set to 0",NJ-PA,2.5092,1.346,388.0,
+"Row 4 change, NJ by wave-1 starting wage",$4.25,1.2048,0.8225,94.0,
+"Row 4 change, NJ by wave-1 starting wage",$4.26-$4.99,0.7098,0.6862,132.0,
+"Row 4 change, NJ by wave-1 starting wage",$5.00+,-2.1567,1.0073,67.0,

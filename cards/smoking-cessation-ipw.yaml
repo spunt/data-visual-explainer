@@ -1,0 +1,412 @@
+schema: metric-card/1
+id: smoking-cessation-ipw
+title: Weight gain from quitting smoking
+subtitle: Inverse-probability-weighted difference in 10-year weight change, quitters vs non-quitters (NHEFS)
+status: provisional
+owner: data-visual-explainer worked example (public data)
+updated: "2026-10-07"
+question: >
+  If every smoker in this study had quit, how much more weight would they have gained over about
+  ten years than if none had quit?
+
+gist:
+  sentence: >
+    We followed 1,566 adult smokers from a health check in 1971–75 to a second visit in 1982.
+    We compare weight change in people who quit with people who did not, after reweighting so
+    the two groups match on nine traits.
+  headline:
+    value: 3.44
+    low: 2.41
+    high: 4.47
+    unit: other
+    decimals: 2
+    label: kg more weight gain from quitting, averaged over everyone in the study
+    context: "Without the reweighting the gap is 2.54 kg. Non-quitters gained about 2 kg on their own."
+  frequency: >
+    Picture two groups of 100 smokers who are alike in every measured way. Over about ten years the group that
+    quits gains about 340 kg more in total than the group that keeps smoking: roughly 3.4 kg each.
+  reading:
+    direction: neutral
+    say: >
+      "Under the study's assumptions, quitting smoking added about 3.4 kg (2.4 to 4.5) of weight
+      gain over roughly ten years, on average across these smokers."
+    dont_say: >
+      "Quitters gained 3.4 kg," or "every smoker who quits will gain 3.4 kg."
+  key_caveat: >
+    This is only causal if the nine traits capture everything that made people both quit and
+    gain weight. The study also kept only people alive and measured in 1982, which the authors
+    flag as a possible source of bias they chose not to fix.
+  claim_strength: quasi-causal
+
+grammar:
+  unit:
+    singular: person
+    plural: people
+    plain: One adult who smoked at the first health check.
+    exact: "One row per seqn in nhefs.csv (1,629 rows)."
+    src: [S3, S1]
+  population:
+    - id: eligible
+      plain: >
+        Adults aged 25–74 who smoked at the first health check and had the basic facts recorded
+        (sex, age, race, weight, height, education, alcohol use, smoking intensity).
+      exact: >
+        Margin note to §12.1. Applied before distribution: nhefs.csv already holds only these
+        1,629 people, and no code restricts on these fields.
+      n_after: 1629
+      src: [S1, S3]
+    - id: weighed_1982
+      plain: Had their weight measured at the 1982 visit.
+      exact: "nhefs.nmv <- nhefs[which(!is.na(nhefs$wt82)),] (chapter12.R line 12). Drops 63 people."
+      n_after: 1566
+      src: [S2, S1]
+  anchor:
+    kind: per_unit_event
+    label: First health check
+    plain: Each person's first health check, held some time between 1971 and 1975.
+    exact: "Baseline visit 1971–75 (§12.1 margin note). Visit dates are not in nhefs.csv."
+    src: S1
+  windows:
+    - id: quit_period
+      label: Time to quit
+      start: 1
+      end: 73
+      unit: month
+      role: exposure
+      plain: >
+        Any time between the first health check and the 1982 visit. Quitting counts if the person
+        reported having quit by 1982.
+      exact: >
+        qsmk = 1 if the person reported in 1982 having quit (§12.1). The quit date is not used;
+        the authors note it is really a time-varying treatment they ignore (Fine Point 12.1).
+        The window shown is the shortest possible gap (1975 → 1982).
+      src: S1
+    - id: followup
+      label: 1982 visit
+      start: 73
+      end: 144
+      unit: month
+      role: observation
+      plain: The second visit in 1982, roughly 7 to 11 years after the first, depending on when that was.
+      exact: "Follow-up visit in 1982 (§12.1); per-person gap between 73 and 143 months, not recorded in the file."
+      src: [S1, S3]
+  measures:
+    - id: weight_gain
+      label: Weight change
+      kind: value
+      window: followup
+      primary: true
+      plain: Body weight at the 1982 visit minus body weight at the first health check, in kilograms.
+      exact: "wt82_71 = wt82 − wt71 (kg); matches the difference of the two columns to 1e-14."
+      src: [S1, S3]
+    - id: quit
+      label: Quit smoking
+      kind: indicator
+      window: quit_period
+      plain: Reported in 1982 having quit smoking.
+      exact: "qsmk (0/1); 403 of 1,566 = 1."
+      src: [S1, S3]
+  aggregate:
+    kind: mean
+    measure: weight_gain
+    numerator: weighted sum of weight change in the group
+    denominator: sum of the weights in the group
+    plain: Average weight change in each group, with each person counted according to their weight.
+    exact: >
+      Weighted least squares of wt82_71 on qsmk; the intercept is the weighted mean for
+      non-quitters and intercept + slope the weighted mean for quitters.
+    src: [S2, S4]
+  groups:
+    - id: quitters
+      label: Quitters, reweighted
+      role: treated
+      plain: The 403 people who quit, reweighted to look like the whole study.
+      exact: "qsmk = 1, stabilized weights Pr[A=1] / Pr[A=1 | L]."
+      src: [S2, S4]
+    - id: non_quitters
+      label: Non-quitters, reweighted
+      role: adjusted_control
+      plain: The 1,163 people who did not quit, reweighted to look like the whole study.
+      exact: "qsmk = 0, stabilized weights (1 − Pr[A=1]) / (1 − Pr[A=1 | L])."
+      src: [S2, S4]
+  comparison:
+    kind: adjusted_difference
+    target: ATE
+    plain: >
+      Compare the two reweighted groups. Because both are made to resemble the whole study, the
+      gap estimates what quitting would do on average across all of these smokers.
+    exact: "θ₁ in E[Y | A] = θ₀ + θ₁A fitted to the pseudo-population (§12.2–12.3)."
+    formula: "mean if all quit − mean if none quit"
+    src: [S1, S2]
+  adjustment:
+    method: Inverse-probability weighting with stabilized weights, average treatment effect
+    balances_on:
+      - sex
+      - race
+      - age (linear and squared)
+      - education (5 levels)
+      - cigarettes per day (linear and squared)
+      - years smoking (linear and squared)
+      - exercise (3 levels)
+      - how active day to day (3 levels)
+      - baseline weight (linear and squared)
+    diagnostics: >
+      Stabilized weights range 0.33 to 4.30 with mean 1.00 (book: 0.33 to 4.30, mean 1.00).
+      Nonstabilized weights range 1.05 to 16.7 with mean 2.00. Program 12.2 tabulates one stratum
+      (white women, by age) as a positivity check; the book recommends checking that stabilized
+      weights average 1.
+    plain: >
+      People who were more likely to quit, given their traits, count for less; people unlikely
+      to quit who did quit count for more. This balances the nine traits across the two groups.
+    exact: >
+      Logistic model for qsmk on the nine confounders, with squared terms for age, intensity,
+      duration and weight, no interactions (Program 12.3, lines 93–97). Numerator: intercept-only
+      logistic model (403/1566).
+    src: [S1, S2, S4]
+  uncertainty:
+    method: Robust (sandwich) variance, as from a generalized estimating equations fit with independence
+    level: 0.95
+    plain: >
+      The range 2.4 to 4.5 kg uses a standard formula that allows for the weighting. The authors
+      describe it as slightly wider than necessary.
+    exact: >
+      geeglm(wt82_71 ~ qsmk, weights = sw, id = seqn, corstr = "independence"); β ± 1.96 SE.
+      Reproduced with weighted least squares and HC0 standard errors: SE 0.525.
+    known_gaps: >
+      Treats the propensity model as correct and the weights as known. It does not cover
+      unmeasured confounding, the selection of people who survived to 1982, or the 63 people with
+      no 1982 weight.
+    src: [S1, S2, S4]
+
+results:
+  as_of: "Hernán & Robins, What If (version of 19 Aug 2026); recomputed 2026-10-07"
+  unit: other
+  cells:
+    - {group: quitters, value: 5.221, n: 403}
+    - {group: non_quitters, value: 1.780, n: 1163}
+  estimate: {value: 3.44, low: 2.41, high: 4.47}
+  sensitivity:
+    - {label: "No adjustment (raw difference)", value: 2.54, low: 1.66, high: 3.43, note: "Program 12.1: quitters 4.53 kg, non-quitters 1.98 kg.", src: [S1, S4]}
+    - {label: "Stabilized weights (headline)", value: 3.44, low: 2.41, high: 4.47, primary: true, src: [S1, S4]}
+    - {label: "Nonstabilized weights", value: 3.44, low: 2.41, high: 4.47, note: "Program 12.2; same estimate here.", src: [S1, S4]}
+    - {label: "Also weighting for missing 1982 weights", value: 3.50, low: 2.47, high: 4.53, note: "Program 12.7; book: 3.5 (2.5, 4.5).", src: [S1, S4]}
+
+example:
+  name: Ruth
+  intro: >
+    Ruth is a 45-year-old smoker at her 1973 health check, weighing 68 kg. Women like her, with
+    her smoking history, quit less often than average.
+  anchor_date: "1973-06-01"
+  events:
+    - {at: 0, label: "First health check: smokes, weighs 68 kg"}
+    - {at: 1460, label: "Quits smoking (around 1977)"}
+    - {at: 3255, label: "1982 visit: weighs 75 kg, a 7 kg gain", counts: true}
+  outcome: >
+    Ruth adds 7 kg to the quitters' average. Because people like her rarely quit, she counts for
+    more than one person in the reweighted quitter group. Had she missed the 1982 weigh-in, she
+    would not count at all.
+
+fine_print:
+  judgment_calls:
+    - decision: Which traits to balance
+      choice: Nine traits measured at the first check, with squared terms for the continuous ones.
+      alternatives: More traits, interactions, or flexible models.
+      why: A standard, transparent model for a teaching example.
+      impact: If an important cause of both quitting and weight gain is missing, the estimate is biased by an unknown amount.
+      src: S1
+    - decision: Stabilized or plain weights
+      choice: Stabilized.
+      alternatives: Plain inverse-probability weights.
+      why: Usually narrower intervals.
+      impact: None here; both give 3.44 (2.41, 4.47).
+      src: [S1, S4]
+    - decision: People with no 1982 weight
+      choice: Left out of the headline.
+      alternatives: Add weights for being measured (Program 12.7).
+      why: Simpler first analysis; the book adds them in §12.6.
+      impact: 3.44 becomes 3.50.
+      src: [S1, S4]
+  caveats:
+    - title: Only as good as the nine traits
+      text: >
+        Reweighting removes differences in the nine measured traits. If something else, such as
+        health worries, made people both quit and gain weight, it is still mixed into the number.
+      effect: unknown_direction
+      severity: high
+      src: S1
+    - title: Survivors only
+      text: >
+        Only people who lived to 1982 and came back could report quitting. If quitting affects
+        survival, the groups are selected after the fact. The authors flag this and leave it unfixed.
+      effect: unknown_direction
+      severity: medium
+      src: S1
+    - title: Quitting happened at different times
+      text: >
+        Someone who quit in 1972 and someone who quit just before 1982 both count as quitters.
+        The number averages over very different amounts of time without smoking.
+      effect: limits_scope
+      severity: medium
+      src: S1
+    - title: The interval is wider than it needs to be
+      text: >
+        The robust formula behind 2.4 to 4.5 kg covers the true value more than 95% of the time,
+        according to the authors. It still assumes the model for quitting is right.
+      effect: limits_scope
+      severity: low
+      src: S1
+  misreadings:
+    - wrong: "Quitters gained 3.4 kg."
+      right: >
+        Quitters gained about 4.5 kg on average. 3.4 kg is the extra gain attributed to quitting
+        after balancing the groups.
+    - wrong: "This is the effect for people who actually quit."
+      right: >
+        It is the average effect if everyone in the study had quit, compared with nobody quitting
+        (the average treatment effect), not just the effect among quitters.
+    - wrong: "The raw gap of 2.5 kg is the effect of quitting."
+      right: >
+        The raw gap mixes in age and smoking history differences. Reweighting moves it to 3.4 kg.
+  discrepancies:
+    - topic: Who is in the study
+      described: >
+        Book margin note: restricted to people with known sex, age, race, weight, height,
+        education, alcohol use and smoking intensity, who answered the medical history questionnaire.
+      implemented: >
+        No code applies these rules. The downloadable nhefs.csv already contains only the 1,629
+        eligible people; the code's only restriction is a non-missing 1982 weight.
+      impact: >
+        The eligibility rules cannot be checked or varied from the distributed files.
+      src: [S1, S2, S3]
+    - topic: Treatment model in the censoring analysis
+      described: >
+        §12.6 says the model for being measured in 1982 was fit to all 1,629 people. It does not
+        say the model for quitting was refit.
+      implemented: >
+        Program 12.7 refits the quitting model on all 1,629 people (data = nhefs), not the 1,566
+        used for the headline.
+      impact: Small. The censoring-weighted estimate is 3.50 vs 3.44.
+      src: [S1, S2]
+    - topic: Input file
+      described: "The book's site provides nhefs.csv, NHEFS.xls and nhefs.dta."
+      implemented: >
+        chapter12.R reads "XXXX/nhefs.xls" with readxl; other chapters point to a contributor's
+        local Windows path.
+      impact: None for the numbers; reproducers must edit the path.
+      src: [S2, S5]
+    - topic: Year labels
+      described: "Baseline visits ran 1971–75 (§12.1)."
+      implemented: >
+        Columns are named wt71 and wt82_71, and chapter15.R labels groups "Quit Smoking 1971-1982".
+      impact: Cosmetic, but readers of the code may assume a fixed 11-year gap.
+      src: [S1, S3, S5]
+
+spec:
+  estimand:
+    population: >
+      NHEFS participants aged 25–74 who smoked at the 1971–75 baseline visit, met the book's
+      completeness restrictions, and had weight measured at the 1982 follow-up.
+    exposure: Reported having quit smoking by the 1982 follow-up (qsmk = 1) vs not.
+    time_zero: Baseline visit, 1971–75.
+    variable: Weight at follow-up minus weight at baseline, kg (wt82_71).
+    intercurrent_events: >
+      Death or loss to follow-up before 1982 excludes the person from treatment classification
+      (Fine Point 12.1); 63 eligible people lack a 1982 weight and are excluded from the headline.
+    summary: >
+      Difference in IP-weighted means, E[Y^{a=1}] − E[Y^{a=0}], kg; robust 95% interval.
+  parameters:
+    - {name: weights, value: stabilized, meaning: "Pr[A]/Pr[A|L] for quitters, (1−Pr[A])/(1−Pr[A|L]) otherwise"}
+    - {name: confounders, value: 9, meaning: "sex, race, age, education, intensity, duration, exercise, activity, weight"}
+    - {name: variance, value: robust, meaning: "GEE independence working correlation (R), HC0 (Python)"}
+  lineage:
+    - name: nhefs.csv
+      role: One row per eligible person; baseline traits, qsmk, wt71, wt82
+      grain: person
+      src: S3
+    - name: chapter12.R
+      role: Authors' code for Programs 12.1–12.7
+      grain: person → two weighted means
+      src: S2
+    - name: examples/nhefs-ipw/analysis.py
+      role: Python reproduction of Programs 12.1–12.3 and 12.7
+      grain: person → estimates
+      src: S4
+  code:
+    - purpose: Stabilized weights and the weighted model (authors' R, Program 12.3)
+      lang: r
+      src: S2
+      excerpt: |
+        pd.qsmk <- predict(denom.fit, type = "response")
+        numer.fit <- glm(qsmk~1, family = binomial(), data = nhefs.nmv)
+        pn.qsmk <- predict(numer.fit, type = "response")
+        nhefs.nmv$sw <- ifelse(nhefs.nmv$qsmk == 0, ((1-pn.qsmk)/(1-pd.qsmk)),
+                            (pn.qsmk/pd.qsmk))
+        msm.sw <- geeglm(wt82_71 ~ qsmk, data=nhefs.nmv, weights=sw, id=seqn,
+                        corstr="independence")
+    - purpose: The same estimate in Python
+      lang: python
+      src: S4
+      excerpt: |
+        sw = np.where(unc.qsmk == 1, pn / p, (1 - pn) / (1 - p))
+        fit = smf.wls("wt82_71 ~ qsmk", df, weights=weights).fit(cov_type="HC0")
+  reproduce:
+    steps:
+      - "python examples/fetch_data.py nhefs-ipw (downloads and checks the data, R code and book)."
+      - "python examples/nhefs-ipw/analysis.py (writes results/estimates.csv and results/weights.csv)."
+    receipts:
+      - "2026-10-07: stabilized IPW 3.441 (2.411, 4.470); book 3.4 (2.4, 4.5). Weights 0.331–4.298, mean 0.999."
+      - "2026-10-07: unadjusted 2.541 (1.656, 3.425), book 2.5 (1.7, 3.4); Program 12.7 3.496 (2.466, 4.527), book 3.5 (2.5, 4.5)."
+    tests: "Reproduced figures are compared with the book's text by hand; see the receipts."
+
+glossary:
+  - term: inverse-probability weighting
+    aliases: [IP weighting, IPW, reweighting, reweighted]
+    plain: >
+      Counting each person more or less so that the groups being compared look alike on measured
+      traits. People whose choice was unusual for someone like them count more.
+  - term: average treatment effect
+    aliases: [ATE]
+    plain: The average difference if everyone had quit compared with if nobody had quit.
+  - term: stabilized weights
+    plain: A version of the weights scaled to average about 1, which usually gives a tighter range.
+  - term: 95% range
+    aliases: [95% interval, confidence interval]
+    plain: >
+      The values that fit the data well, given random noise and the model. It does not cover
+      traits nobody measured.
+  - term: robust variance
+    aliases: [sandwich]
+    plain: A way of computing the range that stays valid when people are counted with different weights.
+
+quiz:
+  - kind: verbatim
+    q: "The headline is 3.4 kg. Which statement is right?"
+    options:
+      - "Quitters gained 3.4 kg on average."
+      - "Quitting added about 3.4 kg of gain, averaged over everyone in the study, after balancing nine traits."
+      - "Every smoker who quits gains 3.4 kg."
+    answer: 1
+    why: Quitters gained about 4.5 kg; 3.4 kg is the gap after reweighting, and it is an average.
+  - kind: gist
+    q: "What would make this number wrong as a causal effect?"
+    options:
+      - "A trait that drives both quitting and weight gain but is not among the nine."
+      - "Using stabilized instead of plain weights."
+    answer: 0
+    why: Reweighting only balances measured traits. Stabilized and plain weights give the same answer here.
+  - kind: transfer
+    q: "A participant quit in 1980 but missed the 1982 weigh-in. Is she in the headline?"
+    options: ["Yes, as a quitter", "No, she is left out", "Yes, as a non-quitter"]
+    answer: 1
+    why: The headline uses only the 1,566 people weighed in 1982; Program 12.7 reweights to account for the 63 who were not.
+
+changelog:
+  - {date: "2026-08-19", change: "Book version used for the cited text and figures."}
+  - {date: "2026-10-07", change: "Metric card written from nhefs.csv and chapter12.R; four discrepancies recorded."}
+
+sources:
+  - {id: S1, path: "examples/nhefs-ipw/data/hernanrobins_WhatIf_19aug26.pdf", note: "Hernán & Robins, Causal Inference: What If, chapter 12 (§12.1–12.3, 12.6, Fine Point 12.1)"}
+  - {id: S2, path: "examples/nhefs-ipw/data/chapter12.R", lines: "9-16, 51-76, 92-122, 231-292"}
+  - {id: S3, path: "examples/nhefs-ipw/data/nhefs.csv", note: "1,629 rows; downloaded from miguelhernan.org/whatifbook"}
+  - {id: S4, path: "examples/nhefs-ipw/analysis.py", lines: "22-77", note: "Outputs in examples/nhefs-ipw/results/"}
+  - {id: S5, path: "examples/nhefs-ipw/data/chapter15.R", lines: "11, 82-83"}

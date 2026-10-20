@@ -1,0 +1,192 @@
+{
+  "status": "executed",
+  "goal": "Prove the metric-card skill turns an unseen analysis into an accurate, discrepancy-finding, non-specialist-readable card that beats a no-skill baseline, and is easy to use from a one-line request",
+  "targets": [
+    {
+      "path": "SKILL.md",
+      "kind": "file",
+      "sha256": "eab824682eeb58aa7f6961c2c2b549b52babe68fe64d4bdb925ad22e1fd436bb"
+    }
+  ],
+  "conditions": {
+    "no_skill": "Fresh general-purpose agent; same folder, same permissions; asked to write a general-audience metric definition document with layered drill-down and a reproducible spec (Markdown). No SKILL.md, no mcard.",
+    "current_skill": "SKILL.v1.md (sha256 eab82468…) + mcard tool. Train evidence = the two pilot card runs (two internal product analyses) graded by Bob-side audit; dev evidence = syn-a.",
+    "manual_revision": "SKILL.v2 (revised from v1 train failures) + mcard tool; run on dev (syn-a) then frozen and run once on final holdout."
+  },
+  "splits": {
+    "train": [
+      "pilot-1 (internal product analysis, cohort retention; withheld)",
+      "pilot-2 (internal product analysis, weighted engagement effect; withheld)"
+    ],
+    "selection": [
+      "syn-a (fixtures/syn-a, key keys/syn-a.key.md)"
+    ],
+    "final_holdout": [
+      "syn-b (fixtures/syn-b, key keys/syn-b.key.md)",
+      "real-holdout (internal product analysis; definition-only, no results; withheld)"
+    ]
+  },
+  "case_required_fields": [
+    "id",
+    "task_family",
+    "prompt",
+    "expected_observation",
+    "assertions"
+  ],
+  "results": [
+    {
+      "case": "syn-a",
+      "condition": "no_skill",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "4/5",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "2/3"
+    },
+    {
+      "case": "syn-a",
+      "condition": "v1",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "4/5",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "3/3",
+      "A7": true
+    },
+    {
+      "case": "syn-a",
+      "condition": "v2",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "4/5",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "2.5/3",
+      "A7": true
+    },
+    {
+      "case": "syn-a",
+      "condition": "v3",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "5/5",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "3/3",
+      "A7": true
+    },
+    {
+      "case": "syn-b",
+      "condition": "no_skill",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "4/4",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "1.5/3"
+    },
+    {
+      "case": "syn-b",
+      "condition": "v3",
+      "A1": true,
+      "A2": "8/8",
+      "A3": "4/4",
+      "A4": true,
+      "A5": true,
+      "A6_reader": "3/3",
+      "A7": true
+    },
+    {
+      "case": "real-holdout",
+      "condition": "no_skill",
+      "verified": 23,
+      "wrong": 1,
+      "unverifiable": 1,
+      "fabricated": 0,
+      "real_gaps": "3/3"
+    },
+    {
+      "case": "real-holdout",
+      "condition": "v3",
+      "verified": 23,
+      "wrong": 1,
+      "unverifiable": 1,
+      "fabricated": 0,
+      "real_gaps": "3/3",
+      "A7": true
+    },
+    {
+      "grader_fault_injection": "fault-injected syn-a failed A1/A4; fault-injected syn-b failed A1/A4/A5; answer-key doc passed all"
+    }
+  ],
+  "routing_evidence": "Actual native-host selection trace, not TRIGGER/SKIP classification.",
+  "second_host": null,
+  "frozen_at": "2026-10-04T20:55Z (before any evaluation run)",
+  "observable_outcome": "Given an unseen analysis folder and a one-line request, the produced artifact states the implemented metric correctly, surfaces planted doc-vs-code discrepancies, does not over-claim, is understood by a naive reader from the first layer alone, and lints/renders without manual help.",
+  "cases": [
+    {
+      "id": "syn-a",
+      "task_family": "single-rate, doc-vs-code traps, causal bait",
+      "prompt": "Make a metric card for the headline number in <fixtures/syn-a>. Follow <SKILL.md>.",
+      "expected_observation": "Headline 14.30%; rules R1-R8; discrepancies D1-D5; no causal claim",
+      "assertions": [
+        "A1 headline value+unit correct",
+        "A2 >=7/8 key rules stated as implemented",
+        "A3 >=4/5 planted discrepancies surfaced",
+        "A4 zero fabricated facts",
+        "A5 no causal over-claim; Feb comparator flagged unverifiable or omitted",
+        "A6 naive reader (layer 1 only) answers Q1-Q3: >=2 correct and Q3 correct",
+        "A7 skill conditions: mcard lint 0 errors and build succeeds without human help"
+      ]
+    },
+    {
+      "id": "syn-b",
+      "task_family": "randomized A/B, post-randomization filtering traps",
+      "prompt": "same one-liner",
+      "expected_observation": "Headline +0.21 days [0.05,0.37]; R1-R8; D1-D4; claim strength below clean causal or prominently caveated; no generalization to all new users",
+      "assertions": [
+        "A1",
+        "A2 >=7/8",
+        "A3 >=3/4",
+        "A4",
+        "A5 no clean-causal-for-all-users claim",
+        "A6",
+        "A7"
+      ]
+    },
+    {
+      "id": "real-holdout",
+      "task_family": "real, definition-only (queries never executed)",
+      "prompt": "same one-liner",
+      "expected_observation": "Definition-only card (no invented numbers); denominators per measure correct per README/SQL; inclusive UTC window; independent auditor verifies exact claims against sources",
+      "assertions": [
+        "A1 no fabricated result numbers",
+        "A2 auditor: >=90% of exact claims verified, 0 wrong",
+        "A3 any doc-vs-code gaps found are real (0 false discrepancies)",
+        "A7"
+      ]
+    }
+  ],
+  "grader": {
+    "type": "independent agent with answer key (synthetic) or source access (real)",
+    "fault_injection": "Before trusting grades: (a) grader must FAIL a copy of a passing artifact with 3 injected errors (wrong headline, window flipped to 30 days, discrepancy section deleted); (b) grader must PASS the answer key restated as a doc. Both directions required."
+  },
+  "limits": {
+    "authoring_runs_max": 8,
+    "grader_runs_max": 10,
+    "reader_runs_max": 8,
+    "skill_rewrites_max": 2,
+    "wall_clock_max": "2h",
+    "spend": "unknown per-call; bounded by run caps"
+  },
+  "pass_rule": "Skill condition passes a case if all its assertions pass. Skill beats baseline if it passes strictly more assertions summed over cases, with no assertion where baseline passes and skill fails on A4/A5 (safety-critical).",
+  "frozen_candidate": {
+    "file": "SKILL.v3.md",
+    "sha256": "875cd7e9e1a103fc5656720e53550674d832bf0a62c96f8aaf14aeaba552d038",
+    "frozen_at": "before any holdout run",
+    "rewrites_used": 2
+  },
+  "_publication_note": "Public copy, 2026-10-07: the real-analysis case and pilot paths are withheld; syn-a and syn-b are complete."
+}

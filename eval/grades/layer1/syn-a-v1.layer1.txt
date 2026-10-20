@@ -1,0 +1,18 @@
+1 The gist · for everyone
+What share of people who started a PixelPress Pro mobile free trial in the March cohort became paying users?
+14.3%
+mobile trial users who converted to paid
+Among users whose first PixelPress Pro mobile trial started from 2 to 9 March 2026, 14.3% had a positive first charge from trial day 0 through day 14.
+6,894 of 48,210 users in the implemented March cohort had a qualifying charge.
+≈About 143 in every 1,000 trial users had a positive first charge in the implemented window.        
+What kind of claim: Describes a level. This number describes what happened in one group. It does not compare groups or explain why.
+        Divide users with a qualifying charge by all users in the implemented trial cohort.
+✓ Safe to say
+"In the implemented March mobile cohort, 14.3% of PixelPress Pro trial users converted to paid."
+✗ Not this
+"The new onboarding caused a 1.4-point lift," or "this is a 30-day conversion rate."      
+! Before you repeat it
+The SQL uses a 14-day parameter and includes trials through 9 March, while the prose says 30 days and through 8 March.
+      2Who exactly is counted, and when?Follow one user through the rules
+      3What could make this misleading?5 caveats · 4 common misreadings
+      4How would I rebuild it?Exact rules, data, code · 5 doc-vs-code gaps

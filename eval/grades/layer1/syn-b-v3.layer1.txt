@@ -1,0 +1,19 @@
+1 The gist · for everyone
+Did users assigned to Home v2 have more active app days after assignment than users assigned to control?
++0.21 days
+more active days per treatment user
+Plausible range +0.05 days to +0.37 days        
+Among users kept by the saved analysis, Home v2 users had 0.21 more active days than control users in days 1-28 after they were assigned.
+Control users averaged 6.42 active days; treatment users averaged 6.63.
+≈For every 100 users in the analysis table, Home v2 adds about 21 active user-days over the 28-day follow-up window.        
+What kind of claim: Shows a link. Groups are compared, but nothing rules out other differences between them. Treat it as a link, not a cause.
+        Subtract the control average from the treatment average.
+✓ Safe to say
+"In the saved analysis, treatment users averaged 0.21 more active days than control users over days 1-28 after assignment."
+✗ Not this
+"Home v2 caused all new users to be active 0.21 more days per month."      
+! Before you repeat it
+The query is not pure intent-to-treat: it keeps only users joined to an exposure row, excludes China, and drops users with zero recorded activity days in the outcome window.
+      2Who exactly is counted, and when?Follow one user through the rules
+      3What could make this misleading?4 caveats · 4 common misreadings
+      4How would I rebuild it?Exact rules, data, code · 4 doc-vs-code gaps

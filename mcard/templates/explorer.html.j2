@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ c.title }} · Metric card</title>
+<meta name="description" content="{{ c.gist.sentence }}">
+<style>{{ css }}</style>
+</head>
+<body class="explorer">
+<a class="skip" href="#gist">Skip to the gist</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Metric cards</a> <span aria-hidden="true">/</span> <span>{{ c.id }}</span></div>
+    <h1>{{ c.title }}</h1>
+    {% if c.subtitle %}<p class="subtitle">{{ c.subtitle }}</p>{% endif %}
+    <ul class="meta">
+      <li><span class="pill status-{{ c.status }}">{{ c.status | replace('-', ' ') }}</span></li>
+      {% if c.owner %}<li>Owner: {{ c.owner }}</li>{% endif %}
+      {% if c.updated %}<li>Updated {{ c.updated }}</li>{% endif %}
+      {% if c.results.as_of %}<li>Data as of {{ c.results.as_of }}</li>{% endif %}
+      <li><a href="{{ c.id }}.label.html">One-page label</a></li>
+      <li><a href="{{ c.id }}.methods.html">Methods section</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Depth">
+  <div class="wrap rail-inner">
+    <span class="rail-title">Depth</span>
+    <ol>
+      <li><a href="#gist" data-level="1"><b>1</b> The gist <small>{{ minutes.gist }} min</small></a></li>
+      <li><a href="#build" data-level="2"><b>2</b> How it's built <small>{{ minutes.build }} min</small></a></li>
+      <li><a href="#mind" data-level="3"><b>3</b> Keep in mind <small>{{ minutes.mind }} min</small></a></li>
+      <li><a href="#reproduce" data-level="4"><b>4</b> Reproduce it <small>{{ minutes.reproduce }} min</small></a></li>
+      <li class="rail-extra"><a href="#check">Check yourself</a></li>
+      <li class="rail-extra"><a href="#glossary">Glossary</a></li>
+    </ol>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</nav>
+
+<main>
+{# ============================================================ LEVEL 1 #}
+{{ gl.section('gist') }}
+<section id="gist" class="level level-1" aria-labelledby="gist-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">1</span> The gist · for everyone</p>
+    <h2 id="gist-h" class="question">{{ c.question }}</h2>
+    <div class="gist-grid">
+      <div class="gist-main">
+        {% if measured %}
+        <div class="headline" aria-label="Headline result">
+          <div class="hl-number">{{ headline }}</div>
+          <div class="hl-label">{{ gl(c.gist.headline.label) }}</div>
+          {% if headline_range %}<div class="hl-range"><span>Plausible range</span> {{ headline_range }}</div>{% endif %}
+        </div>
+        {% else %}
+        <div class="headline not-run" aria-label="Not measured yet">
+          <div class="hl-number">Not measured yet</div>
+          <div class="hl-label">This card defines the metric. No result has been produced.</div>
+        </div>
+        {% endif %}
+        <p class="lede">{{ gl(c.gist.sentence) }}</p>
+        {% if c.gist.headline and c.gist.headline.context %}<p class="context">{{ gl(c.gist.headline.context) }}</p>{% endif %}
+        {% if c.gist.frequency %}<p class="frequency"><span class="icon" aria-hidden="true">≈</span>{{ gl(c.gist.frequency) }}</p>{% endif %}
+        {% if claim %}
+        <div class="claim claim-{{ c.gist.claim_strength }}">
+          <div class="claim-meter" aria-hidden="true">
+            {% for k in ['descriptive','associational','quasi-causal','causal'] %}<span class="{{ 'on' if loop.index0 <= ['descriptive','associational','quasi-causal','causal'].index(c.gist.claim_strength) }}"></span>{% endfor %}
+          </div>
+          <div><strong>What kind of claim: {{ claim[0] }}.</strong> {{ claim[1] }}</div>
+        </div>
+        {% endif %}
+      </div>
+      <figure class="gist-fig">
+        {{ chart }}
+        <figcaption>{% if not measured %}When each part of the metric is measured, relative to {{ g.anchor.label | default('time zero') | lc_first }}.{% elif g.comparison %}{{ gl(g.comparison.plain) }}{% else %}{{ gl(g.aggregate.plain) }}{% endif %}{% if g.comparison and g.comparison.kind == 'difference_in_differences' %} {% set ser = card.did_series() %}<span class="muted">Dashed line: where {{ ser[1] }} would have ended if it had changed as much as {{ ser[0] }}. The axis does not start at zero.</span>{% endif %}</figcaption>
+      </figure>
+    </div>
+
+    <div class="trio">
+      <div class="say"><h3><span aria-hidden="true">✓</span> Safe to say</h3><p>{{ gl(c.gist.reading.say) }}</p></div>
+      {% if c.gist.reading.dont_say %}<div class="dont"><h3><span aria-hidden="true">✗</span> Not this</h3><p>{{ gl(c.gist.reading.dont_say) }}</p></div>{% endif %}
+      <div class="caveat"><h3><span aria-hidden="true">!</span> Before you repeat it</h3><p>{{ gl(c.gist.key_caveat) }}</p></div>
+    </div>
+
+    <div class="deeper" aria-label="Go deeper">
+      <a href="#build"><span>2</span><b>Who exactly is counted, and when?</b><small>Follow one {{ g.unit.singular }} through the rules</small></a>
+      <a href="#mind"><span>3</span><b>What could make this misleading?</b><small>{{ c.fine_print.caveats | length }} caveats · {{ c.fine_print.misreadings | length }} common misreadings</small></a>
+      <a href="#reproduce"><span>4</span><b>How would I rebuild it?</b><small>Exact rules, data, code{% if c.fine_print.discrepancies %} · {{ c.fine_print.discrepancies | length }} doc-vs-code gaps{% endif %}</small></a>
+    </div>
+  </div>
+</section>
+
+{# ============================================================ LEVEL 2 #}
+{{ gl.section('build') }}
+<section id="build" class="level level-2" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">2</span> How it's built · for the curious</p>
+    <h2 id="build-h">How the number is made</h2>
+
+    {% if c.example %}
+    <article class="example">
+      <h3>Follow one {{ g.unit.singular }}: {{ c.example.name }}</h3>
+      {% if c.example.intro %}<p>{{ gl(c.example.intro) }}</p>{% endif %}
+      <figure>{{ example_tl }}</figure>
+      <ol class="events">
+        {% for e in c.example.events %}
+        <li class="{{ 'counts' if e.counts }}"><span class="num">{{ loop.index }}</span><span class="when">day {{ e.at }}</span> {{ gl(e.label) }}{% if e.counts %} <em class="tag">counts</em>{% endif %}</li>
+        {% endfor %}
+      </ol>
+      <p class="outcome"><strong>Result:</strong> {{ gl(c.example.outcome) }}</p>
+    </article>
+    {% endif %}
+
+    <p class="lead-in">Now the general rule, one step at a time. Each step has the plain version, with the exact version one click away.</p>
+    <div class="scrolly">
+      <ol class="steps">
+      {% for s in steps %}
+        <li class="step" id="step-{{ s.id }}" data-step="{{ loop.index0 }}">
+          <p class="kicker">Step {{ s.n }} · {{ s.kicker }}</p>
+          <h3>{{ s.title }}</h3>
+          {% if s.plain %}<p>{{ gl(s.plain) }}</p>{% endif %}
+          {% if s.windows %}
+          <ul class="windows">{% for w in s.windows %}<li><span class="swatch role-{{ w.role }}" aria-hidden="true"></span><b>{{ w.label }}</b>: {{ gl(w.plain) }} <span class="muted">({{ w | wrange }})</span></li>{% endfor %}</ul>
+          {% endif %}
+          {% if s.measures %}
+          <p class="also">Also measured the same way:</p>
+          <ul class="measures">{% for m in s.measures %}<li><b>{{ m.label }}</b>: {{ gl(m.plain) }}</li>{% endfor %}</ul>
+          {% endif %}
+          {% if s.formula %}<p class="formula">{{ s.formula }}</p>{% endif %}
+          {% if s.worked %}<p class="worked">With the real numbers: <code>{{ s.worked }}</code></p>{% endif %}
+          {% if s.target %}<p class="target"><b>Whose effect?</b> {{ targets[s.target] }}.</p>{% endif %}
+          {% if s.gaps %}<p class="gaps"><b>Not covered by this range:</b> {{ gl(s.gaps) }}</p>{% endif %}
+          {% if s.exact %}
+          <details class="exact"><summary>Exactly</summary>
+            <p>{{ s.exact | inline }}</p>
+            {% for src in s.src %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}
+          </details>
+          {% endif %}
+          <div class="step-fig">{% include "_figure.html.j2" %}</div>
+        </li>
+      {% endfor %}
+      </ol>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+
+    <aside class="literal">
+      <h3>The same definition, assembled mechanically from the spec</h3>
+      <p class="note">Generated from the structured definition, not written by hand. If it disagrees with the summary above, the summary is wrong.</p>
+      <ol>{% for line in literal %}<li>{{ line }}</li>{% endfor %}</ol>
+    </aside>
+  </div>
+</section>
+
+{# ============================================================ LEVEL 3 #}
+{{ gl.section('mind') }}
+<section id="mind" class="level level-3" aria-labelledby="mind-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">3</span> Keep in mind · before you act on it</p>
+    <h2 id="mind-h">What could make this misleading</h2>
+
+    <div class="maturity maturity-{{ maturity.status }}">
+      <strong>{{ {'ok': 'Complete', 'immature': 'Still moving', 'unknown': 'Completeness not stated', 'n/a': 'Completeness'}[maturity.status] }}.</strong>
+      {{ maturity.text }}
+    </div>
+
+    <h3 class="sub">Caveats</h3>
+    <div class="legend">{% for k, v in effects.items() %}<span><b class="fx fx-{{ k }}">{{ v[0] }}</b> {{ v[1] }}</span>{% endfor %}</div>
+    <div class="caveats">
+      {% for cv in caveats_sorted %}
+      <article class="cav sev-{{ cv.severity or 'medium' }}">
+        <b class="fx fx-{{ cv.effect }}" title="{{ effects[cv.effect][1] }}">{{ effects[cv.effect][0] }}</b>
+        <div>
+          {% if cv.title %}<h4>{{ cv.title }}</h4>{% endif %}
+          <p>{{ gl(cv.text) }}</p>
+          <p class="cav-meta">{{ effects[cv.effect][1] }}{% if cv.severity %} · {{ cv.severity }} importance{% endif %}{% for src in card.src_list(cv.src) %} <span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <h3 class="sub">Common misreadings</h3>
+    <table class="misread">
+      <thead><tr><th scope="col">Tempting, but wrong</th><th scope="col">Accurate</th></tr></thead>
+      <tbody>{% for m in c.fine_print.misreadings %}<tr><td>{{ gl(m.wrong) }}</td><td>{{ gl(m.right) }}</td></tr>{% endfor %}</tbody>
+    </table>
+
+    {% if c.results.sensitivity %}
+    <h3 class="sub">Same question, other reasonable choices</h3>
+    <p class="note">Each row reruns the analysis with one choice changed. If the rows disagree a lot, the headline depends on that choice.</p>
+    <figure>{{ sens }}</figure>
+    <ul class="sens-notes">{% for r in c.results.sensitivity if r.note %}<li><b>{{ r.label }}:</b> {{ gl(r.note) }}</li>{% endfor %}</ul>
+    {% endif %}
+
+    {% if c.fine_print.judgment_calls %}
+    <h3 class="sub">Judgment calls</h3>
+    <div class="calls">
+      {% for j in c.fine_print.judgment_calls %}
+      <article>
+        <h4>{{ j.decision }}</h4>
+        <p><b>Chose:</b> {{ gl(j.choice) }}</p>
+        {% if j.alternatives %}<p><b>Could have chosen:</b> {{ gl(j.alternatives) }}</p>{% endif %}
+        {% if j.why %}<p><b>Why:</b> {{ gl(j.why) }}</p>{% endif %}
+        {% if j.impact %}<p><b>What it changes:</b> {{ gl(j.impact) }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if c.results.other_measures %}
+    <h3 class="sub">Related results</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Measure</th><th scope="col">Values</th><th scope="col">Difference / estimate</th></tr></thead>
+      <tbody>
+      {% for om in c.results.other_measures %}
+        <tr><th scope="row">{{ om.label }}</th>
+          <td>{% for x in om.cells or [] %}<div>{{ x.label or card.groups.get(x.group, {}).get('label', x.group) }}: <b>{{ x.value }}</b>{% if om.unit in ['percent'] %}%{% endif %}</div>{% endfor %}</td>
+          <td>{% if om.estimate %}{{ om.estimate.value }}{% if om.estimate.low is defined %} <span class="muted">[{{ om.estimate.low }}, {{ om.estimate.high }}]</span>{% endif %}{% if om.unit and om.unit != 'percent' %} {{ om.unit }}{% elif om.unit == 'percent' %} points{% endif %}{% else %}–{% endif %}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</section>
+
+{# ============================================================ LEVEL 4 #}
+{{ gl.section('reproduce') }}
+<section id="reproduce" class="level level-4" aria-labelledby="rep-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">4</span> Reproduce it · for specialists</p>
+    <h2 id="rep-h">The exact specification</h2>
+    <div class="actions">
+      <a class="btn" href="{{ yaml_uri }}" download="{{ yaml_name }}">Download the spec (YAML)</a>
+      <button class="btn ghost" type="button" data-copy="#spec-yaml">Copy spec</button>
+      <a class="btn ghost" href="{{ c.id }}.methods.html">Methods section</a>
+    </div>
+    <textarea id="spec-yaml" hidden>{{ card.yaml_text }}</textarea>
+
+    <h3 class="sub">Estimand</h3>
+    <table class="kv">
+      {% set e = c.spec.estimand %}
+      <tr><th scope="row">Population</th><td>{{ e.population | inline }}</td></tr>
+      {% if e.exposure %}<tr><th scope="row">Exposure / contrast</th><td>{{ e.exposure | inline }}</td></tr>{% endif %}
+      {% if e.time_zero %}<tr><th scope="row">Time zero</th><td>{{ e.time_zero | inline }}</td></tr>{% endif %}
+      <tr><th scope="row">Variable</th><td>{{ e.variable | inline }}</td></tr>
+      {% if e.intercurrent_events %}<tr><th scope="row">Intercurrent events</th><td>{{ e.intercurrent_events | inline }}</td></tr>{% endif %}
+      <tr><th scope="row">Summary measure</th><td>{{ e.summary | inline }}</td></tr>
+      {% if g.comparison and g.comparison.target %}<tr><th scope="row">Target</th><td>{{ g.comparison.target }}: {{ targets[g.comparison.target] }}</td></tr>{% endif %}
+    </table>
+
+    {% if c.fine_print.discrepancies %}
+    <h3 class="sub">Where the description and the code disagree</h3>
+    <div class="discrep">
+      {% for d in c.fine_print.discrepancies %}
+      <article>
+        <h4>{{ d.topic }}</h4>
+        <div class="dv"><div><span>Described</span><p>{{ d.described | inline }}</p></div><div><span>Implemented</span><p>{{ d.implemented | inline }}</p></div></div>
+        {% if d.impact %}<p class="impact"><b>Impact:</b> {{ d.impact | inline }}</p>{% endif %}
+        {% for src in card.src_list(d.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h3 class="sub">Rules as implemented</h3>
+    <table class="rules">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Exact rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+      {% for p in g.population %}<tr><th scope="row">Eligibility {{ loop.index }}{% if p.n_after %}<br><span class="muted">{{ '{:,}'.format(p.n_after) }} remain</span>{% endif %}</th><td>{{ (p.exact or p.plain) | inline }}</td><td>{% for src in card.src_list(p.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>{% endfor %}
+      <tr><th scope="row">Time zero</th><td>{{ (g.anchor.exact or g.anchor.plain) | inline }}</td><td>{% for src in card.src_list(g.anchor.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>
+      {% for w in g.windows %}<tr><th scope="row">{{ w.label }}<br><span class="muted">[{{ w.start }}, {{ w.end }}) {{ w.unit }}s</span></th><td>{{ (w.exact or w.plain) | inline }}</td><td>{% for src in card.src_list(w.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>{% endfor %}
+      {% for m in g.measures %}<tr><th scope="row">{{ m.label }}<br><span class="muted">{{ m.kind }}</span></th><td>{{ (m.exact or m.plain) | inline }}</td><td>{% for src in card.src_list(m.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>{% endfor %}
+      <tr><th scope="row">Aggregate</th><td>{{ (g.aggregate.exact or g.aggregate.plain) | inline }}</td><td>{% for src in card.src_list(g.aggregate.src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>
+      {% for key in ['comparison','adjustment','uncertainty'] if g[key] %}<tr><th scope="row">{{ key | capitalize }}</th><td>{{ (g[key].exact or g[key].plain) | inline }}{% if g[key].balances_on %}<br><b>Balances on:</b> {{ g[key].balances_on | join(', ') }}{% endif %}{% if g[key].diagnostics %}<br><b>Diagnostics:</b> {{ g[key].diagnostics | inline }}{% endif %}</td><td>{% for src in card.src_list(g[key].src) %}<span class="src" title="{{ src.path }}">{{ src.id }}</span>{% endfor %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+
+    {% if c.results.cells %}
+    <h3 class="sub">Numbers per group</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Group</th><th scope="col">Definition</th><th scope="col">Value</th><th scope="col">n</th></tr></thead>
+      <tbody>{% for cell in c.results.cells %}{% set gr = card.groups.get(cell.group, {}) %}<tr><th scope="row">{{ gr.label or cell.group }}</th><td>{{ (gr.exact or gr.plain or '') | inline }}</td><td>{{ cell.value }}</td><td>{{ '{:,}'.format(cell.n) if cell.n else '–' }}</td></tr>{% endfor %}</tbody>
+    </table>
+    {% if recompute[1] and measured %}<p class="note">Check: <code>{{ recompute[1] }}</code> (headline {{ c.gist.headline.value }}).</p>{% endif %}
+    {% endif %}
+
+    {% if c.spec.parameters %}
+    <h3 class="sub">Parameters</h3>
+    <table class="data"><thead><tr><th scope="col">Name</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead>
+      <tbody>{% for p in c.spec.parameters %}<tr><td><code>{{ p.name }}</code></td><td>{{ p.value }}</td><td>{{ (p.meaning or '') | inline }}</td></tr>{% endfor %}</tbody></table>
+    {% endif %}
+
+    {% if c.spec.lineage %}
+    <h3 class="sub">Data lineage</h3>
+    <ol class="lineage">
+      {% for l in c.spec.lineage %}
+      <li><code>{{ l.name }}</code><p>{{ l.role | inline }}</p>{% if l.grain or l.filters %}<p class="muted">{% if l.grain %}Grain: {{ l.grain }}{% endif %}{% if l.filters %} · Filters: {{ l.filters }}{% endif %}</p>{% endif %}</li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+
+    {% if c.spec.code %}
+    <h3 class="sub">Code that defines it</h3>
+    {% for k in c.spec.code %}
+    <figure class="code">
+      <figcaption><span>{{ k.purpose }}</span>{% for src in card.src_list(k.src) %}<span class="path">{{ src.path }}{% if src.lines %}:{{ src.lines }}{% endif %}</span>{% endfor %}<button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-{{ k.lang or 'text' }}">{{ k.excerpt }}</code></pre>
+    </figure>
+    {% endfor %}
+    {% endif %}
+
+    {% if c.spec.reproduce %}
+    <h3 class="sub">Rebuild it</h3>
+    {% if c.spec.reproduce.steps %}<ol class="checklist">{% for s in c.spec.reproduce.steps %}<li><label><input type="checkbox"> {{ s | inline }}</label></li>{% endfor %}</ol>{% endif %}
+    {% if c.spec.reproduce.data_complete_through %}<p><b>Data complete through:</b> {{ c.spec.reproduce.data_complete_through }}</p>{% endif %}
+    {% if c.spec.reproduce.receipts %}<p><b>Receipts:</b></p><ul>{% for r in c.spec.reproduce.receipts %}<li>{{ r | inline }}</li>{% endfor %}</ul>{% endif %}
+    {% if c.spec.reproduce.tests %}<p><b>Tests:</b> {{ c.spec.reproduce.tests | inline }}</p>{% endif %}
+    {% endif %}
+
+    <h3 class="sub">Sources</h3>
+    <ol class="sources">{% for s in c.sources %}<li id="src-{{ s.id }}"><span class="src">{{ s.id }}</span> <code>{{ s.path }}</code>{% if s.lines %} <span class="muted">lines {{ s.lines }}</span>{% endif %}{% if s.note %} · {{ s.note }}{% endif %}</li>{% endfor %}</ol>
+
+    {% if c.changelog %}
+    <h3 class="sub">Change log</h3>
+    <ul class="changelog">{% for ch in c.changelog %}<li><time>{{ ch.date }}</time> {{ ch.change | inline }}</li>{% endfor %}</ul>
+    {% endif %}
+
+    <details class="quality">
+      <summary>Card quality checks: {{ lint_counts.error }} errors · {{ lint_counts.warn }} warnings</summary>
+      <ul>{% for f in lint %}<li class="lint-{{ f.level }}"><b>{{ f.level }}</b> <code>{{ f.code }}</code> {{ f.message }}</li>{% endfor %}</ul>
+    </details>
+  </div>
+</section>
+
+{# ============================================================ CHECK #}
+{{ gl.section('check') }}
+<section id="check" class="level level-check" aria-labelledby="check-h">
+  <div class="wrap">
+    <p class="eyebrow">Check yourself</p>
+    <h2 id="check-h">Could you explain it to a colleague?</h2>
+    {% if c.quiz %}
+    <div class="quiz">
+      {% for q in c.quiz %}
+      <fieldset class="q" data-answer="{{ q.answer }}">
+        <legend><span class="qkind">{{ {'gist': 'Big picture', 'verbatim': 'Detail', 'transfer': 'Apply it'}.get(q.kind, 'Question') }}</span>{{ q.q }}</legend>
+        {% set qi = loop.index0 %}
+        {% for o in q.options %}<label><input type="radio" name="q{{ qi }}" value="{{ loop.index0 }}"> {{ o }}</label>{% endfor %}
+        <p class="why" hidden>{{ gl(q.why, link=False) }}</p>
+      </fieldset>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="teachback">
+      <h3>Explain it back</h3>
+      <p>Write one or two sentences as if telling a colleague. Then compare with the checklist.</p>
+      <label class="sr" for="tb">Your explanation</label>
+      <textarea id="tb" rows="3" placeholder="This number is…"></textarea>
+      <button type="button" class="btn" data-reveal="#tb-check">Compare</button>
+      <div id="tb-check" hidden>
+        <p>A complete explanation mentions:</p>
+        <ul class="tb-list">{% for k, v in teachback %}<li><label><input type="checkbox"> <b>{{ k }}</b> — {{ v }}</label></li>{% endfor %}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ gl.section('glossary') }}
+<section id="glossary" class="level glossary" aria-labelledby="gl-h">
+  <div class="wrap">
+    <h2 id="gl-h">Glossary</h2>
+    <dl>
+      {% for t in c.glossary | sort(attribute='term') %}
+      <div><dt>{{ t.term }}{% if t.aliases %} <span class="muted">({{ t.aliases | join(', ') }})</span>{% endif %}</dt><dd>{{ t.plain }}{% if t.exact %}<br><code>{{ t.exact }}</code>{% endif %}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Generated from <code>{{ yaml_name }}</code> by mcard. Self-contained: works offline, prints cleanly. <button type="button" class="linkish" onclick="window.print()">Print</button></div></footer>
+
+<div class="tips">
+{% for t in c.glossary %}
+  <div class="tip" role="tooltip" id="tip-g{{ loop.index0 }}" hidden><b>{{ t.term }}</b> {{ t.plain }}</div>
+{% endfor %}
+</div>
+<script>{{ js }}</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ c.title }} · Metric label</title>
+<style>
+{{ css }}
+body.label-page{background:var(--bg); padding:30px 12px}
+.label{max-width:720px; margin:0 auto; background:var(--paper); border:3px solid var(--ink); padding:18px 22px; font-size:.92rem; line-height:1.45}
+.label h1{font:800 1.9rem/1.05 var(--sans); margin:0; letter-spacing:-.02em}
+.label .sub{color:var(--ink-2); margin:4px 0 8px}
+.label .bar{border-top:10px solid var(--ink); margin:8px 0}
+.label .thin{border-top:1px solid var(--ink); margin:6px 0}
+.label .mid{border-top:4px solid var(--ink); margin:8px 0}
+.label .big{display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.label .big b{font:800 2.6rem/1 var(--sans)}
+.label .row{display:grid; grid-template-columns:150px 1fr; gap:10px; padding:5px 0; border-bottom:1px solid var(--line-2)}
+.label .row>span:first-child{font-weight:800}
+.label .k{font-weight:800; text-transform:uppercase; font-size:.75rem; letter-spacing:.08em}
+.label ul{margin:4px 0 0; padding-left:18px}
+.label li{margin:2px 0}
+.label .fxl{font-weight:800; margin-right:4px}
+.label .fine{font-size:.78rem; color:var(--ink-2)}
+.label .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media print{ body.label-page{padding:0; background:#fff} .label{border-width:2px} .noprint{display:none} }
+</style>
+</head>
+<body class="label-page">
+<p class="noprint" style="max-width:720px;margin:0 auto 10px"><a href="{{ c.id }}.html">← Full explainer</a> · <button class="linkish" onclick="window.print()">Print / save as PDF</button></p>
+<article class="label" aria-label="Metric label">
+  <h1>Metric Facts</h1>
+  <div class="sub">{{ c.title }} · <span class="pill status-{{ c.status }}">{{ c.status }}</span></div>
+  <div class="bar"></div>
+  <div class="big"><span><span class="k">Headline</span><br>{{ c.gist.headline.label if measured else 'Definition only' }}</span><b>{{ headline }}</b></div>
+  {% if headline_range %}<div class="fine">Plausible range {{ headline_range }} · {{ g.uncertainty.method if g.uncertainty else '' }}</div>{% endif %}
+  <div class="mid"></div>
+  <p style="margin:4px 0">{{ c.gist.sentence }}</p>
+  <div class="thin"></div>
+  <div class="row"><span>Counted</span><span>{{ g.unit.plural | capitalize }} who: {% for p in g.population %}{{ p.plain | lc_first | replace('.', '') }}{{ '; ' if not loop.last else '.' }}{% endfor %}{% for p in g.population if p.n_after %}{% if loop.last %} <b>n = {{ '{:,}'.format(p.n_after) }}</b>{% endif %}{% endfor %}</span></div>
+  <div class="row"><span>Clock starts</span><span>{{ g.anchor.plain }}</span></div>
+  {% for w in g.windows %}<div class="row"><span>{{ w.label }}</span><span>{{ (w | wrange) | capitalize }} ({{ w.role }}). {{ w.plain }}</span></div>{% endfor %}
+  <div class="row"><span>What counts</span><span>{{ card.primary_measure.plain }}</span></div>
+  <div class="row"><span>Combined as</span><span>{{ g.aggregate.plain }}</span></div>
+  {% if g.comparison %}<div class="row"><span>Compared by</span><span>{{ g.comparison.plain }}{% if g.comparison.formula %} <code>{{ g.comparison.formula }}</code>{% endif %}{% if g.comparison.target %} · <b>{{ g.comparison.target }}</b>{% endif %}</span></div>{% endif %}
+  {% if g.adjustment %}<div class="row"><span>Adjusted for</span><span>{{ g.adjustment.balances_on | join(', ') if g.adjustment.balances_on else g.adjustment.plain }}</span></div>{% endif %}
+  {% if claim %}<div class="row"><span>Kind of claim</span><span><b>{{ claim[0] }}.</b> {{ claim[1] }}</span></div>{% endif %}
+  <div class="row"><span>Completeness</span><span>{{ maturity.text }}</span></div>
+  <div class="mid"></div>
+  <div class="k">Before you repeat it</div>
+  <p style="margin:4px 0 6px">{{ c.gist.key_caveat }}</p>
+  <div class="two">
+    <div><div class="k">Caveats</div><ul>{% for cv in caveats_sorted[:5] %}<li><span class="fxl">{{ effects[cv.effect][0] }}</span>{{ cv.title or cv.text[:90] }}</li>{% endfor %}</ul></div>
+    <div><div class="k">Don't say</div><ul>{% for m in c.fine_print.misreadings[:4] %}<li>{{ m.wrong }}</li>{% endfor %}</ul></div>
+  </div>
+  {% if c.fine_print.discrepancies %}<div class="thin"></div><div class="fine"><b>{{ c.fine_print.discrepancies | length }} known gap(s) between description and code:</b> {% for d in c.fine_print.discrepancies %}{{ d.topic }}{{ '; ' if not loop.last }}{% endfor %}.</div>{% endif %}
+  <div class="bar"></div>
+  <div class="fine">↑ may overstate · ↓ may understate · ± uncertainty understated · ↕ either way · ◎ limits scope. Owner: {{ c.owner or '–' }}. Updated {{ c.updated or '–' }}. Data as of {{ c.results.as_of or 'n/a' }}. Sources: {% for s in c.sources %}{{ s.id }} {{ s.path.split('/')[-1] }}{{ ', ' if not loop.last }}{% endfor %}.</div>
+</article>
+</body>
+</html>

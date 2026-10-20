@@ -1,0 +1,474 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "metric-card/1"
+title: Metric Card
+description: >
+  One metric, described once, readable at four depths. The `grammar` block is the
+  machine-readable definition every visual and the literal reading are generated from;
+  the prose blocks are the author's explanation of it. Neither may contradict the other.
+type: object
+additionalProperties: false
+required: [schema, id, title, status, question, gist, grammar, results, fine_print, spec, glossary, sources]
+
+$defs:
+  src:
+    description: "Source id(s) from `sources`, e.g. S1 or [S1, S3]."
+    oneOf:
+      - {type: string}
+      - {type: array, items: {type: string}}
+  plain_exact:
+    type: object
+    required: [plain]
+    properties:
+      plain: {type: string, description: "Plain-language version for a non-specialist."}
+      exact: {type: string, description: "Precise rule as implemented, with field names and boundaries."}
+      src: {$ref: "#/$defs/src"}
+  number:
+    type: object
+    required: [value]
+    additionalProperties: false
+    properties:
+      value: {type: number}
+      low: {type: number}
+      high: {type: number}
+      n: {type: integer}
+  offset:
+    description: "Integer offset from time zero, in the window's unit."
+    type: integer
+
+properties:
+  schema: {const: "metric-card/1"}
+  id: {type: string, pattern: "^[a-z0-9][a-z0-9_-]*$"}
+  title: {type: string}
+  subtitle: {type: string}
+  status:
+    enum: [draft, proposed, provisional, in-use, validated, superseded]
+  owner: {type: string}
+  updated: {type: string}
+  question:
+    type: string
+    description: "The decision-relevant question this number answers, in the reader's words."
+
+  gist:
+    type: object
+    additionalProperties: false
+    required: [sentence, reading, key_caveat]
+    properties:
+      sentence:
+        type: string
+        description: "One-sentence definition a non-specialist can repeat back. No undefined jargon."
+      headline:
+        description: "Omit only when the metric has not been measured yet (results.status: not_run)."
+        type: object
+        additionalProperties: false
+        required: [value, unit, label]
+        properties:
+          value: {type: number}
+          low: {type: number}
+          high: {type: number}
+          unit: {enum: [pp, percent, share, count, days, ratio, currency, other]}
+          decimals: {type: integer}
+          label: {type: string, description: "What the number is, e.g. 'extra cancel-attempt rate'."}
+          context: {type: string, description: "One line that gives the number scale."}
+      frequency:
+        type: string
+        description: "Natural-frequency restatement, e.g. 'About 4 more in every 1,000 subscribers'."
+      reading:
+        type: object
+        additionalProperties: false
+        required: [direction, say]
+        properties:
+          direction: {enum: [higher_is_better, higher_is_worse, neutral]}
+          say: {type: string, description: "A safe sentence to repeat in a meeting."}
+          dont_say: {type: string, description: "The tempting sentence that would be wrong."}
+      key_caveat:
+        type: string
+        description: "The single limitation a first-layer-only reader must not miss."
+      claim_strength:
+        enum: [descriptive, associational, quasi-causal, causal]
+        description: "How strong a claim the design supports. Drives the evidence badge."
+
+  grammar:
+    description: "The metric decomposed into ordered, typed stages."
+    type: object
+    additionalProperties: false
+    required: [unit, population, anchor, windows, measures, aggregate]
+    properties:
+      unit:
+        type: object
+        additionalProperties: false
+        required: [singular, plural]
+        properties:
+          singular: {type: string}
+          plural: {type: string}
+          plain: {type: string}
+          exact: {type: string}
+          src: {$ref: "#/$defs/src"}
+      population:
+        type: array
+        minItems: 1
+        description: "Eligibility rules applied in order. Each narrows who is counted."
+        items:
+          allOf:
+            - {$ref: "#/$defs/plain_exact"}
+            - type: object
+              properties:
+                id: {type: string}
+                n_after: {type: integer, description: "Units remaining after this rule, if known."}
+      anchor:
+        description: "Time zero: when each unit's clock starts."
+        allOf:
+          - {$ref: "#/$defs/plain_exact"}
+          - type: object
+            required: [kind]
+            properties:
+              kind: {enum: [calendar, per_unit_event]}
+              label: {type: string}
+      windows:
+        type: array
+        minItems: 1
+        items:
+          allOf:
+            - {$ref: "#/$defs/plain_exact"}
+            - type: object
+              required: [id, label, start, end, unit, role]
+              properties:
+                id: {type: string}
+                label: {type: string}
+                start: {$ref: "#/$defs/offset"}
+                end: {$ref: "#/$defs/offset", description: "Exclusive end offset."}
+                unit: {enum: [day, week, month]}
+                role: {enum: [lookback, eligibility, exposure, outcome, observation]}
+      measures:
+        type: array
+        minItems: 1
+        description: "What is computed for each unit."
+        items:
+          allOf:
+            - {$ref: "#/$defs/plain_exact"}
+            - type: object
+              required: [id, label, kind, window]
+              properties:
+                id: {type: string}
+                label: {type: string}
+                kind: {enum: [indicator, count, value]}
+                window: {type: string}
+                primary: {type: boolean}
+      aggregate:
+        description: "How unit-level measures become one number per group."
+        allOf:
+          - {$ref: "#/$defs/plain_exact"}
+          - type: object
+            required: [kind, measure]
+            properties:
+              kind: {enum: [proportion, mean, sum, ratio_of_sums]}
+              measure: {type: string}
+              numerator: {type: string}
+              denominator: {type: string}
+      groups:
+        type: array
+        description: "Cohorts, periods or arms the aggregate is computed for."
+        items:
+          allOf:
+            - {$ref: "#/$defs/plain_exact"}
+            - type: object
+              required: [id, label]
+              properties:
+                id: {type: string}
+                label: {type: string}
+                role: {enum: [treated, control, adjusted_control, baseline, comparison, focal, excluded]}
+                period: {type: string}
+                year: {type: string}
+                series:
+                  type: string
+                  description: "Name of the line this group belongs to in a before/after chart (a state, a year). Defaults to `year`."
+      comparison:
+        description: "How group numbers are contrasted. Omit for a single descriptive number."
+        allOf:
+          - {$ref: "#/$defs/plain_exact"}
+          - type: object
+            required: [kind]
+            properties:
+              kind: {enum: [difference, ratio, difference_in_differences, adjusted_difference]}
+              formula: {type: string}
+              target:
+                enum: [ATT, ATE, ATC, descriptive]
+                description: "Whose effect: those who got the exposure (ATT), everyone (ATE), or no causal target."
+      adjustment:
+        allOf:
+          - {$ref: "#/$defs/plain_exact"}
+          - type: object
+            required: [method]
+            properties:
+              method: {type: string}
+              balances_on:
+                type: array
+                items: {type: string}
+              diagnostics: {type: string}
+      uncertainty:
+        allOf:
+          - {$ref: "#/$defs/plain_exact"}
+          - type: object
+            required: [method]
+            properties:
+              method: {type: string}
+              level: {type: number}
+              known_gaps: {type: string}
+
+  results:
+    type: object
+    additionalProperties: false
+    properties:
+      status:
+        enum: [measured, not_run]
+        description: "not_run = definition only; no number has been produced yet."
+      as_of: {type: string}
+      unit:
+        enum: [pp, percent, share, count, days, ratio, currency, other]
+        description: "Unit of the values in `cells` (the per-group level, not the difference)."
+      data_complete_through: {type: string, description: "Last date with complete data (YYYY-MM-DD). Used to check that every window is fully observed."}
+      latest_anchor: {type: string, description: "Latest time zero included (YYYY-MM-DD). With data_complete_through, drives the maturity check."}
+      measure: {type: string, description: "Measure id the cells report; defaults to the primary measure."}
+      cells:
+        type: array
+        description: "Aggregate value per group (for the primary measure unless `measure` set)."
+        items:
+          type: object
+          additionalProperties: false
+          required: [group, value]
+          properties:
+            group: {type: string}
+            value: {type: number}
+            n: {type: integer}
+            note: {type: string}
+      estimate:
+        $ref: "#/$defs/number"
+      other_measures:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [measure, label]
+          properties:
+            measure: {type: string}
+            label: {type: string}
+            unit: {type: string}
+            cells:
+              type: array
+              items:
+                type: object
+                required: [group, value]
+                properties:
+                  group: {type: string}
+                  label: {type: string}
+                  value: {type: number}
+            estimate: {$ref: "#/$defs/number"}
+      sensitivity:
+        type: array
+        description: "Same estimand under defensible alternative choices."
+        items:
+          type: object
+          additionalProperties: false
+          required: [label, value]
+          properties:
+            label: {type: string}
+            value: {type: number}
+            low: {type: number}
+            high: {type: number}
+            primary: {type: boolean}
+            note: {type: string}
+            src: {$ref: "#/$defs/src"}
+
+  example:
+    description: "One concrete unit walked through the rules."
+    type: object
+    additionalProperties: false
+    required: [name, anchor_date, events, outcome]
+    properties:
+      name: {type: string}
+      intro: {type: string}
+      anchor_date: {type: string}
+      events:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [at, label]
+          properties:
+            at: {type: integer, description: "Offset from time zero, in days."}
+            label: {type: string}
+            counts: {type: boolean, description: "Whether this event counts toward a measure."}
+      outcome: {type: string}
+
+  fine_print:
+    type: object
+    additionalProperties: false
+    required: [caveats, misreadings]
+    properties:
+      judgment_calls:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [decision, choice]
+          properties:
+            decision: {type: string}
+            choice: {type: string}
+            alternatives: {type: string}
+            why: {type: string}
+            impact: {type: string}
+            src: {$ref: "#/$defs/src"}
+      caveats:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [text, effect]
+          properties:
+            title: {type: string}
+            text: {type: string}
+            effect:
+              enum: [overstates, understates, wider_uncertainty, unknown_direction, limits_scope]
+            severity: {enum: [high, medium, low]}
+            src: {$ref: "#/$defs/src"}
+      misreadings:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [wrong, right]
+          properties:
+            wrong: {type: string}
+            right: {type: string}
+      discrepancies:
+        description: "Places where a description of the metric and its implementation disagree."
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [topic, described, implemented]
+          properties:
+            topic: {type: string}
+            described: {type: string}
+            implemented: {type: string}
+            impact: {type: string}
+            src: {$ref: "#/$defs/src"}
+
+  spec:
+    type: object
+    additionalProperties: false
+    required: [estimand]
+    properties:
+      estimand:
+        description: "ICH E9(R1)-style attributes, plus time zero."
+        type: object
+        additionalProperties: false
+        required: [population, variable, summary]
+        properties:
+          population: {type: string}
+          exposure: {type: string}
+          time_zero: {type: string}
+          variable: {type: string}
+          intercurrent_events: {type: string}
+          summary: {type: string}
+      parameters:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [name, value]
+          properties:
+            name: {type: string}
+            value: {type: [string, number, boolean]}
+            meaning: {type: string}
+      lineage:
+        type: array
+        description: "Data sources in processing order."
+        items:
+          type: object
+          additionalProperties: false
+          required: [name, role]
+          properties:
+            name: {type: string}
+            role: {type: string}
+            grain: {type: string}
+            filters: {type: string}
+            src: {$ref: "#/$defs/src"}
+      code:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          required: [purpose, excerpt]
+          properties:
+            purpose: {type: string}
+            lang: {type: string}
+            excerpt: {type: string}
+            src: {$ref: "#/$defs/src"}
+      reproduce:
+        type: object
+        additionalProperties: false
+        properties:
+          steps:
+            type: array
+            items: {type: string}
+          receipts:
+            type: array
+            items: {type: string}
+          data_complete_through: {type: string}
+          tests: {type: string}
+
+  glossary:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [term, plain]
+      properties:
+        term: {type: string}
+        plain: {type: string}
+        exact: {type: string}
+        aliases:
+          type: array
+          items: {type: string}
+
+  quiz:
+    description: "Comprehension checks. Each targets a likely misreading."
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [q, options, answer, why]
+      properties:
+        kind:
+          enum: [gist, verbatim, transfer]
+          description: "gist = bottom-line meaning; verbatim = exact detail; transfer = apply the rule to a new case."
+        q: {type: string}
+        options:
+          type: array
+          minItems: 2
+          items: {type: string}
+        answer: {type: integer}
+        why: {type: string}
+
+  changelog:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [date, change]
+      properties:
+        date: {type: string}
+        change: {type: string}
+
+  sources:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: false
+      required: [id, path]
+      properties:
+        id: {type: string}
+        path: {type: string}
+        lines: {type: string}
+        note: {type: string}

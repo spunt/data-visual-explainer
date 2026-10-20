@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PixelPress Pro mobile trial conversion, March cohort · Metric card</title>
+<meta name="description" content="In the saved March mobile trial group, 14.3% of PixelPress Pro trial users had a positive charge by day 14.">
+<style>:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1b1f29; --ink-2:#4a5262; --muted:#6b7385; --line:#e3e4e0; --line-2:#d2d4ce;
+  --focal:#2650d8; --focal-soft:#e7ecfd; --base:#9aa1b0; --base-soft:#eef0f3;
+  --accent:#c2410c; --accent-soft:#fdede4; --good:#13795b; --good-soft:#e5f4ee; --bad:#b42318; --bad-soft:#fdeceb;
+  --warn:#a15c00; --warn-soft:#fff4dc;
+  --win-out:#2650d8; --win-exp:#7c3aed; --win-look:#9aa1b0;
+  --serif: "Charter","Iowan Old Style","Source Serif Pro",Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#111318; --paper:#181b22; --ink:#eceef3; --ink-2:#c3c8d3; --muted:#9aa2b2; --line:#2a2f3a; --line-2:#363c49;
+    --focal:#7d9bff; --focal-soft:#1f2a4d; --base:#7d8596; --base-soft:#232733; --accent:#ff8a4c; --accent-soft:#3a2418;
+    --good:#4cc79c; --good-soft:#15302a; --bad:#ff7b72; --bad-soft:#3a1d1d; --warn:#f2b84b; --warn-soft:#352a12;
+    --win-out:#7d9bff; --win-exp:#b79cff; --win-look:#7d8596; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+a{color:var(--focal)}
+code{font:0.88em/1.4 var(--mono); background:var(--base-soft); padding:1px 5px; border-radius:5px}
+.muted{color:var(--muted)}
+.note{color:var(--muted); font-size:.92rem}
+.skip{position:absolute; left:-999px}.skip:focus{left:12px; top:12px; background:var(--paper); padding:8px 12px; z-index:99}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+
+/* masthead */
+.masthead{padding:36px 0 22px; background:var(--paper); border-bottom:1px solid var(--line)}
+.crumbs{font-size:.85rem; color:var(--muted)} .crumbs a{color:var(--muted); text-decoration:none}
+.masthead h1{font:600 2.3rem/1.15 var(--serif); margin:.35rem 0 .3rem; letter-spacing:-.01em}
+.subtitle{margin:0; color:var(--ink-2); font-size:1.08rem}
+.meta{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--muted); font-size:.88rem; align-items:center}
+.pill{display:inline-block; padding:2px 10px; border-radius:99px; font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; background:var(--base-soft); color:var(--ink-2)}
+.status-validated,.status-in-use{background:var(--good-soft); color:var(--good)}
+.status-provisional,.status-proposed,.status-draft{background:var(--warn-soft); color:var(--warn)}
+.status-superseded{background:var(--bad-soft); color:var(--bad)}
+
+/* depth rail */
+.rail{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.rail-inner{display:flex; align-items:center; gap:14px; min-height:54px}
+.rail-title{font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+.rail ol{list-style:none; display:flex; gap:4px; margin:0; padding:0; overflow-x:auto}
+.rail a{display:flex; align-items:center; gap:7px; padding:7px 12px; border-radius:10px; text-decoration:none; color:var(--ink-2); white-space:nowrap; font-size:.92rem}
+.rail a b{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--base-soft); font-size:.78rem}
+.rail a small{color:var(--muted); font-size:.75rem}
+.rail a:hover{background:var(--base-soft)}
+.rail a.active{background:var(--focal-soft); color:var(--focal)} .rail a.active b{background:var(--focal); color:#fff}
+.rail .rail-extra a{color:var(--muted)}
+.progress{height:2px; background:transparent}.progress span{display:block; height:2px; width:0; background:var(--focal); transition:width .1s}
+
+/* levels */
+.level{padding:56px 0; border-bottom:1px solid var(--line)}
+.level-1{background:var(--paper)}
+.level-3{background:var(--paper)}
+.eyebrow{font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 6px; display:flex; align-items:center; gap:8px}
+.lvl{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper); font-weight:700; letter-spacing:0}
+.level h2{font:600 1.85rem/1.2 var(--serif); margin:0 0 22px; letter-spacing:-.01em}
+.level h2.question{font-size:1.65rem; color:var(--ink-2); font-weight:500; max-width:52ch}
+h3.sub{font:600 1.15rem/1.3 var(--sans); margin:38px 0 12px}
+
+/* gist */
+.gist-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:44px; align-items:start}
+.headline{margin:4px 0 18px}
+.hl-number{font:700 4.4rem/1 var(--serif); letter-spacing:-.03em; color:var(--focal)}
+.hl-label{font-size:1.15rem; color:var(--ink); margin-top:6px; font-weight:500}
+.hl-range{margin-top:8px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.hl-range span{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-right:6px}
+.lede{font:400 1.2rem/1.55 var(--serif); margin:0 0 12px}
+.context{color:var(--ink-2); margin:0 0 10px}
+.frequency{background:var(--base-soft); border-radius:10px; padding:10px 14px 10px 36px; margin:0 0 14px; position:relative}
+.frequency .icon{font-weight:700; color:var(--focal); position:absolute; left:14px}
+.claim{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--line-2); border-radius:12px; padding:12px 14px; font-size:.95rem}
+.claim-meter{display:flex; gap:3px; padding-top:6px}
+.claim-meter span{width:14px; height:8px; border-radius:2px; background:var(--line-2)}
+.claim-meter span.on{background:var(--ink-2)}
+.gist-fig{margin:0; background:var(--bg); border-radius:var(--r); padding:18px 16px 12px}
+.gist-fig figcaption{font-size:.9rem; color:var(--ink-2); margin-top:8px}
+.trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+.trio>div{border-radius:var(--r); padding:14px 16px}
+.trio h3{margin:0 0 6px; font-size:.8rem; text-transform:uppercase; letter-spacing:.08em}
+.trio p{margin:0}
+.say{background:var(--good-soft)} .say h3{color:var(--good)}
+.dont{background:var(--bad-soft)} .dont h3{color:var(--bad)}
+.caveat{background:var(--warn-soft)} .caveat h3{color:var(--warn)}
+.deeper{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px}
+.deeper a{display:grid; grid-template-columns:auto 1fr; gap:2px 12px; padding:14px 16px; border:1px solid var(--line-2); border-radius:var(--r); text-decoration:none; color:var(--ink); transition:border-color .15s, transform .15s}
+.deeper a:hover{border-color:var(--focal); transform:translateY(-2px)}
+.deeper span{grid-row:span 2; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--base-soft); font-weight:700}
+.deeper small{color:var(--muted)}
+
+/* figures */
+.fig{width:100%; height:auto; display:block; font-family:var(--sans); overflow:visible}
+.v-label{font-size:12.5px; fill:var(--ink-2)} .v-strong{font-weight:650; fill:var(--ink)}
+.v-tick{font-size:11px; fill:var(--muted)}
+.v-axis{stroke:var(--line-2); stroke-width:1.2} .v-grid{stroke:var(--line); stroke-width:1}
+.v-zero{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:3 3}
+.v-break{stroke:var(--muted); stroke-width:1.4; fill:none}
+.v-anchor{stroke:var(--ink); stroke-width:1.6}
+.v-win-outcome{fill:var(--win-out); fill-opacity:.16; stroke:var(--win-out); stroke-width:1.2}
+.v-win-exposure{fill:var(--win-exp); fill-opacity:.15; stroke:var(--win-exp); stroke-width:1.2}
+.v-win-look{fill:var(--win-look); fill-opacity:.16; stroke:var(--win-look); stroke-width:1.2}
+.v-dim{opacity:.35}
+.v-on-band{fill:var(--ink)}
+.v-event{fill:var(--paper); stroke:var(--ink-2); stroke-width:1.5}
+.v-event-on{fill:var(--accent); stroke:var(--accent)}
+.v-event-num{font-size:10.5px; font-weight:700; fill:var(--ink)}
+.v-event-on + .v-event-num{fill:#fff}
+.v-event-stem{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:2 3; opacity:.6}
+.v-line-base{stroke:var(--base); stroke-width:2.5}
+.v-line-focal{stroke:var(--focal); stroke-width:3.5}
+.v-line-cf{stroke:var(--focal); stroke-width:2; stroke-dasharray:6 5; opacity:.6}
+.v-dot-base{fill:var(--base)} .v-dot-focal{fill:var(--focal)} .v-dot-cf{fill:var(--paper); stroke:var(--focal); stroke-width:2}
+.v-base-text{fill:var(--muted)} .v-focal-text{fill:var(--focal)} .v-cf-text{fill:var(--focal); opacity:.75}
+.v-accent-text{fill:var(--accent)}
+.v-bracket{stroke:var(--accent); stroke-width:2; fill:none}
+.v-bar-focal{fill:var(--focal)} .v-bar-base{fill:var(--base)} .v-bar-adj{fill:var(--ink-2)} .v-bar-raw{fill:var(--base); opacity:.45}
+.v-bar-rest{fill:var(--base-soft); stroke:var(--line-2)}
+.v-qdot{fill:var(--focal); fill-opacity:.85}
+.v-whisker{stroke:var(--base); stroke-width:3; stroke-linecap:round} .v-whisker-focal{stroke:var(--focal)}
+
+/* example */
+.example{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:22px 24px; margin-bottom:36px}
+.example h3{margin:0 0 6px; font:600 1.25rem/1.3 var(--serif)}
+.example figure{margin:12px 0}
+.events{list-style:none; padding:0; margin:6px 0 10px; display:grid; gap:6px}
+.events li{display:flex; gap:10px; align-items:baseline}
+.events .num{display:inline-grid; place-items:center; min-width:22px; height:22px; border-radius:50%; border:1.5px solid var(--ink-2); font-size:.75rem; font-weight:700}
+.events li.counts .num{background:var(--accent); border-color:var(--accent); color:#fff}
+.events .when{font:600 .8rem var(--mono); color:var(--muted); min-width:58px}
+.tag{font-style:normal; font-size:.72rem; font-weight:700; text-transform:uppercase; color:var(--accent); letter-spacing:.06em}
+.outcome{background:var(--base-soft); padding:10px 14px; border-radius:10px; margin:0}
+.lead-in{color:var(--ink-2); max-width:62ch}
+
+/* scrolly */
+.scrolly{display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:40px; align-items:start}
+.steps{list-style:none; margin:0; padding:0}
+.step{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px; margin:0 0 22px; transition:border-color .2s, box-shadow .2s, opacity .2s}
+.step h3{margin:2px 0 8px; font:600 1.2rem/1.3 var(--serif)}
+.kicker{margin:0; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.windows,.measures{padding-left:0; list-style:none; display:grid; gap:6px}
+.swatch{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; background:var(--win-look); opacity:.6}
+.swatch.role-outcome,.swatch.role-observation{background:var(--win-out)} .swatch.role-exposure{background:var(--win-exp)}
+.formula{font:600 1.05rem var(--mono); background:var(--base-soft); padding:8px 12px; border-radius:8px; display:inline-block}
+.worked code{font-size:.85rem}
+.target{background:var(--focal-soft); padding:8px 12px; border-radius:8px}
+.gaps{background:var(--warn-soft); padding:8px 12px; border-radius:8px}
+details.exact{margin-top:10px; border-top:1px dashed var(--line-2); padding-top:8px}
+details.exact summary{cursor:pointer; font-weight:600; color:var(--focal); font-size:.9rem}
+details.exact p{font-size:.93rem; color:var(--ink-2)}
+.src{display:inline-block; font:600 .72rem var(--mono); background:var(--base-soft); color:var(--ink-2); border:1px solid var(--line-2); border-radius:6px; padding:0 6px; margin-right:4px; cursor:help; text-decoration:none}
+.step-fig figure{margin:14px 0 0}
+.step-fig figcaption,.stage figcaption{font-size:.85rem; color:var(--muted)}
+.stage{display:none}
+.js .scrolly .stage{display:block; position:sticky; top:84px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px; min-height:240px}
+.stage figure{margin:0}
+.js .scrolly .step .step-fig{display:none}
+.js .scrolly .step{opacity:.55}
+.js .scrolly .step.active{opacity:1; border-color:var(--focal); box-shadow:0 6px 24px -14px var(--focal)}
+.stage .fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+.flow{display:flex; flex-direction:column; align-items:stretch; gap:0; margin:0}
+.flow-box{border:1.5px solid var(--line-2); border-radius:10px; padding:10px 12px; background:var(--paper); font-size:.93rem; display:flex; flex-direction:column; gap:2px}
+.flow-start{background:var(--base-soft); font-weight:600}
+.flow-end{background:var(--focal-soft); border-color:var(--focal); color:var(--focal); font-weight:600}
+.flow-k{font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.flow-n{font:600 .85rem var(--mono); color:var(--focal)}
+.flow-arrow{height:18px; width:2px; background:var(--line-2); margin:0 auto; position:relative}
+.flow-arrow:after{content:""; position:absolute; bottom:-2px; left:-4px; border:5px solid transparent; border-top-color:var(--line-2)}
+.fraction{display:flex; align-items:center; gap:22px; margin:6px 0}
+.frac{flex:1; text-align:center}
+.frac-top,.frac-bot{display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px; color:var(--ink-2)}
+.frac b{font:700 1.5rem var(--serif); color:var(--ink)}
+.frac-bar{height:3px; background:var(--ink); border-radius:2px}
+.frac-eq{font:400 1.4rem var(--serif)} .frac-eq b{font-size:2.2rem; color:var(--focal)} .frac-eq small{display:block; font:.8rem var(--sans); color:var(--muted)}
+.chips-h{margin:0 0 6px; font-weight:600; font-size:.9rem}
+.chips{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
+.chips li{background:var(--base-soft); border-radius:99px; padding:3px 10px; font-size:.82rem}
+.literal{margin-top:26px; border-left:4px solid var(--ink-2); padding:6px 0 6px 20px}
+.literal h3{margin:0; font-size:1.05rem}
+.literal ol{color:var(--ink-2); font-size:.95rem}
+
+/* level 3 */
+.maturity{border-radius:var(--r); padding:12px 16px; margin-bottom:6px}
+.maturity-ok{background:var(--good-soft)} .maturity-immature{background:var(--bad-soft)} .maturity-unknown{background:var(--warn-soft)}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.82rem; color:var(--muted); margin-bottom:12px}
+.fx{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:7px; font-weight:800; font-size:.9rem; background:var(--base-soft); color:var(--ink-2); flex:none}
+.fx-overstates{background:var(--bad-soft); color:var(--bad)} .fx-understates{background:var(--focal-soft); color:var(--focal)}
+.fx-wider_uncertainty{background:var(--warn-soft); color:var(--warn)}
+.caveats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.cav{display:flex; gap:12px; border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.cav.sev-high{border-left:4px solid var(--bad)} .cav.sev-medium{border-left:4px solid var(--warn)} .cav.sev-low{border-left:4px solid var(--line-2)}
+.cav h4{margin:0 0 4px; font-size:1rem}
+.cav p{margin:0 0 6px}
+.cav-meta{font-size:.82rem; color:var(--muted)}
+table{border-collapse:collapse; width:100%; font-size:.94rem}
+th,td{text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--line)}
+thead th{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1.5px solid var(--line-2)}
+.misread td:first-child{color:var(--bad); text-decoration:line-through; text-decoration-color:color-mix(in srgb, var(--bad) 45%, transparent)}
+.calls{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.calls article{border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.calls h4{margin:0 0 6px} .calls p{margin:4px 0; font-size:.94rem}
+.sens-notes{font-size:.9rem; color:var(--ink-2)}
+
+/* level 4 */
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px; background:var(--ink); color:var(--paper); border:1px solid var(--ink); font:600 .9rem var(--sans); text-decoration:none; cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+.btn:hover{filter:brightness(1.1)}
+.kv th{width:200px; color:var(--ink-2)}
+.discrep{display:grid; gap:14px}
+.discrep article{border:1px solid var(--line-2); border-radius:var(--r); padding:14px 16px; background:var(--paper)}
+.discrep h4{margin:0 0 8px}
+.dv{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.dv>div{background:var(--bg); border-radius:10px; padding:10px 12px}
+.dv span{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.dv>div:last-child{background:var(--focal-soft)}
+.dv p{margin:4px 0 0; font-size:.93rem}
+.impact{font-size:.93rem; margin:10px 0 4px}
+.rules th{width:200px}
+.lineage{list-style:none; padding:0; position:relative}
+.lineage li{counter-increment:l; position:relative; padding:0 0 14px 42px}
+.lineage li:before{content:counter(l); position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; font-size:.8rem; font-weight:700}
+.lineage li:not(:last-child):after{content:""; position:absolute; left:12px; top:28px; bottom:2px; width:2px; background:var(--line-2)}
+.lineage{counter-reset:l}
+.lineage p{margin:2px 0}
+figure.code{margin:12px 0 18px; border:1px solid var(--line-2); border-radius:12px; overflow:hidden}
+figure.code figcaption{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:8px 12px; background:var(--base-soft); font-size:.85rem}
+figure.code .path{font:.78rem var(--mono); color:var(--muted)}
+figure.code .copy{margin-left:auto; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); border-radius:7px; padding:2px 10px; cursor:pointer; font-size:.8rem}
+figure.code pre{margin:0; padding:14px 16px; overflow:auto; background:var(--paper); font:.84rem/1.55 var(--mono)}
+figure.code pre code{background:none; padding:0}
+.checklist{list-style:none; padding:0} .checklist li{margin:6px 0}
+.sources{padding-left:0; list-style:none} .sources li{margin:4px 0; font-size:.9rem}
+.changelog{list-style:none; padding:0} .changelog time{font:600 .82rem var(--mono); color:var(--muted); margin-right:8px}
+details.quality{margin-top:30px; border:1px dashed var(--line-2); border-radius:12px; padding:10px 14px; font-size:.9rem}
+details.quality summary{cursor:pointer; font-weight:600}
+.lint-error b{color:var(--bad)} .lint-warn b{color:var(--warn)} .lint-info b{color:var(--muted)}
+
+/* check */
+.quiz{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+.q{border:1px solid var(--line); border-radius:var(--r); padding:16px; margin:0; background:var(--paper)}
+.q legend{font-weight:600; padding:0; margin-bottom:8px; float:left; width:100%}
+.q legend + *{clear:both}
+.qkind{display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-bottom:4px}
+.q label{display:flex; gap:8px; align-items:flex-start; padding:6px 8px; border-radius:8px; cursor:pointer}
+.q label:hover{background:var(--base-soft)}
+.q label.right{background:var(--good-soft)} .q label.wrong{background:var(--bad-soft)}
+.why{font-size:.92rem; color:var(--ink-2); border-top:1px solid var(--line); padding-top:8px}
+.teachback{margin-top:24px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:18px 20px}
+.teachback h3{margin:0 0 4px}
+.teachback textarea{width:100%; border:1px solid var(--line-2); border-radius:10px; padding:10px; font:inherit; background:var(--bg); color:var(--ink); margin:6px 0 10px}
+.tb-list{list-style:none; padding:0} .tb-list li{margin:6px 0}
+
+/* glossary */
+.glossary dl{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; margin:0}
+.glossary dt{font-weight:650} .glossary dd{margin:2px 0 0; color:var(--ink-2)}
+.term{all:unset; cursor:help; border-bottom:1.5px dotted var(--focal); color:inherit}
+.term:focus-visible{outline:2px solid var(--focal); outline-offset:2px; border-radius:2px}
+.tip{position:absolute; z-index:50; max-width:340px; background:var(--ink); color:var(--paper); padding:10px 12px; border-radius:10px; font-size:.88rem; line-height:1.45; box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.tip b{display:block; margin-bottom:2px}
+.foot{padding:28px 0 60px; color:var(--muted); font-size:.85rem}
+.linkish{all:unset; color:var(--focal); cursor:pointer; text-decoration:underline}
+
+/* index */
+.index-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:18px; padding:30px 0 60px}
+.index-card{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:10px; transition:transform .15s, box-shadow .15s}
+.index-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px -20px rgba(0,0,0,.35)}
+.index-card h2{font:600 1.25rem/1.25 var(--serif); margin:0}
+.index-card .iq{color:var(--ink-2); font-size:.95rem; margin:0}
+.index-card .hl{font:700 2.2rem/1 var(--serif); color:var(--focal)}
+.index-card .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; font-size:.9rem}
+.intro{max-width:70ch; color:var(--ink-2)}
+.layers{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 0}
+.layers div{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:.9rem}
+.layers b{display:block}
+
+@media (max-width: 900px){
+  .gist-grid,.scrolly,.trio,.deeper,.caveats,.calls,.dv,.glossary dl,.layers{grid-template-columns:1fr}
+  .js .scrolly .stage{display:none} .js .scrolly .step .step-fig{display:block} .js .scrolly .step{opacity:1}
+  .hl-number{font-size:3.4rem}
+  .rail a small{display:none}
+}
+@media print{
+  .rail,.actions,.skip,.teachback,.foot button,.stage{display:none !important}
+  body{background:#fff} .level{padding:24px 0}
+  .js .scrolly .step .step-fig{display:block !important} .js .scrolly .step{opacity:1 !important}
+  .scrolly{grid-template-columns:1fr}
+  .q .why{display:block !important}
+}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important; scroll-behavior:auto !important} }
+.headline.not-run .hl-number{font-size:2.4rem; color:var(--muted)}
+</style>
+</head>
+<body class="explorer">
+<a class="skip" href="#gist">Skip to the gist</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Metric cards</a> <span aria-hidden="true">/</span> <span>pixelpress-trial-conversion</span></div>
+    <h1>PixelPress Pro mobile trial conversion, March cohort</h1>
+<p class="subtitle">Share of mobile trial starters with a paid first charge in the SQL outcome window</p>    <ul class="meta">
+      <li><span class="pill status-provisional">provisional</span></li>
+<li>Owner: Growth analytics</li><li>Updated 2026-04-20</li><li>Data as of 2026-04-18</li>      <li><a href="pixelpress-trial-conversion.label.html">One-page label</a></li>
+      <li><a href="pixelpress-trial-conversion.methods.html">Methods section</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Depth">
+  <div class="wrap rail-inner">
+    <span class="rail-title">Depth</span>
+    <ol>
+      <li><a href="#gist" data-level="1"><b>1</b> The gist <small>1 min</small></a></li>
+      <li><a href="#build" data-level="2"><b>2</b> How it's built <small>2 min</small></a></li>
+      <li><a href="#mind" data-level="3"><b>3</b> Keep in mind <small>3 min</small></a></li>
+      <li><a href="#reproduce" data-level="4"><b>4</b> Reproduce it <small>2 min</small></a></li>
+      <li class="rail-extra"><a href="#check">Check yourself</a></li>
+      <li class="rail-extra"><a href="#glossary">Glossary</a></li>
+    </ol>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</nav>
+
+<main>
+
+<section id="gist" class="level level-1" aria-labelledby="gist-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">1</span> The gist · for everyone</p>
+    <h2 id="gist-h" class="question">What share of people who start a PixelPress Pro free trial become paying subscribers?</h2>
+    <div class="gist-grid">
+      <div class="gist-main">
+        <div class="headline" aria-label="Headline result">
+          <div class="hl-number">14.3%</div>
+          <div class="hl-label"><button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">trial users</button> <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">converted to paid</button></div>
+        </div>
+        <p class="lede">In the saved March mobile trial group, 14.3% of PixelPress Pro trial users had a <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">positive charge</button> by day 14.</p>
+<p class="context">6,894 of 48,210 trial users converted in the saved summary.</p><p class="frequency"><span class="icon" aria-hidden="true">≈</span>About 14 in every 100 trial users converted to paid in the saved summary.</p>        <div class="claim claim-descriptive">
+          <div class="claim-meter" aria-hidden="true">
+<span class="on"></span><span class=""></span><span class=""></span><span class=""></span>          </div>
+          <div><strong>What kind of claim: Describes a level.</strong> This number describes what happened in one group. It does not compare groups or explain why.</div>
+        </div>
+      </div>
+      <figure class="gist-fig">
+        <svg viewBox="0 0 520 80" role="img" aria-label="Share of the group meeting the rule" xmlns="http://www.w3.org/2000/svg" class="fig"><rect x="4" y="30" width="512" height="34" rx="6" class="v-bar-rest"/><rect x="4" y="30" width="73.2" height="34" rx="6" class="v-bar-focal"/><text x="4.0" y="20.0" class="v-label v-strong" text-anchor="start" >14.3% converted to paid (about 6,894 of 48,210)</text><text x="516.0" y="20.0" class="v-label" text-anchor="end" >85.7% did not</text></svg>
+        <figcaption>Divide converted trial users by all trial users in the <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">cohort</button> and report it as a percent.</figcaption>
+      </figure>
+    </div>
+
+    <div class="trio">
+      <div class="say"><h3><span aria-hidden="true">✓</span> Safe to say</h3><p>&quot;In the saved March mobile cohort summary, 14.3% of PixelPress Pro trial users converted to paid.&quot;</p></div>
+<div class="dont"><h3><span aria-hidden="true">✗</span> Not this</h3><p>&quot;The new onboarding flow drove a 1.4-point lift,&quot; or &quot;this is a 30-day conversion rate.&quot;</p></div>      <div class="caveat"><h3><span aria-hidden="true">!</span> Before you repeat it</h3><p>The saved query uses a 14-day conversion parameter and includes cohort end date 2026-03-09; the prose says 30 days and 2026-03-02 through 2026-03-08.</p></div>
+    </div>
+
+    <div class="deeper" aria-label="Go deeper">
+      <a href="#build"><span>2</span><b>Who exactly is counted, and when?</b><small>Follow one trial user through the rules</small></a>
+      <a href="#mind"><span>3</span><b>What could make this misleading?</b><small>4 caveats · 4 common misreadings</small></a>
+      <a href="#reproduce"><span>4</span><b>How would I rebuild it?</b><small>Exact rules, data, code · 5 doc-vs-code gaps</small></a>
+    </div>
+  </div>
+</section>
+
+
+<section id="build" class="level level-2" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">2</span> How it's built · for the curious</p>
+    <h2 id="build-h">How the number is made</h2>
+
+    <article class="example">
+      <h3>Follow one trial user: Alex</h3>
+<p>Alex starts a PixelPress Pro mobile trial on 5 Mar 2026, so Alex&#x27;s <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">conversion window</button> in the query runs from 5 Mar through 19 Mar, inclusive.</p>      <figure><svg viewBox="0 0 1000 150" role="img" aria-label="Timeline of windows relative to First trial start" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="980.0" y1="120" y2="120" class="v-axis"/><rect x="95.8" y="34" width="50.5" height="30" rx="5" class="v-win-look"/><text x="152.3" y="53.0" class="v-label" text-anchor="start" >March cohort entry · day 0</text><rect x="95.8" y="74" width="757.9" height="30" rx="5" class="v-win-outcome"/><text x="103.8" y="93.0" class="v-label v-on-band" text-anchor="start" >SQL conversion watch window · days 0–14</text><line x1="95.8" x2="95.8" y1="12" y2="124" class="v-anchor"/><text x="95.8" y="140.0" class="v-label v-strong" text-anchor="middle" >First trial start (day 0)</text><circle cx="121.1" cy="20" r="9" class="v-event"/><text x="121.1" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="121.1" x2="121.1" y1="29" y2="120" class="v-event-stem"/><circle cx="828.4" cy="20" r="9" class="v-event-on"/><text x="828.4" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="828.4" x2="828.4" y1="29" y2="120" class="v-event-stem"/><circle cx="878.9" cy="20" r="9" class="v-event"/><text x="878.9" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="878.9" x2="878.9" y1="29" y2="120" class="v-event-stem"/><line x1="853.7" x2="853.7" y1="120" y2="124" class="v-axis"/><text x="853.7" y="140.0" class="v-tick" text-anchor="middle" >day 14</text></svg></figure>
+      <ol class="events">
+        <li class=""><span class="num">1</span><span class="when">day 0</span> Starts a PixelPress Pro iOS trial and enters the <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">cohort</button></li>
+        <li class="counts"><span class="num">2</span><span class="when">day 14</span> Has a positive <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">first charge</button> <em class="tag">counts</em></li>
+        <li class=""><span class="num">3</span><span class="when">day 15</span> A charge here would be outside the <button type="button" class="term" data-tip="g7" aria-describedby="tip-g7">SQL</button> conversion window</li>
+      </ol>
+      <p class="outcome"><strong>Result:</strong> Alex counts as converted because the positive charge is on day 14, which is included by the query&#x27;s date rule.</p>
+    </article>
+
+    <p class="lead-in">Now the general rule, one step at a time. Each step has the plain version, with the exact version one click away.</p>
+    <div class="scrolly">
+      <ol class="steps">
+        <li class="step" id="step-who" data-step="0">
+          <p class="kicker">Step 1 · Who is counted</p>
+          <h3>Start with trial users, then apply each rule</h3>
+<p>One PixelPress Pro mobile user with a trial start.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>One distinct t.user_id after taking MIN(t.trial_start_date) from app.trial_events where product = &#x27;PIXELPRESS_PRO&#x27; and platform IN (&#x27;ios&#x27;, &#x27;android&#x27;).</p>
+<span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>          </details>
+          <div class="step-fig"><figure class="flow">
+  <div class="flow-box flow-start">All trial users</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> People who started a PixelPress Pro trial on iOS or Android.</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Users whose earliest trial start falls in the SQL&#x27;s March cohort window.<span class="flow-n">48,210 remain</span></div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box flow-end">Counted in the denominator</div>
+</figure>
+</div>
+        </li>
+        <li class="step" id="step-clock" data-step="1">
+          <p class="kicker">Step 2 · When the clock starts</p>
+          <h3>Time zero: first trial start</h3>
+<p>Each user&#x27;s clock starts on the day they first started a PixelPress Pro mobile trial.</p>          <ul class="windows"><li><span class="swatch role-eligibility" aria-hidden="true"></span><b>March cohort entry</b>: A user&#x27;s first trial start has to fall in the March cohort dates. <span class="muted">(day 0)</span></li><li><span class="swatch role-outcome" aria-hidden="true"></span><b>SQL conversion watch window</b>: The saved SQL watches for a paid charge from the trial start day through day 14. <span class="muted">(days 0–14)</span></li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>trial_start_date = MIN(t.trial_start_date) per user_id in the trials CTE.</p>
+<span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 130" role="img" aria-label="Timeline of windows relative to First trial start" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="520.0" y1="100" y2="100" class="v-axis"/><rect x="61.7" y="14" width="27.8" height="30" rx="5" class="v-win-look"/><text x="95.4" y="33.0" class="v-label" text-anchor="start" >March cohort entry · day 0</text><rect x="61.7" y="54" width="416.7" height="30" rx="5" class="v-win-outcome"/><text x="69.7" y="73.0" class="v-label v-on-band" text-anchor="start" >SQL conversion watch window · days 0–14</text><line x1="61.7" x2="61.7" y1="8" y2="104" class="v-anchor"/><text x="51.7" y="120.0" class="v-label v-strong" text-anchor="start" >First trial start (day 0)</text><line x1="478.3" x2="478.3" y1="100" y2="104" class="v-axis"/><text x="478.3" y="120.0" class="v-tick" text-anchor="middle" >day 14</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-counts" data-step="2">
+          <p class="kicker">Step 3 · What counts</p>
+          <h3>Converted to paid</h3>
+<p>Counts a <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">trial user</button> if they had at least one positive charge in the SQL outcome window.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>first_charge has one row for users with MIN(b.charge_date) after joining billing.charges on user_id with b.amount_usd &gt; 0 inside the conversion window; converted users are COUNT(DISTINCT f.user_id).</p>
+<span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 150" role="img" aria-label="Timeline of windows relative to First trial start" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="520.0" y1="120" y2="120" class="v-axis"/><rect x="59.5" y="34" width="26.3" height="30" rx="5" class="v-win-look v-dim"/><text x="91.8" y="53.0" class="v-label v-dim" text-anchor="start" >March cohort entry · day 0</text><rect x="59.5" y="74" width="394.7" height="30" rx="5" class="v-win-outcome"/><text x="67.5" y="93.0" class="v-label v-on-band" text-anchor="start" >SQL conversion watch window · days 0–14</text><line x1="59.5" x2="59.5" y1="12" y2="124" class="v-anchor"/><text x="49.5" y="140.0" class="v-label v-strong" text-anchor="start" >First trial start (day 0)</text><circle cx="72.6" cy="20" r="9" class="v-event"/><text x="72.6" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="72.6" x2="72.6" y1="29" y2="120" class="v-event-stem"/><circle cx="441.1" cy="20" r="9" class="v-event-on"/><text x="441.1" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="441.1" x2="441.1" y1="29" y2="120" class="v-event-stem"/><circle cx="467.4" cy="20" r="9" class="v-event"/><text x="467.4" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="467.4" x2="467.4" y1="29" y2="120" class="v-event-stem"/><line x1="454.2" x2="454.2" y1="120" y2="124" class="v-axis"/><text x="454.2" y="140.0" class="v-tick" text-anchor="middle" >day 14</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-combine" data-step="3">
+          <p class="kicker">Step 4 · Combine</p>
+          <h3>Turn yes/no answers into a share</h3>
+<p>Divide converted trial users by all trial users in the cohort and report it as a percent.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct.</p>
+<span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>          </details>
+          <div class="step-fig"><figure class="fraction">
+  <div class="frac">
+    <div class="frac-top">trial users with a first_charge row<b>≈ 6,894</b></div>
+    <div class="frac-bar" aria-hidden="true"></div>
+    <div class="frac-bot">all trial users in the SQL cohort<b>48,210</b></div>
+  </div>
+<div class="frac-eq">= <b>14.3%</b><small>March 2026 mobile SQL cohort</small></div></figure>
+</div>
+        </li>
+        <li class="step" id="step-sure" data-step="4">
+          <p class="kicker">Step 5 · How sure</p>
+          <h3>Show the range of plausible values</h3>
+<p>No <button type="button" class="term" data-tip="g8" aria-describedby="tip-g8">confidence interval</button> or standard error was reported with the 14.3% headline.</p><p class="gaps"><b>Not covered by this range:</b> Sampling uncertainty, data latency, and the effects of the documented prose-versus-SQL discrepancies are not quantified.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>conversion_summary.csv reports trial_users, converted_users, conversion_rate_pct, run_date, and data_complete_through only.</p>
+<span class="src" title="eval/fixtures/syn-a/results/conversion_summary.csv">S4</span>          </details>
+          <div class="step-fig"><figure><figcaption>Each dot is one of 20 equally likely values, given sampling noise alone (normal approximation to the interval).</figcaption></figure>
+</div>
+        </li>
+      </ol>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+
+    <aside class="literal">
+      <h3>The same definition, assembled mechanically from the spec</h3>
+      <p class="note">Generated from the structured definition, not written by hand. If it disagrees with the summary above, the summary is wrong.</p>
+      <ol><li>The unit is one trial user. One PixelPress Pro mobile user with a trial start.</li><li>Keep trial users that meet every rule, in order: people who started a PixelPress Pro trial on iOS or Android; users whose earliest trial start falls in the SQL&#39;s March cohort window.</li><li>Time zero is the first trial start: Each user&#39;s clock starts on the day they first started a PixelPress Pro mobile trial.</li><li>March cohort entry (eligibility): day 0, the first trial start itself.</li><li>SQL conversion watch window (outcome): days 0–14, counting the first trial start as day 0.</li><li>For each trial user, record converted to paid (headline) as yes/no within the sql conversion watch window: Counts a trial user if they had at least one positive charge in the SQL outcome window.</li><li>Divide converted trial users by all trial users in the cohort and report it as a percent.</li><li>Do this separately for each group: March 2026 mobile SQL cohort.</li><li>No confidence interval or standard error was reported with the 14.3% headline.</li></ol>
+    </aside>
+  </div>
+</section>
+
+
+<section id="mind" class="level level-3" aria-labelledby="mind-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">3</span> Keep in mind · before you act on it</p>
+    <h2 id="mind-h">What could make this misleading</h2>
+
+    <div class="maturity maturity-ok">
+      <strong>Complete.</strong>
+      The latest first trial start is 09 Mar 2026; its SQL conversion watch window ends 23 Mar 2026. Data are complete through 17 Apr 2026, so every window is fully observed. This number should not move as more data arrive.
+    </div>
+
+    <h3 class="sub">Caveats</h3>
+    <div class="legend"><span><b class="fx fx-overstates">↑</b> May make the number look bigger than it really is</span><span><b class="fx fx-understates">↓</b> May make the number look smaller than it really is</span><span><b class="fx fx-wider_uncertainty">±</b> The true uncertainty is larger than shown</span><span><b class="fx fx-unknown_direction">↕</b> Could push the number either way</span><span><b class="fx fx-limits_scope">◎</b> Limits what the number can be used to conclude</span></div>
+    <div class="caveats">
+      <article class="cav sev-high">
+        <b class="fx fx-understates" title="May make the number look smaller than it really is">↓</b>
+        <div>
+<h4>Prose and SQL use different conversion windows</h4>          <p>The project note and readout call the metric 30-day conversion, but the query parameter is 14 days. If a 30-day rerun were made, the rate could be higher.</p>
+          <p class="cav-meta">May make the number look smaller than it really is · high importance <span class="src" title="eval/fixtures/syn-a/README.md">S1</span> <span class="src" title="eval/fixtures/syn-a/readout.md">S2</span> <span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-high">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Exclusion and refund rules are not visible in the SQL</h4>          <p>The project note says internal and test accounts are excluded and refunded charges do not count. The query shown filters only product, platform, and <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">positive charge</button> amount.</p>
+          <p class="cav-meta">Could push the number either way · high importance <span class="src" title="eval/fixtures/syn-a/README.md">S1</span> <span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Cohort end date differs by one day</h4>          <p>The project note says the <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">cohort</button> is 2026-03-02 through 2026-03-08, but the query uses an inclusive date filter ending on 2026-03-09.</p>
+          <p class="cav-meta">Could push the number either way · medium importance <span class="src" title="eval/fixtures/syn-a/README.md">S1</span> <span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>The February comparison is not reproducible from the saved files</h4>          <p>The readout says March is up from 12.9% in February, but the saved query and results table only contain the March cohort summary.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · medium importance <span class="src" title="eval/fixtures/syn-a/readout.md">S2</span> <span class="src" title="eval/fixtures/syn-a/results/conversion_summary.csv">S4</span></p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub">Common misreadings</h3>
+    <table class="misread">
+      <thead><tr><th scope="col">Tempting, but wrong</th><th scope="col">Accurate</th></tr></thead>
+      <tbody><tr><td>14.3% is a 30-day <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">conversion rate</button>.</td><td>The saved <button type="button" class="term" data-tip="g7" aria-describedby="tip-g7">SQL</button> uses conversion_days = 14, so the reproducible number is the SQL&#x27;s 14-day conversion metric unless the query is rerun with a 30-day window.</td></tr><tr><td>The new onboarding flow caused the 1.4-point lift.</td><td>The saved files show a <button type="button" class="term" data-tip="g6" aria-describedby="tip-g6">descriptive</button> March rate. They do not provide a causal design or a reproducible February comparison.</td></tr><tr><td>The cohort is exactly 2026-03-02 through 2026-03-08.</td><td>That is the prose definition; the SQL as written includes 2026-03-09 because BETWEEN is inclusive.</td></tr><tr><td>Refunded charges and test accounts are definitely excluded.</td><td>The prose says they should be excluded, but those filters are not visible in the SQL source provided for this card.</td></tr></tbody>
+    </table>
+
+
+    <h3 class="sub">Judgment calls</h3>
+    <div class="calls">
+      <article>
+        <h4>Which definition to treat as implemented</h4>
+        <p><b>Chose:</b> Use the SQL and saved CSV for the card&#x27;s implemented metric, not the readout&#x27;s 30-day wording.</p>
+<p><b>Could have chosen:</b> Write a definition-only card for the intended 30-day metric, or require a rerun with conversion_days = 30.</p><p><b>Why:</b> The skill says to trace the number to code. The saved headline comes with SQL and a saved output, and the SQL has conversion_days = 14.</p><p><b>What it changes:</b> The card describes the reproducible saved number as a 14-day SQL conversion metric and flags the 30-day wording as a discrepancy.</p>      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="reproduce" class="level level-4" aria-labelledby="rep-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">4</span> Reproduce it · for specialists</p>
+    <h2 id="rep-h">The exact specification</h2>
+    <div class="actions">
+      <a class="btn" href="data:text/yaml;base64,c2NoZW1hOiBtZXRyaWMtY2FyZC8xCmlkOiBwaXhlbHByZXNzLXRyaWFsLWNvbnZlcnNpb24KdGl0bGU6IFBpeGVsUHJlc3MgUHJvIG1vYmlsZSB0cmlhbCBjb252ZXJzaW9uLCBNYXJjaCBjb2hvcnQKc3VidGl0bGU6IFNoYXJlIG9mIG1vYmlsZSB0cmlhbCBzdGFydGVycyB3aXRoIGEgcGFpZCBmaXJzdCBjaGFyZ2UgaW4gdGhlIFNRTCBvdXRjb21lIHdpbmRvdwpzdGF0dXM6IHByb3Zpc2lvbmFsCm93bmVyOiBHcm93dGggYW5hbHl0aWNzCnVwZGF0ZWQ6ICIyMDI2LTA0LTIwIgpxdWVzdGlvbjogPgogIFdoYXQgc2hhcmUgb2YgcGVvcGxlIHdobyBzdGFydCBhIFBpeGVsUHJlc3MgUHJvIGZyZWUgdHJpYWwgYmVjb21lIHBheWluZyBzdWJzY3JpYmVycz8KCmdpc3Q6CiAgc2VudGVuY2U6ID4KICAgIEluIHRoZSBzYXZlZCBNYXJjaCBtb2JpbGUgdHJpYWwgZ3JvdXAsIDE0LjMlIG9mIFBpeGVsUHJlc3MgUHJvIHRyaWFsIHVzZXJzCiAgICBoYWQgYSBwb3NpdGl2ZSBjaGFyZ2UgYnkgZGF5IDE0LgogIGhlYWRsaW5lOgogICAgdmFsdWU6IDE0LjMKICAgIHVuaXQ6IHBlcmNlbnQKICAgIGRlY2ltYWxzOiAxCiAgICBsYWJlbDogdHJpYWwgdXNlcnMgY29udmVydGVkIHRvIHBhaWQKICAgIGNvbnRleHQ6ICI2LDg5NCBvZiA0OCwyMTAgdHJpYWwgdXNlcnMgY29udmVydGVkIGluIHRoZSBzYXZlZCBzdW1tYXJ5LiIKICBmcmVxdWVuY3k6ID4KICAgIEFib3V0IDE0IGluIGV2ZXJ5IDEwMCB0cmlhbCB1c2VycyBjb252ZXJ0ZWQgdG8gcGFpZCBpbiB0aGUgc2F2ZWQgc3VtbWFyeS4KICByZWFkaW5nOgogICAgZGlyZWN0aW9uOiBoaWdoZXJfaXNfYmV0dGVyCiAgICBzYXk6ID4KICAgICAgIkluIHRoZSBzYXZlZCBNYXJjaCBtb2JpbGUgY29ob3J0IHN1bW1hcnksIDE0LjMlIG9mIFBpeGVsUHJlc3MgUHJvIHRyaWFsIHVzZXJzIGNvbnZlcnRlZCB0byBwYWlkLiIKICAgIGRvbnRfc2F5OiA+CiAgICAgICJUaGUgbmV3IG9uYm9hcmRpbmcgZmxvdyBkcm92ZSBhIDEuNC1wb2ludCBsaWZ0LCIgb3IgInRoaXMgaXMgYSAzMC1kYXkgY29udmVyc2lvbiByYXRlLiIKICBrZXlfY2F2ZWF0OiA+CiAgICBUaGUgc2F2ZWQgcXVlcnkgdXNlcyBhIDE0LWRheSBjb252ZXJzaW9uIHBhcmFtZXRlciBhbmQgaW5jbHVkZXMgY29ob3J0IGVuZCBkYXRlIDIwMjYtMDMtMDk7CiAgICB0aGUgcHJvc2Ugc2F5cyAzMCBkYXlzIGFuZCAyMDI2LTAzLTAyIHRocm91Z2ggMjAyNi0wMy0wOC4KICBjbGFpbV9zdHJlbmd0aDogZGVzY3JpcHRpdmUKCmdyYW1tYXI6CiAgdW5pdDoKICAgIHNpbmd1bGFyOiB0cmlhbCB1c2VyCiAgICBwbHVyYWw6IHRyaWFsIHVzZXJzCiAgICBwbGFpbjogT25lIFBpeGVsUHJlc3MgUHJvIG1vYmlsZSB1c2VyIHdpdGggYSB0cmlhbCBzdGFydC4KICAgIGV4YWN0OiA+CiAgICAgIE9uZSBkaXN0aW5jdCB0LnVzZXJfaWQgYWZ0ZXIgdGFraW5nIE1JTih0LnRyaWFsX3N0YXJ0X2RhdGUpIGZyb20gYXBwLnRyaWFsX2V2ZW50cyB3aGVyZQogICAgICBwcm9kdWN0ID0gJ1BJWEVMUFJFU1NfUFJPJyBhbmQgcGxhdGZvcm0gSU4gKCdpb3MnLCAnYW5kcm9pZCcpLgogICAgc3JjOiBTMwogIHBvcHVsYXRpb246CiAgICAtIGlkOiBwaXhlbHByZXNzX3Byb19tb2JpbGUKICAgICAgcGxhaW46IFBlb3BsZSB3aG8gc3RhcnRlZCBhIFBpeGVsUHJlc3MgUHJvIHRyaWFsIG9uIGlPUyBvciBBbmRyb2lkLgogICAgICBleGFjdDogPgogICAgICAgIGFwcC50cmlhbF9ldmVudHMgcm93cyB3aGVyZSBwcm9kdWN0ID0gJ1BJWEVMUFJFU1NfUFJPJyBhbmQgcGxhdGZvcm0gSU4gKCdpb3MnLCAnYW5kcm9pZCcpLAogICAgICAgIGdyb3VwZWQgdG8gZWFjaCB1c2VyJ3MgZWFybGllc3QgdHJpYWxfc3RhcnRfZGF0ZS4KICAgICAgc3JjOiBTMwogICAgLSBpZDogbWFyY2hfc3FsX2NvaG9ydAogICAgICBwbGFpbjogVXNlcnMgd2hvc2UgZWFybGllc3QgdHJpYWwgc3RhcnQgZmFsbHMgaW4gdGhlIFNRTCdzIE1hcmNoIGNvaG9ydCB3aW5kb3cuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgdHIudHJpYWxfc3RhcnRfZGF0ZSBCRVRXRUVOIERBVEUgJzIwMjYtMDMtMDInIEFORCBEQVRFICcyMDI2LTAzLTA5Jy4gSW4gU1FMLCBCRVRXRUVOIGlzCiAgICAgICAgaW5jbHVzaXZlLCBzbyB0aGUgaW1wbGVtZW50ZWQgY29ob3J0IGluY2x1ZGVzIDIwMjYtMDMtMDkuCiAgICAgIG5fYWZ0ZXI6IDQ4MjEwCiAgICAgIHNyYzogW1MzLCBTNF0KICBhbmNob3I6CiAgICBraW5kOiBwZXJfdW5pdF9ldmVudAogICAgbGFiZWw6IEZpcnN0IHRyaWFsIHN0YXJ0CiAgICBwbGFpbjogRWFjaCB1c2VyJ3MgY2xvY2sgc3RhcnRzIG9uIHRoZSBkYXkgdGhleSBmaXJzdCBzdGFydGVkIGEgUGl4ZWxQcmVzcyBQcm8gbW9iaWxlIHRyaWFsLgogICAgZXhhY3Q6ICJ0cmlhbF9zdGFydF9kYXRlID0gTUlOKHQudHJpYWxfc3RhcnRfZGF0ZSkgcGVyIHVzZXJfaWQgaW4gdGhlIHRyaWFscyBDVEUuIgogICAgc3JjOiBTMwogIHdpbmRvd3M6CiAgICAtIGlkOiBjb2hvcnRfZW50cnkKICAgICAgbGFiZWw6IE1hcmNoIGNvaG9ydCBlbnRyeQogICAgICBzdGFydDogMAogICAgICBlbmQ6IDEKICAgICAgdW5pdDogZGF5CiAgICAgIHJvbGU6IGVsaWdpYmlsaXR5CiAgICAgIHBsYWluOiBBIHVzZXIncyBmaXJzdCB0cmlhbCBzdGFydCBoYXMgdG8gZmFsbCBpbiB0aGUgTWFyY2ggY29ob3J0IGRhdGVzLgogICAgICBleGFjdDogInRyLnRyaWFsX3N0YXJ0X2RhdGUgQkVUV0VFTiBwLmNvaG9ydF9zdGFydCBBTkQgcC5jb2hvcnRfZW5kLiIKICAgICAgc3JjOiBTMwogICAgLSBpZDogY29udmVyc2lvbl93aW5kb3dfc3FsCiAgICAgIGxhYmVsOiBTUUwgY29udmVyc2lvbiB3YXRjaCB3aW5kb3cKICAgICAgc3RhcnQ6IDAKICAgICAgZW5kOiAxNQogICAgICB1bml0OiBkYXkKICAgICAgcm9sZTogb3V0Y29tZQogICAgICBwbGFpbjogVGhlIHNhdmVkIFNRTCB3YXRjaGVzIGZvciBhIHBhaWQgY2hhcmdlIGZyb20gdGhlIHRyaWFsIHN0YXJ0IGRheSB0aHJvdWdoIGRheSAxNC4KICAgICAgZXhhY3Q6ID4KICAgICAgICBiLmNoYXJnZV9kYXRlIEJFVFdFRU4gYy50cmlhbF9zdGFydF9kYXRlIEFORCBEQVRFX0FERChjLnRyaWFsX3N0YXJ0X2RhdGUsIHAuY29udmVyc2lvbl9kYXlzKSwKICAgICAgICB3aGVyZSBwLmNvbnZlcnNpb25fZGF5cyA9IDE0LiBCZWNhdXNlIEJFVFdFRU4gaXMgaW5jbHVzaXZlLCB0aGlzIGNvdmVycyBvZmZzZXRzIDAgdGhyb3VnaCAxNC4KICAgICAgc3JjOiBTMwogIG1lYXN1cmVzOgogICAgLSBpZDogY29udmVydGVkX3RvX3BhaWQKICAgICAgbGFiZWw6IENvbnZlcnRlZCB0byBwYWlkCiAgICAgIGtpbmQ6IGluZGljYXRvcgogICAgICB3aW5kb3c6IGNvbnZlcnNpb25fd2luZG93X3NxbAogICAgICBwcmltYXJ5OiB0cnVlCiAgICAgIHBsYWluOiBDb3VudHMgYSB0cmlhbCB1c2VyIGlmIHRoZXkgaGFkIGF0IGxlYXN0IG9uZSBwb3NpdGl2ZSBjaGFyZ2UgaW4gdGhlIFNRTCBvdXRjb21lIHdpbmRvdy4KICAgICAgZXhhY3Q6ID4KICAgICAgICBmaXJzdF9jaGFyZ2UgaGFzIG9uZSByb3cgZm9yIHVzZXJzIHdpdGggTUlOKGIuY2hhcmdlX2RhdGUpIGFmdGVyIGpvaW5pbmcgYmlsbGluZy5jaGFyZ2VzIG9uCiAgICAgICAgdXNlcl9pZCB3aXRoIGIuYW1vdW50X3VzZCA+IDAgaW5zaWRlIHRoZSBjb252ZXJzaW9uIHdpbmRvdzsgY29udmVydGVkIHVzZXJzIGFyZQogICAgICAgIENPVU5UKERJU1RJTkNUIGYudXNlcl9pZCkuCiAgICAgIHNyYzogUzMKICBhZ2dyZWdhdGU6CiAgICBraW5kOiBwcm9wb3J0aW9uCiAgICBtZWFzdXJlOiBjb252ZXJ0ZWRfdG9fcGFpZAogICAgbnVtZXJhdG9yOiB0cmlhbCB1c2VycyB3aXRoIGEgZmlyc3RfY2hhcmdlIHJvdwogICAgZGVub21pbmF0b3I6IGFsbCB0cmlhbCB1c2VycyBpbiB0aGUgU1FMIGNvaG9ydAogICAgcGxhaW46IERpdmlkZSBjb252ZXJ0ZWQgdHJpYWwgdXNlcnMgYnkgYWxsIHRyaWFsIHVzZXJzIGluIHRoZSBjb2hvcnQgYW5kIHJlcG9ydCBpdCBhcyBhIHBlcmNlbnQuCiAgICBleGFjdDogPgogICAgICBST1VORCgxMDAuMCAqIENPVU5UKERJU1RJTkNUIGYudXNlcl9pZCkgLyBDT1VOVChESVNUSU5DVCBjLnVzZXJfaWQpLCAyKSBBUyBjb252ZXJzaW9uX3JhdGVfcGN0LgogICAgc3JjOiBTMwogIGdyb3VwczoKICAgIC0gaWQ6IG1hcmNoX21vYmlsZV9zcWxfY29ob3J0CiAgICAgIGxhYmVsOiBNYXJjaCAyMDI2IG1vYmlsZSBTUUwgY29ob3J0CiAgICAgIHJvbGU6IGZvY2FsCiAgICAgIHBlcmlvZDogIjIwMjYtMDMtMDIuLjIwMjYtMDMtMDkiCiAgICAgIHllYXI6ICIyMDI2IgogICAgICBwbGFpbjogVGhlIHNhdmVkIE1hcmNoIG1vYmlsZSB0cmlhbCBjb2hvcnQuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgVGhlIFNRTCBwYXJhbWV0ZXJpemVzIGNvaG9ydF9zdGFydCBhcyAyMDI2LTAzLTAyIGFuZCBjb2hvcnRfZW5kIGFzIDIwMjYtMDMtMDksIHRoZW4gdXNlcyBhbgogICAgICAgIGluY2x1c2l2ZSBCRVRXRUVOIGZpbHRlci4KICAgICAgc3JjOiBTMwogIHVuY2VydGFpbnR5OgogICAgbWV0aG9kOiBOb3QgZXN0aW1hdGVkIGluIHRoZSBzYXZlZCBvdXRwdXQKICAgIHBsYWluOiBObyBjb25maWRlbmNlIGludGVydmFsIG9yIHN0YW5kYXJkIGVycm9yIHdhcyByZXBvcnRlZCB3aXRoIHRoZSAxNC4zJSBoZWFkbGluZS4KICAgIGV4YWN0OiA+CiAgICAgIGNvbnZlcnNpb25fc3VtbWFyeS5jc3YgcmVwb3J0cyB0cmlhbF91c2VycywgY29udmVydGVkX3VzZXJzLCBjb252ZXJzaW9uX3JhdGVfcGN0LCBydW5fZGF0ZSwKICAgICAgYW5kIGRhdGFfY29tcGxldGVfdGhyb3VnaCBvbmx5LgogICAga25vd25fZ2FwczogPgogICAgICBTYW1wbGluZyB1bmNlcnRhaW50eSwgZGF0YSBsYXRlbmN5LCBhbmQgdGhlIGVmZmVjdHMgb2YgdGhlIGRvY3VtZW50ZWQgcHJvc2UtdmVyc3VzLVNRTAogICAgICBkaXNjcmVwYW5jaWVzIGFyZSBub3QgcXVhbnRpZmllZC4KICAgIHNyYzogUzQKCnJlc3VsdHM6CiAgc3RhdHVzOiBtZWFzdXJlZAogIGFzX29mOiAiMjAyNi0wNC0xOCIKICB1bml0OiBwZXJjZW50CiAgZGF0YV9jb21wbGV0ZV90aHJvdWdoOiAiMjAyNi0wNC0xNyIKICBsYXRlc3RfYW5jaG9yOiAiMjAyNi0wMy0wOSIKICBtZWFzdXJlOiBjb252ZXJ0ZWRfdG9fcGFpZAogIGNlbGxzOgogICAgLSBncm91cDogbWFyY2hfbW9iaWxlX3NxbF9jb2hvcnQKICAgICAgdmFsdWU6IDE0LjMwCiAgICAgIG46IDQ4MjEwCiAgICAgIG5vdGU6ICJTYXZlZCBzdW1tYXJ5IHJlcG9ydHMgNiw4OTQgY29udmVydGVkIHVzZXJzIG91dCBvZiA0OCwyMTAgdHJpYWwgdXNlcnMuIgpleGFtcGxlOgogIG5hbWU6IEFsZXgKICBpbnRybzogPgogICAgQWxleCBzdGFydHMgYSBQaXhlbFByZXNzIFBybyBtb2JpbGUgdHJpYWwgb24gNSBNYXIgMjAyNiwgc28gQWxleCdzIGNvbnZlcnNpb24gd2luZG93IGluIHRoZQogICAgcXVlcnkgcnVucyBmcm9tIDUgTWFyIHRocm91Z2ggMTkgTWFyLCBpbmNsdXNpdmUuCiAgYW5jaG9yX2RhdGU6ICIyMDI2LTAzLTA1IgogIGV2ZW50czoKICAgIC0ge2F0OiAwLCBsYWJlbDogIlN0YXJ0cyBhIFBpeGVsUHJlc3MgUHJvIGlPUyB0cmlhbCBhbmQgZW50ZXJzIHRoZSBjb2hvcnQifQogICAgLSB7YXQ6IDE0LCBsYWJlbDogIkhhcyBhIHBvc2l0aXZlIGZpcnN0IGNoYXJnZSIsIGNvdW50czogdHJ1ZX0KICAgIC0ge2F0OiAxNSwgbGFiZWw6ICJBIGNoYXJnZSBoZXJlIHdvdWxkIGJlIG91dHNpZGUgdGhlIFNRTCBjb252ZXJzaW9uIHdpbmRvdyIsIGNvdW50czogZmFsc2V9CiAgb3V0Y29tZTogPgogICAgQWxleCBjb3VudHMgYXMgY29udmVydGVkIGJlY2F1c2UgdGhlIHBvc2l0aXZlIGNoYXJnZSBpcyBvbiBkYXkgMTQsIHdoaWNoIGlzIGluY2x1ZGVkIGJ5IHRoZQogICAgcXVlcnkncyBkYXRlIHJ1bGUuCgpmaW5lX3ByaW50OgogIGp1ZGdtZW50X2NhbGxzOgogICAgLSBkZWNpc2lvbjogV2hpY2ggZGVmaW5pdGlvbiB0byB0cmVhdCBhcyBpbXBsZW1lbnRlZAogICAgICBjaG9pY2U6ID4KICAgICAgICBVc2UgdGhlIFNRTCBhbmQgc2F2ZWQgQ1NWIGZvciB0aGUgY2FyZCdzIGltcGxlbWVudGVkIG1ldHJpYywgbm90IHRoZSByZWFkb3V0J3MgMzAtZGF5IHdvcmRpbmcuCiAgICAgIGFsdGVybmF0aXZlczogPgogICAgICAgIFdyaXRlIGEgZGVmaW5pdGlvbi1vbmx5IGNhcmQgZm9yIHRoZSBpbnRlbmRlZCAzMC1kYXkgbWV0cmljLCBvciByZXF1aXJlIGEgcmVydW4gd2l0aAogICAgICAgIGNvbnZlcnNpb25fZGF5cyA9IDMwLgogICAgICB3aHk6ID4KICAgICAgICBUaGUgc2tpbGwgc2F5cyB0byB0cmFjZSB0aGUgbnVtYmVyIHRvIGNvZGUuIFRoZSBzYXZlZCBoZWFkbGluZSBjb21lcyB3aXRoIFNRTCBhbmQgYSBzYXZlZAogICAgICAgIG91dHB1dCwgYW5kIHRoZSBTUUwgaGFzIGNvbnZlcnNpb25fZGF5cyA9IDE0LgogICAgICBpbXBhY3Q6ID4KICAgICAgICBUaGUgY2FyZCBkZXNjcmliZXMgdGhlIHJlcHJvZHVjaWJsZSBzYXZlZCBudW1iZXIgYXMgYSAxNC1kYXkgU1FMIGNvbnZlcnNpb24gbWV0cmljIGFuZAogICAgICAgIGZsYWdzIHRoZSAzMC1kYXkgd29yZGluZyBhcyBhIGRpc2NyZXBhbmN5LgogICAgICBzcmM6IFtTMiwgUzMsIFM0XQogIGNhdmVhdHM6CiAgICAtIHRpdGxlOiBQcm9zZSBhbmQgU1FMIHVzZSBkaWZmZXJlbnQgY29udmVyc2lvbiB3aW5kb3dzCiAgICAgIHRleHQ6ID4KICAgICAgICBUaGUgcHJvamVjdCBub3RlIGFuZCByZWFkb3V0IGNhbGwgdGhlIG1ldHJpYyAzMC1kYXkgY29udmVyc2lvbiwgYnV0IHRoZSBxdWVyeSBwYXJhbWV0ZXIgaXMgMTQgZGF5cy4KICAgICAgICBJZiBhIDMwLWRheSByZXJ1biB3ZXJlIG1hZGUsIHRoZSByYXRlIGNvdWxkIGJlIGhpZ2hlci4KICAgICAgZWZmZWN0OiB1bmRlcnN0YXRlcwogICAgICBzZXZlcml0eTogaGlnaAogICAgICBzcmM6IFtTMSwgUzIsIFMzXQogICAgLSB0aXRsZTogQ29ob3J0IGVuZCBkYXRlIGRpZmZlcnMgYnkgb25lIGRheQogICAgICB0ZXh0OiA+CiAgICAgICAgVGhlIHByb2plY3Qgbm90ZSBzYXlzIHRoZSBjb2hvcnQgaXMgMjAyNi0wMy0wMiB0aHJvdWdoIDIwMjYtMDMtMDgsIGJ1dCB0aGUgcXVlcnkgdXNlcyBhbiBpbmNsdXNpdmUKICAgICAgICBkYXRlIGZpbHRlciBlbmRpbmcgb24gMjAyNi0wMy0wOS4KICAgICAgZWZmZWN0OiB1bmtub3duX2RpcmVjdGlvbgogICAgICBzZXZlcml0eTogbWVkaXVtCiAgICAgIHNyYzogW1MxLCBTM10KICAgIC0gdGl0bGU6IEV4Y2x1c2lvbiBhbmQgcmVmdW5kIHJ1bGVzIGFyZSBub3QgdmlzaWJsZSBpbiB0aGUgU1FMCiAgICAgIHRleHQ6ID4KICAgICAgICBUaGUgcHJvamVjdCBub3RlIHNheXMgaW50ZXJuYWwgYW5kIHRlc3QgYWNjb3VudHMgYXJlIGV4Y2x1ZGVkIGFuZCByZWZ1bmRlZCBjaGFyZ2VzIGRvIG5vdCBjb3VudC4KICAgICAgICBUaGUgcXVlcnkgc2hvd24gZmlsdGVycyBvbmx5IHByb2R1Y3QsIHBsYXRmb3JtLCBhbmQgcG9zaXRpdmUgY2hhcmdlIGFtb3VudC4KICAgICAgZWZmZWN0OiB1bmtub3duX2RpcmVjdGlvbgogICAgICBzZXZlcml0eTogaGlnaAogICAgICBzcmM6IFtTMSwgUzNdCiAgICAtIHRpdGxlOiBUaGUgRmVicnVhcnkgY29tcGFyaXNvbiBpcyBub3QgcmVwcm9kdWNpYmxlIGZyb20gdGhlIHNhdmVkIGZpbGVzCiAgICAgIHRleHQ6ID4KICAgICAgICBUaGUgcmVhZG91dCBzYXlzIE1hcmNoIGlzIHVwIGZyb20gMTIuOSUgaW4gRmVicnVhcnksIGJ1dCB0aGUgc2F2ZWQgcXVlcnkgYW5kIHJlc3VsdHMgdGFibGUgb25seSBjb250YWluCiAgICAgICAgdGhlIE1hcmNoIGNvaG9ydCBzdW1tYXJ5LgogICAgICBlZmZlY3Q6IGxpbWl0c19zY29wZQogICAgICBzZXZlcml0eTogbWVkaXVtCiAgICAgIHNyYzogW1MyLCBTNF0KICBtaXNyZWFkaW5nczoKICAgIC0gd3Jvbmc6ICIxNC4zJSBpcyBhIDMwLWRheSBjb252ZXJzaW9uIHJhdGUuIgogICAgICByaWdodDogPgogICAgICAgIFRoZSBzYXZlZCBTUUwgdXNlcyBjb252ZXJzaW9uX2RheXMgPSAxNCwgc28gdGhlIHJlcHJvZHVjaWJsZSBudW1iZXIgaXMgdGhlIFNRTCdzIDE0LWRheQogICAgICAgIGNvbnZlcnNpb24gbWV0cmljIHVubGVzcyB0aGUgcXVlcnkgaXMgcmVydW4gd2l0aCBhIDMwLWRheSB3aW5kb3cuCiAgICAtIHdyb25nOiAiVGhlIG5ldyBvbmJvYXJkaW5nIGZsb3cgY2F1c2VkIHRoZSAxLjQtcG9pbnQgbGlmdC4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgVGhlIHNhdmVkIGZpbGVzIHNob3cgYSBkZXNjcmlwdGl2ZSBNYXJjaCByYXRlLiBUaGV5IGRvIG5vdCBwcm92aWRlIGEgY2F1c2FsIGRlc2lnbiBvciBhCiAgICAgICAgcmVwcm9kdWNpYmxlIEZlYnJ1YXJ5IGNvbXBhcmlzb24uCiAgICAtIHdyb25nOiAiVGhlIGNvaG9ydCBpcyBleGFjdGx5IDIwMjYtMDMtMDIgdGhyb3VnaCAyMDI2LTAzLTA4LiIKICAgICAgcmlnaHQ6ID4KICAgICAgICBUaGF0IGlzIHRoZSBwcm9zZSBkZWZpbml0aW9uOyB0aGUgU1FMIGFzIHdyaXR0ZW4gaW5jbHVkZXMgMjAyNi0wMy0wOSBiZWNhdXNlIEJFVFdFRU4gaXMKICAgICAgICBpbmNsdXNpdmUuCiAgICAtIHdyb25nOiAiUmVmdW5kZWQgY2hhcmdlcyBhbmQgdGVzdCBhY2NvdW50cyBhcmUgZGVmaW5pdGVseSBleGNsdWRlZC4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgVGhlIHByb3NlIHNheXMgdGhleSBzaG91bGQgYmUgZXhjbHVkZWQsIGJ1dCB0aG9zZSBmaWx0ZXJzIGFyZSBub3QgdmlzaWJsZSBpbiB0aGUgU1FMIHNvdXJjZQogICAgICAgIHByb3ZpZGVkIGZvciB0aGlzIGNhcmQuCiAgZGlzY3JlcGFuY2llczoKICAgIC0gdG9waWM6IENvbnZlcnNpb24gd2luZG93CiAgICAgIGRlc2NyaWJlZDogPgogICAgICAgIFRoZSBwcm9qZWN0IG5vdGUgYW5kIHJlYWRvdXQgZGVmaW5lIGNvbnZlcnNpb24gYXMgcGF5aW5nIHdpdGhpbiAzMCBkYXlzIG9mIHRyaWFsIHN0YXJ0LgogICAgICBpbXBsZW1lbnRlZDogPgogICAgICAgIFRoZSBxdWVyeSBzZXRzIGNvbnZlcnNpb25fZGF5cyA9IDE0IGFuZCBmaWx0ZXJzIGIuY2hhcmdlX2RhdGUgdGhyb3VnaCBEQVRFX0FERCh0cmlhbF9zdGFydF9kYXRlLCAxNCkuCiAgICAgIGltcGFjdDogPgogICAgICAgIEEgbG9uZ2VyIDMwLWRheSB3aW5kb3cgd291bGQgaW5jbHVkZSBsYXRlciBjb252ZXJ0ZXJzLCBzbyB0aGUgc2F2ZWQgMTQuMyUgbWF5IHVuZGVyc3RhdGUgdGhlCiAgICAgICAgaW50ZW5kZWQgMzAtZGF5IGNvbnZlcnNpb24gcmF0ZS4gVGhlIHNpemUgaXMgdW5rbm93bi4KICAgICAgc3JjOiBbUzEsIFMyLCBTM10KICAgIC0gdG9waWM6IENvaG9ydCBlbmQgZGF0ZQogICAgICBkZXNjcmliZWQ6ICJUaGUgcHJvamVjdCBub3RlIHNheXMgdHJpYWxzIHN0YXJ0ZWQgMjAyNi0wMy0wMiB0aHJvdWdoIDIwMjYtMDMtMDguIgogICAgICBpbXBsZW1lbnRlZDogPgogICAgICAgIFRoZSBxdWVyeSBzZXRzIGNvaG9ydF9lbmQgdG8gREFURSAnMjAyNi0wMy0wOScgYW5kIHVzZXMgYW4gaW5jbHVzaXZlIGRhdGUgZmlsdGVyLgogICAgICBpbXBhY3Q6ID4KICAgICAgICBUaGUgU1FMIGFwcGVhcnMgdG8gaW5jbHVkZSBvbmUgZXh0cmEgdHJpYWwtc3RhcnQgZGF0ZS4gRGlyZWN0aW9uIGFuZCBzaXplIGFyZSB1bmtub3duLgogICAgICBzcmM6IFtTMSwgUzNdCiAgICAtIHRvcGljOiBJbnRlcm5hbCBhbmQgdGVzdCBhY2NvdW50IGV4Y2x1c2lvbnMKICAgICAgZGVzY3JpYmVkOiAiVGhlIHByb2plY3Qgbm90ZSBzYXlzIGludGVybmFsIGFuZCB0ZXN0IGFjY291bnRzIGFyZSBleGNsdWRlZC4iCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgVGhlIHByb3ZpZGVkIFNRTCBkb2VzIG5vdCBzaG93IGFuIGludGVybmFsLWFjY291bnQgb3IgdGVzdC1hY2NvdW50IGV4Y2x1c2lvbi4KICAgICAgaW1wYWN0OiA+CiAgICAgICAgSWYgdGhvc2UgYWNjb3VudHMgZXhpc3QgaW4gYXBwLnRyaWFsX2V2ZW50cywgdGhleSBtYXkgYWZmZWN0IHRoZSBkZW5vbWluYXRvciBhbmQgbnVtZXJhdG9yLgogICAgICAgIERpcmVjdGlvbiBhbmQgc2l6ZSBhcmUgdW5rbm93bi4KICAgICAgc3JjOiBbUzEsIFMzXQogICAgLSB0b3BpYzogUmVmdW5kZWQgY2hhcmdlcwogICAgICBkZXNjcmliZWQ6ICJUaGUgcHJvamVjdCBub3RlIHNheXMgcmVmdW5kZWQgY2hhcmdlcyBkbyBub3QgY291bnQgYXMgcGF5aW5nLiIKICAgICAgaW1wbGVtZW50ZWQ6ID4KICAgICAgICBUaGUgcHJvdmlkZWQgU1FMIHJlcXVpcmVzIGIuYW1vdW50X3VzZCA+IDAgYnV0IGRvZXMgbm90IHNob3cgYSByZWZ1bmQgb3IgbmV0LXBhaWQgZmlsdGVyLgogICAgICBpbXBhY3Q6ID4KICAgICAgICBSZWZ1bmRlZCBwb3NpdGl2ZSBjaGFyZ2VzIGNvdWxkIG92ZXJzdGF0ZSBwYWlkIGNvbnZlcnNpb24gaWYgdGhlIGJpbGxpbmcgdGFibGUgZG9lcyBub3QKICAgICAgICBhbHJlYWR5IHJlbW92ZSBvciBuZXQgdGhlbSBvdXQuIFNpemUgaXMgdW5rbm93bi4KICAgICAgc3JjOiBbUzEsIFMzXQogICAgLSB0b3BpYzogT25ib2FyZGluZyBsaWZ0IGNsYWltCiAgICAgIGRlc2NyaWJlZDogPgogICAgICAgIFJlYWRvdXQgc2F5cyB0aGUgbmV3IG9uYm9hcmRpbmcgZmxvdyBpcyBkcml2aW5nIGEgMS40LXBvaW50IGxpZnQgdmVyc3VzIEZlYnJ1YXJ5LgogICAgICBpbXBsZW1lbnRlZDogPgogICAgICAgIFRoZSBzYXZlZCBxdWVyeSBhbmQgcmVzdWx0cyB0YWJsZSBwcm92aWRlIG9uZSBNYXJjaCBjb2hvcnQgcmF0ZSBhbmQgbm8gY2F1c2FsIGNvbXBhcmlzb24gb3IgRmVicnVhcnkKICAgICAgICBjb2hvcnQgY29tcHV0YXRpb24uCiAgICAgIGltcGFjdDogPgogICAgICAgIFRoZSAxNC4zJSBNYXJjaCBsZXZlbCBpcyByZXByb2R1Y2libGUgZnJvbSB0aGUgc2F2ZWQgb3V0cHV0OyB0aGUgMS40LXBvaW50IGNhdXNhbCBsaWZ0IGlzCiAgICAgICAgbm90IHJlcHJvZHVjaWJsZSBmcm9tIHRoZSBwcm92aWRlZCBmaWxlcy4KICAgICAgc3JjOiBbUzIsIFMzLCBTNF0KCnNwZWM6CiAgZXN0aW1hbmQ6CiAgICBwb3B1bGF0aW9uOiA+CiAgICAgIFBpeGVsUHJlc3MgUHJvIGlPUyBhbmQgQW5kcm9pZCB1c2VycyB3aG9zZSBlYXJsaWVzdCB0cmlhbF9zdGFydF9kYXRlIGZhbGxzIGluIHRoZSBTUUwgY29ob3J0CiAgICAgIHdpbmRvdywgMjAyNi0wMy0wMiB0aHJvdWdoIDIwMjYtMDMtMDkgaW5jbHVzaXZlLgogICAgZXhwb3N1cmU6IE5vbmUuIFRoaXMgaXMgYSBzaW5nbGUtZ3JvdXAgZGVzY3JpcHRpdmUgY29udmVyc2lvbiByYXRlLgogICAgdGltZV96ZXJvOiBFYWNoIHVzZXIncyBlYXJsaWVzdCBQaXhlbFByZXNzIFBybyBtb2JpbGUgdHJpYWxfc3RhcnRfZGF0ZS4KICAgIHZhcmlhYmxlOiA+CiAgICAgIEluZGljYXRvciBmb3IgYXQgbGVhc3Qgb25lIGJpbGxpbmcuY2hhcmdlcyByb3cgd2l0aCBhbW91bnRfdXNkID4gMCBmcm9tIHRyaWFsX3N0YXJ0X2RhdGUKICAgICAgdGhyb3VnaCBEQVRFX0FERCh0cmlhbF9zdGFydF9kYXRlLCAxNCksIGluY2x1c2l2ZS4KICAgIGludGVyY3VycmVudF9ldmVudHM6ID4KICAgICAgUmVmdW5kcywgaW50ZXJuYWwgYWNjb3VudHMsIGFuZCB0ZXN0IGFjY291bnRzIGFyZSBub3QgaGFuZGxlZCBpbiB0aGUgdmlzaWJsZSBTUUw7IGlmIHRoZXkgYXJlCiAgICAgIGhhbmRsZWQgdXBzdHJlYW0sIHRoYXQgaGFuZGxpbmcgaXMgbm90IGRvY3VtZW50ZWQgaW4gdGhlIHByb3ZpZGVkIGNvZGUuCiAgICBzdW1tYXJ5OiA+CiAgICAgIENvbnZlcnRlZCB1c2VycyBkaXZpZGVkIGJ5IGFsbCBTUUwtY29ob3J0IHRyaWFsIHVzZXJzLCBtdWx0aXBsaWVkIGJ5IDEwMCBhbmQgcm91bmRlZCB0byB0d28KICAgICAgZGVjaW1hbCBwbGFjZXMuCiAgcGFyYW1ldGVyczoKICAgIC0ge25hbWU6IGNvaG9ydF9zdGFydCwgdmFsdWU6ICIyMDI2LTAzLTAyIiwgbWVhbmluZzogRmlyc3QgaW5jbHVkZWQgdHJpYWxfc3RhcnRfZGF0ZSBpbiBTUUx9CiAgICAtIHtuYW1lOiBjb2hvcnRfZW5kLCB2YWx1ZTogIjIwMjYtMDMtMDkiLCBtZWFuaW5nOiBMYXN0IGluY2x1ZGVkIHRyaWFsX3N0YXJ0X2RhdGUgaW4gU1FMIGJlY2F1c2UgQkVUV0VFTiBpcyBpbmNsdXNpdmV9CiAgICAtIHtuYW1lOiBjb252ZXJzaW9uX2RheXMsIHZhbHVlOiAxNCwgbWVhbmluZzogTGFzdCBpbmNsdWRlZCBjaGFyZ2UtZGF5IG9mZnNldCBpbiBTUUx9CiAgICAtIHtuYW1lOiBwcm9kdWN0LCB2YWx1ZTogUElYRUxQUkVTU19QUk8sIG1lYW5pbmc6IFRyaWFsLWV2ZW50IHByb2R1Y3QgZmlsdGVyfQogICAgLSB7bmFtZTogcGxhdGZvcm1zLCB2YWx1ZTogImlvcywgYW5kcm9pZCIsIG1lYW5pbmc6IE1vYmlsZSBwbGF0Zm9ybSBmaWx0ZXJ9CiAgbGluZWFnZToKICAgIC0gbmFtZTogYXBwLnRyaWFsX2V2ZW50cwogICAgICByb2xlOiBUcmlhbCBzdGFydHMgYW5kIGNvaG9ydCBtZW1iZXJzaGlwCiAgICAgIGdyYWluOiB1c2VyX2lkIGJ5IHRyaWFsIGV2ZW50CiAgICAgIGZpbHRlcnM6ICJwcm9kdWN0ID0gJ1BJWEVMUFJFU1NfUFJPJzsgcGxhdGZvcm0gSU4gKCdpb3MnLCdhbmRyb2lkJyk7IGVhcmxpZXN0IHRyaWFsX3N0YXJ0X2RhdGUgcGVyIHVzZXIiCiAgICAgIHNyYzogUzMKICAgIC0gbmFtZTogYmlsbGluZy5jaGFyZ2VzCiAgICAgIHJvbGU6IFBvc2l0aXZlIGZpcnN0IGNoYXJnZSB1c2VkIGFzIGNvbnZlcnNpb24gZXZpZGVuY2UKICAgICAgZ3JhaW46IHVzZXJfaWQgYnkgY2hhcmdlCiAgICAgIGZpbHRlcnM6ICJhbW91bnRfdXNkID4gMDsgY2hhcmdlX2RhdGUgaW4gdGhlIFNRTCBjb252ZXJzaW9uIHdpbmRvdyIKICAgICAgc3JjOiBTMwogICAgLSBuYW1lOiByZXN1bHRzL2NvbnZlcnNpb25fc3VtbWFyeS5jc3YKICAgICAgcm9sZTogU2F2ZWQgb3V0cHV0IGZvciB0aGUgaGVhZGxpbmUgbnVtYmVyCiAgICAgIGdyYWluOiBvbmUgc3VtbWFyeSByb3cKICAgICAgZmlsdGVyczogInRyaWFsX3VzZXJzID0gNDgsMjEwOyBjb252ZXJ0ZWRfdXNlcnMgPSA2LDg5NDsgY29udmVyc2lvbl9yYXRlX3BjdCA9IDE0LjMwIgogICAgICBzcmM6IFM0CiAgY29kZToKICAgIC0gcHVycG9zZTogU1FMIHBhcmFtZXRlcnMgdGhhdCBkZWZpbmUgdGhlIGltcGxlbWVudGVkIGNvaG9ydCBhbmQgb3V0Y29tZSB3aW5kb3cKICAgICAgbGFuZzogc3FsCiAgICAgIHNyYzogUzMKICAgICAgZXhjZXJwdDogfAogICAgICAgIFdJVEggcGFyYW1zIEFTICgKICAgICAgICAgIFNFTEVDVCBEQVRFICcyMDI2LTAzLTAyJyBBUyBjb2hvcnRfc3RhcnQsCiAgICAgICAgICAgICAgICAgREFURSAnMjAyNi0wMy0wOScgQVMgY29ob3J0X2VuZCwKICAgICAgICAgICAgICAgICAxNCAgICAgICAgICAgICAgICBBUyBjb252ZXJzaW9uX2RheXMKICAgICAgICApCiAgICAtIHB1cnBvc2U6IFRyaWFsIGNvaG9ydCBjb25zdHJ1Y3Rpb24KICAgICAgbGFuZzogc3FsCiAgICAgIHNyYzogUzMKICAgICAgZXhjZXJwdDogfAogICAgICAgIEZST00gYXBwLnRyaWFsX2V2ZW50cyB0CiAgICAgICAgV0hFUkUgdC5wcm9kdWN0ID0gJ1BJWEVMUFJFU1NfUFJPJwogICAgICAgICAgQU5EIHQucGxhdGZvcm0gSU4gKCdpb3MnLCAnYW5kcm9pZCcpCiAgICAgICAgR1JPVVAgQlkgdC51c2VyX2lkCiAgICAgICAgLi4uCiAgICAgICAgV0hFUkUgdHIudHJpYWxfc3RhcnRfZGF0ZSBCRVRXRUVOIHAuY29ob3J0X3N0YXJ0IEFORCBwLmNvaG9ydF9lbmQKICAgIC0gcHVycG9zZTogQ29udmVyc2lvbiBhbmQgYWdncmVnYXRpb24KICAgICAgbGFuZzogc3FsCiAgICAgIHNyYzogUzMKICAgICAgZXhjZXJwdDogfAogICAgICAgIFdIRVJFIGIuY2hhcmdlX2RhdGUgQkVUV0VFTiBjLnRyaWFsX3N0YXJ0X2RhdGUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBTkQgREFURV9BREQoYy50cmlhbF9zdGFydF9kYXRlLCBwLmNvbnZlcnNpb25fZGF5cykKICAgICAgICAuLi4KICAgICAgICBST1VORCgxMDAuMCAqIENPVU5UKERJU1RJTkNUIGYudXNlcl9pZCkgLyBDT1VOVChESVNUSU5DVCBjLnVzZXJfaWQpLCAyKSBBUyBjb252ZXJzaW9uX3JhdGVfcGN0CiAgcmVwcm9kdWNlOgogICAgc3RlcHM6CiAgICAgIC0gPgogICAgICAgIFVzZSB0aGUgc2F2ZWQgU1FMIG1ldHJpYyBkZWZpbml0aW9uOiBQaXhlbFByZXNzIFBybyBpT1MgYW5kIEFuZHJvaWQgZmlyc3QgdHJpYWwgc3RhcnRzIGluCiAgICAgICAgdGhlIGltcGxlbWVudGVkIE1hcmNoIGNvaG9ydCB3aW5kb3cuCiAgICAgIC0gPgogICAgICAgIENvdW50IHRyaWFsIHVzZXJzIGFuZCB1c2VycyB3aXRoIGF0IGxlYXN0IG9uZSBwb3NpdGl2ZSBjaGFyZ2UgaW4gdGhlIGluY2x1c2l2ZSAxNC1kYXkgU1FMCiAgICAgICAgb3V0Y29tZSB3aW5kb3cuCiAgICAgIC0gPgogICAgICAgIERpdmlkZSBjb252ZXJ0ZWRfdXNlcnMgYnkgdHJpYWxfdXNlcnMgYW5kIG11bHRpcGx5IGJ5IDEwMC4KICAgIHJlY2VpcHRzOgogICAgICAtICJTYXZlZCBDU1Y6IHRyaWFsX3VzZXJzID0gNDgsMjEwOyBjb252ZXJ0ZWRfdXNlcnMgPSA2LDg5NDsgY29udmVyc2lvbl9yYXRlX3BjdCA9IDE0LjMwLiIKICAgICAgLSAiUmVjb21wdXRlZCBmcm9tIHNhdmVkIGNvdW50czogNiw4OTQgLyA0OCwyMTAgKiAxMDAgPSAxNC4yOTk5JSwgd2hpY2ggcm91bmRzIHRvIDE0LjMwJS4iCiAgICBkYXRhX2NvbXBsZXRlX3Rocm91Z2g6ICIyMDI2LTA0LTE3IgogICAgdGVzdHM6ID4KICAgICAgTGludGluZyBjaGVja3Mgc2NoZW1hIGFuZCBpbnRlcm5hbCBjYXJkIGNvbnNpc3RlbmN5LiBUaGUgc291cmNlIHF1ZXJ5IHdhcyBub3QgcmVydW4gYmVjYXVzZSB0aGUKICAgICAgZml4dHVyZSBwcm92aWRlcyBvbmx5IFNRTCB0ZXh0IGFuZCBhIHNhdmVkIGFnZ3JlZ2F0ZSBvdXRwdXQsIG5vdCBkYXRhYmFzZSBhY2Nlc3MuCgpnbG9zc2FyeToKICAtIHRlcm06IHRyaWFsIHVzZXIKICAgIGFsaWFzZXM6IFt0cmlhbCB1c2Vyc10KICAgIHBsYWluOiBBIHBlcnNvbiB3aG8gc3RhcnRlZCBhIGZyZWUgdHJpYWwgYW5kIGlzIGNvdW50ZWQgb25jZSBpbiB0aGlzIG1ldHJpYy4KICAtIHRlcm06IGNvaG9ydAogICAgYWxpYXNlczogW01hcmNoIGNvaG9ydCwgY29ob3J0IHdpbmRvd10KICAgIHBsYWluOiBUaGUgZ3JvdXAgb2YgdXNlcnMgd2hvc2UgZmlyc3QgdHJpYWwgc3RhcnQgZmFsbHMgaW4gdGhlIHNlbGVjdGVkIGRhdGUgcmFuZ2UuCiAgLSB0ZXJtOiBjb252ZXJzaW9uIHJhdGUKICAgIGFsaWFzZXM6IFt0cmlhbCBjb252ZXJzaW9uLCBjb252ZXJ0ZWQgdG8gcGFpZF0KICAgIHBsYWluOiBUaGUgc2hhcmUgb2YgdHJpYWwgdXNlcnMgd2hvIGJlY29tZSBwYXlpbmcgdXNlcnMgdW5kZXIgdGhlIG1ldHJpYydzIHJ1bGVzLgogIC0gdGVybTogY29udmVyc2lvbiB3aW5kb3cKICAgIGFsaWFzZXM6IFtvdXRjb21lIHdpbmRvdywgd2F0Y2ggd2luZG93XQogICAgcGxhaW46IFRoZSB0aW1lIGFmdGVyIHRyaWFsIHN0YXJ0IHdoZW4gYSBjaGFyZ2UgY2FuIGNvdW50IGFzIGNvbnZlcnNpb24uCiAgLSB0ZXJtOiBmaXJzdCBjaGFyZ2UKICAgIGFsaWFzZXM6IFtwb3NpdGl2ZSBjaGFyZ2VdCiAgICBwbGFpbjogVGhlIGVhcmxpZXN0IGJpbGxpbmcgY2hhcmdlIGZvdW5kIGZvciBhIHVzZXIgaW4gdGhlIGNvbnZlcnNpb24gd2luZG93LgogIC0gdGVybTogcGVyY2VudGFnZSBwb2ludAogICAgYWxpYXNlczogW3BvaW50LCBwb2ludHNdCiAgICBwbGFpbjogPgogICAgICBUaGUgcGxhaW4gZGlmZmVyZW5jZSBiZXR3ZWVuIHR3byBwZXJjZW50YWdlcy4gTW92aW5nIGZyb20gMTIuOSUgdG8gMTQuMyUgaXMgMS40IHBlcmNlbnRhZ2UgcG9pbnRzLgogIC0gdGVybTogZGVzY3JpcHRpdmUKICAgIHBsYWluOiBBIHJlc3VsdCB0aGF0IHJlcG9ydHMgd2hhdCB3YXMgb2JzZXJ2ZWQgd2l0aG91dCBwcm92aW5nIHdoYXQgY2F1c2VkIGl0LgogIC0gdGVybTogU1FMCiAgICBwbGFpbjogVGhlIHF1ZXJ5IGxhbmd1YWdlIHVzZWQgaGVyZSB0byBkZWZpbmUgdGhlIGRhdGEgcHVsbCBhbmQgYWdncmVnYXRpb24uCiAgLSB0ZXJtOiBjb25maWRlbmNlIGludGVydmFsCiAgICBwbGFpbjogQSByYW5nZSB0aGF0IHdvdWxkIHVzdWFsbHkgc2hvdyBob3cgbXVjaCB0aGUgbnVtYmVyIG1pZ2h0IG1vdmUgYmVjYXVzZSBvZiBzYW1wbGluZyBub2lzZS4KCnF1aXo6CiAgLSBraW5kOiBnaXN0CiAgICBxOiAiV2hhdCBpcyB0aGUgc2FmZXN0IHJlYWRpbmcgb2YgdGhlIDE0LjMlIGhlYWRsaW5lPyIKICAgIG9wdGlvbnM6CiAgICAgIC0gIkluIHRoZSBzYXZlZCBNYXJjaCBtb2JpbGUgY29ob3J0IHN1bW1hcnksIDE0LjMlIG9mIHRyaWFsIHVzZXJzIGNvbnZlcnRlZCB0byBwYWlkLiIKICAgICAgLSAiVGhlIG5ldyBvbmJvYXJkaW5nIGZsb3cgY2F1c2VkIGEgMTQuMyUgbGlmdC4iCiAgICAgIC0gIkV4YWN0bHkgMTQuMyUgb2YgYWxsIFBpeGVsUHJlc3MgdXNlcnMgYmVjYW1lIHBhaWQgc3Vic2NyaWJlcnMuIgogICAgYW5zd2VyOiAwCiAgICB3aHk6ID4KICAgICAgVGhlIGNhcmQgZG9jdW1lbnRzIGEgZGVzY3JpcHRpdmUgY29udmVyc2lvbiByYXRlIGFtb25nIHRyaWFsIHVzZXJzIGluIHRoZSBzYXZlZCBNYXJjaCBtb2JpbGUKICAgICAgY29ob3J0IHN1bW1hcnkuCiAgLSBraW5kOiB2ZXJiYXRpbQogICAgcTogIldoYXQgY29udmVyc2lvbiB3aW5kb3cgaXMgaW1wbGVtZW50ZWQgaW4gdGhlIHByb3ZpZGVkIFNRTD8iCiAgICBvcHRpb25zOgogICAgICAtICIzMCBkYXlzIGFmdGVyIHRyaWFsIHN0YXJ0LiIKICAgICAgLSAiVGhlIHRyaWFsIHN0YXJ0IGRheSB0aHJvdWdoIGRheSAxNCwgaW5jbHVzaXZlLiIKICAgICAgLSAiT25seSB0aGUgZmlyc3QgY2hhcmdlIG9uIHRoZSB0cmlhbCBzdGFydCBkYXkuIgogICAgYW5zd2VyOiAxCiAgICB3aHk6ID4KICAgICAgVGhlIFNRTCBzZXRzIGNvbnZlcnNpb25fZGF5cyA9IDE0IGFuZCB1c2VzIGFuIGluY2x1c2l2ZSBCRVRXRUVOIGNvbmRpdGlvbiBmcm9tIHRyaWFsX3N0YXJ0X2RhdGUKICAgICAgdGhyb3VnaCBEQVRFX0FERCh0cmlhbF9zdGFydF9kYXRlLCAxNCkuCiAgLSBraW5kOiB0cmFuc2ZlcgogICAgcTogPgogICAgICBBIHVzZXIgc3RhcnRzIGEgUGl4ZWxQcmVzcyBQcm8gQW5kcm9pZCB0cmlhbCBvbiA1IE1hciAyMDI2IGFuZCBoYXMgYSBwb3NpdGl2ZSBjaGFyZ2Ugb24gMjAgTWFyLgogICAgICBEbyB0aGV5IGNvdW50IHVuZGVyIHRoZSBTUUwgbWV0cmljPwogICAgb3B0aW9uczoKICAgICAgLSAiWWVzLCBiZWNhdXNlIGRheSAxNSBpcyBpbnNpZGUgYSAzMC1kYXkgd2luZG93LiIKICAgICAgLSAiTm8sIGJlY2F1c2UgZGF5IDE1IGlzIG91dHNpZGUgdGhlIFNRTCdzIGluY2x1c2l2ZSBkYXktMC10aHJvdWdoLWRheS0xNCB3aW5kb3cuIgogICAgICAtICJZZXMsIGJlY2F1c2UgZXZlcnkgcG9zaXRpdmUgY2hhcmdlIGNvdW50cyByZWdhcmRsZXNzIG9mIGRhdGUuIgogICAgYW5zd2VyOiAxCiAgICB3aHk6ID4KICAgICAgVGhlIHByb3NlIDMwLWRheSBkZWZpbml0aW9uIHdvdWxkIGluY2x1ZGUgdGhhdCBjaGFyZ2UsIGJ1dCB0aGUgU1FMIHdpbmRvdyB1c2VkIGZvciB0aGlzIGNhcmQKICAgICAgZW5kcyBvbiBkYXkgMTQuCgpjaGFuZ2Vsb2c6CiAgLSB7ZGF0ZTogIjIwMjYtMDQtMTgiLCBjaGFuZ2U6ICJTYXZlZCBjb252ZXJzaW9uIHN1bW1hcnkgcHJvZHVjZWQgd2l0aCA0OCwyMTAgdHJpYWwgdXNlcnMsIDYsODk0IGNvbnZlcnRlZCB1c2VycywgYW5kIDE0LjMwJSBjb252ZXJzaW9uLiJ9CiAgLSB7ZGF0ZTogIjIwMjYtMDQtMjAiLCBjaGFuZ2U6ICJSZWFkb3V0IHNoYXJlZCB3aXRoIGxlYWRlcnNoaXAsIGluY2x1ZGluZyBhbiB1bnJlcHJvZHVjaWJsZSBGZWJydWFyeSBjb21wYXJpc29uIGFuZCBvbmJvYXJkaW5nIGxpZnQgY2xhaW0uIn0KICAtIHtkYXRlOiAiMjAyNi0xMC0wNCIsIGNoYW5nZTogIk1ldHJpYyBjYXJkIHdyaXR0ZW4gZnJvbSB0aGUgc2F2ZWQgZml4dHVyZSwgd2l0aCBwcm9zZS12ZXJzdXMtU1FMIGRpc2NyZXBhbmNpZXMgcmVjb3JkZWQuIn0KCnNvdXJjZXM6CiAgLSBpZDogUzEKICAgIHBhdGg6ICIvVXNlcnMvYnNwdW50Ly5sb2NhbC9zdGF0ZS9za2lsbC1hY3Rpb25zLzIwMjYxMDA0VDIwMzgxNlotMzg3YTIxMTAvZml4dHVyZXMvc3luLWEvUkVBRE1FLm1kIgogICAgbGluZXM6ICIxLTIxIgogICAgbm90ZTogIlF1ZXN0aW9uLCBpbnRlbmRlZCBkZWZpbml0aW9uLCBjb2hvcnQgZGF0ZXMsIGV4Y2x1c2lvbnMsIHJlZnVuZCBzdGF0ZW1lbnQsIHJlc3VsdCBmaWxlIGxpc3QiCiAgLSBpZDogUzIKICAgIHBhdGg6ICIvVXNlcnMvYnNwdW50Ly5sb2NhbC9zdGF0ZS9za2lsbC1hY3Rpb25zLzIwMjYxMDA0VDIwMzgxNlotMzg3YTIxMTAvZml4dHVyZXMvc3luLWEvcmVhZG91dC5tZCIKICAgIGxpbmVzOiAiMS05IgogICAgbm90ZTogIkxlYWRlcnNoaXAtZmFjaW5nIGhlYWRsaW5lLCBGZWJydWFyeSBjb21wYXJpc29uLCBvbmJvYXJkaW5nIGNsYWltLCBhbmQgMzAtZGF5IGRlZmluaXRpb24iCiAgLSBpZDogUzMKICAgIHBhdGg6ICIvVXNlcnMvYnNwdW50Ly5sb2NhbC9zdGF0ZS9za2lsbC1hY3Rpb25zLzIwMjYxMDA0VDIwMzgxNlotMzg3YTIxMTAvZml4dHVyZXMvc3luLWEvc3FsL3RyaWFsX2NvbnZlcnNpb24uc3FsIgogICAgbGluZXM6ICIxLTQzIgogICAgbm90ZTogIkltcGxlbWVudGVkIGNvaG9ydCwgY29udmVyc2lvbiB3aW5kb3csIGNoYXJnZSBmaWx0ZXIsIGFuZCBhZ2dyZWdhdGUgZm9ybXVsYSIKICAtIGlkOiBTNAogICAgcGF0aDogIi9Vc2Vycy9ic3B1bnQvLmxvY2FsL3N0YXRlL3NraWxsLWFjdGlvbnMvMjAyNjEwMDRUMjAzODE2Wi0zODdhMjExMC9maXh0dXJlcy9zeW4tYS9yZXN1bHRzL2NvbnZlcnNpb25fc3VtbWFyeS5jc3YiCiAgICBsaW5lczogIjEtMiIKICAgIG5vdGU6ICJTYXZlZCBoZWFkbGluZSBvdXRwdXQgYW5kIHJ1biBtZXRhZGF0YSIK" download="pixelpress-trial-conversion.yaml">Download the spec (YAML)</a>
+      <button class="btn ghost" type="button" data-copy="#spec-yaml">Copy spec</button>
+      <a class="btn ghost" href="pixelpress-trial-conversion.methods.html">Methods section</a>
+    </div>
+    <textarea id="spec-yaml" hidden>schema: metric-card/1
+id: pixelpress-trial-conversion
+title: PixelPress Pro mobile trial conversion, March cohort
+subtitle: Share of mobile trial starters with a paid first charge in the SQL outcome window
+status: provisional
+owner: Growth analytics
+updated: &#34;2026-04-20&#34;
+question: &gt;
+  What share of people who start a PixelPress Pro free trial become paying subscribers?
+
+gist:
+  sentence: &gt;
+    In the saved March mobile trial group, 14.3% of PixelPress Pro trial users
+    had a positive charge by day 14.
+  headline:
+    value: 14.3
+    unit: percent
+    decimals: 1
+    label: trial users converted to paid
+    context: &#34;6,894 of 48,210 trial users converted in the saved summary.&#34;
+  frequency: &gt;
+    About 14 in every 100 trial users converted to paid in the saved summary.
+  reading:
+    direction: higher_is_better
+    say: &gt;
+      &#34;In the saved March mobile cohort summary, 14.3% of PixelPress Pro trial users converted to paid.&#34;
+    dont_say: &gt;
+      &#34;The new onboarding flow drove a 1.4-point lift,&#34; or &#34;this is a 30-day conversion rate.&#34;
+  key_caveat: &gt;
+    The saved query uses a 14-day conversion parameter and includes cohort end date 2026-03-09;
+    the prose says 30 days and 2026-03-02 through 2026-03-08.
+  claim_strength: descriptive
+
+grammar:
+  unit:
+    singular: trial user
+    plural: trial users
+    plain: One PixelPress Pro mobile user with a trial start.
+    exact: &gt;
+      One distinct t.user_id after taking MIN(t.trial_start_date) from app.trial_events where
+      product = &#39;PIXELPRESS_PRO&#39; and platform IN (&#39;ios&#39;, &#39;android&#39;).
+    src: S3
+  population:
+    - id: pixelpress_pro_mobile
+      plain: People who started a PixelPress Pro trial on iOS or Android.
+      exact: &gt;
+        app.trial_events rows where product = &#39;PIXELPRESS_PRO&#39; and platform IN (&#39;ios&#39;, &#39;android&#39;),
+        grouped to each user&#39;s earliest trial_start_date.
+      src: S3
+    - id: march_sql_cohort
+      plain: Users whose earliest trial start falls in the SQL&#39;s March cohort window.
+      exact: &gt;
+        tr.trial_start_date BETWEEN DATE &#39;2026-03-02&#39; AND DATE &#39;2026-03-09&#39;. In SQL, BETWEEN is
+        inclusive, so the implemented cohort includes 2026-03-09.
+      n_after: 48210
+      src: [S3, S4]
+  anchor:
+    kind: per_unit_event
+    label: First trial start
+    plain: Each user&#39;s clock starts on the day they first started a PixelPress Pro mobile trial.
+    exact: &#34;trial_start_date = MIN(t.trial_start_date) per user_id in the trials CTE.&#34;
+    src: S3
+  windows:
+    - id: cohort_entry
+      label: March cohort entry
+      start: 0
+      end: 1
+      unit: day
+      role: eligibility
+      plain: A user&#39;s first trial start has to fall in the March cohort dates.
+      exact: &#34;tr.trial_start_date BETWEEN p.cohort_start AND p.cohort_end.&#34;
+      src: S3
+    - id: conversion_window_sql
+      label: SQL conversion watch window
+      start: 0
+      end: 15
+      unit: day
+      role: outcome
+      plain: The saved SQL watches for a paid charge from the trial start day through day 14.
+      exact: &gt;
+        b.charge_date BETWEEN c.trial_start_date AND DATE_ADD(c.trial_start_date, p.conversion_days),
+        where p.conversion_days = 14. Because BETWEEN is inclusive, this covers offsets 0 through 14.
+      src: S3
+  measures:
+    - id: converted_to_paid
+      label: Converted to paid
+      kind: indicator
+      window: conversion_window_sql
+      primary: true
+      plain: Counts a trial user if they had at least one positive charge in the SQL outcome window.
+      exact: &gt;
+        first_charge has one row for users with MIN(b.charge_date) after joining billing.charges on
+        user_id with b.amount_usd &gt; 0 inside the conversion window; converted users are
+        COUNT(DISTINCT f.user_id).
+      src: S3
+  aggregate:
+    kind: proportion
+    measure: converted_to_paid
+    numerator: trial users with a first_charge row
+    denominator: all trial users in the SQL cohort
+    plain: Divide converted trial users by all trial users in the cohort and report it as a percent.
+    exact: &gt;
+      ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct.
+    src: S3
+  groups:
+    - id: march_mobile_sql_cohort
+      label: March 2026 mobile SQL cohort
+      role: focal
+      period: &#34;2026-03-02..2026-03-09&#34;
+      year: &#34;2026&#34;
+      plain: The saved March mobile trial cohort.
+      exact: &gt;
+        The SQL parameterizes cohort_start as 2026-03-02 and cohort_end as 2026-03-09, then uses an
+        inclusive BETWEEN filter.
+      src: S3
+  uncertainty:
+    method: Not estimated in the saved output
+    plain: No confidence interval or standard error was reported with the 14.3% headline.
+    exact: &gt;
+      conversion_summary.csv reports trial_users, converted_users, conversion_rate_pct, run_date,
+      and data_complete_through only.
+    known_gaps: &gt;
+      Sampling uncertainty, data latency, and the effects of the documented prose-versus-SQL
+      discrepancies are not quantified.
+    src: S4
+
+results:
+  status: measured
+  as_of: &#34;2026-04-18&#34;
+  unit: percent
+  data_complete_through: &#34;2026-04-17&#34;
+  latest_anchor: &#34;2026-03-09&#34;
+  measure: converted_to_paid
+  cells:
+    - group: march_mobile_sql_cohort
+      value: 14.30
+      n: 48210
+      note: &#34;Saved summary reports 6,894 converted users out of 48,210 trial users.&#34;
+example:
+  name: Alex
+  intro: &gt;
+    Alex starts a PixelPress Pro mobile trial on 5 Mar 2026, so Alex&#39;s conversion window in the
+    query runs from 5 Mar through 19 Mar, inclusive.
+  anchor_date: &#34;2026-03-05&#34;
+  events:
+    - {at: 0, label: &#34;Starts a PixelPress Pro iOS trial and enters the cohort&#34;}
+    - {at: 14, label: &#34;Has a positive first charge&#34;, counts: true}
+    - {at: 15, label: &#34;A charge here would be outside the SQL conversion window&#34;, counts: false}
+  outcome: &gt;
+    Alex counts as converted because the positive charge is on day 14, which is included by the
+    query&#39;s date rule.
+
+fine_print:
+  judgment_calls:
+    - decision: Which definition to treat as implemented
+      choice: &gt;
+        Use the SQL and saved CSV for the card&#39;s implemented metric, not the readout&#39;s 30-day wording.
+      alternatives: &gt;
+        Write a definition-only card for the intended 30-day metric, or require a rerun with
+        conversion_days = 30.
+      why: &gt;
+        The skill says to trace the number to code. The saved headline comes with SQL and a saved
+        output, and the SQL has conversion_days = 14.
+      impact: &gt;
+        The card describes the reproducible saved number as a 14-day SQL conversion metric and
+        flags the 30-day wording as a discrepancy.
+      src: [S2, S3, S4]
+  caveats:
+    - title: Prose and SQL use different conversion windows
+      text: &gt;
+        The project note and readout call the metric 30-day conversion, but the query parameter is 14 days.
+        If a 30-day rerun were made, the rate could be higher.
+      effect: understates
+      severity: high
+      src: [S1, S2, S3]
+    - title: Cohort end date differs by one day
+      text: &gt;
+        The project note says the cohort is 2026-03-02 through 2026-03-08, but the query uses an inclusive
+        date filter ending on 2026-03-09.
+      effect: unknown_direction
+      severity: medium
+      src: [S1, S3]
+    - title: Exclusion and refund rules are not visible in the SQL
+      text: &gt;
+        The project note says internal and test accounts are excluded and refunded charges do not count.
+        The query shown filters only product, platform, and positive charge amount.
+      effect: unknown_direction
+      severity: high
+      src: [S1, S3]
+    - title: The February comparison is not reproducible from the saved files
+      text: &gt;
+        The readout says March is up from 12.9% in February, but the saved query and results table only contain
+        the March cohort summary.
+      effect: limits_scope
+      severity: medium
+      src: [S2, S4]
+  misreadings:
+    - wrong: &#34;14.3% is a 30-day conversion rate.&#34;
+      right: &gt;
+        The saved SQL uses conversion_days = 14, so the reproducible number is the SQL&#39;s 14-day
+        conversion metric unless the query is rerun with a 30-day window.
+    - wrong: &#34;The new onboarding flow caused the 1.4-point lift.&#34;
+      right: &gt;
+        The saved files show a descriptive March rate. They do not provide a causal design or a
+        reproducible February comparison.
+    - wrong: &#34;The cohort is exactly 2026-03-02 through 2026-03-08.&#34;
+      right: &gt;
+        That is the prose definition; the SQL as written includes 2026-03-09 because BETWEEN is
+        inclusive.
+    - wrong: &#34;Refunded charges and test accounts are definitely excluded.&#34;
+      right: &gt;
+        The prose says they should be excluded, but those filters are not visible in the SQL source
+        provided for this card.
+  discrepancies:
+    - topic: Conversion window
+      described: &gt;
+        The project note and readout define conversion as paying within 30 days of trial start.
+      implemented: &gt;
+        The query sets conversion_days = 14 and filters b.charge_date through DATE_ADD(trial_start_date, 14).
+      impact: &gt;
+        A longer 30-day window would include later converters, so the saved 14.3% may understate the
+        intended 30-day conversion rate. The size is unknown.
+      src: [S1, S2, S3]
+    - topic: Cohort end date
+      described: &#34;The project note says trials started 2026-03-02 through 2026-03-08.&#34;
+      implemented: &gt;
+        The query sets cohort_end to DATE &#39;2026-03-09&#39; and uses an inclusive date filter.
+      impact: &gt;
+        The SQL appears to include one extra trial-start date. Direction and size are unknown.
+      src: [S1, S3]
+    - topic: Internal and test account exclusions
+      described: &#34;The project note says internal and test accounts are excluded.&#34;
+      implemented: &gt;
+        The provided SQL does not show an internal-account or test-account exclusion.
+      impact: &gt;
+        If those accounts exist in app.trial_events, they may affect the denominator and numerator.
+        Direction and size are unknown.
+      src: [S1, S3]
+    - topic: Refunded charges
+      described: &#34;The project note says refunded charges do not count as paying.&#34;
+      implemented: &gt;
+        The provided SQL requires b.amount_usd &gt; 0 but does not show a refund or net-paid filter.
+      impact: &gt;
+        Refunded positive charges could overstate paid conversion if the billing table does not
+        already remove or net them out. Size is unknown.
+      src: [S1, S3]
+    - topic: Onboarding lift claim
+      described: &gt;
+        Readout says the new onboarding flow is driving a 1.4-point lift versus February.
+      implemented: &gt;
+        The saved query and results table provide one March cohort rate and no causal comparison or February
+        cohort computation.
+      impact: &gt;
+        The 14.3% March level is reproducible from the saved output; the 1.4-point causal lift is
+        not reproducible from the provided files.
+      src: [S2, S3, S4]
+
+spec:
+  estimand:
+    population: &gt;
+      PixelPress Pro iOS and Android users whose earliest trial_start_date falls in the SQL cohort
+      window, 2026-03-02 through 2026-03-09 inclusive.
+    exposure: None. This is a single-group descriptive conversion rate.
+    time_zero: Each user&#39;s earliest PixelPress Pro mobile trial_start_date.
+    variable: &gt;
+      Indicator for at least one billing.charges row with amount_usd &gt; 0 from trial_start_date
+      through DATE_ADD(trial_start_date, 14), inclusive.
+    intercurrent_events: &gt;
+      Refunds, internal accounts, and test accounts are not handled in the visible SQL; if they are
+      handled upstream, that handling is not documented in the provided code.
+    summary: &gt;
+      Converted users divided by all SQL-cohort trial users, multiplied by 100 and rounded to two
+      decimal places.
+  parameters:
+    - {name: cohort_start, value: &#34;2026-03-02&#34;, meaning: First included trial_start_date in SQL}
+    - {name: cohort_end, value: &#34;2026-03-09&#34;, meaning: Last included trial_start_date in SQL because BETWEEN is inclusive}
+    - {name: conversion_days, value: 14, meaning: Last included charge-day offset in SQL}
+    - {name: product, value: PIXELPRESS_PRO, meaning: Trial-event product filter}
+    - {name: platforms, value: &#34;ios, android&#34;, meaning: Mobile platform filter}
+  lineage:
+    - name: app.trial_events
+      role: Trial starts and cohort membership
+      grain: user_id by trial event
+      filters: &#34;product = &#39;PIXELPRESS_PRO&#39;; platform IN (&#39;ios&#39;,&#39;android&#39;); earliest trial_start_date per user&#34;
+      src: S3
+    - name: billing.charges
+      role: Positive first charge used as conversion evidence
+      grain: user_id by charge
+      filters: &#34;amount_usd &gt; 0; charge_date in the SQL conversion window&#34;
+      src: S3
+    - name: results/conversion_summary.csv
+      role: Saved output for the headline number
+      grain: one summary row
+      filters: &#34;trial_users = 48,210; converted_users = 6,894; conversion_rate_pct = 14.30&#34;
+      src: S4
+  code:
+    - purpose: SQL parameters that define the implemented cohort and outcome window
+      lang: sql
+      src: S3
+      excerpt: |
+        WITH params AS (
+          SELECT DATE &#39;2026-03-02&#39; AS cohort_start,
+                 DATE &#39;2026-03-09&#39; AS cohort_end,
+                 14                AS conversion_days
+        )
+    - purpose: Trial cohort construction
+      lang: sql
+      src: S3
+      excerpt: |
+        FROM app.trial_events t
+        WHERE t.product = &#39;PIXELPRESS_PRO&#39;
+          AND t.platform IN (&#39;ios&#39;, &#39;android&#39;)
+        GROUP BY t.user_id
+        ...
+        WHERE tr.trial_start_date BETWEEN p.cohort_start AND p.cohort_end
+    - purpose: Conversion and aggregation
+      lang: sql
+      src: S3
+      excerpt: |
+        WHERE b.charge_date BETWEEN c.trial_start_date
+                                AND DATE_ADD(c.trial_start_date, p.conversion_days)
+        ...
+        ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct
+  reproduce:
+    steps:
+      - &gt;
+        Use the saved SQL metric definition: PixelPress Pro iOS and Android first trial starts in
+        the implemented March cohort window.
+      - &gt;
+        Count trial users and users with at least one positive charge in the inclusive 14-day SQL
+        outcome window.
+      - &gt;
+        Divide converted_users by trial_users and multiply by 100.
+    receipts:
+      - &#34;Saved CSV: trial_users = 48,210; converted_users = 6,894; conversion_rate_pct = 14.30.&#34;
+      - &#34;Recomputed from saved counts: 6,894 / 48,210 * 100 = 14.2999%, which rounds to 14.30%.&#34;
+    data_complete_through: &#34;2026-04-17&#34;
+    tests: &gt;
+      Linting checks schema and internal card consistency. The source query was not rerun because the
+      fixture provides only SQL text and a saved aggregate output, not database access.
+
+glossary:
+  - term: trial user
+    aliases: [trial users]
+    plain: A person who started a free trial and is counted once in this metric.
+  - term: cohort
+    aliases: [March cohort, cohort window]
+    plain: The group of users whose first trial start falls in the selected date range.
+  - term: conversion rate
+    aliases: [trial conversion, converted to paid]
+    plain: The share of trial users who become paying users under the metric&#39;s rules.
+  - term: conversion window
+    aliases: [outcome window, watch window]
+    plain: The time after trial start when a charge can count as conversion.
+  - term: first charge
+    aliases: [positive charge]
+    plain: The earliest billing charge found for a user in the conversion window.
+  - term: percentage point
+    aliases: [point, points]
+    plain: &gt;
+      The plain difference between two percentages. Moving from 12.9% to 14.3% is 1.4 percentage points.
+  - term: descriptive
+    plain: A result that reports what was observed without proving what caused it.
+  - term: SQL
+    plain: The query language used here to define the data pull and aggregation.
+  - term: confidence interval
+    plain: A range that would usually show how much the number might move because of sampling noise.
+
+quiz:
+  - kind: gist
+    q: &#34;What is the safest reading of the 14.3% headline?&#34;
+    options:
+      - &#34;In the saved March mobile cohort summary, 14.3% of trial users converted to paid.&#34;
+      - &#34;The new onboarding flow caused a 14.3% lift.&#34;
+      - &#34;Exactly 14.3% of all PixelPress users became paid subscribers.&#34;
+    answer: 0
+    why: &gt;
+      The card documents a descriptive conversion rate among trial users in the saved March mobile
+      cohort summary.
+  - kind: verbatim
+    q: &#34;What conversion window is implemented in the provided SQL?&#34;
+    options:
+      - &#34;30 days after trial start.&#34;
+      - &#34;The trial start day through day 14, inclusive.&#34;
+      - &#34;Only the first charge on the trial start day.&#34;
+    answer: 1
+    why: &gt;
+      The SQL sets conversion_days = 14 and uses an inclusive BETWEEN condition from trial_start_date
+      through DATE_ADD(trial_start_date, 14).
+  - kind: transfer
+    q: &gt;
+      A user starts a PixelPress Pro Android trial on 5 Mar 2026 and has a positive charge on 20 Mar.
+      Do they count under the SQL metric?
+    options:
+      - &#34;Yes, because day 15 is inside a 30-day window.&#34;
+      - &#34;No, because day 15 is outside the SQL&#39;s inclusive day-0-through-day-14 window.&#34;
+      - &#34;Yes, because every positive charge counts regardless of date.&#34;
+    answer: 1
+    why: &gt;
+      The prose 30-day definition would include that charge, but the SQL window used for this card
+      ends on day 14.
+
+changelog:
+  - {date: &#34;2026-04-18&#34;, change: &#34;Saved conversion summary produced with 48,210 trial users, 6,894 converted users, and 14.30% conversion.&#34;}
+  - {date: &#34;2026-04-20&#34;, change: &#34;Readout shared with leadership, including an unreproducible February comparison and onboarding lift claim.&#34;}
+  - {date: &#34;2026-10-04&#34;, change: &#34;Metric card written from the saved fixture, with prose-versus-SQL discrepancies recorded.&#34;}
+
+sources:
+  - id: S1
+    path: &#34;eval/fixtures/syn-a/README.md&#34;
+    lines: &#34;1-21&#34;
+    note: &#34;Question, intended definition, cohort dates, exclusions, refund statement, result file list&#34;
+  - id: S2
+    path: &#34;eval/fixtures/syn-a/readout.md&#34;
+    lines: &#34;1-9&#34;
+    note: &#34;Leadership-facing headline, February comparison, onboarding claim, and 30-day definition&#34;
+  - id: S3
+    path: &#34;eval/fixtures/syn-a/sql/trial_conversion.sql&#34;
+    lines: &#34;1-43&#34;
+    note: &#34;Implemented cohort, conversion window, charge filter, and aggregate formula&#34;
+  - id: S4
+    path: &#34;eval/fixtures/syn-a/results/conversion_summary.csv&#34;
+    lines: &#34;1-2&#34;
+    note: &#34;Saved headline output and run metadata&#34;
+</textarea>
+
+    <h3 class="sub">Estimand</h3>
+    <table class="kv">
+      <tr><th scope="row">Population</th><td>PixelPress Pro iOS and Android users whose earliest trial_start_date falls in the SQL cohort window, 2026-03-02 through 2026-03-09 inclusive.</td></tr>
+<tr><th scope="row">Exposure / contrast</th><td>None. This is a single-group descriptive conversion rate.</td></tr><tr><th scope="row">Time zero</th><td>Each user&#x27;s earliest PixelPress Pro mobile trial_start_date.</td></tr>      <tr><th scope="row">Variable</th><td>Indicator for at least one billing.charges row with amount_usd &gt; 0 from trial_start_date through DATE_ADD(trial_start_date, 14), inclusive.</td></tr>
+<tr><th scope="row">Intercurrent events</th><td>Refunds, internal accounts, and test accounts are not handled in the visible SQL; if they are handled upstream, that handling is not documented in the provided code.</td></tr>      <tr><th scope="row">Summary measure</th><td>Converted users divided by all SQL-cohort trial users, multiplied by 100 and rounded to two decimal places.</td></tr>
+    </table>
+
+    <h3 class="sub">Where the description and the code disagree</h3>
+    <div class="discrep">
+      <article>
+        <h4>Conversion window</h4>
+        <div class="dv"><div><span>Described</span><p>The project note and readout define conversion as paying within 30 days of trial start.</p></div><div><span>Implemented</span><p>The query sets conversion_days = 14 and filters b.charge_date through DATE_ADD(trial_start_date, 14).</p></div></div>
+<p class="impact"><b>Impact:</b> A longer 30-day window would include later converters, so the saved 14.3% may understate the intended 30-day conversion rate. The size is unknown.</p><span class="src" title="eval/fixtures/syn-a/README.md">S1</span><span class="src" title="eval/fixtures/syn-a/readout.md">S2</span><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>      </article>
+      <article>
+        <h4>Cohort end date</h4>
+        <div class="dv"><div><span>Described</span><p>The project note says trials started 2026-03-02 through 2026-03-08.</p></div><div><span>Implemented</span><p>The query sets cohort_end to DATE &#x27;2026-03-09&#x27; and uses an inclusive date filter.</p></div></div>
+<p class="impact"><b>Impact:</b> The SQL appears to include one extra trial-start date. Direction and size are unknown.</p><span class="src" title="eval/fixtures/syn-a/README.md">S1</span><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>      </article>
+      <article>
+        <h4>Internal and test account exclusions</h4>
+        <div class="dv"><div><span>Described</span><p>The project note says internal and test accounts are excluded.</p></div><div><span>Implemented</span><p>The provided SQL does not show an internal-account or test-account exclusion.</p></div></div>
+<p class="impact"><b>Impact:</b> If those accounts exist in app.trial_events, they may affect the denominator and numerator. Direction and size are unknown.</p><span class="src" title="eval/fixtures/syn-a/README.md">S1</span><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>      </article>
+      <article>
+        <h4>Refunded charges</h4>
+        <div class="dv"><div><span>Described</span><p>The project note says refunded charges do not count as paying.</p></div><div><span>Implemented</span><p>The provided SQL requires b.amount_usd &gt; 0 but does not show a refund or net-paid filter.</p></div></div>
+<p class="impact"><b>Impact:</b> Refunded positive charges could overstate paid conversion if the billing table does not already remove or net them out. Size is unknown.</p><span class="src" title="eval/fixtures/syn-a/README.md">S1</span><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span>      </article>
+      <article>
+        <h4>Onboarding lift claim</h4>
+        <div class="dv"><div><span>Described</span><p>Readout says the new onboarding flow is driving a 1.4-point lift versus February.</p></div><div><span>Implemented</span><p>The saved query and results table provide one March cohort rate and no causal comparison or February cohort computation.</p></div></div>
+<p class="impact"><b>Impact:</b> The 14.3% March level is reproducible from the saved output; the 1.4-point causal lift is not reproducible from the provided files.</p><span class="src" title="eval/fixtures/syn-a/readout.md">S2</span><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span><span class="src" title="eval/fixtures/syn-a/results/conversion_summary.csv">S4</span>      </article>
+    </div>
+
+    <h3 class="sub">Rules as implemented</h3>
+    <table class="rules">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Exact rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+<tr><th scope="row">Eligibility 1</th><td>app.trial_events rows where product = &#x27;PIXELPRESS_PRO&#x27; and platform IN (&#x27;ios&#x27;, &#x27;android&#x27;), grouped to each user&#x27;s earliest trial_start_date.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr><tr><th scope="row">Eligibility 2<br><span class="muted">48,210 remain</span></th><td>tr.trial_start_date BETWEEN DATE &#x27;2026-03-02&#x27; AND DATE &#x27;2026-03-09&#x27;. In SQL, BETWEEN is inclusive, so the implemented cohort includes 2026-03-09.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span><span class="src" title="eval/fixtures/syn-a/results/conversion_summary.csv">S4</span></td></tr>      <tr><th scope="row">Time zero</th><td>trial_start_date = MIN(t.trial_start_date) per user_id in the trials CTE.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr>
+<tr><th scope="row">March cohort entry<br><span class="muted">[0, 1) days</span></th><td>tr.trial_start_date BETWEEN p.cohort_start AND p.cohort_end.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr><tr><th scope="row">SQL conversion watch window<br><span class="muted">[0, 15) days</span></th><td>b.charge_date BETWEEN c.trial_start_date AND DATE_ADD(c.trial_start_date, p.conversion_days), where p.conversion_days = 14. Because BETWEEN is inclusive, this covers offsets 0 through 14.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr><tr><th scope="row">Converted to paid<br><span class="muted">indicator</span></th><td>first_charge has one row for users with MIN(b.charge_date) after joining billing.charges on user_id with b.amount_usd &gt; 0 inside the conversion window; converted users are COUNT(DISTINCT f.user_id).</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr>      <tr><th scope="row">Aggregate</th><td>ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct.</td><td><span class="src" title="eval/fixtures/syn-a/sql/trial_conversion.sql">S3</span></td></tr>
+<tr><th scope="row">Uncertainty</th><td>conversion_summary.csv reports trial_users, converted_users, conversion_rate_pct, run_date, and data_complete_through only.</td><td><span class="src" title="eval/fixtures/syn-a/results/conversion_summary.csv">S4</span></td></tr>      </tbody>
+    </table>
+
+    <h3 class="sub">Numbers per group</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Group</th><th scope="col">Definition</th><th scope="col">Value</th><th scope="col">n</th></tr></thead>
+      <tbody><tr><th scope="row">March 2026 mobile SQL cohort</th><td>The SQL parameterizes cohort_start as 2026-03-02 and cohort_end as 2026-03-09, then uses an inclusive BETWEEN filter.</td><td>14.3</td><td>48,210</td></tr></tbody>
+    </table>
+
+    <h3 class="sub">Parameters</h3>
+    <table class="data"><thead><tr><th scope="col">Name</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead>
+      <tbody><tr><td><code>cohort_start</code></td><td>2026-03-02</td><td>First included trial_start_date in SQL</td></tr><tr><td><code>cohort_end</code></td><td>2026-03-09</td><td>Last included trial_start_date in SQL because BETWEEN is inclusive</td></tr><tr><td><code>conversion_days</code></td><td>14</td><td>Last included charge-day offset in SQL</td></tr><tr><td><code>product</code></td><td>PIXELPRESS_PRO</td><td>Trial-event product filter</td></tr><tr><td><code>platforms</code></td><td>ios, android</td><td>Mobile platform filter</td></tr></tbody></table>
+
+    <h3 class="sub">Data lineage</h3>
+    <ol class="lineage">
+      <li><code>app.trial_events</code><p>Trial starts and cohort membership</p><p class="muted">Grain: user_id by trial event · Filters: product = &#39;PIXELPRESS_PRO&#39;; platform IN (&#39;ios&#39;,&#39;android&#39;); earliest trial_start_date per user</p></li>
+      <li><code>billing.charges</code><p>Positive first charge used as conversion evidence</p><p class="muted">Grain: user_id by charge · Filters: amount_usd &gt; 0; charge_date in the SQL conversion window</p></li>
+      <li><code>results/conversion_summary.csv</code><p>Saved output for the headline number</p><p class="muted">Grain: one summary row · Filters: trial_users = 48,210; converted_users = 6,894; conversion_rate_pct = 14.30</p></li>
+    </ol>
+
+    <h3 class="sub">Code that defines it</h3>
+    <figure class="code">
+      <figcaption><span>SQL parameters that define the implemented cohort and outcome window</span><span class="path">eval/fixtures/syn-a/sql/trial_conversion.sql:1-43</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sql">WITH params AS (
+  SELECT DATE &#39;2026-03-02&#39; AS cohort_start,
+         DATE &#39;2026-03-09&#39; AS cohort_end,
+         14                AS conversion_days
+)</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>Trial cohort construction</span><span class="path">eval/fixtures/syn-a/sql/trial_conversion.sql:1-43</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sql">FROM app.trial_events t
+WHERE t.product = &#39;PIXELPRESS_PRO&#39;
+  AND t.platform IN (&#39;ios&#39;, &#39;android&#39;)
+GROUP BY t.user_id
+...
+WHERE tr.trial_start_date BETWEEN p.cohort_start AND p.cohort_end</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>Conversion and aggregation</span><span class="path">eval/fixtures/syn-a/sql/trial_conversion.sql:1-43</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sql">WHERE b.charge_date BETWEEN c.trial_start_date
+                        AND DATE_ADD(c.trial_start_date, p.conversion_days)
+...
+ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct</code></pre>
+    </figure>
+
+    <h3 class="sub">Rebuild it</h3>
+<ol class="checklist"><li><label><input type="checkbox"> Use the saved SQL metric definition: PixelPress Pro iOS and Android first trial starts in the implemented March cohort window.</label></li><li><label><input type="checkbox"> Count trial users and users with at least one positive charge in the inclusive 14-day SQL outcome window.</label></li><li><label><input type="checkbox"> Divide converted_users by trial_users and multiply by 100.</label></li></ol><p><b>Data complete through:</b> 2026-04-17</p><p><b>Receipts:</b></p><ul><li>Saved CSV: trial_users = 48,210; converted_users = 6,894; conversion_rate_pct = 14.30.</li><li>Recomputed from saved counts: 6,894 / 48,210 * 100 = 14.2999%, which rounds to 14.30%.</li></ul><p><b>Tests:</b> Linting checks schema and internal card consistency. The source query was not rerun because the fixture provides only SQL text and a saved aggregate output, not database access.</p>
+    <h3 class="sub">Sources</h3>
+    <ol class="sources"><li id="src-S1"><span class="src">S1</span> <code>eval/fixtures/syn-a/README.md</code> <span class="muted">lines 1-21</span> · Question, intended definition, cohort dates, exclusions, refund statement, result file list</li><li id="src-S2"><span class="src">S2</span> <code>eval/fixtures/syn-a/readout.md</code> <span class="muted">lines 1-9</span> · Leadership-facing headline, February comparison, onboarding claim, and 30-day definition</li><li id="src-S3"><span class="src">S3</span> <code>eval/fixtures/syn-a/sql/trial_conversion.sql</code> <span class="muted">lines 1-43</span> · Implemented cohort, conversion window, charge filter, and aggregate formula</li><li id="src-S4"><span class="src">S4</span> <code>eval/fixtures/syn-a/results/conversion_summary.csv</code> <span class="muted">lines 1-2</span> · Saved headline output and run metadata</li></ol>
+
+    <h3 class="sub">Change log</h3>
+    <ul class="changelog"><li><time>2026-04-18</time> Saved conversion summary produced with 48,210 trial users, 6,894 converted users, and 14.30% conversion.</li><li><time>2026-04-20</time> Readout shared with leadership, including an unreproducible February comparison and onboarding lift claim.</li><li><time>2026-10-04</time> Metric card written from the saved fixture, with prose-versus-SQL discrepancies recorded.</li></ul>
+
+    <details class="quality">
+      <summary>Card quality checks: 0 errors · 0 warnings</summary>
+      <ul></ul>
+    </details>
+  </div>
+</section>
+
+
+<section id="check" class="level level-check" aria-labelledby="check-h">
+  <div class="wrap">
+    <p class="eyebrow">Check yourself</p>
+    <h2 id="check-h">Could you explain it to a colleague?</h2>
+    <div class="quiz">
+      <fieldset class="q" data-answer="0">
+        <legend><span class="qkind">Big picture</span>What is the safest reading of the 14.3% headline?</legend>
+<label><input type="radio" name="q0" value="0"> In the saved March mobile cohort summary, 14.3% of trial users converted to paid.</label><label><input type="radio" name="q0" value="1"> The new onboarding flow caused a 14.3% lift.</label><label><input type="radio" name="q0" value="2"> Exactly 14.3% of all PixelPress users became paid subscribers.</label>        <p class="why" hidden>The card documents a descriptive conversion rate among trial users in the saved March mobile cohort summary.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Detail</span>What conversion window is implemented in the provided SQL?</legend>
+<label><input type="radio" name="q1" value="0"> 30 days after trial start.</label><label><input type="radio" name="q1" value="1"> The trial start day through day 14, inclusive.</label><label><input type="radio" name="q1" value="2"> Only the first charge on the trial start day.</label>        <p class="why" hidden>The SQL sets conversion_days = 14 and uses an inclusive BETWEEN condition from trial_start_date through DATE_ADD(trial_start_date, 14).</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Apply it</span>A user starts a PixelPress Pro Android trial on 5 Mar 2026 and has a positive charge on 20 Mar. Do they count under the SQL metric?</legend>
+<label><input type="radio" name="q2" value="0"> Yes, because day 15 is inside a 30-day window.</label><label><input type="radio" name="q2" value="1"> No, because day 15 is outside the SQL&#39;s inclusive day-0-through-day-14 window.</label><label><input type="radio" name="q2" value="2"> Yes, because every positive charge counts regardless of date.</label>        <p class="why" hidden>The prose 30-day definition would include that charge, but the SQL window used for this card ends on day 14.</p>
+      </fieldset>
+    </div>
+    <div class="teachback">
+      <h3>Explain it back</h3>
+      <p>Write one or two sentences as if telling a colleague. Then compare with the checklist.</p>
+      <label class="sr" for="tb">Your explanation</label>
+      <textarea id="tb" rows="3" placeholder="This number is…"></textarea>
+      <button type="button" class="btn" data-reveal="#tb-check">Compare</button>
+      <div id="tb-check" hidden>
+        <p>A complete explanation mentions:</p>
+        <ul class="tb-list"><li><label><input type="checkbox"> <b>Who is counted</b> — people who started a PixelPress Pro trial on iOS or Android; users whose earliest trial start falls in the SQL&#39;s March cohort window</label></li><li><label><input type="checkbox"> <b>Over what time</b> — SQL conversion watch window: days 0–14, counting the first trial start as day 0</label></li><li><label><input type="checkbox"> <b>What counts</b> — Counts a trial user if they had at least one positive charge in the SQL outcome window.</label></li><li><label><input type="checkbox"> <b>The main limitation</b> — The saved query uses a 14-day conversion parameter and includes cohort end date 2026-03-09; the prose says 30 days and 2026-03-02 through 2026-03-08.</label></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="glossary" class="level glossary" aria-labelledby="gl-h">
+  <div class="wrap">
+    <h2 id="gl-h">Glossary</h2>
+    <dl>
+      <div><dt>cohort <span class="muted">(March cohort, cohort window)</span></dt><dd>The group of users whose first trial start falls in the selected date range.</dd></div>
+      <div><dt>confidence interval</dt><dd>A range that would usually show how much the number might move because of sampling noise.</dd></div>
+      <div><dt>conversion rate <span class="muted">(trial conversion, converted to paid)</span></dt><dd>The share of trial users who become paying users under the metric&#39;s rules.</dd></div>
+      <div><dt>conversion window <span class="muted">(outcome window, watch window)</span></dt><dd>The time after trial start when a charge can count as conversion.</dd></div>
+      <div><dt>descriptive</dt><dd>A result that reports what was observed without proving what caused it.</dd></div>
+      <div><dt>first charge <span class="muted">(positive charge)</span></dt><dd>The earliest billing charge found for a user in the conversion window.</dd></div>
+      <div><dt>percentage point <span class="muted">(point, points)</span></dt><dd>The plain difference between two percentages. Moving from 12.9% to 14.3% is 1.4 percentage points.</dd></div>
+      <div><dt>SQL</dt><dd>The query language used here to define the data pull and aggregation.</dd></div>
+      <div><dt>trial user <span class="muted">(trial users)</span></dt><dd>A person who started a free trial and is counted once in this metric.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Generated from <code>pixelpress-trial-conversion.yaml</code> by mcard. Self-contained: works offline, prints cleanly. <button type="button" class="linkish" onclick="window.print()">Print</button></div></footer>
+
+<div class="tips">
+  <div class="tip" role="tooltip" id="tip-g0" hidden><b>trial user</b> A person who started a free trial and is counted once in this metric.</div>
+  <div class="tip" role="tooltip" id="tip-g1" hidden><b>cohort</b> The group of users whose first trial start falls in the selected date range.</div>
+  <div class="tip" role="tooltip" id="tip-g2" hidden><b>conversion rate</b> The share of trial users who become paying users under the metric&#39;s rules.</div>
+  <div class="tip" role="tooltip" id="tip-g3" hidden><b>conversion window</b> The time after trial start when a charge can count as conversion.</div>
+  <div class="tip" role="tooltip" id="tip-g4" hidden><b>first charge</b> The earliest billing charge found for a user in the conversion window.</div>
+  <div class="tip" role="tooltip" id="tip-g5" hidden><b>percentage point</b> The plain difference between two percentages. Moving from 12.9% to 14.3% is 1.4 percentage points.</div>
+  <div class="tip" role="tooltip" id="tip-g6" hidden><b>descriptive</b> A result that reports what was observed without proving what caused it.</div>
+  <div class="tip" role="tooltip" id="tip-g7" hidden><b>SQL</b> The query language used here to define the data pull and aggregation.</div>
+  <div class="tip" role="tooltip" id="tip-g8" hidden><b>confidence interval</b> A range that would usually show how much the number might move because of sampling noise.</div>
+</div>
+<script>(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var wide = window.matchMedia("(min-width: 901px)");
+
+  // ---- depth rail: active section + reading progress
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  var bar = document.querySelector(".progress span");
+  function onScroll() {
+    var y = window.scrollY + 90, current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s; });
+    links.forEach(function (a) { a.classList.toggle("active", current && a.getAttribute("href") === "#" + current.id); });
+    if (bar) {
+      var max = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? Math.min(100, 100 * window.scrollY / max) : 0) + "%";
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ---- scrollytelling: the sticky stage shows the active step's figure
+  var stage = document.querySelector(".scrolly .stage");
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".scrolly .step"));
+  function activate(step) {
+    if (!step || step.classList.contains("active")) return;
+    steps.forEach(function (s) { s.classList.remove("active"); });
+    step.classList.add("active");
+    if (stage && wide.matches) {
+      var fig = step.querySelector(".step-fig");
+      stage.innerHTML = '<div class="fade">' + (fig ? fig.innerHTML : "") + "</div>";
+      stage.setAttribute("aria-hidden", "true");
+      bindTerms(stage);
+    }
+  }
+  if ("IntersectionObserver" in window && steps.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    steps.forEach(function (s) { io.observe(s); });
+    activate(steps[0]);
+  }
+
+  // ---- glossary toggletips (WCAG 2.2 SC 1.4.13: dismissible, hoverable, persistent)
+  var openTip = null, pinned = false, hideTimer = null;
+  function place(tip, trigger) {
+    var r = trigger.getBoundingClientRect();
+    tip.hidden = false;
+    var w = tip.offsetWidth;
+    var left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8));
+    tip.style.left = left + "px";
+    tip.style.top = (window.scrollY + r.bottom + 8) + "px";
+  }
+  function show(trigger, pin) {
+    clearTimeout(hideTimer);
+    var tip = document.getElementById("tip-" + trigger.getAttribute("data-tip"));
+    if (!tip) return;
+    if (openTip && openTip !== tip) openTip.hidden = true;
+    openTip = tip; pinned = !!pin;
+    place(tip, trigger);
+    trigger.setAttribute("aria-expanded", "true");
+  }
+  function hide(force) {
+    if (!openTip || (pinned && !force)) return;
+    openTip.hidden = true; openTip = null; pinned = false;
+    document.querySelectorAll('.term[aria-expanded="true"]').forEach(function (t) { t.setAttribute("aria-expanded", "false"); });
+  }
+  function bindTerms(root) {
+    root.querySelectorAll(".term").forEach(function (t) {
+      if (t.dataset.bound) return;
+      t.dataset.bound = "1";
+      t.setAttribute("aria-expanded", "false");
+      t.addEventListener("mouseenter", function () { show(t, false); });
+      t.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 250); });
+      t.addEventListener("focus", function () { show(t, false); });
+      t.addEventListener("blur", function () { hideTimer = setTimeout(function () { hide(false); }, 150); });
+      t.addEventListener("click", function (ev) { ev.stopPropagation(); if (openTip && pinned) { hide(true); } else { show(t, true); } });
+    });
+  }
+  bindTerms(document);
+  document.querySelectorAll(".tip").forEach(function (tip) {
+    tip.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+    tip.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 200); });
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
+  document.addEventListener("click", function (e) { if (openTip && !openTip.contains(e.target)) hide(true); });
+
+  // ---- quiz
+  document.querySelectorAll("fieldset.q").forEach(function (fs) {
+    var answer = fs.getAttribute("data-answer");
+    fs.addEventListener("change", function (e) {
+      fs.querySelectorAll("label").forEach(function (l) { l.classList.remove("right", "wrong"); });
+      var label = e.target.closest("label");
+      label.classList.add(e.target.value === answer ? "right" : "wrong");
+      var correct = fs.querySelector('input[value="' + answer + '"]');
+      if (correct) correct.closest("label").classList.add("right");
+      var why = fs.querySelector(".why");
+      if (why) { why.hidden = false; why.setAttribute("role", "status"); }
+    });
+  });
+
+  // ---- reveal + copy
+  document.querySelectorAll("[data-reveal]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-reveal")); if (t) t.hidden = false; });
+  });
+  function copy(text, btn) {
+    var done = function () { var o = btn.textContent; btn.textContent = "Copied"; setTimeout(function () { btn.textContent = o; }, 1400); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done); return; }
+    var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-copy")); if (t) copy(t.value || t.textContent, b); });
+  });
+  document.querySelectorAll("[data-copy-next]").forEach(function (b) {
+    b.addEventListener("click", function () { var pre = b.closest("figure").querySelector("pre"); if (pre) copy(pre.textContent, b); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fast-food jobs after New Jersey&#39;s 1992 minimum-wage rise · Metric card</title>
+<meta name="description" content="We counted staff at fast-food restaurants in early 1992 and again late in the year. New Jersey raised its minimum wage on 1 April; nearby Pennsylvania did not. We compare how the average staff per restaurant changed in each state.">
+<style>:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1b1f29; --ink-2:#4a5262; --muted:#6b7385; --line:#e3e4e0; --line-2:#d2d4ce;
+  --focal:#2650d8; --focal-soft:#e7ecfd; --base:#9aa1b0; --base-soft:#eef0f3;
+  --accent:#c2410c; --accent-soft:#fdede4; --good:#13795b; --good-soft:#e5f4ee; --bad:#b42318; --bad-soft:#fdeceb;
+  --warn:#a15c00; --warn-soft:#fff4dc;
+  --win-out:#2650d8; --win-exp:#7c3aed; --win-look:#9aa1b0;
+  --serif: "Charter","Iowan Old Style","Source Serif Pro",Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#111318; --paper:#181b22; --ink:#eceef3; --ink-2:#c3c8d3; --muted:#9aa2b2; --line:#2a2f3a; --line-2:#363c49;
+    --focal:#7d9bff; --focal-soft:#1f2a4d; --base:#7d8596; --base-soft:#232733; --accent:#ff8a4c; --accent-soft:#3a2418;
+    --good:#4cc79c; --good-soft:#15302a; --bad:#ff7b72; --bad-soft:#3a1d1d; --warn:#f2b84b; --warn-soft:#352a12;
+    --win-out:#7d9bff; --win-exp:#b79cff; --win-look:#7d8596; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+a{color:var(--focal)}
+code{font:0.88em/1.4 var(--mono); background:var(--base-soft); padding:1px 5px; border-radius:5px}
+.muted{color:var(--muted)}
+.note{color:var(--muted); font-size:.92rem}
+.skip{position:absolute; left:-999px}.skip:focus{left:12px; top:12px; background:var(--paper); padding:8px 12px; z-index:99}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+
+/* masthead */
+.masthead{padding:36px 0 22px; background:var(--paper); border-bottom:1px solid var(--line)}
+.crumbs{font-size:.85rem; color:var(--muted)} .crumbs a{color:var(--muted); text-decoration:none}
+.masthead h1{font:600 2.3rem/1.15 var(--serif); margin:.35rem 0 .3rem; letter-spacing:-.01em}
+.subtitle{margin:0; color:var(--ink-2); font-size:1.08rem}
+.meta{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--muted); font-size:.88rem; align-items:center}
+.pill{display:inline-block; padding:2px 10px; border-radius:99px; font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; background:var(--base-soft); color:var(--ink-2)}
+.status-validated,.status-in-use{background:var(--good-soft); color:var(--good)}
+.status-provisional,.status-proposed,.status-draft{background:var(--warn-soft); color:var(--warn)}
+.status-superseded{background:var(--bad-soft); color:var(--bad)}
+
+/* depth rail */
+.rail{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.rail-inner{display:flex; align-items:center; gap:14px; min-height:54px}
+.rail-title{font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+.rail ol{list-style:none; display:flex; gap:4px; margin:0; padding:0; overflow-x:auto}
+.rail a{display:flex; align-items:center; gap:7px; padding:7px 12px; border-radius:10px; text-decoration:none; color:var(--ink-2); white-space:nowrap; font-size:.92rem}
+.rail a b{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--base-soft); font-size:.78rem}
+.rail a small{color:var(--muted); font-size:.75rem}
+.rail a:hover{background:var(--base-soft)}
+.rail a.active{background:var(--focal-soft); color:var(--focal)} .rail a.active b{background:var(--focal); color:#fff}
+.rail .rail-extra a{color:var(--muted)}
+.progress{height:2px; background:transparent}.progress span{display:block; height:2px; width:0; background:var(--focal); transition:width .1s}
+
+/* levels */
+.level{padding:56px 0; border-bottom:1px solid var(--line)}
+.level-1{background:var(--paper)}
+.level-3{background:var(--paper)}
+.eyebrow{font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 6px; display:flex; align-items:center; gap:8px}
+.lvl{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper); font-weight:700; letter-spacing:0}
+.level h2{font:600 1.85rem/1.2 var(--serif); margin:0 0 22px; letter-spacing:-.01em}
+.level h2.question{font-size:1.65rem; color:var(--ink-2); font-weight:500; max-width:52ch}
+h3.sub{font:600 1.15rem/1.3 var(--sans); margin:38px 0 12px}
+
+/* gist */
+.gist-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:44px; align-items:start}
+.headline{margin:4px 0 18px}
+.hl-number{font:700 4.4rem/1 var(--serif); letter-spacing:-.03em; color:var(--focal)}
+.hl-label{font-size:1.15rem; color:var(--ink); margin-top:6px; font-weight:500}
+.hl-range{margin-top:8px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.hl-range span{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-right:6px}
+.lede{font:400 1.2rem/1.55 var(--serif); margin:0 0 12px}
+.context{color:var(--ink-2); margin:0 0 10px}
+.frequency{background:var(--base-soft); border-radius:10px; padding:10px 14px 10px 36px; margin:0 0 14px; position:relative}
+.frequency .icon{font-weight:700; color:var(--focal); position:absolute; left:14px}
+.claim{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--line-2); border-radius:12px; padding:12px 14px; font-size:.95rem}
+.claim-meter{display:flex; gap:3px; padding-top:6px}
+.claim-meter span{width:14px; height:8px; border-radius:2px; background:var(--line-2)}
+.claim-meter span.on{background:var(--ink-2)}
+.gist-fig{margin:0; background:var(--bg); border-radius:var(--r); padding:18px 16px 12px}
+.gist-fig figcaption{font-size:.9rem; color:var(--ink-2); margin-top:8px}
+.trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+.trio>div{border-radius:var(--r); padding:14px 16px}
+.trio h3{margin:0 0 6px; font-size:.8rem; text-transform:uppercase; letter-spacing:.08em}
+.trio p{margin:0}
+.say{background:var(--good-soft)} .say h3{color:var(--good)}
+.dont{background:var(--bad-soft)} .dont h3{color:var(--bad)}
+.caveat{background:var(--warn-soft)} .caveat h3{color:var(--warn)}
+.deeper{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px}
+.deeper a{display:grid; grid-template-columns:auto 1fr; gap:2px 12px; padding:14px 16px; border:1px solid var(--line-2); border-radius:var(--r); text-decoration:none; color:var(--ink); transition:border-color .15s, transform .15s}
+.deeper a:hover{border-color:var(--focal); transform:translateY(-2px)}
+.deeper span{grid-row:span 2; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--base-soft); font-weight:700}
+.deeper small{color:var(--muted)}
+
+/* figures */
+.fig{width:100%; height:auto; display:block; font-family:var(--sans); overflow:visible}
+.v-label{font-size:12.5px; fill:var(--ink-2)} .v-strong{font-weight:650; fill:var(--ink)}
+.v-tick{font-size:11px; fill:var(--muted)}
+.v-axis{stroke:var(--line-2); stroke-width:1.2} .v-grid{stroke:var(--line); stroke-width:1}
+.v-zero{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:3 3}
+.v-break{stroke:var(--muted); stroke-width:1.4; fill:none}
+.v-anchor{stroke:var(--ink); stroke-width:1.6}
+.v-win-outcome{fill:var(--win-out); fill-opacity:.16; stroke:var(--win-out); stroke-width:1.2}
+.v-win-exposure{fill:var(--win-exp); fill-opacity:.15; stroke:var(--win-exp); stroke-width:1.2}
+.v-win-look{fill:var(--win-look); fill-opacity:.16; stroke:var(--win-look); stroke-width:1.2}
+.v-dim{opacity:.35}
+.v-on-band{fill:var(--ink)}
+.v-event{fill:var(--paper); stroke:var(--ink-2); stroke-width:1.5}
+.v-event-on{fill:var(--accent); stroke:var(--accent)}
+.v-event-num{font-size:10.5px; font-weight:700; fill:var(--ink)}
+.v-event-on + .v-event-num{fill:#fff}
+.v-event-stem{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:2 3; opacity:.6}
+.v-line-base{stroke:var(--base); stroke-width:2.5}
+.v-line-focal{stroke:var(--focal); stroke-width:3.5}
+.v-line-cf{stroke:var(--focal); stroke-width:2; stroke-dasharray:6 5; opacity:.6}
+.v-dot-base{fill:var(--base)} .v-dot-focal{fill:var(--focal)} .v-dot-cf{fill:var(--paper); stroke:var(--focal); stroke-width:2}
+.v-base-text{fill:var(--muted)} .v-focal-text{fill:var(--focal)} .v-cf-text{fill:var(--focal); opacity:.75}
+.v-accent-text{fill:var(--accent)}
+.v-bracket{stroke:var(--accent); stroke-width:2; fill:none}
+.v-bar-focal{fill:var(--focal)} .v-bar-base{fill:var(--base)} .v-bar-adj{fill:var(--ink-2)} .v-bar-raw{fill:var(--base); opacity:.45}
+.v-bar-rest{fill:var(--base-soft); stroke:var(--line-2)}
+.v-qdot{fill:var(--focal); fill-opacity:.85}
+.v-whisker{stroke:var(--base); stroke-width:3; stroke-linecap:round} .v-whisker-focal{stroke:var(--focal)}
+
+/* example */
+.example{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:22px 24px; margin-bottom:36px}
+.example h3{margin:0 0 6px; font:600 1.25rem/1.3 var(--serif)}
+.example figure{margin:12px 0}
+.events{list-style:none; padding:0; margin:6px 0 10px; display:grid; gap:6px}
+.events li{display:flex; gap:10px; align-items:baseline}
+.events .num{display:inline-grid; place-items:center; min-width:22px; height:22px; border-radius:50%; border:1.5px solid var(--ink-2); font-size:.75rem; font-weight:700}
+.events li.counts .num{background:var(--accent); border-color:var(--accent); color:#fff}
+.events .when{font:600 .8rem var(--mono); color:var(--muted); min-width:58px}
+.tag{font-style:normal; font-size:.72rem; font-weight:700; text-transform:uppercase; color:var(--accent); letter-spacing:.06em}
+.outcome{background:var(--base-soft); padding:10px 14px; border-radius:10px; margin:0}
+.lead-in{color:var(--ink-2); max-width:62ch}
+
+/* scrolly */
+.scrolly{display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:40px; align-items:start}
+.steps{list-style:none; margin:0; padding:0}
+.step{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px; margin:0 0 22px; transition:border-color .2s, box-shadow .2s, opacity .2s}
+.step h3{margin:2px 0 8px; font:600 1.2rem/1.3 var(--serif)}
+.kicker{margin:0; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.windows,.measures{padding-left:0; list-style:none; display:grid; gap:6px}
+.swatch{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; background:var(--win-look); opacity:.6}
+.swatch.role-outcome,.swatch.role-observation{background:var(--win-out)} .swatch.role-exposure{background:var(--win-exp)}
+.formula{font:600 1.05rem var(--mono); background:var(--base-soft); padding:8px 12px; border-radius:8px; display:inline-block}
+.worked code{font-size:.85rem}
+.target{background:var(--focal-soft); padding:8px 12px; border-radius:8px}
+.gaps{background:var(--warn-soft); padding:8px 12px; border-radius:8px}
+details.exact{margin-top:10px; border-top:1px dashed var(--line-2); padding-top:8px}
+details.exact summary{cursor:pointer; font-weight:600; color:var(--focal); font-size:.9rem}
+details.exact p{font-size:.93rem; color:var(--ink-2)}
+.src{display:inline-block; font:600 .72rem var(--mono); background:var(--base-soft); color:var(--ink-2); border:1px solid var(--line-2); border-radius:6px; padding:0 6px; margin-right:4px; cursor:help; text-decoration:none}
+.step-fig figure{margin:14px 0 0}
+.step-fig figcaption,.stage figcaption{font-size:.85rem; color:var(--muted)}
+.stage{display:none}
+.js .scrolly .stage{display:block; position:sticky; top:84px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px; min-height:240px}
+.stage figure{margin:0}
+.js .scrolly .step .step-fig{display:none}
+.js .scrolly .step{opacity:.55}
+.js .scrolly .step.active{opacity:1; border-color:var(--focal); box-shadow:0 6px 24px -14px var(--focal)}
+.stage .fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+.flow{display:flex; flex-direction:column; align-items:stretch; gap:0; margin:0}
+.flow-box{border:1.5px solid var(--line-2); border-radius:10px; padding:10px 12px; background:var(--paper); font-size:.93rem; display:flex; flex-direction:column; gap:2px}
+.flow-start{background:var(--base-soft); font-weight:600}
+.flow-end{background:var(--focal-soft); border-color:var(--focal); color:var(--focal); font-weight:600}
+.flow-k{font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.flow-n{font:600 .85rem var(--mono); color:var(--focal)}
+.flow-arrow{height:18px; width:2px; background:var(--line-2); margin:0 auto; position:relative}
+.flow-arrow:after{content:""; position:absolute; bottom:-2px; left:-4px; border:5px solid transparent; border-top-color:var(--line-2)}
+.fraction{display:flex; align-items:center; gap:22px; margin:6px 0}
+.frac{flex:1; text-align:center}
+.frac-top,.frac-bot{display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px; color:var(--ink-2)}
+.frac b{font:700 1.5rem var(--serif); color:var(--ink)}
+.frac-bar{height:3px; background:var(--ink); border-radius:2px}
+.frac-eq{font:400 1.4rem var(--serif)} .frac-eq b{font-size:2.2rem; color:var(--focal)} .frac-eq small{display:block; font:.8rem var(--sans); color:var(--muted)}
+.chips-h{margin:0 0 6px; font-weight:600; font-size:.9rem}
+.chips{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
+.chips li{background:var(--base-soft); border-radius:99px; padding:3px 10px; font-size:.82rem}
+.literal{margin-top:26px; border-left:4px solid var(--ink-2); padding:6px 0 6px 20px}
+.literal h3{margin:0; font-size:1.05rem}
+.literal ol{color:var(--ink-2); font-size:.95rem}
+
+/* level 3 */
+.maturity{border-radius:var(--r); padding:12px 16px; margin-bottom:6px}
+.maturity-ok{background:var(--good-soft)} .maturity-immature{background:var(--bad-soft)} .maturity-unknown{background:var(--warn-soft)}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.82rem; color:var(--muted); margin-bottom:12px}
+.fx{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:7px; font-weight:800; font-size:.9rem; background:var(--base-soft); color:var(--ink-2); flex:none}
+.fx-overstates{background:var(--bad-soft); color:var(--bad)} .fx-understates{background:var(--focal-soft); color:var(--focal)}
+.fx-wider_uncertainty{background:var(--warn-soft); color:var(--warn)}
+.caveats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.cav{display:flex; gap:12px; border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.cav.sev-high{border-left:4px solid var(--bad)} .cav.sev-medium{border-left:4px solid var(--warn)} .cav.sev-low{border-left:4px solid var(--line-2)}
+.cav h4{margin:0 0 4px; font-size:1rem}
+.cav p{margin:0 0 6px}
+.cav-meta{font-size:.82rem; color:var(--muted)}
+table{border-collapse:collapse; width:100%; font-size:.94rem}
+th,td{text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--line)}
+thead th{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1.5px solid var(--line-2)}
+.misread td:first-child{color:var(--bad); text-decoration:line-through; text-decoration-color:color-mix(in srgb, var(--bad) 45%, transparent)}
+.calls{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.calls article{border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.calls h4{margin:0 0 6px} .calls p{margin:4px 0; font-size:.94rem}
+.sens-notes{font-size:.9rem; color:var(--ink-2)}
+
+/* level 4 */
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px; background:var(--ink); color:var(--paper); border:1px solid var(--ink); font:600 .9rem var(--sans); text-decoration:none; cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+.btn:hover{filter:brightness(1.1)}
+.kv th{width:200px; color:var(--ink-2)}
+.discrep{display:grid; gap:14px}
+.discrep article{border:1px solid var(--line-2); border-radius:var(--r); padding:14px 16px; background:var(--paper)}
+.discrep h4{margin:0 0 8px}
+.dv{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.dv>div{background:var(--bg); border-radius:10px; padding:10px 12px}
+.dv span{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.dv>div:last-child{background:var(--focal-soft)}
+.dv p{margin:4px 0 0; font-size:.93rem}
+.impact{font-size:.93rem; margin:10px 0 4px}
+.rules th{width:200px}
+.lineage{list-style:none; padding:0; position:relative}
+.lineage li{counter-increment:l; position:relative; padding:0 0 14px 42px}
+.lineage li:before{content:counter(l); position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; font-size:.8rem; font-weight:700}
+.lineage li:not(:last-child):after{content:""; position:absolute; left:12px; top:28px; bottom:2px; width:2px; background:var(--line-2)}
+.lineage{counter-reset:l}
+.lineage p{margin:2px 0}
+figure.code{margin:12px 0 18px; border:1px solid var(--line-2); border-radius:12px; overflow:hidden}
+figure.code figcaption{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:8px 12px; background:var(--base-soft); font-size:.85rem}
+figure.code .path{font:.78rem var(--mono); color:var(--muted)}
+figure.code .copy{margin-left:auto; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); border-radius:7px; padding:2px 10px; cursor:pointer; font-size:.8rem}
+figure.code pre{margin:0; padding:14px 16px; overflow:auto; background:var(--paper); font:.84rem/1.55 var(--mono)}
+figure.code pre code{background:none; padding:0}
+.checklist{list-style:none; padding:0} .checklist li{margin:6px 0}
+.sources{padding-left:0; list-style:none} .sources li{margin:4px 0; font-size:.9rem}
+.changelog{list-style:none; padding:0} .changelog time{font:600 .82rem var(--mono); color:var(--muted); margin-right:8px}
+details.quality{margin-top:30px; border:1px dashed var(--line-2); border-radius:12px; padding:10px 14px; font-size:.9rem}
+details.quality summary{cursor:pointer; font-weight:600}
+.lint-error b{color:var(--bad)} .lint-warn b{color:var(--warn)} .lint-info b{color:var(--muted)}
+
+/* check */
+.quiz{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+.q{border:1px solid var(--line); border-radius:var(--r); padding:16px; margin:0; background:var(--paper)}
+.q legend{font-weight:600; padding:0; margin-bottom:8px; float:left; width:100%}
+.q legend + *{clear:both}
+.qkind{display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-bottom:4px}
+.q label{display:flex; gap:8px; align-items:flex-start; padding:6px 8px; border-radius:8px; cursor:pointer}
+.q label:hover{background:var(--base-soft)}
+.q label.right{background:var(--good-soft)} .q label.wrong{background:var(--bad-soft)}
+.why{font-size:.92rem; color:var(--ink-2); border-top:1px solid var(--line); padding-top:8px}
+.teachback{margin-top:24px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:18px 20px}
+.teachback h3{margin:0 0 4px}
+.teachback textarea{width:100%; border:1px solid var(--line-2); border-radius:10px; padding:10px; font:inherit; background:var(--bg); color:var(--ink); margin:6px 0 10px}
+.tb-list{list-style:none; padding:0} .tb-list li{margin:6px 0}
+
+/* glossary */
+.glossary dl{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; margin:0}
+.glossary dt{font-weight:650} .glossary dd{margin:2px 0 0; color:var(--ink-2)}
+.term{all:unset; cursor:help; border-bottom:1.5px dotted var(--focal); color:inherit}
+.term:focus-visible{outline:2px solid var(--focal); outline-offset:2px; border-radius:2px}
+.tip{position:absolute; z-index:50; max-width:340px; background:var(--ink); color:var(--paper); padding:10px 12px; border-radius:10px; font-size:.88rem; line-height:1.45; box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.tip b{display:block; margin-bottom:2px}
+.foot{padding:28px 0 60px; color:var(--muted); font-size:.85rem}
+.linkish{all:unset; color:var(--focal); cursor:pointer; text-decoration:underline}
+
+/* index */
+.index-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:18px; padding:30px 0 60px}
+.index-card{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:10px; transition:transform .15s, box-shadow .15s}
+.index-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px -20px rgba(0,0,0,.35)}
+.index-card h2{font:600 1.25rem/1.25 var(--serif); margin:0}
+.index-card .iq{color:var(--ink-2); font-size:.95rem; margin:0}
+.index-card .hl{font:700 2.2rem/1 var(--serif); color:var(--focal)}
+.index-card .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; font-size:.9rem}
+.intro{max-width:70ch; color:var(--ink-2)}
+.layers{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 0}
+.layers div{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:.9rem}
+.layers b{display:block}
+
+@media (max-width: 900px){
+  .gist-grid,.scrolly,.trio,.deeper,.caveats,.calls,.dv,.glossary dl,.layers{grid-template-columns:1fr}
+  .js .scrolly .stage{display:none} .js .scrolly .step .step-fig{display:block} .js .scrolly .step{opacity:1}
+  .hl-number{font-size:3.4rem}
+  .rail a small{display:none}
+}
+@media print{
+  .rail,.actions,.skip,.teachback,.foot button,.stage{display:none !important}
+  body{background:#fff} .level{padding:24px 0}
+  .js .scrolly .step .step-fig{display:block !important} .js .scrolly .step{opacity:1 !important}
+  .scrolly{grid-template-columns:1fr}
+  .q .why{display:block !important}
+}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important; scroll-behavior:auto !important} }
+.headline.not-run .hl-number{font-size:2.4rem; color:var(--muted)}
+</style>
+</head>
+<body class="explorer">
+<a class="skip" href="#gist">Skip to the gist</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Metric cards</a> <span aria-hidden="true">/</span> <span>minimum-wage-did</span></div>
+    <h1>Fast-food jobs after New Jersey&#39;s 1992 minimum-wage rise</h1>
+<p class="subtitle">Difference-in-differences in average full-time-equivalent employment per store, New Jersey vs eastern Pennsylvania</p>    <ul class="meta">
+      <li><span class="pill status-provisional">provisional</span></li>
+<li>Owner: data-visual-explainer worked example (public data)</li><li>Updated 2026-10-07</li><li>Data as of 1994-09 (published); recomputed 2026-10-07</li>      <li><a href="minimum-wage-did.label.html">One-page label</a></li>
+      <li><a href="minimum-wage-did.methods.html">Methods section</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Depth">
+  <div class="wrap rail-inner">
+    <span class="rail-title">Depth</span>
+    <ol>
+      <li><a href="#gist" data-level="1"><b>1</b> The gist <small>1 min</small></a></li>
+      <li><a href="#build" data-level="2"><b>2</b> How it's built <small>4 min</small></a></li>
+      <li><a href="#mind" data-level="3"><b>3</b> Keep in mind <small>4 min</small></a></li>
+      <li><a href="#reproduce" data-level="4"><b>4</b> Reproduce it <small>2 min</small></a></li>
+      <li class="rail-extra"><a href="#check">Check yourself</a></li>
+      <li class="rail-extra"><a href="#glossary">Glossary</a></li>
+    </ol>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</nav>
+
+<main>
+
+<section id="gist" class="level level-1" aria-labelledby="gist-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">1</span> The gist · for everyone</p>
+    <h2 id="gist-h" class="question">When New Jersey raised its minimum wage in April 1992, did fast-food restaurants there cut jobs compared with similar restaurants just across the border in Pennsylvania, where the wage did not change?</h2>
+    <div class="gist-grid">
+      <div class="gist-main">
+        <div class="headline" aria-label="Headline result">
+          <div class="hl-number">+2.75</div>
+          <div class="hl-label">more <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">full-time-equivalent</button> workers per New Jersey restaurant than the Pennsylvania trend predicts</div>
+<div class="hl-range"><span>Plausible range</span> +0.09 to +5.42</div>        </div>
+        <p class="lede">We counted staff at fast-food restaurants in early 1992 and again late in the year. New Jersey raised its <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">minimum wage</button> on 1 April; nearby Pennsylvania did not. We compare how the average staff per restaurant changed in each state.</p>
+<p class="context">New Jersey restaurants averaged 20.4 full-time-equivalent workers before the rise, so this is about 13% of a typical store.</p><p class="frequency"><span class="icon" aria-hidden="true">≈</span>Picture an average New Jersey restaurant with about 20 full-time-equivalent workers. If it had followed Pennsylvania&#x27;s path it would have ended the year with about 18; it ended with about 21.</p>        <div class="claim claim-quasi-causal">
+          <div class="claim-meter" aria-hidden="true">
+<span class="on"></span><span class="on"></span><span class="on"></span><span class=""></span>          </div>
+          <div><strong>What kind of claim: Points toward a cause, with assumptions.</strong> The design removes some alternative explanations, not all. Read it as a cause only if its assumptions hold.</div>
+        </div>
+      </div>
+      <figure class="gist-fig">
+        <svg viewBox="0 0 520 290" role="img" aria-label="Difference-in-differences: change in New Jersey compared with change in Pennsylvania" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="78" x2="78" y1="16" y2="246" class="v-grid"/><line x1="260" x2="260" y1="16" y2="246" class="v-grid"/><text x="78.0" y="268.0" class="v-label v-strong" text-anchor="middle" >Before</text><text x="260.0" y="268.0" class="v-label v-strong" text-anchor="middle" >After</text><line x1="78" y1="38.3" x2="260" y2="117.7" class="v-line-base"/><line x1="78" y1="144.3" x2="260" y2="223.7" class="v-line-cf"/><line x1="78" y1="144.3" x2="260" y2="122.8" class="v-line-focal"/><circle cx="78" cy="38.3" r="5.5" class="v-dot-base"/><circle cx="260" cy="117.7" r="5.5" class="v-dot-base"/><circle cx="78" cy="144.3" r="5.5" class="v-dot-focal"/><circle cx="260" cy="122.8" r="5.5" class="v-dot-focal"/><circle cx="260" cy="223.7" r="5" class="v-dot-cf"/><text x="68.0" y="42.3" class="v-label v-base-text" text-anchor="end" >23.33</text><text x="68.0" y="148.3" class="v-label v-focal-text" text-anchor="end" >20.44</text><text x="272.0" y="121.7" class="v-label v-base-text" text-anchor="start" >21.17 Pennsylvania</text><text x="272.0" y="136.7" class="v-label v-focal-text v-strong" text-anchor="start" >21.03 New Jersey actual</text><text x="272.0" y="227.7" class="v-label v-cf-text" text-anchor="start" >18.27 New Jersey expected</text><path d="M404,223.7 H410 V122.8 H404" class="v-bracket"/><text x="418.0" y="174.2" class="v-label v-accent-text v-strong" text-anchor="start" >+2.75</text><text x="418.0" y="188.2" class="v-tick v-accent-text" text-anchor="start" >more than expected</text></svg>
+        <figcaption>Take New Jersey&#x27;s change in average staff between the two rounds. Subtract Pennsylvania&#x27;s change over the same months. What is left is the change Pennsylvania&#x27;s path does not explain. <span class="muted">Dashed line: where New Jersey would have ended if it had changed as much as Pennsylvania. The axis does not start at zero.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="trio">
+      <div class="say"><h3><span aria-hidden="true">✓</span> Safe to say</h3><p>&quot;Employment in New Jersey fast-food restaurants did not fall relative to Pennsylvania after the 1992 rise; it grew by about 2.75 full-time-equivalent workers per store more.&quot;</p></div>
+<div class="dont"><h3><span aria-hidden="true">✗</span> Not this</h3><p>&quot;Raising the minimum wage creates jobs,&quot; or &quot;New Jersey restaurants hired 2.75 more people.&quot;</p></div>      <div class="caveat"><h3><span aria-hidden="true">!</span> Before you repeat it</h3><p>Pennsylvania staffing fell over the year, so most of the gap comes from Pennsylvania shrinking, not New Jersey growing. The design assumes both states would otherwise have moved alike, and the interval&#x27;s width depends on a calculation the paper does not describe.</p></div>
+    </div>
+
+    <div class="deeper" aria-label="Go deeper">
+      <a href="#build"><span>2</span><b>Who exactly is counted, and when?</b><small>Follow one restaurant through the rules</small></a>
+      <a href="#mind"><span>3</span><b>What could make this misleading?</b><small>4 caveats · 3 common misreadings</small></a>
+      <a href="#reproduce"><span>4</span><b>How would I rebuild it?</b><small>Exact rules, data, code · 5 doc-vs-code gaps</small></a>
+    </div>
+  </div>
+</section>
+
+
+<section id="build" class="level level-2" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">2</span> How it's built · for the curious</p>
+    <h2 id="build-h">How the number is made</h2>
+
+    <article class="example">
+      <h3>Follow one restaurant: A Wendy&#39;s in Camden County</h3>
+<p>A hypothetical New Jersey Wendy&#x27;s paying the old $4.25 starting wage has 8 full-time staff, 2 managers and 20 part-timers in February 1992.</p>      <figure><svg viewBox="0 0 1000 150" role="img" aria-label="Timeline of windows relative to Wage rise" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="275.3" y1="120" y2="120" class="v-axis"/><line x1="301.3" x2="519.1" y1="120" y2="120" class="v-axis"/><line x1="545.1" x2="980.0" y1="120" y2="120" class="v-axis"/><path d="M281.3,126 l5,-12 M289.3,126 l5,-12" class="v-break"/><path d="M525.1,126 l5,-12 M533.1,126 l5,-12" class="v-break"/><rect x="37.4" y="34" width="220.5" height="30" rx="5" class="v-win-outcome"/><text x="263.9" y="53.0" class="v-label" text-anchor="start" >First survey round · days −46 to −28</text><rect x="568.4" y="74" width="388.3" height="30" rx="5" class="v-win-outcome"/><text x="576.4" y="93.0" class="v-label v-on-band" text-anchor="start" >Second survey round · days 218–274</text><line x1="383.0" x2="383.0" y1="12" y2="124" class="v-anchor"/><text x="383.0" y="140.0" class="v-label v-strong" text-anchor="middle" >Wage rise (day 0)</text><circle cx="112.8" cy="20" r="9" class="v-event"/><text x="112.8" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="112.8" x2="112.8" y1="29" y2="120" class="v-event-stem"/><circle cx="410.2" cy="20" r="9" class="v-event"/><text x="410.2" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="410.2" x2="410.2" y1="29" y2="120" class="v-event-stem"/><circle cx="619.5" cy="20" r="9" class="v-event-on"/><text x="619.5" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="619.5" x2="619.5" y1="29" y2="120" class="v-event-stem"/><line x1="37.4" x2="37.4" y1="120" y2="124" class="v-axis"/><text x="37.4" y="140.0" class="v-tick" text-anchor="middle" >day -46</text><line x1="257.9" x2="257.9" y1="120" y2="124" class="v-axis"/><text x="257.9" y="140.0" class="v-tick" text-anchor="middle" >day -28</text><line x1="568.4" x2="568.4" y1="120" y2="124" class="v-axis"/><text x="568.4" y="140.0" class="v-tick" text-anchor="middle" >day 218</text><line x1="956.7" x2="956.7" y1="120" y2="124" class="v-axis"/><text x="956.7" y="140.0" class="v-tick" text-anchor="middle" >day 274</text></svg></figure>
+      <ol class="events">
+        <li class=""><span class="num">1</span><span class="when">day -40</span> First survey call: 8 + 2 + 20 × 0.5 = 20 <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">full-time-equivalent</button> workers</li>
+        <li class=""><span class="num">2</span><span class="when">day 0</span> <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">Minimum wage</button> rises to $5.05</li>
+        <li class="counts"><span class="num">3</span><span class="when">day 225</span> Second survey: 9 full-time, 2 managers, 22 part-time = 22 <em class="tag">counts</em></li>
+      </ol>
+      <p class="outcome"><strong>Result:</strong> The restaurant adds +2 to New Jersey&#x27;s change. If it had shut for renovation in November, it would drop out of the second-round average entirely. If it had closed for good, it would count as 0 workers.</p>
+    </article>
+
+    <p class="lead-in">Now the general rule, one step at a time. Each step has the plain version, with the exact version one click away.</p>
+    <div class="scrolly">
+      <ol class="steps">
+        <li class="step" id="step-who" data-step="0">
+          <p class="kicker">Step 1 · Who is counted</p>
+          <h3>Start with restaurants, then apply each rule</h3>
+<p>One fast-food restaurant from one of four large burger or chicken chains.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>One row per store in public.dat (410 rows); CHAIN 1 = Burger King, 2 = KFC, 3 = Roy Rogers, 4 = Wendy&#x27;s. SHEET is documented as the unique store id, but sheet 407 is used by two different stores; rows, not SHEET values, are the unit.</p>
+<span class="src" title="examples/minimum-wage/data/codebook">S3</span><span class="src" title="examples/minimum-wage/data/public.dat">S6</span>          </details>
+          <div class="step-fig"><figure class="flow">
+  <div class="flow-box flow-start">All restaurants</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Fast-food restaurants in New Jersey and eastern Pennsylvania from four chains that took part in the first telephone survey.<span class="flow-n">410 remain</span></div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Reported staff numbers in that survey round. Each round&#x27;s average uses every restaurant with a count for that round, so the two rounds are not exactly the same restaurants.</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Restaurants that closed for good by the second round count as having zero staff. The four that were closed only temporarily are left out of the second round.</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box flow-end">Counted in the denominator</div>
+</figure>
+</div>
+        </li>
+        <li class="step" id="step-clock" data-step="1">
+          <p class="kicker">Step 2 · When the clock starts</p>
+          <h3>Time zero: wage rise</h3>
+<p>New Jersey&#x27;s minimum wage went from $4.25 to $5.05 an hour on 1 April 1992.</p>          <ul class="windows"><li><span class="swatch role-observation" aria-hidden="true"></span><b>First survey round</b>: The telephone survey from 15 February to 4 March 1992, before the rise. <span class="muted">(days −46 to −28)</span></li><li><span class="swatch role-outcome" aria-hidden="true"></span><b>Second survey round</b>: The follow-up survey from 5 November to 31 December 1992, about 7 to 9 months after the rise. <span class="muted">(days 218–274)</span></li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>1992-04-01 (paper, introduction and section I). Pennsylvania stayed at the federal $4.25.</p>
+<span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 130" role="img" aria-label="Timeline of windows relative to Wage rise" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="146.0" y1="100" y2="100" class="v-axis"/><line x1="172.0" x2="279.4" y1="100" y2="100" class="v-axis"/><line x1="305.4" x2="520.0" y1="100" y2="100" class="v-axis"/><path d="M152.0,106 l5,-12 M160.0,106 l5,-12" class="v-break"/><path d="M285.4,106 l5,-12 M293.4,106 l5,-12" class="v-break"/><rect x="28.6" y="14" width="108.8" height="30" rx="5" class="v-win-outcome"/><text x="143.4" y="33.0" class="v-label" text-anchor="start" >First survey round · days −46 to −28</text><rect x="316.9" y="54" width="191.6" height="30" rx="5" class="v-win-outcome"/><text x="310.9" y="73.0" class="v-label" text-anchor="end" >Second survey round · days 218–274</text><line x1="212.3" x2="212.3" y1="8" y2="104" class="v-anchor"/><text x="212.3" y="120.0" class="v-label v-strong" text-anchor="middle" >Wage rise (day 0)</text><line x1="28.6" x2="28.6" y1="100" y2="104" class="v-axis"/><text x="28.6" y="120.0" class="v-tick" text-anchor="middle" >day -46</text><line x1="316.9" x2="316.9" y1="100" y2="104" class="v-axis"/><text x="316.9" y="120.0" class="v-tick" text-anchor="middle" >day 218</text><line x1="508.5" x2="508.5" y1="100" y2="104" class="v-axis"/><text x="508.5" y="120.0" class="v-tick" text-anchor="middle" >day 274</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-counts" data-step="2">
+          <p class="kicker">Step 3 · What counts</p>
+          <h3>Staff after</h3>
+<p>The same count, taken in the second survey round.</p>          <p class="also">Also measured the same way:</p>
+          <ul class="measures"><li><b>Staff before</b>: Full-time workers, including managers, plus half the number of part-time workers.</li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>EMPTOT2 = EMPPT2*.5 + EMPFT2 + NMGRS2 (check.sas line 55).</p>
+<span class="src" title="examples/minimum-wage/data/check.sas">S2</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 150" role="img" aria-label="Timeline of windows relative to Wage rise" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="146.0" y1="120" y2="120" class="v-axis"/><line x1="172.0" x2="279.4" y1="120" y2="120" class="v-axis"/><line x1="305.4" x2="520.0" y1="120" y2="120" class="v-axis"/><path d="M152.0,126 l5,-12 M160.0,126 l5,-12" class="v-break"/><path d="M285.4,126 l5,-12 M293.4,126 l5,-12" class="v-break"/><rect x="28.6" y="34" width="108.8" height="30" rx="5" class="v-win-outcome v-dim"/><text x="143.4" y="53.0" class="v-label v-dim" text-anchor="start" >First survey round · days −46 to −28</text><rect x="316.9" y="74" width="191.6" height="30" rx="5" class="v-win-outcome"/><text x="310.9" y="93.0" class="v-label" text-anchor="end" >Second survey round · days 218–274</text><line x1="212.3" x2="212.3" y1="12" y2="124" class="v-anchor"/><text x="212.3" y="140.0" class="v-label v-strong" text-anchor="middle" >Wage rise (day 0)</text><circle cx="65.8" cy="20" r="9" class="v-event"/><text x="65.8" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="65.8" x2="65.8" y1="29" y2="120" class="v-event-stem"/><circle cx="225.7" cy="20" r="9" class="v-event"/><text x="225.7" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="225.7" x2="225.7" y1="29" y2="120" class="v-event-stem"/><circle cx="342.1" cy="20" r="9" class="v-event-on"/><text x="342.1" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="342.1" x2="342.1" y1="29" y2="120" class="v-event-stem"/><line x1="28.6" x2="28.6" y1="120" y2="124" class="v-axis"/><text x="28.6" y="140.0" class="v-tick" text-anchor="middle" >day -46</text><line x1="316.9" x2="316.9" y1="120" y2="124" class="v-axis"/><text x="316.9" y="140.0" class="v-tick" text-anchor="middle" >day 218</text><line x1="508.5" x2="508.5" y1="120" y2="124" class="v-axis"/><text x="508.5" y="140.0" class="v-tick" text-anchor="middle" >day 274</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-combine" data-step="3">
+          <p class="kicker">Step 4 · Combine</p>
+          <h3>Average across people</h3>
+<p>Average the staff count over restaurants in each state and survey round.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>PROC MEANS of EMPTOT and EMPTOT2 BY NJ (check.sas lines 128–131, &#x27;PART OF TABLE 3&#x27;).</p>
+<span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>          </details>
+          <div class="step-fig"><figure class="fraction">
+  <div class="frac">
+    <div class="frac-top">total full-time-equivalent workers across restaurants with a count</div>
+    <div class="frac-bar" aria-hidden="true"></div>
+    <div class="frac-bot">restaurants with a count in that round<b>319</b></div>
+  </div>
+<div class="frac-eq">= <b>21.03</b><small>New Jersey, Nov–Dec</small></div></figure>
+</div>
+        </li>
+        <li class="step" id="step-compare" data-step="4">
+          <p class="kicker">Step 5 · Compare</p>
+          <h3>Subtract the usual change</h3>
+<p>Take New Jersey&#x27;s change in average staff between the two rounds. Subtract Pennsylvania&#x27;s change over the same months. What is left is the change Pennsylvania&#x27;s path does not explain.</p><p class="formula">(NJ₂ − NJ₁) − (PA₂ − PA₁)</p><p class="worked">With the real numbers: <code>(21.0274 − 20.4394) − (21.1656 − 23.3312) = 2.754</code></p><p class="target"><b>Whose effect?</b> Effect among those who actually did it (not everyone).</p>          <details class="exact"><summary>Exactly</summary>
+            <p>(NJ wave 2 − NJ wave 1) − (PA wave 2 − PA wave 1), FTE per store (Table 3, row 3, column iii).</p>
+<span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 290" role="img" aria-label="Difference-in-differences: change in New Jersey compared with change in Pennsylvania" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="78" x2="78" y1="16" y2="246" class="v-grid"/><line x1="270" x2="270" y1="16" y2="246" class="v-grid"/><text x="78.0" y="268.0" class="v-label v-strong" text-anchor="middle" >Before</text><text x="270.0" y="268.0" class="v-label v-strong" text-anchor="middle" >After</text><line x1="78" y1="38.3" x2="270" y2="117.7" class="v-line-base"/><line x1="78" y1="144.3" x2="270" y2="223.7" class="v-line-cf"/><line x1="78" y1="144.3" x2="270" y2="122.8" class="v-line-focal"/><circle cx="78" cy="38.3" r="5.5" class="v-dot-base"/><circle cx="270" cy="117.7" r="5.5" class="v-dot-base"/><circle cx="78" cy="144.3" r="5.5" class="v-dot-focal"/><circle cx="270" cy="122.8" r="5.5" class="v-dot-focal"/><circle cx="270" cy="223.7" r="5" class="v-dot-cf"/><text x="68.0" y="42.3" class="v-label v-base-text" text-anchor="end" >23.33</text><text x="68.0" y="148.3" class="v-label v-focal-text" text-anchor="end" >20.44</text><text x="282.0" y="121.7" class="v-label v-base-text" text-anchor="start" >21.17 Pennsylvania</text><text x="282.0" y="136.7" class="v-label v-focal-text v-strong" text-anchor="start" >21.03 New Jersey actual</text><text x="282.0" y="227.7" class="v-label v-cf-text" text-anchor="start" >18.27 New Jersey expected</text><path d="M414,223.7 H420 V122.8 H414" class="v-bracket"/><text x="428.0" y="174.2" class="v-label v-accent-text v-strong" text-anchor="start" >+2.75</text><text x="428.0" y="188.2" class="v-tick v-accent-text" text-anchor="start" >more than expected</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-sure" data-step="5">
+          <p class="kicker">Step 6 · How sure</p>
+          <h3>Show the range of plausible values</h3>
+<p>The paper reports a <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">t statistic</button> of 2.03 for this number. We turned that into a <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">95% range</button> of 0.09 to 5.42 workers. The paper does not say how it computed the spread.</p><p class="gaps"><b>Not covered by this range:</b> The calculation behind the published spread is not stated, and check.sas does not compute it. Restaurants appear in both rounds, so the four averages are not independent; the simplest formula that ignores this gives a range that includes zero. Nothing here covers the assumption that both states would have moved alike.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>SE = 2.76 / 2.03 ≈ 1.36 (paper, section III.A); interval = 2.754 ± 1.96 × 1.36. Treating the four state-by-round means as independent gives SE 1.80 (interval −0.78 to 6.28). The balanced-sample change (row 4) gives SE 1.34.</p>
+<span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 154" role="img" aria-label="Twenty equally likely values for the more full-time-equivalent workers per New Jersey restaurant than the Pennsylvania trend predicts" xmlns="http://www.w3.org/2000/svg" class="fig"><circle cx="163.0" cy="111.0" r="9" class="v-qdot"/><circle cx="182.0" cy="111.0" r="9" class="v-qdot"/><circle cx="201.0" cy="111.0" r="9" class="v-qdot"/><circle cx="220.0" cy="111.0" r="9" class="v-qdot"/><circle cx="220.0" cy="92.0" r="9" class="v-qdot"/><circle cx="239.0" cy="111.0" r="9" class="v-qdot"/><circle cx="239.0" cy="92.0" r="9" class="v-qdot"/><circle cx="258.0" cy="111.0" r="9" class="v-qdot"/><circle cx="258.0" cy="92.0" r="9" class="v-qdot"/><circle cx="258.0" cy="73.0" r="9" class="v-qdot"/><circle cx="277.0" cy="111.0" r="9" class="v-qdot"/><circle cx="277.0" cy="92.0" r="9" class="v-qdot"/><circle cx="296.0" cy="111.0" r="9" class="v-qdot"/><circle cx="296.0" cy="92.0" r="9" class="v-qdot"/><circle cx="296.0" cy="73.0" r="9" class="v-qdot"/><circle cx="315.0" cy="111.0" r="9" class="v-qdot"/><circle cx="315.0" cy="92.0" r="9" class="v-qdot"/><circle cx="334.0" cy="111.0" r="9" class="v-qdot"/><circle cx="353.0" cy="111.0" r="9" class="v-qdot"/><circle cx="372.0" cy="111.0" r="9" class="v-qdot"/><line x1="30" x2="510" y1="124" y2="124" class="v-axis"/><line x1="75.6" x2="75.6" y1="124" y2="129" class="v-axis"/><text x="75.6" y="144.0" class="v-tick" text-anchor="middle" >−2.0</text><line x1="157.4" x2="157.4" y1="124" y2="129" class="v-axis"/><text x="157.4" y="144.0" class="v-tick" text-anchor="middle" >0.0</text><line x1="239.3" x2="239.3" y1="124" y2="129" class="v-axis"/><text x="239.3" y="144.0" class="v-tick" text-anchor="middle" >+2.0</text><line x1="321.2" x2="321.2" y1="124" y2="129" class="v-axis"/><text x="321.2" y="144.0" class="v-tick" text-anchor="middle" >+4.0</text><line x1="403.0" x2="403.0" y1="124" y2="129" class="v-axis"/><text x="403.0" y="144.0" class="v-tick" text-anchor="middle" >+6.0</text><line x1="484.9" x2="484.9" y1="124" y2="129" class="v-axis"/><text x="484.9" y="144.0" class="v-tick" text-anchor="middle" >+8.0</text><line x1="157.4" x2="157.4" y1="40" y2="124" class="v-zero"/><text x="157.4" y="36.0" class="v-tick" text-anchor="middle" >no difference</text></svg><figcaption>Each dot is one of 20 equally likely values, given sampling noise alone (normal approximation to the interval).</figcaption></figure>
+</div>
+        </li>
+      </ol>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+
+    <aside class="literal">
+      <h3>The same definition, assembled mechanically from the spec</h3>
+      <p class="note">Generated from the structured definition, not written by hand. If it disagrees with the summary above, the summary is wrong.</p>
+      <ol><li>The unit is one restaurant. One fast-food restaurant from one of four large burger or chicken chains.</li><li>Keep restaurants that meet every rule, in order: fast-food restaurants in New Jersey and eastern Pennsylvania from four chains that took part in the first telephone survey; reported staff numbers in that survey round. Each round&#39;s average uses every restaurant with a count for that round, so the two rounds are not exactly the same restaurants; restaurants that closed for good by the second round count as having zero staff. The four that were closed only temporarily are left out of the second round.</li><li>Time zero is the wage rise: New Jersey&#39;s minimum wage went from $4.25 to $5.05 an hour on 1 April 1992.</li><li>First survey round (observation): the 19 days up to before the wage rise (days -46 to -28).</li><li>Second survey round (outcome): days 218–274 after the wage rise.</li><li>For each restaurant, record staff before as a value within the first survey round: Full-time workers, including managers, plus half the number of part-time workers.</li><li>For each restaurant, record staff after (headline) as a value within the second survey round: The same count, taken in the second survey round.</li><li>Average the staff count over restaurants in each state and survey round.</li><li>Do this separately for each group: Pennsylvania, Feb–Mar, Pennsylvania, Nov–Dec, New Jersey, Feb–Mar, New Jersey, Nov–Dec.</li><li>Take New Jersey&#39;s change in average staff between the two rounds. Subtract Pennsylvania&#39;s change over the same months. What is left is the change Pennsylvania&#39;s path does not explain.</li><li>The paper reports a t statistic of 2.03 for this number. We turned that into a 95% range of 0.09 to 5.42 workers. The paper does not say how it computed the spread.</li></ol>
+    </aside>
+  </div>
+</section>
+
+
+<section id="mind" class="level level-3" aria-labelledby="mind-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">3</span> Keep in mind · before you act on it</p>
+    <h2 id="mind-h">What could make this misleading</h2>
+
+    <div class="maturity maturity-ok">
+      <strong>Complete.</strong>
+      The latest wage rise is 01 Apr 1992; its second survey round ends 31 Dec 1992. Data are complete through 31 Dec 1992, so every window is fully observed. This number should not move as more data arrive.
+    </div>
+
+    <h3 class="sub">Caveats</h3>
+    <div class="legend"><span><b class="fx fx-overstates">↑</b> May make the number look bigger than it really is</span><span><b class="fx fx-understates">↓</b> May make the number look smaller than it really is</span><span><b class="fx fx-wider_uncertainty">±</b> The true uncertainty is larger than shown</span><span><b class="fx fx-unknown_direction">↕</b> Could push the number either way</span><span><b class="fx fx-limits_scope">◎</b> Limits what the number can be used to conclude</span></div>
+    <div class="caveats">
+      <article class="cav sev-high">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>Pennsylvania fell more than New Jersey rose</h4>          <p>New Jersey&#x27;s average went up by 0.59 workers while Pennsylvania&#x27;s fell by 2.17. Most of the gap is Pennsylvania shrinking. The paper attributes this to a worsening regional economy, which the design assumes hit both states equally.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · high importance <span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span> <span class="src" title="examples/minimum-wage/analysis.py">S5</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-wider_uncertainty" title="The true uncertainty is larger than shown">±</b>
+        <div>
+<h4>The spread depends on an unstated calculation</h4>          <p>The published <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">t statistic</button> implies a <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">95% range</button> of about 0.1 to 5.4 workers. A simple calculation that treats the two rounds as separate samples gives −0.8 to 6.3, which includes no effect. Counting only restaurants seen in both rounds gives 0.1 to 5.4 again.</p>
+          <p class="cav-meta">The true uncertainty is larger than shown · medium importance <span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span> <span class="src" title="examples/minimum-wage/analysis.py">S5</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-wider_uncertainty" title="The true uncertainty is larger than shown">±</b>
+        <div>
+<h4>Self-reported counts from a phone survey</h4>          <p>Managers reported staff numbers by phone. The paper estimates the reliability of this measure at 0.70 by reinterviewing a subset of stores, so some changes are noise.</p>
+          <p class="cav-meta">The true uncertainty is larger than shown · medium importance <span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>One region, one industry, one rise</h4>          <p>This is four fast-food chains in New Jersey and eastern Pennsylvania in 1992, after an 80-cent rise. It says nothing directly about other industries, larger rises or other places.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · medium importance</p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub">Common misreadings</h3>
+    <table class="misread">
+      <thead><tr><th scope="col">Tempting, but wrong</th><th scope="col">Accurate</th></tr></thead>
+      <tbody><tr><td>Each New Jersey restaurant hired 2.75 more people.</td><td>It is 2.75 more <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">full-time-equivalent</button> workers on average, relative to Pennsylvania&#x27;s trend. Part-timers count as half, and New Jersey&#x27;s own average rose by only 0.59.</td></tr><tr><td>This proves minimum-wage rises create jobs.</td><td>It shows employment did not fall relative to the comparison state in this setting. The design rests on both states sharing a trend, and the result is specific to this case.</td></tr><tr><td>Employment rose 13%.</td><td>The gap is 13% of a typical New Jersey store&#x27;s starting staff. New Jersey&#x27;s own average rose about 3%.</td></tr></tbody>
+    </table>
+
+    <h3 class="sub">Same question, other reasonable choices</h3>
+    <p class="note">Each row reruns the analysis with one choice changed. If the rows disagree a lot, the headline depends on that choice.</p>
+    <figure><svg viewBox="0 0 1000 190" role="img" aria-label="Estimate under alternative reasonable choices" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="341.5" x2="341.5" y1="8" y2="164" class="v-grid"/><text x="341.5" y="180.0" class="v-tick" text-anchor="middle" >0.0</text><line x1="555.9" x2="555.9" y1="8" y2="164" class="v-grid"/><text x="555.9" y="180.0" class="v-tick" text-anchor="middle" >+2.0</text><line x1="770.2" x2="770.2" y1="8" y2="164" class="v-grid"/><text x="770.2" y="180.0" class="v-tick" text-anchor="middle" >+4.0</text><line x1="341.5" x2="341.5" y1="6" y2="164" class="v-zero"/><line x1="354.4" x2="918.1" y1="31.0" y2="31.0" class="v-whisker"/><circle cx="636.3" cy="31.0" r="6" class="v-dot-base"/><text x="266.0" y="35.0" class="v-label" text-anchor="end" >Same restaurants in both rounds (row 4)</text><line x1="351.2" x2="922.4" y1="69.0" y2="69.0" class="v-whisker v-whisker-focal"/><circle cx="636.3" cy="69.0" r="7" class="v-dot-focal"/><text x="266.0" y="73.0" class="v-label v-strong" text-anchor="end" >All restaurants with a count (row 3, …</text><line x1="327.6" x2="893.5" y1="107.0" y2="107.0" class="v-whisker"/><circle cx="610.5" cy="107.0" r="6" class="v-dot-base"/><text x="266.0" y="111.0" class="v-label" text-anchor="end" >Temporarily closed counted as zero (r…</text><line x1="341.5" x2="841.0" y1="145.0" y2="145.0" class="v-whisker"/><circle cx="591.2" cy="145.0" r="6" class="v-dot-base"/><text x="266.0" y="149.0" class="v-label" text-anchor="end" >Regression, Table 4 sample</text></svg></figure>
+    <ul class="sens-notes"><li><b>Same restaurants in both rounds (row 4):</b> 384 restaurants with a count in both rounds; SE 1.34.</li><li><b>Temporarily closed counted as zero (row 5):</b> Paper: &#x27;only slightly smaller&#x27;.</li><li><b>Regression, Table 4 sample:</b> 357 restaurants with wage data in both rounds; coefficient 2.33 (SE 1.19).</li></ul>
+
+    <h3 class="sub">Judgment calls</h3>
+    <div class="calls">
+      <article>
+        <h4>Comparison group</h4>
+        <p><b>Chose:</b> Restaurants in eastern Pennsylvania, near the border.</p>
+<p><b>Could have chosen:</b> New Jersey restaurants already paying $5.00 or more, who were barely affected.</p><p><b>Why:</b> Similar markets and seasons, with no wage change.</p><p><b>What it changes:</b> The paper reports both. High-wage New Jersey stores changed by −2.16, almost the same as Pennsylvania&#x27;s −2.28 (balanced sample), which supports the Pennsylvania comparison.</p>      </article>
+      <article>
+        <h4>Part-time workers count as half</h4>
+        <p><b>Chose:</b> Full-time equivalent = full-time + managers + 0.5 × part-time.</p>
+<p><b>Could have chosen:</b> Count heads; weight part-timers 0.4 or 0.6; exclude managers.</p><p><b>Why:</b> A simple, stated convention.</p><p><b>What it changes:</b> Table 5 rows 3–5 report little effect on the regression for the change in employment when managers are dropped or part-timers weighted 0.4 or 0.6; not re-run here.</p>      </article>
+      <article>
+        <h4>Which restaurants enter each average</h4>
+        <p><b>Chose:</b> Every restaurant with a count in that round (rows 1–3).</p>
+<p><b>Could have chosen:</b> Only restaurants counted in both rounds (row 4).</p><p><b>Why:</b> Uses all the data.</p><p><b>What it changes:</b> The headline barely moves (2.754 vs 2.750).</p>      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="reproduce" class="level level-4" aria-labelledby="rep-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">4</span> Reproduce it · for specialists</p>
+    <h2 id="rep-h">The exact specification</h2>
+    <div class="actions">
+      <a class="btn" href="data:text/yaml;base64,c2NoZW1hOiBtZXRyaWMtY2FyZC8xCmlkOiBtaW5pbXVtLXdhZ2UtZGlkCnRpdGxlOiBGYXN0LWZvb2Qgam9icyBhZnRlciBOZXcgSmVyc2V5J3MgMTk5MiBtaW5pbXVtLXdhZ2UgcmlzZQpzdWJ0aXRsZTogRGlmZmVyZW5jZS1pbi1kaWZmZXJlbmNlcyBpbiBhdmVyYWdlIGZ1bGwtdGltZS1lcXVpdmFsZW50IGVtcGxveW1lbnQgcGVyIHN0b3JlLCBOZXcgSmVyc2V5IHZzIGVhc3Rlcm4gUGVubnN5bHZhbmlhCnN0YXR1czogcHJvdmlzaW9uYWwKb3duZXI6IGRhdGEtdmlzdWFsLWV4cGxhaW5lciB3b3JrZWQgZXhhbXBsZSAocHVibGljIGRhdGEpCnVwZGF0ZWQ6ICIyMDI2LTEwLTA3IgpxdWVzdGlvbjogPgogIFdoZW4gTmV3IEplcnNleSByYWlzZWQgaXRzIG1pbmltdW0gd2FnZSBpbiBBcHJpbCAxOTkyLCBkaWQgZmFzdC1mb29kIHJlc3RhdXJhbnRzIHRoZXJlIGN1dAogIGpvYnMgY29tcGFyZWQgd2l0aCBzaW1pbGFyIHJlc3RhdXJhbnRzIGp1c3QgYWNyb3NzIHRoZSBib3JkZXIgaW4gUGVubnN5bHZhbmlhLCB3aGVyZSB0aGUgd2FnZQogIGRpZCBub3QgY2hhbmdlPwoKZ2lzdDoKICBzZW50ZW5jZTogPgogICAgV2UgY291bnRlZCBzdGFmZiBhdCBmYXN0LWZvb2QgcmVzdGF1cmFudHMgaW4gZWFybHkgMTk5MiBhbmQgYWdhaW4gbGF0ZSBpbiB0aGUgeWVhci4gTmV3CiAgICBKZXJzZXkgcmFpc2VkIGl0cyBtaW5pbXVtIHdhZ2Ugb24gMSBBcHJpbDsgbmVhcmJ5IFBlbm5zeWx2YW5pYSBkaWQgbm90LiBXZSBjb21wYXJlIGhvdyB0aGUKICAgIGF2ZXJhZ2Ugc3RhZmYgcGVyIHJlc3RhdXJhbnQgY2hhbmdlZCBpbiBlYWNoIHN0YXRlLgogIGhlYWRsaW5lOgogICAgdmFsdWU6IDIuNzUKICAgIGxvdzogMC4wOQogICAgaGlnaDogNS40MgogICAgdW5pdDogb3RoZXIKICAgIGRlY2ltYWxzOiAyCiAgICBsYWJlbDogbW9yZSBmdWxsLXRpbWUtZXF1aXZhbGVudCB3b3JrZXJzIHBlciBOZXcgSmVyc2V5IHJlc3RhdXJhbnQgdGhhbiB0aGUgUGVubnN5bHZhbmlhIHRyZW5kIHByZWRpY3RzCiAgICBjb250ZXh0OiAiTmV3IEplcnNleSByZXN0YXVyYW50cyBhdmVyYWdlZCAyMC40IGZ1bGwtdGltZS1lcXVpdmFsZW50IHdvcmtlcnMgYmVmb3JlIHRoZSByaXNlLCBzbyB0aGlzIGlzIGFib3V0IDEzJSBvZiBhIHR5cGljYWwgc3RvcmUuIgogIGZyZXF1ZW5jeTogPgogICAgUGljdHVyZSBhbiBhdmVyYWdlIE5ldyBKZXJzZXkgcmVzdGF1cmFudCB3aXRoIGFib3V0IDIwIGZ1bGwtdGltZS1lcXVpdmFsZW50IHdvcmtlcnMuIElmIGl0CiAgICBoYWQgZm9sbG93ZWQgUGVubnN5bHZhbmlhJ3MgcGF0aCBpdCB3b3VsZCBoYXZlIGVuZGVkIHRoZSB5ZWFyIHdpdGggYWJvdXQgMTg7IGl0IGVuZGVkIHdpdGgKICAgIGFib3V0IDIxLgogIHJlYWRpbmc6CiAgICBkaXJlY3Rpb246IG5ldXRyYWwKICAgIHNheTogPgogICAgICAiRW1wbG95bWVudCBpbiBOZXcgSmVyc2V5IGZhc3QtZm9vZCByZXN0YXVyYW50cyBkaWQgbm90IGZhbGwgcmVsYXRpdmUgdG8gUGVubnN5bHZhbmlhIGFmdGVyCiAgICAgIHRoZSAxOTkyIHJpc2U7IGl0IGdyZXcgYnkgYWJvdXQgMi43NSBmdWxsLXRpbWUtZXF1aXZhbGVudCB3b3JrZXJzIHBlciBzdG9yZSBtb3JlLiIKICAgIGRvbnRfc2F5OiA+CiAgICAgICJSYWlzaW5nIHRoZSBtaW5pbXVtIHdhZ2UgY3JlYXRlcyBqb2JzLCIgb3IgIk5ldyBKZXJzZXkgcmVzdGF1cmFudHMgaGlyZWQgMi43NSBtb3JlIHBlb3BsZS4iCiAga2V5X2NhdmVhdDogPgogICAgUGVubnN5bHZhbmlhIHN0YWZmaW5nIGZlbGwgb3ZlciB0aGUgeWVhciwgc28gbW9zdCBvZiB0aGUgZ2FwIGNvbWVzIGZyb20gUGVubnN5bHZhbmlhCiAgICBzaHJpbmtpbmcsIG5vdCBOZXcgSmVyc2V5IGdyb3dpbmcuIFRoZSBkZXNpZ24gYXNzdW1lcyBib3RoIHN0YXRlcyB3b3VsZCBvdGhlcndpc2UgaGF2ZSBtb3ZlZAogICAgYWxpa2UsIGFuZCB0aGUgaW50ZXJ2YWwncyB3aWR0aCBkZXBlbmRzIG9uIGEgY2FsY3VsYXRpb24gdGhlIHBhcGVyIGRvZXMgbm90IGRlc2NyaWJlLgogIGNsYWltX3N0cmVuZ3RoOiBxdWFzaS1jYXVzYWwKCmdyYW1tYXI6CiAgdW5pdDoKICAgIHNpbmd1bGFyOiByZXN0YXVyYW50CiAgICBwbHVyYWw6IHJlc3RhdXJhbnRzCiAgICBwbGFpbjogT25lIGZhc3QtZm9vZCByZXN0YXVyYW50IGZyb20gb25lIG9mIGZvdXIgbGFyZ2UgYnVyZ2VyIG9yIGNoaWNrZW4gY2hhaW5zLgogICAgZXhhY3Q6ID4KICAgICAgT25lIHJvdyBwZXIgc3RvcmUgaW4gcHVibGljLmRhdCAoNDEwIHJvd3MpOyBDSEFJTiAxID0gQnVyZ2VyIEtpbmcsIDIgPSBLRkMsIDMgPSBSb3kgUm9nZXJzLAogICAgICA0ID0gV2VuZHkncy4gU0hFRVQgaXMgZG9jdW1lbnRlZCBhcyB0aGUgdW5pcXVlIHN0b3JlIGlkLCBidXQKICAgICAgc2hlZXQgNDA3IGlzIHVzZWQgYnkgdHdvIGRpZmZlcmVudCBzdG9yZXM7IHJvd3MsIG5vdCBTSEVFVCB2YWx1ZXMsIGFyZSB0aGUgdW5pdC4KICAgIHNyYzogW1MzLCBTNl0KICBwb3B1bGF0aW9uOgogICAgLSBpZDogZnJhbWUKICAgICAgcGxhaW46ID4KICAgICAgICBGYXN0LWZvb2QgcmVzdGF1cmFudHMgaW4gTmV3IEplcnNleSBhbmQgZWFzdGVybiBQZW5uc3lsdmFuaWEgZnJvbSBmb3VyIGNoYWlucyB0aGF0IHRvb2sKICAgICAgICBwYXJ0IGluIHRoZSBmaXJzdCB0ZWxlcGhvbmUgc3VydmV5LgogICAgICBleGFjdDogInB1YmxpYy5kYXQ6IDQxMCBzdG9yZXMsIFNUQVRFID0gMSAoTkosIDMzMSkgb3IgMCAoUEEsIDc5KS4iCiAgICAgIG5fYWZ0ZXI6IDQxMAogICAgICBzcmM6IFtTMSwgUzNdCiAgICAtIGlkOiBoYXNfc3RhZmZfY291bnQKICAgICAgcGxhaW46ID4KICAgICAgICBSZXBvcnRlZCBzdGFmZiBudW1iZXJzIGluIHRoYXQgc3VydmV5IHJvdW5kLiBFYWNoIHJvdW5kJ3MgYXZlcmFnZSB1c2VzIGV2ZXJ5IHJlc3RhdXJhbnQKICAgICAgICB3aXRoIGEgY291bnQgZm9yIHRoYXQgcm91bmQsIHNvIHRoZSB0d28gcm91bmRzIGFyZSBub3QgZXhhY3RseSB0aGUgc2FtZSByZXN0YXVyYW50cy4KICAgICAgZXhhY3Q6ID4KICAgICAgICBXYXZlLTEgbWVhbiBvdmVyIHN0b3JlcyB3aXRoIG5vbi1taXNzaW5nIGZ0ZTEgKFBBIDc3LCBOSiAzMjEpOyB3YXZlLTIgbWVhbiBvdmVyIHN0b3JlcwogICAgICAgIHdpdGggbm9uLW1pc3NpbmcgZnRlMiAoUEEgNzcsIE5KIDMxOSkuICJBbGwgYXZhaWxhYmxlIG9ic2VydmF0aW9ucyIgKFRhYmxlIDMgcm93cyAx4oCTMikuCiAgICAgIHNyYzogW1MxLCBTNV0KICAgIC0gaWQ6IGNsb3N1cmVzCiAgICAgIHBsYWluOiA+CiAgICAgICAgUmVzdGF1cmFudHMgdGhhdCBjbG9zZWQgZm9yIGdvb2QgYnkgdGhlIHNlY29uZCByb3VuZCBjb3VudCBhcyBoYXZpbmcgemVybyBzdGFmZi4gVGhlIGZvdXIKICAgICAgICB0aGF0IHdlcmUgY2xvc2VkIG9ubHkgdGVtcG9yYXJpbHkgYXJlIGxlZnQgb3V0IG9mIHRoZSBzZWNvbmQgcm91bmQuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgU1RBVFVTMiA9IDMgKDYgc3RvcmVzKTogd2F2ZS0yIGVtcGxveW1lbnQgZmllbGRzIGFyZSBhbHJlYWR5IDAgaW4gcHVibGljLmRhdC4gU1RBVFVTMiBpbgogICAgICAgICgyLCA0LCA1KSAoNCBzdG9yZXMsIGFsbCBOSik6IHdhdmUtMiBmaWVsZHMgbWlzc2luZywgc28gZXhjbHVkZWQgZnJvbSB0aGUgd2F2ZS0yIG1lYW4uCiAgICAgIHNyYzogW1MxLCBTMywgUzZdCiAgYW5jaG9yOgogICAga2luZDogY2FsZW5kYXIKICAgIGxhYmVsOiBXYWdlIHJpc2UKICAgIHBsYWluOiBOZXcgSmVyc2V5J3MgbWluaW11bSB3YWdlIHdlbnQgZnJvbSAkNC4yNSB0byAkNS4wNSBhbiBob3VyIG9uIDEgQXByaWwgMTk5Mi4KICAgIGV4YWN0OiAiMTk5Mi0wNC0wMSAocGFwZXIsIGludHJvZHVjdGlvbiBhbmQgc2VjdGlvbiBJKS4gUGVubnN5bHZhbmlhIHN0YXllZCBhdCB0aGUgZmVkZXJhbCAkNC4yNS4iCiAgICBzcmM6IFMxCiAgd2luZG93czoKICAgIC0gaWQ6IHdhdmUxCiAgICAgIGxhYmVsOiBGaXJzdCBzdXJ2ZXkgcm91bmQKICAgICAgc3RhcnQ6IC00NgogICAgICBlbmQ6IC0yNwogICAgICB1bml0OiBkYXkKICAgICAgcm9sZTogb2JzZXJ2YXRpb24KICAgICAgcGxhaW46IFRoZSB0ZWxlcGhvbmUgc3VydmV5IGZyb20gMTUgRmVicnVhcnkgdG8gNCBNYXJjaCAxOTkyLCBiZWZvcmUgdGhlIHJpc2UuCiAgICAgIGV4YWN0OiAiV2F2ZSAxOiBGZWJydWFyeSAxNSDigJMgTWFyY2ggNCwgMTk5MiAoVGFibGUgMSkuIgogICAgICBzcmM6IFMxCiAgICAtIGlkOiB3YXZlMgogICAgICBsYWJlbDogU2Vjb25kIHN1cnZleSByb3VuZAogICAgICBzdGFydDogMjE4CiAgICAgIGVuZDogMjc1CiAgICAgIHVuaXQ6IGRheQogICAgICByb2xlOiBvdXRjb21lCiAgICAgIHBsYWluOiBUaGUgZm9sbG93LXVwIHN1cnZleSBmcm9tIDUgTm92ZW1iZXIgdG8gMzEgRGVjZW1iZXIgMTk5MiwgYWJvdXQgNyB0byA5IG1vbnRocyBhZnRlciB0aGUgcmlzZS4KICAgICAgZXhhY3Q6ICJXYXZlIDI6IE5vdmVtYmVyIDUg4oCTIERlY2VtYmVyIDMxLCAxOTkyIChUYWJsZSAxKTsgREFURTIgaW4gdGhlIGZpbGUgc3BhbnMgMTEwNTky4oCTMTIzMTkyLiIKICAgICAgc3JjOiBbUzEsIFM2XQogIG1lYXN1cmVzOgogICAgLSBpZDogZnRlX2JlZm9yZQogICAgICBsYWJlbDogU3RhZmYgYmVmb3JlCiAgICAgIGtpbmQ6IHZhbHVlCiAgICAgIHdpbmRvdzogd2F2ZTEKICAgICAgcGxhaW46IEZ1bGwtdGltZSB3b3JrZXJzLCBpbmNsdWRpbmcgbWFuYWdlcnMsIHBsdXMgaGFsZiB0aGUgbnVtYmVyIG9mIHBhcnQtdGltZSB3b3JrZXJzLgogICAgICBleGFjdDogIkVNUFRPVCA9IEVNUFBUKi41ICsgRU1QRlQgKyBOTUdSUyAoY2hlY2suc2FzIGxpbmUgNTQpLiIKICAgICAgc3JjOiBbUzIsIFMxXQogICAgLSBpZDogZnRlX2FmdGVyCiAgICAgIGxhYmVsOiBTdGFmZiBhZnRlcgogICAgICBraW5kOiB2YWx1ZQogICAgICB3aW5kb3c6IHdhdmUyCiAgICAgIHByaW1hcnk6IHRydWUKICAgICAgcGxhaW46IFRoZSBzYW1lIGNvdW50LCB0YWtlbiBpbiB0aGUgc2Vjb25kIHN1cnZleSByb3VuZC4KICAgICAgZXhhY3Q6ICJFTVBUT1QyID0gRU1QUFQyKi41ICsgRU1QRlQyICsgTk1HUlMyIChjaGVjay5zYXMgbGluZSA1NSkuIgogICAgICBzcmM6IFMyCiAgYWdncmVnYXRlOgogICAga2luZDogbWVhbgogICAgbWVhc3VyZTogZnRlX2FmdGVyCiAgICBudW1lcmF0b3I6IHRvdGFsIGZ1bGwtdGltZS1lcXVpdmFsZW50IHdvcmtlcnMgYWNyb3NzIHJlc3RhdXJhbnRzIHdpdGggYSBjb3VudAogICAgZGVub21pbmF0b3I6IHJlc3RhdXJhbnRzIHdpdGggYSBjb3VudCBpbiB0aGF0IHJvdW5kCiAgICBwbGFpbjogQXZlcmFnZSB0aGUgc3RhZmYgY291bnQgb3ZlciByZXN0YXVyYW50cyBpbiBlYWNoIHN0YXRlIGFuZCBzdXJ2ZXkgcm91bmQuCiAgICBleGFjdDogIlBST0MgTUVBTlMgb2YgRU1QVE9UIGFuZCBFTVBUT1QyIEJZIE5KIChjaGVjay5zYXMgbGluZXMgMTI44oCTMTMxLCAnUEFSVCBPRiBUQUJMRSAzJykuIgogICAgc3JjOiBbUzIsIFM1XQogIGdyb3VwczoKICAgIC0gaWQ6IHBhX3ByZQogICAgICBsYWJlbDogUGVubnN5bHZhbmlhLCBGZWLigJNNYXIKICAgICAgcm9sZTogYmFzZWxpbmUKICAgICAgcGVyaW9kOiBwcmUKICAgICAgeWVhcjogIjE5OTIiCiAgICAgIHNlcmllczogUGVubnN5bHZhbmlhCiAgICAgIHBsYWluOiBQZW5uc3lsdmFuaWEgcmVzdGF1cmFudHMgaW4gdGhlIGZpcnN0IHJvdW5kLgogICAgICBleGFjdDogIlNUQVRFID0gMCwgbm9uLW1pc3NpbmcgRU1QVE9UIChuID0gNzcpLiIKICAgIC0gaWQ6IHBhX3Bvc3QKICAgICAgbGFiZWw6IFBlbm5zeWx2YW5pYSwgTm924oCTRGVjCiAgICAgIHJvbGU6IGJhc2VsaW5lCiAgICAgIHBlcmlvZDogcG9zdAogICAgICB5ZWFyOiAiMTk5MiIKICAgICAgc2VyaWVzOiBQZW5uc3lsdmFuaWEKICAgICAgcGxhaW46IFBlbm5zeWx2YW5pYSByZXN0YXVyYW50cyBpbiB0aGUgc2Vjb25kIHJvdW5kLgogICAgICBleGFjdDogIlNUQVRFID0gMCwgbm9uLW1pc3NpbmcgRU1QVE9UMiAobiA9IDc3KS4iCiAgICAtIGlkOiBual9wcmUKICAgICAgbGFiZWw6IE5ldyBKZXJzZXksIEZlYuKAk01hcgogICAgICByb2xlOiBmb2NhbAogICAgICBwZXJpb2Q6IHByZQogICAgICB5ZWFyOiAiMTk5MiIKICAgICAgc2VyaWVzOiBOZXcgSmVyc2V5CiAgICAgIHBsYWluOiBOZXcgSmVyc2V5IHJlc3RhdXJhbnRzIGluIHRoZSBmaXJzdCByb3VuZCwgYmVmb3JlIHRoZSByaXNlLgogICAgICBleGFjdDogIlNUQVRFID0gMSwgbm9uLW1pc3NpbmcgRU1QVE9UIChuID0gMzIxKS4iCiAgICAtIGlkOiBual9wb3N0CiAgICAgIGxhYmVsOiBOZXcgSmVyc2V5LCBOb3bigJNEZWMKICAgICAgcm9sZTogZm9jYWwKICAgICAgcGVyaW9kOiBwb3N0CiAgICAgIHllYXI6ICIxOTkyIgogICAgICBzZXJpZXM6IE5ldyBKZXJzZXkKICAgICAgcGxhaW46IE5ldyBKZXJzZXkgcmVzdGF1cmFudHMgaW4gdGhlIHNlY29uZCByb3VuZCwgYWZ0ZXIgdGhlIHJpc2UuCiAgICAgIGV4YWN0OiAiU1RBVEUgPSAxLCBub24tbWlzc2luZyBFTVBUT1QyIChuID0gMzE5KS4iCiAgY29tcGFyaXNvbjoKICAgIGtpbmQ6IGRpZmZlcmVuY2VfaW5fZGlmZmVyZW5jZXMKICAgIHRhcmdldDogQVRUCiAgICBwbGFpbjogPgogICAgICBUYWtlIE5ldyBKZXJzZXkncyBjaGFuZ2UgaW4gYXZlcmFnZSBzdGFmZiBiZXR3ZWVuIHRoZSB0d28gcm91bmRzLiBTdWJ0cmFjdCBQZW5uc3lsdmFuaWEncwogICAgICBjaGFuZ2Ugb3ZlciB0aGUgc2FtZSBtb250aHMuIFdoYXQgaXMgbGVmdCBpcyB0aGUgY2hhbmdlIFBlbm5zeWx2YW5pYSdzIHBhdGggZG9lcyBub3QKICAgICAgZXhwbGFpbi4KICAgIGV4YWN0OiAiKE5KIHdhdmUgMiDiiJIgTkogd2F2ZSAxKSDiiJIgKFBBIHdhdmUgMiDiiJIgUEEgd2F2ZSAxKSwgRlRFIHBlciBzdG9yZSAoVGFibGUgMywgcm93IDMsIGNvbHVtbiBpaWkpLiIKICAgIGZvcm11bGE6ICIoTkrigoIg4oiSIE5K4oKBKSDiiJIgKFBB4oKCIOKIkiBQQeKCgSkiCiAgICBzcmM6IFtTMSwgUzVdCiAgdW5jZXJ0YWludHk6CiAgICBtZXRob2Q6IEFzIHB1Ymxpc2hlZCAodCBzdGF0aXN0aWMpLCBtZXRob2Qgbm90IHN0YXRlZAogICAgbGV2ZWw6IDAuOTUKICAgIHBsYWluOiA+CiAgICAgIFRoZSBwYXBlciByZXBvcnRzIGEgdCBzdGF0aXN0aWMgb2YgMi4wMyBmb3IgdGhpcyBudW1iZXIuIFdlIHR1cm5lZCB0aGF0IGludG8gYSA5NSUgcmFuZ2UKICAgICAgb2YgMC4wOSB0byA1LjQyIHdvcmtlcnMuIFRoZSBwYXBlciBkb2VzIG5vdCBzYXkgaG93IGl0IGNvbXB1dGVkIHRoZSBzcHJlYWQuCiAgICBleGFjdDogPgogICAgICBTRSA9IDIuNzYgLyAyLjAzIOKJiCAxLjM2IChwYXBlciwgc2VjdGlvbiBJSUkuQSk7IGludGVydmFsID0gMi43NTQgwrEgMS45NiDDlyAxLjM2LiBUcmVhdGluZwogICAgICB0aGUgZm91ciBzdGF0ZS1ieS1yb3VuZCBtZWFucyBhcyBpbmRlcGVuZGVudCBnaXZlcyBTRSAxLjgwIChpbnRlcnZhbCDiiJIwLjc4IHRvIDYuMjgpLiBUaGUKICAgICAgYmFsYW5jZWQtc2FtcGxlIGNoYW5nZSAocm93IDQpIGdpdmVzIFNFIDEuMzQuCiAgICBrbm93bl9nYXBzOiA+CiAgICAgIFRoZSBjYWxjdWxhdGlvbiBiZWhpbmQgdGhlIHB1Ymxpc2hlZCBzcHJlYWQgaXMgbm90IHN0YXRlZCwgYW5kIGNoZWNrLnNhcyBkb2VzIG5vdCBjb21wdXRlCiAgICAgIGl0LiBSZXN0YXVyYW50cyBhcHBlYXIgaW4gYm90aCByb3VuZHMsIHNvIHRoZSBmb3VyIGF2ZXJhZ2VzIGFyZSBub3QgaW5kZXBlbmRlbnQ7IHRoZQogICAgICBzaW1wbGVzdCBmb3JtdWxhIHRoYXQgaWdub3JlcyB0aGlzIGdpdmVzIGEgcmFuZ2UgdGhhdCBpbmNsdWRlcyB6ZXJvLiBOb3RoaW5nIGhlcmUgY292ZXJzCiAgICAgIHRoZSBhc3N1bXB0aW9uIHRoYXQgYm90aCBzdGF0ZXMgd291bGQgaGF2ZSBtb3ZlZCBhbGlrZS4KICAgIHNyYzogW1MxLCBTNV0KCnJlc3VsdHM6CiAgYXNfb2Y6ICIxOTk0LTA5IChwdWJsaXNoZWQpOyByZWNvbXB1dGVkIDIwMjYtMTAtMDciCiAgdW5pdDogb3RoZXIKICBsYXRlc3RfYW5jaG9yOiAiMTk5Mi0wNC0wMSIKICBkYXRhX2NvbXBsZXRlX3Rocm91Z2g6ICIxOTkyLTEyLTMxIgogIGNlbGxzOgogICAgLSB7Z3JvdXA6IHBhX3ByZSwgdmFsdWU6IDIzLjMzMTIsIG46IDc3fQogICAgLSB7Z3JvdXA6IHBhX3Bvc3QsIHZhbHVlOiAyMS4xNjU2LCBuOiA3N30KICAgIC0ge2dyb3VwOiBual9wcmUsIHZhbHVlOiAyMC40Mzk0LCBuOiAzMjF9CiAgICAtIHtncm91cDogbmpfcG9zdCwgdmFsdWU6IDIxLjAyNzQsIG46IDMxOX0KICBlc3RpbWF0ZToge3ZhbHVlOiAyLjc1LCBsb3c6IDAuMDksIGhpZ2g6IDUuNDJ9CiAgc2Vuc2l0aXZpdHk6CiAgICAtIHtsYWJlbDogIlNhbWUgcmVzdGF1cmFudHMgaW4gYm90aCByb3VuZHMgKHJvdyA0KSIsIHZhbHVlOiAyLjc1LCBsb3c6IDAuMTIsIGhpZ2g6IDUuMzgsIG5vdGU6ICIzODQgcmVzdGF1cmFudHMgd2l0aCBhIGNvdW50IGluIGJvdGggcm91bmRzOyBTRSAxLjM0LiIsIHNyYzogUzV9CiAgICAtIHtsYWJlbDogIkFsbCByZXN0YXVyYW50cyB3aXRoIGEgY291bnQgKHJvdyAzLCBoZWFkbGluZSkiLCB2YWx1ZTogMi43NSwgbG93OiAwLjA5LCBoaWdoOiA1LjQyLCBwcmltYXJ5OiB0cnVlLCBzcmM6IFtTMSwgUzVdfQogICAgLSB7bGFiZWw6ICJUZW1wb3JhcmlseSBjbG9zZWQgY291bnRlZCBhcyB6ZXJvIChyb3cgNSkiLCB2YWx1ZTogMi41MSwgbG93OiAtMC4xMywgaGlnaDogNS4xNSwgbm90ZTogIlBhcGVyOiAnb25seSBzbGlnaHRseSBzbWFsbGVyJy4iLCBzcmM6IFM1fQogICAgLSB7bGFiZWw6ICJSZWdyZXNzaW9uLCBUYWJsZSA0IHNhbXBsZSIsIHZhbHVlOiAyLjMzLCBsb3c6IDAuMCwgaGlnaDogNC42Niwgbm90ZTogIjM1NyByZXN0YXVyYW50cyB3aXRoIHdhZ2UgZGF0YSBpbiBib3RoIHJvdW5kczsgY29lZmZpY2llbnQgMi4zMyAoU0UgMS4xOSkuIiwgc3JjOiBbUzEsIFM1XX0KCmV4YW1wbGU6CiAgbmFtZTogQSBXZW5keSdzIGluIENhbWRlbiBDb3VudHkKICBpbnRybzogPgogICAgQSBoeXBvdGhldGljYWwgTmV3IEplcnNleSBXZW5keSdzIHBheWluZyB0aGUgb2xkICQ0LjI1IHN0YXJ0aW5nIHdhZ2UgaGFzIDggZnVsbC10aW1lIHN0YWZmLAogICAgMiBtYW5hZ2VycyBhbmQgMjAgcGFydC10aW1lcnMgaW4gRmVicnVhcnkgMTk5Mi4KICBhbmNob3JfZGF0ZTogIjE5OTItMDQtMDEiCiAgZXZlbnRzOgogICAgLSB7YXQ6IC00MCwgbGFiZWw6ICJGaXJzdCBzdXJ2ZXkgY2FsbDogOCArIDIgKyAyMCDDlyAwLjUgPSAyMCBmdWxsLXRpbWUtZXF1aXZhbGVudCB3b3JrZXJzIn0KICAgIC0ge2F0OiAwLCBsYWJlbDogIk1pbmltdW0gd2FnZSByaXNlcyB0byAkNS4wNSJ9CiAgICAtIHthdDogMjI1LCBsYWJlbDogIlNlY29uZCBzdXJ2ZXk6IDkgZnVsbC10aW1lLCAyIG1hbmFnZXJzLCAyMiBwYXJ0LXRpbWUgPSAyMiIsIGNvdW50czogdHJ1ZX0KICBvdXRjb21lOiA+CiAgICBUaGUgcmVzdGF1cmFudCBhZGRzICsyIHRvIE5ldyBKZXJzZXkncyBjaGFuZ2UuIElmIGl0IGhhZCBzaHV0IGZvciByZW5vdmF0aW9uIGluIE5vdmVtYmVyLCBpdAogICAgd291bGQgZHJvcCBvdXQgb2YgdGhlIHNlY29uZC1yb3VuZCBhdmVyYWdlIGVudGlyZWx5LiBJZiBpdCBoYWQgY2xvc2VkIGZvciBnb29kLCBpdCB3b3VsZAogICAgY291bnQgYXMgMCB3b3JrZXJzLgoKZmluZV9wcmludDoKICBqdWRnbWVudF9jYWxsczoKICAgIC0gZGVjaXNpb246IENvbXBhcmlzb24gZ3JvdXAKICAgICAgY2hvaWNlOiBSZXN0YXVyYW50cyBpbiBlYXN0ZXJuIFBlbm5zeWx2YW5pYSwgbmVhciB0aGUgYm9yZGVyLgogICAgICBhbHRlcm5hdGl2ZXM6IE5ldyBKZXJzZXkgcmVzdGF1cmFudHMgYWxyZWFkeSBwYXlpbmcgJDUuMDAgb3IgbW9yZSwgd2hvIHdlcmUgYmFyZWx5IGFmZmVjdGVkLgogICAgICB3aHk6IFNpbWlsYXIgbWFya2V0cyBhbmQgc2Vhc29ucywgd2l0aCBubyB3YWdlIGNoYW5nZS4KICAgICAgaW1wYWN0OiA+CiAgICAgICAgVGhlIHBhcGVyIHJlcG9ydHMgYm90aC4gSGlnaC13YWdlIE5ldyBKZXJzZXkgc3RvcmVzIGNoYW5nZWQgYnkg4oiSMi4xNiwgYWxtb3N0IHRoZSBzYW1lIGFzCiAgICAgICAgUGVubnN5bHZhbmlhJ3Mg4oiSMi4yOCAoYmFsYW5jZWQgc2FtcGxlKSwgd2hpY2ggc3VwcG9ydHMgdGhlIFBlbm5zeWx2YW5pYSBjb21wYXJpc29uLgogICAgICBzcmM6IFtTMSwgUzVdCiAgICAtIGRlY2lzaW9uOiBQYXJ0LXRpbWUgd29ya2VycyBjb3VudCBhcyBoYWxmCiAgICAgIGNob2ljZTogRnVsbC10aW1lIGVxdWl2YWxlbnQgPSBmdWxsLXRpbWUgKyBtYW5hZ2VycyArIDAuNSDDlyBwYXJ0LXRpbWUuCiAgICAgIGFsdGVybmF0aXZlczogQ291bnQgaGVhZHM7IHdlaWdodCBwYXJ0LXRpbWVycyAwLjQgb3IgMC42OyBleGNsdWRlIG1hbmFnZXJzLgogICAgICB3aHk6IEEgc2ltcGxlLCBzdGF0ZWQgY29udmVudGlvbi4KICAgICAgaW1wYWN0OiA+CiAgICAgICAgVGFibGUgNSByb3dzIDPigJM1IHJlcG9ydCBsaXR0bGUgZWZmZWN0IG9uIHRoZSByZWdyZXNzaW9uIGZvciB0aGUgY2hhbmdlIGluIGVtcGxveW1lbnQKICAgICAgICB3aGVuIG1hbmFnZXJzIGFyZSBkcm9wcGVkIG9yIHBhcnQtdGltZXJzIHdlaWdodGVkIDAuNCBvciAwLjY7IG5vdCByZS1ydW4gaGVyZS4KICAgICAgc3JjOiBbUzEsIFMyXQogICAgLSBkZWNpc2lvbjogV2hpY2ggcmVzdGF1cmFudHMgZW50ZXIgZWFjaCBhdmVyYWdlCiAgICAgIGNob2ljZTogRXZlcnkgcmVzdGF1cmFudCB3aXRoIGEgY291bnQgaW4gdGhhdCByb3VuZCAocm93cyAx4oCTMykuCiAgICAgIGFsdGVybmF0aXZlczogT25seSByZXN0YXVyYW50cyBjb3VudGVkIGluIGJvdGggcm91bmRzIChyb3cgNCkuCiAgICAgIHdoeTogVXNlcyBhbGwgdGhlIGRhdGEuCiAgICAgIGltcGFjdDogVGhlIGhlYWRsaW5lIGJhcmVseSBtb3ZlcyAoMi43NTQgdnMgMi43NTApLgogICAgICBzcmM6IFM1CiAgY2F2ZWF0czoKICAgIC0gdGl0bGU6IFBlbm5zeWx2YW5pYSBmZWxsIG1vcmUgdGhhbiBOZXcgSmVyc2V5IHJvc2UKICAgICAgdGV4dDogPgogICAgICAgIE5ldyBKZXJzZXkncyBhdmVyYWdlIHdlbnQgdXAgYnkgMC41OSB3b3JrZXJzIHdoaWxlIFBlbm5zeWx2YW5pYSdzIGZlbGwgYnkgMi4xNy4gTW9zdCBvZgogICAgICAgIHRoZSBnYXAgaXMgUGVubnN5bHZhbmlhIHNocmlua2luZy4gVGhlIHBhcGVyIGF0dHJpYnV0ZXMgdGhpcyB0byBhIHdvcnNlbmluZyByZWdpb25hbAogICAgICAgIGVjb25vbXksIHdoaWNoIHRoZSBkZXNpZ24gYXNzdW1lcyBoaXQgYm90aCBzdGF0ZXMgZXF1YWxseS4KICAgICAgZWZmZWN0OiBsaW1pdHNfc2NvcGUKICAgICAgc2V2ZXJpdHk6IGhpZ2gKICAgICAgc3JjOiBbUzEsIFM1XQogICAgLSB0aXRsZTogVGhlIHNwcmVhZCBkZXBlbmRzIG9uIGFuIHVuc3RhdGVkIGNhbGN1bGF0aW9uCiAgICAgIHRleHQ6ID4KICAgICAgICBUaGUgcHVibGlzaGVkIHQgc3RhdGlzdGljIGltcGxpZXMgYSA5NSUgcmFuZ2Ugb2YgYWJvdXQgMC4xIHRvIDUuNCB3b3JrZXJzLiBBIHNpbXBsZQogICAgICAgIGNhbGN1bGF0aW9uIHRoYXQgdHJlYXRzIHRoZSB0d28gcm91bmRzIGFzIHNlcGFyYXRlIHNhbXBsZXMgZ2l2ZXMg4oiSMC44IHRvIDYuMywgd2hpY2gKICAgICAgICBpbmNsdWRlcyBubyBlZmZlY3QuIENvdW50aW5nIG9ubHkgcmVzdGF1cmFudHMgc2VlbiBpbiBib3RoIHJvdW5kcyBnaXZlcyAwLjEgdG8gNS40IGFnYWluLgogICAgICBlZmZlY3Q6IHdpZGVyX3VuY2VydGFpbnR5CiAgICAgIHNldmVyaXR5OiBtZWRpdW0KICAgICAgc3JjOiBbUzEsIFM1XQogICAgLSB0aXRsZTogU2VsZi1yZXBvcnRlZCBjb3VudHMgZnJvbSBhIHBob25lIHN1cnZleQogICAgICB0ZXh0OiA+CiAgICAgICAgTWFuYWdlcnMgcmVwb3J0ZWQgc3RhZmYgbnVtYmVycyBieSBwaG9uZS4gVGhlIHBhcGVyIGVzdGltYXRlcyB0aGUgcmVsaWFiaWxpdHkgb2YgdGhpcwogICAgICAgIG1lYXN1cmUgYXQgMC43MCBieSByZWludGVydmlld2luZyBhIHN1YnNldCBvZiBzdG9yZXMsIHNvIHNvbWUgY2hhbmdlcyBhcmUgbm9pc2UuCiAgICAgIGVmZmVjdDogd2lkZXJfdW5jZXJ0YWludHkKICAgICAgc2V2ZXJpdHk6IG1lZGl1bQogICAgICBzcmM6IFMxCiAgICAtIHRpdGxlOiBPbmUgcmVnaW9uLCBvbmUgaW5kdXN0cnksIG9uZSByaXNlCiAgICAgIHRleHQ6ID4KICAgICAgICBUaGlzIGlzIGZvdXIgZmFzdC1mb29kIGNoYWlucyBpbiBOZXcgSmVyc2V5IGFuZCBlYXN0ZXJuIFBlbm5zeWx2YW5pYSBpbiAxOTkyLCBhZnRlciBhbgogICAgICAgIDgwLWNlbnQgcmlzZS4gSXQgc2F5cyBub3RoaW5nIGRpcmVjdGx5IGFib3V0IG90aGVyIGluZHVzdHJpZXMsIGxhcmdlciByaXNlcyBvciBvdGhlciBwbGFjZXMuCiAgICAgIGVmZmVjdDogbGltaXRzX3Njb3BlCiAgICAgIHNldmVyaXR5OiBtZWRpdW0KICBtaXNyZWFkaW5nczoKICAgIC0gd3Jvbmc6ICJFYWNoIE5ldyBKZXJzZXkgcmVzdGF1cmFudCBoaXJlZCAyLjc1IG1vcmUgcGVvcGxlLiIKICAgICAgcmlnaHQ6ID4KICAgICAgICBJdCBpcyAyLjc1IG1vcmUgZnVsbC10aW1lLWVxdWl2YWxlbnQgd29ya2VycyBvbiBhdmVyYWdlLCByZWxhdGl2ZSB0byBQZW5uc3lsdmFuaWEncyB0cmVuZC4KICAgICAgICBQYXJ0LXRpbWVycyBjb3VudCBhcyBoYWxmLCBhbmQgTmV3IEplcnNleSdzIG93biBhdmVyYWdlIHJvc2UgYnkgb25seSAwLjU5LgogICAgLSB3cm9uZzogIlRoaXMgcHJvdmVzIG1pbmltdW0td2FnZSByaXNlcyBjcmVhdGUgam9icy4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgSXQgc2hvd3MgZW1wbG95bWVudCBkaWQgbm90IGZhbGwgcmVsYXRpdmUgdG8gdGhlIGNvbXBhcmlzb24gc3RhdGUgaW4gdGhpcyBzZXR0aW5nLiBUaGUKICAgICAgICBkZXNpZ24gcmVzdHMgb24gYm90aCBzdGF0ZXMgc2hhcmluZyBhIHRyZW5kLCBhbmQgdGhlIHJlc3VsdCBpcyBzcGVjaWZpYyB0byB0aGlzIGNhc2UuCiAgICAtIHdyb25nOiAiRW1wbG95bWVudCByb3NlIDEzJS4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgVGhlIGdhcCBpcyAxMyUgb2YgYSB0eXBpY2FsIE5ldyBKZXJzZXkgc3RvcmUncyBzdGFydGluZyBzdGFmZi4gTmV3IEplcnNleSdzIG93biBhdmVyYWdlCiAgICAgICAgcm9zZSBhYm91dCAzJS4KICBkaXNjcmVwYW5jaWVzOgogICAgLSB0b3BpYzogU3RvcmUgaWRlbnRpZmllcgogICAgICBkZXNjcmliZWQ6ICJDb2RlYm9vazogU0hFRVQgaXMgdGhlICdzaGVldCBudW1iZXIgKHVuaXF1ZSBzdG9yZSBpZCknLiIKICAgICAgaW1wbGVtZW50ZWQ6ICJTaGVldCA0MDcgYXBwZWFycyB0d2ljZSBpbiBwdWJsaWMuZGF0OiBhIFBlbm5zeWx2YW5pYSBLRkMgYW5kIGEgTmV3IEplcnNleSBXZW5keSdzLiIKICAgICAgaW1wYWN0OiA+CiAgICAgICAgQW55b25lIGRlZHVwbGljYXRpbmcgb3Igam9pbmluZyBvbiBTSEVFVCBsb3NlcyBvciBtaXhlcyBvbmUgc3RvcmUuIFRoZSBwYXBlcidzCiAgICAgICAgYXZlcmFnZXMsIHdoaWNoIHRyZWF0IHJvd3MgYXMgc3RvcmVzLCBhcmUgdW5hZmZlY3RlZC4KICAgICAgc3JjOiBbUzMsIFM1XQogICAgLSB0b3BpYzogV2hlcmUgY2xvc2VkIHN0b3JlcyBiZWNvbWUgemVybwogICAgICBkZXNjcmliZWQ6ICJUYWJsZSAzIG5vdGU6ICdFbXBsb3ltZW50IGF0IHNpeCBjbG9zZWQgc3RvcmVzIGlzIHNldCB0byB6ZXJvLiciCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgY2hlY2suc2FzIG5ldmVyIHNldHMgYW55dGhpbmcgdG8gemVybzsgdGhlIHNpeCBTVEFUVVMyID0gMyByb3dzIGFscmVhZHkgY2FycnkgMCBpbiB0aGUKICAgICAgICB3YXZlLTIgZW1wbG95bWVudCBmaWVsZHMgb2YgcHVibGljLmRhdC4KICAgICAgaW1wYWN0OiA+CiAgICAgICAgTm9uZSBmb3IgdGhlIHB1Ymxpc2hlZCBudW1iZXJzLiBBIHJlLWFuYWx5c2lzIHRoYXQgcmVjb2RlcyBTVEFUVVMyIGl0c2VsZiwgb3IgdHJlYXRzIDAKICAgICAgICBhcyBtaXNzaW5nLCB3aWxsIHNpbGVudGx5IGNoYW5nZSB0aGUgaGVhZGxpbmUuCiAgICAgIHNyYzogW1MxLCBTMiwgUzVdCiAgICAtIHRvcGljOiBIZWFkbGluZSB2YWx1ZQogICAgICBkZXNjcmliZWQ6ICJUZXh0OiAnVGhlIHJlbGF0aXZlIGdhaW4g4oCmIGlzIDIuNzYgRlRFIGVtcGxveWVlcyAob3IgMTMgcGVyY2VudCksIHdpdGggYSB0IHN0YXRpc3RpYyBvZiAyLjAzLiciCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgVGhlIHB1YmxpYyBkYXRhIGdpdmUgMi43NTQsIHdoaWNoIHJvdW5kcyB0byAyLjc1LiBSb3dzIDQgYW5kIDUgYW5kIFRhYmxlIDQgcmVwcm9kdWNlIHRvCiAgICAgICAgdGhlIHB1Ymxpc2hlZCBkZWNpbWFscy4KICAgICAgaW1wYWN0OiBSb3VuZGluZyBvbmx5LiBJdCBpcyBsaWtlbHkgdGhlIHRleHQgd2FzIGNvbXB1dGVkIGZyb20gcm91bmRlZCB0YWJsZSBlbnRyaWVzLgogICAgICBzcmM6IFtTMSwgUzVdCiAgICAtIHRvcGljOiBIb3cgdGhlIGhlYWRsaW5lJ3MgdW5jZXJ0YWludHkgd2FzIGNvbXB1dGVkCiAgICAgIGRlc2NyaWJlZDogIkEgdCBzdGF0aXN0aWMgb2YgMi4wMzsgbm8gbWV0aG9kIGdpdmVuLiIKICAgICAgaW1wbGVtZW50ZWQ6ID4KICAgICAgICBjaGVjay5zYXMgY29tcHV0ZXMgb25seSBwZXItc3RhdGUgbWVhbnMgKFBST0MgTUVBTlMpLCBub3QgdGhlIHN0YW5kYXJkIGVycm9yIG9mIHRoZQogICAgICAgIGRpZmZlcmVuY2UuIFRoZSBpbmRlcGVuZGVudC1zYW1wbGVzIGZvcm11bGEgZ2l2ZXMgdCA9IDEuNTM7IHRoZSBiYWxhbmNlZC1zYW1wbGUgZm9ybXVsYQogICAgICAgIGdpdmVzIHQgPSAyLjA1LgogICAgICBpbXBhY3Q6IFVua25vd24uIEl0IGRlY2lkZXMgd2hldGhlciB0aGUgaGVhZGxpbmUgaXMgZGlzdGluZ3Vpc2hhYmxlIGZyb20gemVyby4KICAgICAgc3JjOiBbUzEsIFMyLCBTNV0KICAgIC0gdG9waWM6IFJlc3RhdXJhbnRzIHdpdGhvdXQgYSBzdGFydGluZyB3YWdlCiAgICAgIGRlc2NyaWJlZDogIlRhYmxlIDMgbm90ZXMgZ2l2ZSBOZXcgSmVyc2V5IHdhZ2UtZ3JvdXAgY291bnRzIG9mIDEwMSwgMTQwIGFuZCA3My4iCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgVGhvc2Ugc3VtIHRvIDMxNCBvZiAzMzEgTmV3IEplcnNleSBzdG9yZXMuIFRoZSAxNyB3aXRoIG5vIHdhdmUtMSBzdGFydGluZyB3YWdlIGdvIHRvCiAgICAgICAgY2hlY2suc2FzJ3MgJ05KIFNUT1JFLCBCQUQgV0FHRScgZ3JvdXAgYW5kIGFyZSBub3QgbWVudGlvbmVkIGluIHRoZSB0ZXh0LgogICAgICBpbXBhY3Q6IEFmZmVjdHMgb25seSB0aGUgd2l0aGluLU5ldyBKZXJzZXkgY29sdW1ucyAoaXYp4oCTKHZpaWkpLCBub3QgdGhlIGhlYWRsaW5lLgogICAgICBzcmM6IFtTMSwgUzIsIFM1XQoKc3BlYzoKICBlc3RpbWFuZDoKICAgIHBvcHVsYXRpb246ID4KICAgICAgQnVyZ2VyIEtpbmcsIEtGQywgV2VuZHkncyBhbmQgUm95IFJvZ2VycyByZXN0YXVyYW50cyBpbiBOZXcgSmVyc2V5IGFuZCBlYXN0ZXJuIFBlbm5zeWx2YW5pYQogICAgICBpbiB0aGUgMTk5MiBzYW1wbGUgZnJhbWUgdGhhdCByZXNwb25kZWQgaW4gd2F2ZSAxIGFuZCByZXBvcnRlZCBlbXBsb3ltZW50IGluIHRoZSBnaXZlbiB3YXZlLgogICAgZXhwb3N1cmU6IEJlaW5nIGluIE5ldyBKZXJzZXkgd2hlbiBpdHMgbWluaW11bSB3YWdlIHJvc2UgZnJvbSAkNC4yNSB0byAkNS4wNSBvbiAxOTkyLTA0LTAxLgogICAgdGltZV96ZXJvOiAxOTkyLTA0LTAxLgogICAgdmFyaWFibGU6ID4KICAgICAgRlRFIGVtcGxveW1lbnQgcGVyIHN0b3JlID0gZnVsbC10aW1lICsgbWFuYWdlcnMgKyAwLjUgw5cgcGFydC10aW1lLCBpbiB3YXZlIDIgKE5vdiA1IOKAkyBEZWMgMzEsCiAgICAgIDE5OTIpIG1pbnVzIHdhdmUgMSAoRmViIDE1IOKAkyBNYXIgNCwgMTk5MikuCiAgICBpbnRlcmN1cnJlbnRfZXZlbnRzOiA+CiAgICAgIFBlcm1hbmVudCBjbG9zdXJlcyBjb3VudCBhcyB6ZXJvIGVtcGxveW1lbnQ7IHRlbXBvcmFyeSBjbG9zdXJlcyAoNCkgYXJlIG1pc3NpbmcgaW4gd2F2ZSAyLgogICAgc3VtbWFyeTogPgogICAgICBEaWZmZXJlbmNlIGluIHN0YXRlIG1lYW4gY2hhbmdlcyAodW5iYWxhbmNlZCBtZWFucyksIEZURSB3b3JrZXJzIHBlciBzdG9yZTsgaW50ZXJ2YWwgZnJvbQogICAgICB0aGUgcHVibGlzaGVkIHQgc3RhdGlzdGljLgogIHBhcmFtZXRlcnM6CiAgICAtIHtuYW1lOiBvbGRfbWluaW11bSwgdmFsdWU6ICIkNC4yNSIsIG1lYW5pbmc6ICJGZWRlcmFsIGFuZCBOSiByYXRlIGJlZm9yZSAxOTkyLTA0LTAxIn0KICAgIC0ge25hbWU6IG5ld19taW5pbXVtLCB2YWx1ZTogIiQ1LjA1IiwgbWVhbmluZzogIk5KIHJhdGUgZnJvbSAxOTkyLTA0LTAxIn0KICAgIC0ge25hbWU6IHBhcnRfdGltZV93ZWlnaHQsIHZhbHVlOiAwLjUsIG1lYW5pbmc6IEVhY2ggcGFydC10aW1lIHdvcmtlciBjb3VudHMgYXMgaGFsZn0KICAgIC0ge25hbWU6IHRlbXBvcmFyaWx5X2Nsb3NlZF9zdGF0dXMsIHZhbHVlOiAiMiwgNCwgNSIsIG1lYW5pbmc6ICJTVEFUVVMyIGNvZGVzIHRyZWF0ZWQgYXMgbWlzc2luZyBpbiB3YXZlIDIifQogIGxpbmVhZ2U6CiAgICAtIG5hbWU6IHB1YmxpYy5kYXQKICAgICAgcm9sZTogT25lIHJvdyBwZXIgc3RvcmUsIGJvdGggc3VydmV5IHdhdmVzCiAgICAgIGdyYWluOiBzdG9yZQogICAgICBzcmM6IFtTMywgUzZdCiAgICAtIG5hbWU6IGNoZWNrLnNhcwogICAgICByb2xlOiBBdXRob3JzJyBwcm9ncmFtOyBjb21wdXRlcyBGVEUgYW5kIHRoZSBwZXItc3RhdGUgbWVhbnMgb2YgVGFibGUgMwogICAgICBncmFpbjogc3RvcmUg4oaSIHN0YXRlIMOXIHdhdmUKICAgICAgc3JjOiBTMgogICAgLSBuYW1lOiBleGFtcGxlcy9taW5pbXVtLXdhZ2UvYW5hbHlzaXMucHkKICAgICAgcm9sZTogUHl0aG9uIHJlcHJvZHVjdGlvbiBvZiBUYWJsZSAzIHJvd3MgMeKAkzUgYW5kIFRhYmxlIDQgY29sdW1uIChpKQogICAgICBncmFpbjogc3RhdGUgw5cgd2F2ZQogICAgICBzcmM6IFM1CiAgY29kZToKICAgIC0gcHVycG9zZTogRlRFIGVtcGxveW1lbnQgaW4gZWFjaCB3YXZlIChhdXRob3JzJyBTQVMpCiAgICAgIGxhbmc6IHNhcwogICAgICBzcmM6IFMyCiAgICAgIGV4Y2VycHQ6IHwKICAgICAgICBFTVBUT1Q9RU1QUFQqLjUgKyBFTVBGVCArIE5NR1JTOwogICAgICAgIEVNUFRPVDI9RU1QUFQyKi41ICsgRU1QRlQyICsgTk1HUlMyOwogICAgICAgIERFTVA9RU1QVE9UMi1FTVBUT1Q7OwogICAgLSBwdXJwb3NlOiBEaWZmZXJlbmNlLWluLWRpZmZlcmVuY2VzIGFuZCB0aGUgaW5kZXBlbmRlbnQtc2FtcGxlcyBzdGFuZGFyZCBlcnJvciAocmVwcm9kdWN0aW9uKQogICAgICBsYW5nOiBweXRob24KICAgICAgc3JjOiBTNQogICAgICBleGNlcnB0OiB8CiAgICAgICAgZGlkID0gKGx2WyJOSl9wb3N0Il1bInZhbHVlIl0gLSBsdlsiTkpfcHJlIl1bInZhbHVlIl0pIC0gKGx2WyJQQV9wb3N0Il1bInZhbHVlIl0gLSBsdlsiUEFfcHJlIl1bInZhbHVlIl0pCiAgICAgICAgc2VfaW5kZXAgPSBucC5zcXJ0KHN1bShyWyJzZSJdICoqIDIgZm9yIHIgaW4gcm93cykpCiAgcmVwcm9kdWNlOgogICAgc3RlcHM6CiAgICAgIC0gInB5dGhvbiBleGFtcGxlcy9mZXRjaF9kYXRhLnB5IG1pbmltdW0td2FnZSAoZG93bmxvYWRzIGFuZCBjaGVja3MgdGhlIGRhdGEgYW5kIHBhcGVyKS4iCiAgICAgIC0gInB5dGhvbiBleGFtcGxlcy9taW5pbXVtLXdhZ2UvYW5hbHlzaXMucHkgKHdyaXRlcyByZXN1bHRzL3RhYmxlMy5jc3YgYW5kIHJlc3VsdHMvY2hlY2tzLmNzdikuIgogICAgcmVjZWlwdHM6CiAgICAgIC0gIjIwMjYtMTAtMDc6IFBBIDIzLjMzIOKGkiAyMS4xNywgTkogMjAuNDQg4oaSIDIxLjAzOyBEaUQgMi43NTQuIFJvdyA0IDIuNzUwIChTRSAxLjM0MiksIHJvdyA1IDIuNTA5LiIKICAgICAgLSAiMjAyNi0xMC0wNzogVGFibGUgNCBjb2x1bW4gKGkpIDIuMzI2IChTRSAxLjE5MiksIG4gPSAzNTcsIG1lYW4gY2hhbmdlIOKIkjAuMjM4LCBTRCA4LjgyNTsgdGhlIHBhcGVyIHByaW50cyAyLjMzICgxLjE5KSwg4oiSMC4yMzcsIDguODI1LiIKICAgIHRlc3RzOiAiZXhhbXBsZXMvbWluaW11bS13YWdlL3Jlc3VsdHMvY2hlY2tzLmNzdiBjb21wYXJlcyBlYWNoIHJlcHJvZHVjZWQgZmlndXJlIHdpdGggdGhlIHBhcGVyLiIKCmdsb3NzYXJ5OgogIC0gdGVybTogZnVsbC10aW1lIGVxdWl2YWxlbnQKICAgIGFsaWFzZXM6IFtGVEUsIGZ1bGwtdGltZS1lcXVpdmFsZW50XQogICAgcGxhaW46ID4KICAgICAgQSBzdGFmZiBjb3VudCB3aGVyZSBlYWNoIHBhcnQtdGltZSB3b3JrZXIgY291bnRzIGFzIGhhbGYgYSBmdWxsLXRpbWUgd29ya2VyLiBNYW5hZ2VycyBjb3VudAogICAgICBhcyBmdWxsLXRpbWUuCiAgLSB0ZXJtOiBkaWZmZXJlbmNlLWluLWRpZmZlcmVuY2VzCiAgICBhbGlhc2VzOiBbRGlEXQogICAgcGxhaW46ID4KICAgICAgQ29tcGFyZSBvbmUgZ3JvdXAncyBjaGFuZ2Ugd2l0aCBhbm90aGVyIGdyb3VwJ3MgY2hhbmdlIG92ZXIgdGhlIHNhbWUgdGltZS4gVGhlIGRpZmZlcmVuY2UKICAgICAgYmV0d2VlbiB0aGUgdHdvIGNoYW5nZXMgaXMgdGhlIHBhcnQgYSBzaGFyZWQgdHJlbmQgZG9lcyBub3QgZXhwbGFpbi4KICAtIHRlcm06IG1pbmltdW0gd2FnZQogICAgcGxhaW46IFRoZSBsb3dlc3QgaG91cmx5IHBheSBhbiBlbXBsb3llciBtYXkgbGVnYWxseSBvZmZlci4KICAtIHRlcm06IDk1JSByYW5nZQogICAgYWxpYXNlczogWzk1JSBpbnRlcnZhbCwgY29uZmlkZW5jZSBpbnRlcnZhbF0KICAgIHBsYWluOiA+CiAgICAgIFRoZSB2YWx1ZXMgdGhhdCBmaXQgdGhlIGRhdGEgd2VsbCwgZ2l2ZW4gcmFuZG9tIG5vaXNlLiBJdCBkb2VzIG5vdCBjb3ZlciB0aGUgYXNzdW1wdGlvbgogICAgICB0aGF0IGJvdGggc3RhdGVzIHdvdWxkIGhhdmUgbW92ZWQgYWxpa2UuCiAgLSB0ZXJtOiB0IHN0YXRpc3RpYwogICAgcGxhaW46ID4KICAgICAgVGhlIGVzdGltYXRlIGRpdmlkZWQgYnkgaXRzIHN0YW5kYXJkIGVycm9yLiBWYWx1ZXMgYWJvdmUgYWJvdXQgMiBhcmUgdXN1YWxseSByZWFkIGFzCiAgICAgIHVubGlrZWx5IHRvIGJlIHB1cmUgbm9pc2UuCgpxdWl6OgogIC0ga2luZDogdmVyYmF0aW0KICAgIHE6ICJUaGUgaGVhZGxpbmUgaXMgKzIuNzUuIFdoYXQgZG9lcyBpdCBjb3VudD8iCiAgICBvcHRpb25zOgogICAgICAtICJOZXcgSmVyc2V5IHJlc3RhdXJhbnRzIGhpcmVkIDIuNzUgbW9yZSBwZW9wbGUgZWFjaC4iCiAgICAgIC0gIk5ldyBKZXJzZXkncyBjaGFuZ2UgaW4gYXZlcmFnZSBmdWxsLXRpbWUtZXF1aXZhbGVudCBzdGFmZiBwZXIgcmVzdGF1cmFudCB3YXMgMi43NSBsYXJnZXIgdGhhbiBQZW5uc3lsdmFuaWEncyBjaGFuZ2UuIgogICAgICAtICJFbXBsb3ltZW50IGluIE5ldyBKZXJzZXkgcm9zZSAyLjc1JS4iCiAgICBhbnN3ZXI6IDEKICAgIHdoeTogSXQgaXMgYSBkaWZmZXJlbmNlIGJldHdlZW4gdHdvIGNoYW5nZXMsIGluIGZ1bGwtdGltZS1lcXVpdmFsZW50IHdvcmtlcnMgcGVyIHJlc3RhdXJhbnQuCiAgLSBraW5kOiBnaXN0CiAgICBxOiAiV2hlcmUgZG9lcyBtb3N0IG9mIHRoZSAyLjc1IGNvbWUgZnJvbT8iCiAgICBvcHRpb25zOgogICAgICAtICJOZXcgSmVyc2V5IHJlc3RhdXJhbnRzIGFkZGluZyBzdGFmZi4iCiAgICAgIC0gIlBlbm5zeWx2YW5pYSByZXN0YXVyYW50cyBsb3Npbmcgc3RhZmYgb3ZlciB0aGUgc2FtZSBtb250aHMuIgogICAgYW5zd2VyOiAxCiAgICB3aHk6IE5ldyBKZXJzZXkgcm9zZSBieSBhYm91dCAwLjY7IFBlbm5zeWx2YW5pYSBmZWxsIGJ5IGFib3V0IDIuMi4KICAtIGtpbmQ6IHRyYW5zZmVyCiAgICBxOiAiQSBOZXcgSmVyc2V5IHJlc3RhdXJhbnQgY2xvc2VkIGZvciByZW5vdmF0aW9ucyBkdXJpbmcgdGhlIHNlY29uZCBzdXJ2ZXkuIEhvdyBpcyBpdCBjb3VudGVkPyIKICAgIG9wdGlvbnM6IFsiQXMgemVybyB3b3JrZXJzIiwgIkl0IGlzIGxlZnQgb3V0IG9mIHRoZSBzZWNvbmQtcm91bmQgYXZlcmFnZSIsICJBcyBpdHMgZmlyc3Qtcm91bmQgc3RhZmYiXQogICAgYW5zd2VyOiAxCiAgICB3aHk6IE9ubHkgcGVybWFuZW50bHkgY2xvc2VkIHJlc3RhdXJhbnRzIGNvdW50IGFzIHplcm87IHRoZSBmb3VyIHRlbXBvcmFyeSBjbG9zdXJlcyBhcmUgdHJlYXRlZCBhcyBtaXNzaW5nLgoKY2hhbmdlbG9nOgogIC0ge2RhdGU6ICIxOTk0LTA5LTAxIiwgY2hhbmdlOiAiUHVibGlzaGVkIGluIHRoZSBBbWVyaWNhbiBFY29ub21pYyBSZXZpZXcgODQoNCkuIn0KICAtIHtkYXRlOiAiMjAyNi0xMC0wNyIsIGNoYW5nZTogIk1ldHJpYyBjYXJkIHdyaXR0ZW4gZnJvbSB0aGUgcHVibGljIGRhdGEgYW5kIHRoZSBhdXRob3JzJyBjaGVjay5zYXM7IGZpdmUgZGlzY3JlcGFuY2llcyByZWNvcmRlZC4ifQoKc291cmNlczoKICAtIHtpZDogUzEsIHBhdGg6ICJleGFtcGxlcy9taW5pbXVtLXdhZ2UvZGF0YS9uam1pbi1hZXIucGRmIiwgbm90ZTogIkNhcmQgJiBLcnVlZ2VyICgxOTk0KSwgQUVSIDg0KDQpOiBpbnRybywgc2VjdGlvbiBJLCBUYWJsZSAxLCBzZWN0aW9uIElJSS5BLCBUYWJsZXMgM+KAkzQgbm90ZXMifQogIC0ge2lkOiBTMiwgcGF0aDogImV4YW1wbGVzL21pbmltdW0td2FnZS9kYXRhL2NoZWNrLnNhcyIsIGxpbmVzOiAiNTQtNTksIDEyOC0xMzksIDE1MC0xNjMifQogIC0ge2lkOiBTMywgcGF0aDogImV4YW1wbGVzL21pbmltdW0td2FnZS9kYXRhL2NvZGVib29rIiwgbm90ZTogIkNvbHVtbiBkZWZpbml0aW9uczsgU1RBVFVTMiBjb2RlcyJ9CiAgLSB7aWQ6IFM0LCBwYXRoOiAiZXhhbXBsZXMvbWluaW11bS13YWdlL2RhdGEvcmVhZC5tZSIsIG5vdGU6ICJTYXlzIHRoZSBmaWxlcyBzdXBwb3J0IE15dGggYW5kIE1lYXN1cmVtZW50LCBjaGFwdGVyIDIifQogIC0ge2lkOiBTNSwgcGF0aDogImV4YW1wbGVzL21pbmltdW0td2FnZS9hbmFseXNpcy5weSIsIGxpbmVzOiAiMzAtMTAzIiwgbm90ZTogIk91dHB1dHMgaW4gZXhhbXBsZXMvbWluaW11bS13YWdlL3Jlc3VsdHMvIn0KICAtIHtpZDogUzYsIHBhdGg6ICJleGFtcGxlcy9taW5pbXVtLXdhZ2UvZGF0YS9wdWJsaWMuZGF0Iiwgbm90ZTogIjQxMCByb3dzOyBkb3dubG9hZGVkIGZyb20gZGF2aWRjYXJkLmJlcmtlbGV5LmVkdS9kYXRhX3NldHMuaHRtbCJ9Cg==" download="minimum-wage-did.yaml">Download the spec (YAML)</a>
+      <button class="btn ghost" type="button" data-copy="#spec-yaml">Copy spec</button>
+      <a class="btn ghost" href="minimum-wage-did.methods.html">Methods section</a>
+    </div>
+    <textarea id="spec-yaml" hidden>schema: metric-card/1
+id: minimum-wage-did
+title: Fast-food jobs after New Jersey&#39;s 1992 minimum-wage rise
+subtitle: Difference-in-differences in average full-time-equivalent employment per store, New Jersey vs eastern Pennsylvania
+status: provisional
+owner: data-visual-explainer worked example (public data)
+updated: &#34;2026-10-07&#34;
+question: &gt;
+  When New Jersey raised its minimum wage in April 1992, did fast-food restaurants there cut
+  jobs compared with similar restaurants just across the border in Pennsylvania, where the wage
+  did not change?
+
+gist:
+  sentence: &gt;
+    We counted staff at fast-food restaurants in early 1992 and again late in the year. New
+    Jersey raised its minimum wage on 1 April; nearby Pennsylvania did not. We compare how the
+    average staff per restaurant changed in each state.
+  headline:
+    value: 2.75
+    low: 0.09
+    high: 5.42
+    unit: other
+    decimals: 2
+    label: more full-time-equivalent workers per New Jersey restaurant than the Pennsylvania trend predicts
+    context: &#34;New Jersey restaurants averaged 20.4 full-time-equivalent workers before the rise, so this is about 13% of a typical store.&#34;
+  frequency: &gt;
+    Picture an average New Jersey restaurant with about 20 full-time-equivalent workers. If it
+    had followed Pennsylvania&#39;s path it would have ended the year with about 18; it ended with
+    about 21.
+  reading:
+    direction: neutral
+    say: &gt;
+      &#34;Employment in New Jersey fast-food restaurants did not fall relative to Pennsylvania after
+      the 1992 rise; it grew by about 2.75 full-time-equivalent workers per store more.&#34;
+    dont_say: &gt;
+      &#34;Raising the minimum wage creates jobs,&#34; or &#34;New Jersey restaurants hired 2.75 more people.&#34;
+  key_caveat: &gt;
+    Pennsylvania staffing fell over the year, so most of the gap comes from Pennsylvania
+    shrinking, not New Jersey growing. The design assumes both states would otherwise have moved
+    alike, and the interval&#39;s width depends on a calculation the paper does not describe.
+  claim_strength: quasi-causal
+
+grammar:
+  unit:
+    singular: restaurant
+    plural: restaurants
+    plain: One fast-food restaurant from one of four large burger or chicken chains.
+    exact: &gt;
+      One row per store in public.dat (410 rows); CHAIN 1 = Burger King, 2 = KFC, 3 = Roy Rogers,
+      4 = Wendy&#39;s. SHEET is documented as the unique store id, but
+      sheet 407 is used by two different stores; rows, not SHEET values, are the unit.
+    src: [S3, S6]
+  population:
+    - id: frame
+      plain: &gt;
+        Fast-food restaurants in New Jersey and eastern Pennsylvania from four chains that took
+        part in the first telephone survey.
+      exact: &#34;public.dat: 410 stores, STATE = 1 (NJ, 331) or 0 (PA, 79).&#34;
+      n_after: 410
+      src: [S1, S3]
+    - id: has_staff_count
+      plain: &gt;
+        Reported staff numbers in that survey round. Each round&#39;s average uses every restaurant
+        with a count for that round, so the two rounds are not exactly the same restaurants.
+      exact: &gt;
+        Wave-1 mean over stores with non-missing fte1 (PA 77, NJ 321); wave-2 mean over stores
+        with non-missing fte2 (PA 77, NJ 319). &#34;All available observations&#34; (Table 3 rows 1–2).
+      src: [S1, S5]
+    - id: closures
+      plain: &gt;
+        Restaurants that closed for good by the second round count as having zero staff. The four
+        that were closed only temporarily are left out of the second round.
+      exact: &gt;
+        STATUS2 = 3 (6 stores): wave-2 employment fields are already 0 in public.dat. STATUS2 in
+        (2, 4, 5) (4 stores, all NJ): wave-2 fields missing, so excluded from the wave-2 mean.
+      src: [S1, S3, S6]
+  anchor:
+    kind: calendar
+    label: Wage rise
+    plain: New Jersey&#39;s minimum wage went from $4.25 to $5.05 an hour on 1 April 1992.
+    exact: &#34;1992-04-01 (paper, introduction and section I). Pennsylvania stayed at the federal $4.25.&#34;
+    src: S1
+  windows:
+    - id: wave1
+      label: First survey round
+      start: -46
+      end: -27
+      unit: day
+      role: observation
+      plain: The telephone survey from 15 February to 4 March 1992, before the rise.
+      exact: &#34;Wave 1: February 15 – March 4, 1992 (Table 1).&#34;
+      src: S1
+    - id: wave2
+      label: Second survey round
+      start: 218
+      end: 275
+      unit: day
+      role: outcome
+      plain: The follow-up survey from 5 November to 31 December 1992, about 7 to 9 months after the rise.
+      exact: &#34;Wave 2: November 5 – December 31, 1992 (Table 1); DATE2 in the file spans 110592–123192.&#34;
+      src: [S1, S6]
+  measures:
+    - id: fte_before
+      label: Staff before
+      kind: value
+      window: wave1
+      plain: Full-time workers, including managers, plus half the number of part-time workers.
+      exact: &#34;EMPTOT = EMPPT*.5 + EMPFT + NMGRS (check.sas line 54).&#34;
+      src: [S2, S1]
+    - id: fte_after
+      label: Staff after
+      kind: value
+      window: wave2
+      primary: true
+      plain: The same count, taken in the second survey round.
+      exact: &#34;EMPTOT2 = EMPPT2*.5 + EMPFT2 + NMGRS2 (check.sas line 55).&#34;
+      src: S2
+  aggregate:
+    kind: mean
+    measure: fte_after
+    numerator: total full-time-equivalent workers across restaurants with a count
+    denominator: restaurants with a count in that round
+    plain: Average the staff count over restaurants in each state and survey round.
+    exact: &#34;PROC MEANS of EMPTOT and EMPTOT2 BY NJ (check.sas lines 128–131, &#39;PART OF TABLE 3&#39;).&#34;
+    src: [S2, S5]
+  groups:
+    - id: pa_pre
+      label: Pennsylvania, Feb–Mar
+      role: baseline
+      period: pre
+      year: &#34;1992&#34;
+      series: Pennsylvania
+      plain: Pennsylvania restaurants in the first round.
+      exact: &#34;STATE = 0, non-missing EMPTOT (n = 77).&#34;
+    - id: pa_post
+      label: Pennsylvania, Nov–Dec
+      role: baseline
+      period: post
+      year: &#34;1992&#34;
+      series: Pennsylvania
+      plain: Pennsylvania restaurants in the second round.
+      exact: &#34;STATE = 0, non-missing EMPTOT2 (n = 77).&#34;
+    - id: nj_pre
+      label: New Jersey, Feb–Mar
+      role: focal
+      period: pre
+      year: &#34;1992&#34;
+      series: New Jersey
+      plain: New Jersey restaurants in the first round, before the rise.
+      exact: &#34;STATE = 1, non-missing EMPTOT (n = 321).&#34;
+    - id: nj_post
+      label: New Jersey, Nov–Dec
+      role: focal
+      period: post
+      year: &#34;1992&#34;
+      series: New Jersey
+      plain: New Jersey restaurants in the second round, after the rise.
+      exact: &#34;STATE = 1, non-missing EMPTOT2 (n = 319).&#34;
+  comparison:
+    kind: difference_in_differences
+    target: ATT
+    plain: &gt;
+      Take New Jersey&#39;s change in average staff between the two rounds. Subtract Pennsylvania&#39;s
+      change over the same months. What is left is the change Pennsylvania&#39;s path does not
+      explain.
+    exact: &#34;(NJ wave 2 − NJ wave 1) − (PA wave 2 − PA wave 1), FTE per store (Table 3, row 3, column iii).&#34;
+    formula: &#34;(NJ₂ − NJ₁) − (PA₂ − PA₁)&#34;
+    src: [S1, S5]
+  uncertainty:
+    method: As published (t statistic), method not stated
+    level: 0.95
+    plain: &gt;
+      The paper reports a t statistic of 2.03 for this number. We turned that into a 95% range
+      of 0.09 to 5.42 workers. The paper does not say how it computed the spread.
+    exact: &gt;
+      SE = 2.76 / 2.03 ≈ 1.36 (paper, section III.A); interval = 2.754 ± 1.96 × 1.36. Treating
+      the four state-by-round means as independent gives SE 1.80 (interval −0.78 to 6.28). The
+      balanced-sample change (row 4) gives SE 1.34.
+    known_gaps: &gt;
+      The calculation behind the published spread is not stated, and check.sas does not compute
+      it. Restaurants appear in both rounds, so the four averages are not independent; the
+      simplest formula that ignores this gives a range that includes zero. Nothing here covers
+      the assumption that both states would have moved alike.
+    src: [S1, S5]
+
+results:
+  as_of: &#34;1994-09 (published); recomputed 2026-10-07&#34;
+  unit: other
+  latest_anchor: &#34;1992-04-01&#34;
+  data_complete_through: &#34;1992-12-31&#34;
+  cells:
+    - {group: pa_pre, value: 23.3312, n: 77}
+    - {group: pa_post, value: 21.1656, n: 77}
+    - {group: nj_pre, value: 20.4394, n: 321}
+    - {group: nj_post, value: 21.0274, n: 319}
+  estimate: {value: 2.75, low: 0.09, high: 5.42}
+  sensitivity:
+    - {label: &#34;Same restaurants in both rounds (row 4)&#34;, value: 2.75, low: 0.12, high: 5.38, note: &#34;384 restaurants with a count in both rounds; SE 1.34.&#34;, src: S5}
+    - {label: &#34;All restaurants with a count (row 3, headline)&#34;, value: 2.75, low: 0.09, high: 5.42, primary: true, src: [S1, S5]}
+    - {label: &#34;Temporarily closed counted as zero (row 5)&#34;, value: 2.51, low: -0.13, high: 5.15, note: &#34;Paper: &#39;only slightly smaller&#39;.&#34;, src: S5}
+    - {label: &#34;Regression, Table 4 sample&#34;, value: 2.33, low: 0.0, high: 4.66, note: &#34;357 restaurants with wage data in both rounds; coefficient 2.33 (SE 1.19).&#34;, src: [S1, S5]}
+
+example:
+  name: A Wendy&#39;s in Camden County
+  intro: &gt;
+    A hypothetical New Jersey Wendy&#39;s paying the old $4.25 starting wage has 8 full-time staff,
+    2 managers and 20 part-timers in February 1992.
+  anchor_date: &#34;1992-04-01&#34;
+  events:
+    - {at: -40, label: &#34;First survey call: 8 + 2 + 20 × 0.5 = 20 full-time-equivalent workers&#34;}
+    - {at: 0, label: &#34;Minimum wage rises to $5.05&#34;}
+    - {at: 225, label: &#34;Second survey: 9 full-time, 2 managers, 22 part-time = 22&#34;, counts: true}
+  outcome: &gt;
+    The restaurant adds +2 to New Jersey&#39;s change. If it had shut for renovation in November, it
+    would drop out of the second-round average entirely. If it had closed for good, it would
+    count as 0 workers.
+
+fine_print:
+  judgment_calls:
+    - decision: Comparison group
+      choice: Restaurants in eastern Pennsylvania, near the border.
+      alternatives: New Jersey restaurants already paying $5.00 or more, who were barely affected.
+      why: Similar markets and seasons, with no wage change.
+      impact: &gt;
+        The paper reports both. High-wage New Jersey stores changed by −2.16, almost the same as
+        Pennsylvania&#39;s −2.28 (balanced sample), which supports the Pennsylvania comparison.
+      src: [S1, S5]
+    - decision: Part-time workers count as half
+      choice: Full-time equivalent = full-time + managers + 0.5 × part-time.
+      alternatives: Count heads; weight part-timers 0.4 or 0.6; exclude managers.
+      why: A simple, stated convention.
+      impact: &gt;
+        Table 5 rows 3–5 report little effect on the regression for the change in employment
+        when managers are dropped or part-timers weighted 0.4 or 0.6; not re-run here.
+      src: [S1, S2]
+    - decision: Which restaurants enter each average
+      choice: Every restaurant with a count in that round (rows 1–3).
+      alternatives: Only restaurants counted in both rounds (row 4).
+      why: Uses all the data.
+      impact: The headline barely moves (2.754 vs 2.750).
+      src: S5
+  caveats:
+    - title: Pennsylvania fell more than New Jersey rose
+      text: &gt;
+        New Jersey&#39;s average went up by 0.59 workers while Pennsylvania&#39;s fell by 2.17. Most of
+        the gap is Pennsylvania shrinking. The paper attributes this to a worsening regional
+        economy, which the design assumes hit both states equally.
+      effect: limits_scope
+      severity: high
+      src: [S1, S5]
+    - title: The spread depends on an unstated calculation
+      text: &gt;
+        The published t statistic implies a 95% range of about 0.1 to 5.4 workers. A simple
+        calculation that treats the two rounds as separate samples gives −0.8 to 6.3, which
+        includes no effect. Counting only restaurants seen in both rounds gives 0.1 to 5.4 again.
+      effect: wider_uncertainty
+      severity: medium
+      src: [S1, S5]
+    - title: Self-reported counts from a phone survey
+      text: &gt;
+        Managers reported staff numbers by phone. The paper estimates the reliability of this
+        measure at 0.70 by reinterviewing a subset of stores, so some changes are noise.
+      effect: wider_uncertainty
+      severity: medium
+      src: S1
+    - title: One region, one industry, one rise
+      text: &gt;
+        This is four fast-food chains in New Jersey and eastern Pennsylvania in 1992, after an
+        80-cent rise. It says nothing directly about other industries, larger rises or other places.
+      effect: limits_scope
+      severity: medium
+  misreadings:
+    - wrong: &#34;Each New Jersey restaurant hired 2.75 more people.&#34;
+      right: &gt;
+        It is 2.75 more full-time-equivalent workers on average, relative to Pennsylvania&#39;s trend.
+        Part-timers count as half, and New Jersey&#39;s own average rose by only 0.59.
+    - wrong: &#34;This proves minimum-wage rises create jobs.&#34;
+      right: &gt;
+        It shows employment did not fall relative to the comparison state in this setting. The
+        design rests on both states sharing a trend, and the result is specific to this case.
+    - wrong: &#34;Employment rose 13%.&#34;
+      right: &gt;
+        The gap is 13% of a typical New Jersey store&#39;s starting staff. New Jersey&#39;s own average
+        rose about 3%.
+  discrepancies:
+    - topic: Store identifier
+      described: &#34;Codebook: SHEET is the &#39;sheet number (unique store id)&#39;.&#34;
+      implemented: &#34;Sheet 407 appears twice in public.dat: a Pennsylvania KFC and a New Jersey Wendy&#39;s.&#34;
+      impact: &gt;
+        Anyone deduplicating or joining on SHEET loses or mixes one store. The paper&#39;s
+        averages, which treat rows as stores, are unaffected.
+      src: [S3, S5]
+    - topic: Where closed stores become zero
+      described: &#34;Table 3 note: &#39;Employment at six closed stores is set to zero.&#39;&#34;
+      implemented: &gt;
+        check.sas never sets anything to zero; the six STATUS2 = 3 rows already carry 0 in the
+        wave-2 employment fields of public.dat.
+      impact: &gt;
+        None for the published numbers. A re-analysis that recodes STATUS2 itself, or treats 0
+        as missing, will silently change the headline.
+      src: [S1, S2, S5]
+    - topic: Headline value
+      described: &#34;Text: &#39;The relative gain … is 2.76 FTE employees (or 13 percent), with a t statistic of 2.03.&#39;&#34;
+      implemented: &gt;
+        The public data give 2.754, which rounds to 2.75. Rows 4 and 5 and Table 4 reproduce to
+        the published decimals.
+      impact: Rounding only. It is likely the text was computed from rounded table entries.
+      src: [S1, S5]
+    - topic: How the headline&#39;s uncertainty was computed
+      described: &#34;A t statistic of 2.03; no method given.&#34;
+      implemented: &gt;
+        check.sas computes only per-state means (PROC MEANS), not the standard error of the
+        difference. The independent-samples formula gives t = 1.53; the balanced-sample formula
+        gives t = 2.05.
+      impact: Unknown. It decides whether the headline is distinguishable from zero.
+      src: [S1, S2, S5]
+    - topic: Restaurants without a starting wage
+      described: &#34;Table 3 notes give New Jersey wage-group counts of 101, 140 and 73.&#34;
+      implemented: &gt;
+        Those sum to 314 of 331 New Jersey stores. The 17 with no wave-1 starting wage go to
+        check.sas&#39;s &#39;NJ STORE, BAD WAGE&#39; group and are not mentioned in the text.
+      impact: Affects only the within-New Jersey columns (iv)–(viii), not the headline.
+      src: [S1, S2, S5]
+
+spec:
+  estimand:
+    population: &gt;
+      Burger King, KFC, Wendy&#39;s and Roy Rogers restaurants in New Jersey and eastern Pennsylvania
+      in the 1992 sample frame that responded in wave 1 and reported employment in the given wave.
+    exposure: Being in New Jersey when its minimum wage rose from $4.25 to $5.05 on 1992-04-01.
+    time_zero: 1992-04-01.
+    variable: &gt;
+      FTE employment per store = full-time + managers + 0.5 × part-time, in wave 2 (Nov 5 – Dec 31,
+      1992) minus wave 1 (Feb 15 – Mar 4, 1992).
+    intercurrent_events: &gt;
+      Permanent closures count as zero employment; temporary closures (4) are missing in wave 2.
+    summary: &gt;
+      Difference in state mean changes (unbalanced means), FTE workers per store; interval from
+      the published t statistic.
+  parameters:
+    - {name: old_minimum, value: &#34;$4.25&#34;, meaning: &#34;Federal and NJ rate before 1992-04-01&#34;}
+    - {name: new_minimum, value: &#34;$5.05&#34;, meaning: &#34;NJ rate from 1992-04-01&#34;}
+    - {name: part_time_weight, value: 0.5, meaning: Each part-time worker counts as half}
+    - {name: temporarily_closed_status, value: &#34;2, 4, 5&#34;, meaning: &#34;STATUS2 codes treated as missing in wave 2&#34;}
+  lineage:
+    - name: public.dat
+      role: One row per store, both survey waves
+      grain: store
+      src: [S3, S6]
+    - name: check.sas
+      role: Authors&#39; program; computes FTE and the per-state means of Table 3
+      grain: store → state × wave
+      src: S2
+    - name: examples/minimum-wage/analysis.py
+      role: Python reproduction of Table 3 rows 1–5 and Table 4 column (i)
+      grain: state × wave
+      src: S5
+  code:
+    - purpose: FTE employment in each wave (authors&#39; SAS)
+      lang: sas
+      src: S2
+      excerpt: |
+        EMPTOT=EMPPT*.5 + EMPFT + NMGRS;
+        EMPTOT2=EMPPT2*.5 + EMPFT2 + NMGRS2;
+        DEMP=EMPTOT2-EMPTOT;;
+    - purpose: Difference-in-differences and the independent-samples standard error (reproduction)
+      lang: python
+      src: S5
+      excerpt: |
+        did = (lv[&#34;NJ_post&#34;][&#34;value&#34;] - lv[&#34;NJ_pre&#34;][&#34;value&#34;]) - (lv[&#34;PA_post&#34;][&#34;value&#34;] - lv[&#34;PA_pre&#34;][&#34;value&#34;])
+        se_indep = np.sqrt(sum(r[&#34;se&#34;] ** 2 for r in rows))
+  reproduce:
+    steps:
+      - &#34;python examples/fetch_data.py minimum-wage (downloads and checks the data and paper).&#34;
+      - &#34;python examples/minimum-wage/analysis.py (writes results/table3.csv and results/checks.csv).&#34;
+    receipts:
+      - &#34;2026-10-07: PA 23.33 → 21.17, NJ 20.44 → 21.03; DiD 2.754. Row 4 2.750 (SE 1.342), row 5 2.509.&#34;
+      - &#34;2026-10-07: Table 4 column (i) 2.326 (SE 1.192), n = 357, mean change −0.238, SD 8.825; the paper prints 2.33 (1.19), −0.237, 8.825.&#34;
+    tests: &#34;examples/minimum-wage/results/checks.csv compares each reproduced figure with the paper.&#34;
+
+glossary:
+  - term: full-time equivalent
+    aliases: [FTE, full-time-equivalent]
+    plain: &gt;
+      A staff count where each part-time worker counts as half a full-time worker. Managers count
+      as full-time.
+  - term: difference-in-differences
+    aliases: [DiD]
+    plain: &gt;
+      Compare one group&#39;s change with another group&#39;s change over the same time. The difference
+      between the two changes is the part a shared trend does not explain.
+  - term: minimum wage
+    plain: The lowest hourly pay an employer may legally offer.
+  - term: 95% range
+    aliases: [95% interval, confidence interval]
+    plain: &gt;
+      The values that fit the data well, given random noise. It does not cover the assumption
+      that both states would have moved alike.
+  - term: t statistic
+    plain: &gt;
+      The estimate divided by its standard error. Values above about 2 are usually read as
+      unlikely to be pure noise.
+
+quiz:
+  - kind: verbatim
+    q: &#34;The headline is +2.75. What does it count?&#34;
+    options:
+      - &#34;New Jersey restaurants hired 2.75 more people each.&#34;
+      - &#34;New Jersey&#39;s change in average full-time-equivalent staff per restaurant was 2.75 larger than Pennsylvania&#39;s change.&#34;
+      - &#34;Employment in New Jersey rose 2.75%.&#34;
+    answer: 1
+    why: It is a difference between two changes, in full-time-equivalent workers per restaurant.
+  - kind: gist
+    q: &#34;Where does most of the 2.75 come from?&#34;
+    options:
+      - &#34;New Jersey restaurants adding staff.&#34;
+      - &#34;Pennsylvania restaurants losing staff over the same months.&#34;
+    answer: 1
+    why: New Jersey rose by about 0.6; Pennsylvania fell by about 2.2.
+  - kind: transfer
+    q: &#34;A New Jersey restaurant closed for renovations during the second survey. How is it counted?&#34;
+    options: [&#34;As zero workers&#34;, &#34;It is left out of the second-round average&#34;, &#34;As its first-round staff&#34;]
+    answer: 1
+    why: Only permanently closed restaurants count as zero; the four temporary closures are treated as missing.
+
+changelog:
+  - {date: &#34;1994-09-01&#34;, change: &#34;Published in the American Economic Review 84(4).&#34;}
+  - {date: &#34;2026-10-07&#34;, change: &#34;Metric card written from the public data and the authors&#39; check.sas; five discrepancies recorded.&#34;}
+
+sources:
+  - {id: S1, path: &#34;examples/minimum-wage/data/njmin-aer.pdf&#34;, note: &#34;Card &amp; Krueger (1994), AER 84(4): intro, section I, Table 1, section III.A, Tables 3–4 notes&#34;}
+  - {id: S2, path: &#34;examples/minimum-wage/data/check.sas&#34;, lines: &#34;54-59, 128-139, 150-163&#34;}
+  - {id: S3, path: &#34;examples/minimum-wage/data/codebook&#34;, note: &#34;Column definitions; STATUS2 codes&#34;}
+  - {id: S4, path: &#34;examples/minimum-wage/data/read.me&#34;, note: &#34;Says the files support Myth and Measurement, chapter 2&#34;}
+  - {id: S5, path: &#34;examples/minimum-wage/analysis.py&#34;, lines: &#34;30-103&#34;, note: &#34;Outputs in examples/minimum-wage/results/&#34;}
+  - {id: S6, path: &#34;examples/minimum-wage/data/public.dat&#34;, note: &#34;410 rows; downloaded from davidcard.berkeley.edu/data_sets.html&#34;}
+</textarea>
+
+    <h3 class="sub">Estimand</h3>
+    <table class="kv">
+      <tr><th scope="row">Population</th><td>Burger King, KFC, Wendy&#x27;s and Roy Rogers restaurants in New Jersey and eastern Pennsylvania in the 1992 sample frame that responded in wave 1 and reported employment in the given wave.</td></tr>
+<tr><th scope="row">Exposure / contrast</th><td>Being in New Jersey when its minimum wage rose from $4.25 to $5.05 on 1992-04-01.</td></tr><tr><th scope="row">Time zero</th><td>1992-04-01.</td></tr>      <tr><th scope="row">Variable</th><td>FTE employment per store = full-time + managers + 0.5 × part-time, in wave 2 (Nov 5 – Dec 31, 1992) minus wave 1 (Feb 15 – Mar 4, 1992).</td></tr>
+<tr><th scope="row">Intercurrent events</th><td>Permanent closures count as zero employment; temporary closures (4) are missing in wave 2.</td></tr>      <tr><th scope="row">Summary measure</th><td>Difference in state mean changes (unbalanced means), FTE workers per store; interval from the published t statistic.</td></tr>
+<tr><th scope="row">Target</th><td>ATT: Effect among those who actually did it (not everyone)</td></tr>    </table>
+
+    <h3 class="sub">Where the description and the code disagree</h3>
+    <div class="discrep">
+      <article>
+        <h4>Store identifier</h4>
+        <div class="dv"><div><span>Described</span><p>Codebook: SHEET is the &#x27;sheet number (unique store id)&#x27;.</p></div><div><span>Implemented</span><p>Sheet 407 appears twice in public.dat: a Pennsylvania KFC and a New Jersey Wendy&#x27;s.</p></div></div>
+<p class="impact"><b>Impact:</b> Anyone deduplicating or joining on SHEET loses or mixes one store. The paper&#x27;s averages, which treat rows as stores, are unaffected.</p><span class="src" title="examples/minimum-wage/data/codebook">S3</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>      </article>
+      <article>
+        <h4>Where closed stores become zero</h4>
+        <div class="dv"><div><span>Described</span><p>Table 3 note: &#x27;Employment at six closed stores is set to zero.&#x27;</p></div><div><span>Implemented</span><p>check.sas never sets anything to zero; the six STATUS2 = 3 rows already carry 0 in the wave-2 employment fields of public.dat.</p></div></div>
+<p class="impact"><b>Impact:</b> None for the published numbers. A re-analysis that recodes STATUS2 itself, or treats 0 as missing, will silently change the headline.</p><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>      </article>
+      <article>
+        <h4>Headline value</h4>
+        <div class="dv"><div><span>Described</span><p>Text: &#x27;The relative gain … is 2.76 FTE employees (or 13 percent), with a t statistic of 2.03.&#x27;</p></div><div><span>Implemented</span><p>The public data give 2.754, which rounds to 2.75. Rows 4 and 5 and Table 4 reproduce to the published decimals.</p></div></div>
+<p class="impact"><b>Impact:</b> Rounding only. It is likely the text was computed from rounded table entries.</p><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>      </article>
+      <article>
+        <h4>How the headline&#39;s uncertainty was computed</h4>
+        <div class="dv"><div><span>Described</span><p>A t statistic of 2.03; no method given.</p></div><div><span>Implemented</span><p>check.sas computes only per-state means (PROC MEANS), not the standard error of the difference. The independent-samples formula gives t = 1.53; the balanced-sample formula gives t = 2.05.</p></div></div>
+<p class="impact"><b>Impact:</b> Unknown. It decides whether the headline is distinguishable from zero.</p><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>      </article>
+      <article>
+        <h4>Restaurants without a starting wage</h4>
+        <div class="dv"><div><span>Described</span><p>Table 3 notes give New Jersey wage-group counts of 101, 140 and 73.</p></div><div><span>Implemented</span><p>Those sum to 314 of 331 New Jersey stores. The 17 with no wave-1 starting wage go to check.sas&#x27;s &#x27;NJ STORE, BAD WAGE&#x27; group and are not mentioned in the text.</p></div></div>
+<p class="impact"><b>Impact:</b> Affects only the within-New Jersey columns (iv)–(viii), not the headline.</p><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span>      </article>
+    </div>
+
+    <h3 class="sub">Rules as implemented</h3>
+    <table class="rules">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Exact rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+<tr><th scope="row">Eligibility 1<br><span class="muted">410 remain</span></th><td>public.dat: 410 stores, STATE = 1 (NJ, 331) or 0 (PA, 79).</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/codebook">S3</span></td></tr><tr><th scope="row">Eligibility 2</th><td>Wave-1 mean over stores with non-missing fte1 (PA 77, NJ 321); wave-2 mean over stores with non-missing fte2 (PA 77, NJ 319). &quot;All available observations&quot; (Table 3 rows 1–2).</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span></td></tr><tr><th scope="row">Eligibility 3</th><td>STATUS2 = 3 (6 stores): wave-2 employment fields are already 0 in public.dat. STATUS2 in (2, 4, 5) (4 stores, all NJ): wave-2 fields missing, so excluded from the wave-2 mean.</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/codebook">S3</span><span class="src" title="examples/minimum-wage/data/public.dat">S6</span></td></tr>      <tr><th scope="row">Time zero</th><td>1992-04-01 (paper, introduction and section I). Pennsylvania stayed at the federal $4.25.</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span></td></tr>
+<tr><th scope="row">First survey round<br><span class="muted">[-46, -27) days</span></th><td>Wave 1: February 15 – March 4, 1992 (Table 1).</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span></td></tr><tr><th scope="row">Second survey round<br><span class="muted">[218, 275) days</span></th><td>Wave 2: November 5 – December 31, 1992 (Table 1); DATE2 in the file spans 110592–123192.</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/data/public.dat">S6</span></td></tr><tr><th scope="row">Staff before<br><span class="muted">value</span></th><td>EMPTOT = EMPPT*.5 + EMPFT + NMGRS (check.sas line 54).</td><td><span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span></td></tr><tr><th scope="row">Staff after<br><span class="muted">value</span></th><td>EMPTOT2 = EMPPT2*.5 + EMPFT2 + NMGRS2 (check.sas line 55).</td><td><span class="src" title="examples/minimum-wage/data/check.sas">S2</span></td></tr>      <tr><th scope="row">Aggregate</th><td>PROC MEANS of EMPTOT and EMPTOT2 BY NJ (check.sas lines 128–131, &#x27;PART OF TABLE 3&#x27;).</td><td><span class="src" title="examples/minimum-wage/data/check.sas">S2</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span></td></tr>
+<tr><th scope="row">Comparison</th><td>(NJ wave 2 − NJ wave 1) − (PA wave 2 − PA wave 1), FTE per store (Table 3, row 3, column iii).</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span></td></tr><tr><th scope="row">Uncertainty</th><td>SE = 2.76 / 2.03 ≈ 1.36 (paper, section III.A); interval = 2.754 ± 1.96 × 1.36. Treating the four state-by-round means as independent gives SE 1.80 (interval −0.78 to 6.28). The balanced-sample change (row 4) gives SE 1.34.</td><td><span class="src" title="examples/minimum-wage/data/njmin-aer.pdf">S1</span><span class="src" title="examples/minimum-wage/analysis.py">S5</span></td></tr>      </tbody>
+    </table>
+
+    <h3 class="sub">Numbers per group</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Group</th><th scope="col">Definition</th><th scope="col">Value</th><th scope="col">n</th></tr></thead>
+      <tbody><tr><th scope="row">Pennsylvania, Feb–Mar</th><td>STATE = 0, non-missing EMPTOT (n = 77).</td><td>23.3312</td><td>77</td></tr><tr><th scope="row">Pennsylvania, Nov–Dec</th><td>STATE = 0, non-missing EMPTOT2 (n = 77).</td><td>21.1656</td><td>77</td></tr><tr><th scope="row">New Jersey, Feb–Mar</th><td>STATE = 1, non-missing EMPTOT (n = 321).</td><td>20.4394</td><td>321</td></tr><tr><th scope="row">New Jersey, Nov–Dec</th><td>STATE = 1, non-missing EMPTOT2 (n = 319).</td><td>21.0274</td><td>319</td></tr></tbody>
+    </table>
+<p class="note">Check: <code>(21.0274 − 20.4394) − (21.1656 − 23.3312) = 2.754</code> (headline 2.75).</p>
+    <h3 class="sub">Parameters</h3>
+    <table class="data"><thead><tr><th scope="col">Name</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead>
+      <tbody><tr><td><code>old_minimum</code></td><td>$4.25</td><td>Federal and NJ rate before 1992-04-01</td></tr><tr><td><code>new_minimum</code></td><td>$5.05</td><td>NJ rate from 1992-04-01</td></tr><tr><td><code>part_time_weight</code></td><td>0.5</td><td>Each part-time worker counts as half</td></tr><tr><td><code>temporarily_closed_status</code></td><td>2, 4, 5</td><td>STATUS2 codes treated as missing in wave 2</td></tr></tbody></table>
+
+    <h3 class="sub">Data lineage</h3>
+    <ol class="lineage">
+      <li><code>public.dat</code><p>One row per store, both survey waves</p><p class="muted">Grain: store</p></li>
+      <li><code>check.sas</code><p>Authors&#x27; program; computes FTE and the per-state means of Table 3</p><p class="muted">Grain: store → state × wave</p></li>
+      <li><code>examples/minimum-wage/analysis.py</code><p>Python reproduction of Table 3 rows 1–5 and Table 4 column (i)</p><p class="muted">Grain: state × wave</p></li>
+    </ol>
+
+    <h3 class="sub">Code that defines it</h3>
+    <figure class="code">
+      <figcaption><span>FTE employment in each wave (authors&#39; SAS)</span><span class="path">examples/minimum-wage/data/check.sas:54-59, 128-139, 150-163</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sas">EMPTOT=EMPPT*.5 + EMPFT + NMGRS;
+EMPTOT2=EMPPT2*.5 + EMPFT2 + NMGRS2;
+DEMP=EMPTOT2-EMPTOT;;</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>Difference-in-differences and the independent-samples standard error (reproduction)</span><span class="path">examples/minimum-wage/analysis.py:30-103</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-python">did = (lv[&#34;NJ_post&#34;][&#34;value&#34;] - lv[&#34;NJ_pre&#34;][&#34;value&#34;]) - (lv[&#34;PA_post&#34;][&#34;value&#34;] - lv[&#34;PA_pre&#34;][&#34;value&#34;])
+se_indep = np.sqrt(sum(r[&#34;se&#34;] ** 2 for r in rows))</code></pre>
+    </figure>
+
+    <h3 class="sub">Rebuild it</h3>
+<ol class="checklist"><li><label><input type="checkbox"> python examples/fetch_data.py minimum-wage (downloads and checks the data and paper).</label></li><li><label><input type="checkbox"> python examples/minimum-wage/analysis.py (writes results/table3.csv and results/checks.csv).</label></li></ol><p><b>Receipts:</b></p><ul><li>2026-10-07: PA 23.33 → 21.17, NJ 20.44 → 21.03; DiD 2.754. Row 4 2.750 (SE 1.342), row 5 2.509.</li><li>2026-10-07: Table 4 column (i) 2.326 (SE 1.192), n = 357, mean change −0.238, SD 8.825; the paper prints 2.33 (1.19), −0.237, 8.825.</li></ul><p><b>Tests:</b> examples/minimum-wage/results/checks.csv compares each reproduced figure with the paper.</p>
+    <h3 class="sub">Sources</h3>
+    <ol class="sources"><li id="src-S1"><span class="src">S1</span> <code>examples/minimum-wage/data/njmin-aer.pdf</code> · Card &amp; Krueger (1994), AER 84(4): intro, section I, Table 1, section III.A, Tables 3–4 notes</li><li id="src-S2"><span class="src">S2</span> <code>examples/minimum-wage/data/check.sas</code> <span class="muted">lines 54-59, 128-139, 150-163</span></li><li id="src-S3"><span class="src">S3</span> <code>examples/minimum-wage/data/codebook</code> · Column definitions; STATUS2 codes</li><li id="src-S4"><span class="src">S4</span> <code>examples/minimum-wage/data/read.me</code> · Says the files support Myth and Measurement, chapter 2</li><li id="src-S5"><span class="src">S5</span> <code>examples/minimum-wage/analysis.py</code> <span class="muted">lines 30-103</span> · Outputs in examples/minimum-wage/results/</li><li id="src-S6"><span class="src">S6</span> <code>examples/minimum-wage/data/public.dat</code> · 410 rows; downloaded from davidcard.berkeley.edu/data_sets.html</li></ol>
+
+    <h3 class="sub">Change log</h3>
+    <ul class="changelog"><li><time>1994-09-01</time> Published in the American Economic Review 84(4).</li><li><time>2026-10-07</time> Metric card written from the public data and the authors&#x27; check.sas; five discrepancies recorded.</li></ul>
+
+    <details class="quality">
+      <summary>Card quality checks: 0 errors · 0 warnings</summary>
+      <ul><li class="lint-info"><b>info</b> <code>recompute</code> estimate reproduced from cells: (21.0274 − 20.4394) − (21.1656 − 23.3312) = 2.754</li></ul>
+    </details>
+  </div>
+</section>
+
+
+<section id="check" class="level level-check" aria-labelledby="check-h">
+  <div class="wrap">
+    <p class="eyebrow">Check yourself</p>
+    <h2 id="check-h">Could you explain it to a colleague?</h2>
+    <div class="quiz">
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Detail</span>The headline is +2.75. What does it count?</legend>
+<label><input type="radio" name="q0" value="0"> New Jersey restaurants hired 2.75 more people each.</label><label><input type="radio" name="q0" value="1"> New Jersey&#39;s change in average full-time-equivalent staff per restaurant was 2.75 larger than Pennsylvania&#39;s change.</label><label><input type="radio" name="q0" value="2"> Employment in New Jersey rose 2.75%.</label>        <p class="why" hidden>It is a difference between two changes, in full-time-equivalent workers per restaurant.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Big picture</span>Where does most of the 2.75 come from?</legend>
+<label><input type="radio" name="q1" value="0"> New Jersey restaurants adding staff.</label><label><input type="radio" name="q1" value="1"> Pennsylvania restaurants losing staff over the same months.</label>        <p class="why" hidden>New Jersey rose by about 0.6; Pennsylvania fell by about 2.2.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Apply it</span>A New Jersey restaurant closed for renovations during the second survey. How is it counted?</legend>
+<label><input type="radio" name="q2" value="0"> As zero workers</label><label><input type="radio" name="q2" value="1"> It is left out of the second-round average</label><label><input type="radio" name="q2" value="2"> As its first-round staff</label>        <p class="why" hidden>Only permanently closed restaurants count as zero; the four temporary closures are treated as missing.</p>
+      </fieldset>
+    </div>
+    <div class="teachback">
+      <h3>Explain it back</h3>
+      <p>Write one or two sentences as if telling a colleague. Then compare with the checklist.</p>
+      <label class="sr" for="tb">Your explanation</label>
+      <textarea id="tb" rows="3" placeholder="This number is…"></textarea>
+      <button type="button" class="btn" data-reveal="#tb-check">Compare</button>
+      <div id="tb-check" hidden>
+        <p>A complete explanation mentions:</p>
+        <ul class="tb-list"><li><label><input type="checkbox"> <b>Who is counted</b> — fast-food restaurants in New Jersey and eastern Pennsylvania from four chains that took part in the first telephone survey; reported staff numbers in that survey round. Each round&#39;s average uses every restaurant with a count for that round, so the two rounds are not exactly the same restaurants; restaurants that closed for good by the second round count as having zero staff. The four that were closed only temporarily are left out of the second round</label></li><li><label><input type="checkbox"> <b>Over what time</b> — Second survey round: days 218–274 after the wage rise</label></li><li><label><input type="checkbox"> <b>What counts</b> — The same count, taken in the second survey round.</label></li><li><label><input type="checkbox"> <b>Compared with what</b> — Take New Jersey&#39;s change in average staff between the two rounds. Subtract Pennsylvania&#39;s change over the same months. What is left is the change Pennsylvania&#39;s path does not explain.</label></li><li><label><input type="checkbox"> <b>The main limitation</b> — Pennsylvania staffing fell over the year, so most of the gap comes from Pennsylvania shrinking, not New Jersey growing. The design assumes both states would otherwise have moved alike, and the interval&#39;s width depends on a calculation the paper does not describe.</label></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="glossary" class="level glossary" aria-labelledby="gl-h">
+  <div class="wrap">
+    <h2 id="gl-h">Glossary</h2>
+    <dl>
+      <div><dt>95% range <span class="muted">(95% interval, confidence interval)</span></dt><dd>The values that fit the data well, given random noise. It does not cover the assumption that both states would have moved alike.</dd></div>
+      <div><dt>difference-in-differences <span class="muted">(DiD)</span></dt><dd>Compare one group&#39;s change with another group&#39;s change over the same time. The difference between the two changes is the part a shared trend does not explain.</dd></div>
+      <div><dt>full-time equivalent <span class="muted">(FTE, full-time-equivalent)</span></dt><dd>A staff count where each part-time worker counts as half a full-time worker. Managers count as full-time.</dd></div>
+      <div><dt>minimum wage</dt><dd>The lowest hourly pay an employer may legally offer.</dd></div>
+      <div><dt>t statistic</dt><dd>The estimate divided by its standard error. Values above about 2 are usually read as unlikely to be pure noise.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Generated from <code>minimum-wage-did.yaml</code> by mcard. Self-contained: works offline, prints cleanly. <button type="button" class="linkish" onclick="window.print()">Print</button></div></footer>
+
+<div class="tips">
+  <div class="tip" role="tooltip" id="tip-g0" hidden><b>full-time equivalent</b> A staff count where each part-time worker counts as half a full-time worker. Managers count as full-time.</div>
+  <div class="tip" role="tooltip" id="tip-g1" hidden><b>difference-in-differences</b> Compare one group&#39;s change with another group&#39;s change over the same time. The difference between the two changes is the part a shared trend does not explain.</div>
+  <div class="tip" role="tooltip" id="tip-g2" hidden><b>minimum wage</b> The lowest hourly pay an employer may legally offer.</div>
+  <div class="tip" role="tooltip" id="tip-g3" hidden><b>95% range</b> The values that fit the data well, given random noise. It does not cover the assumption that both states would have moved alike.</div>
+  <div class="tip" role="tooltip" id="tip-g4" hidden><b>t statistic</b> The estimate divided by its standard error. Values above about 2 are usually read as unlikely to be pure noise.</div>
+</div>
+<script>(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var wide = window.matchMedia("(min-width: 901px)");
+
+  // ---- depth rail: active section + reading progress
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  var bar = document.querySelector(".progress span");
+  function onScroll() {
+    var y = window.scrollY + 90, current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s; });
+    links.forEach(function (a) { a.classList.toggle("active", current && a.getAttribute("href") === "#" + current.id); });
+    if (bar) {
+      var max = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? Math.min(100, 100 * window.scrollY / max) : 0) + "%";
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ---- scrollytelling: the sticky stage shows the active step's figure
+  var stage = document.querySelector(".scrolly .stage");
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".scrolly .step"));
+  function activate(step) {
+    if (!step || step.classList.contains("active")) return;
+    steps.forEach(function (s) { s.classList.remove("active"); });
+    step.classList.add("active");
+    if (stage && wide.matches) {
+      var fig = step.querySelector(".step-fig");
+      stage.innerHTML = '<div class="fade">' + (fig ? fig.innerHTML : "") + "</div>";
+      stage.setAttribute("aria-hidden", "true");
+      bindTerms(stage);
+    }
+  }
+  if ("IntersectionObserver" in window && steps.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    steps.forEach(function (s) { io.observe(s); });
+    activate(steps[0]);
+  }
+
+  // ---- glossary toggletips (WCAG 2.2 SC 1.4.13: dismissible, hoverable, persistent)
+  var openTip = null, pinned = false, hideTimer = null;
+  function place(tip, trigger) {
+    var r = trigger.getBoundingClientRect();
+    tip.hidden = false;
+    var w = tip.offsetWidth;
+    var left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8));
+    tip.style.left = left + "px";
+    tip.style.top = (window.scrollY + r.bottom + 8) + "px";
+  }
+  function show(trigger, pin) {
+    clearTimeout(hideTimer);
+    var tip = document.getElementById("tip-" + trigger.getAttribute("data-tip"));
+    if (!tip) return;
+    if (openTip && openTip !== tip) openTip.hidden = true;
+    openTip = tip; pinned = !!pin;
+    place(tip, trigger);
+    trigger.setAttribute("aria-expanded", "true");
+  }
+  function hide(force) {
+    if (!openTip || (pinned && !force)) return;
+    openTip.hidden = true; openTip = null; pinned = false;
+    document.querySelectorAll('.term[aria-expanded="true"]').forEach(function (t) { t.setAttribute("aria-expanded", "false"); });
+  }
+  function bindTerms(root) {
+    root.querySelectorAll(".term").forEach(function (t) {
+      if (t.dataset.bound) return;
+      t.dataset.bound = "1";
+      t.setAttribute("aria-expanded", "false");
+      t.addEventListener("mouseenter", function () { show(t, false); });
+      t.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 250); });
+      t.addEventListener("focus", function () { show(t, false); });
+      t.addEventListener("blur", function () { hideTimer = setTimeout(function () { hide(false); }, 150); });
+      t.addEventListener("click", function (ev) { ev.stopPropagation(); if (openTip && pinned) { hide(true); } else { show(t, true); } });
+    });
+  }
+  bindTerms(document);
+  document.querySelectorAll(".tip").forEach(function (tip) {
+    tip.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+    tip.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 200); });
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
+  document.addEventListener("click", function (e) { if (openTip && !openTip.contains(e.target)) hide(true); });
+
+  // ---- quiz
+  document.querySelectorAll("fieldset.q").forEach(function (fs) {
+    var answer = fs.getAttribute("data-answer");
+    fs.addEventListener("change", function (e) {
+      fs.querySelectorAll("label").forEach(function (l) { l.classList.remove("right", "wrong"); });
+      var label = e.target.closest("label");
+      label.classList.add(e.target.value === answer ? "right" : "wrong");
+      var correct = fs.querySelector('input[value="' + answer + '"]');
+      if (correct) correct.closest("label").classList.add("right");
+      var why = fs.querySelector(".why");
+      if (why) { why.hidden = false; why.setAttribute("role", "status"); }
+    });
+  });
+
+  // ---- reveal + copy
+  document.querySelectorAll("[data-reveal]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-reveal")); if (t) t.hidden = false; });
+  });
+  function copy(text, btn) {
+    var done = function () { var o = btn.textContent; btn.textContent = "Copied"; setTimeout(function () { btn.textContent = o; }, 1400); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done); return; }
+    var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-copy")); if (t) copy(t.value || t.textContent, b); });
+  });
+  document.querySelectorAll("[data-copy-next]").forEach(function (b) {
+    b.addEventListener("click", function () { var pre = b.closest("figure").querySelector("pre"); if (pre) copy(pre.textContent, b); });
+  });
+})();
+</script>
+</body>
+</html>

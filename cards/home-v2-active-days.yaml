@@ -1,0 +1,471 @@
+schema: metric-card/1
+id: home-v2-active-days
+title: Home v2 active-days lift
+subtitle: Treatment-control difference in mean active days after assignment
+status: provisional
+owner: Product analytics
+updated: "2026-10-04"
+question: >
+  Did users assigned to Home v2 have more active app days after assignment than users assigned
+  to control?
+
+gist:
+  sentence: >
+    Among users kept by the saved analysis, Home v2 users had 0.21 more active days than
+    control users in days 1-28 after they were assigned.
+  headline:
+    value: 0.21
+    low: 0.05
+    high: 0.37
+    unit: days
+    decimals: 2
+    label: more active days per treatment user
+    context: "Control users averaged 6.42 active days; treatment users averaged 6.63."
+  frequency: >
+    For every 100 users in the analysis table, Home v2 adds about 21 active user-days over
+    the 28-day follow-up window.
+  reading:
+    direction: higher_is_better
+    say: >
+      "In the saved analysis, treatment users averaged 0.21 more active days than control users
+      over days 1-28 after assignment."
+    dont_say: >
+      "Home v2 caused all new users to be active 0.21 more days per month."
+  key_caveat: >
+    The query is not pure intent-to-treat: it keeps only users joined to an exposure row, excludes
+    China, and drops users with zero recorded activity days in the outcome window.
+  claim_strength: associational
+
+grammar:
+  unit:
+    singular: user
+    plural: users
+    plain: One app user in the Home v2 experiment analysis table.
+    exact: >
+      One user_id from exp.assignments for experiment_id = 'home_v2', after joining to
+      exp.exposures with saw_variant_screen = 1, excluding country_code = 'CN', and requiring
+      at least one joined app.events activity_date in the outcome window.
+    src: S3
+  population:
+    - id: assigned_window
+      plain: Assigned to the Home v2 experiment from 4 May through 17 May 2026.
+      exact: >
+        a.experiment_id = 'home_v2' and assigned_at >= TIMESTAMP '2026-05-04 00:00:00'
+        and assigned_at < TIMESTAMP '2026-05-18 00:00:00'.
+      src: S3
+    - id: exposed_non_cn
+      plain: Saw the variant screen and was not in China.
+      exact: >
+        INNER JOIN exp.exposures on user_id and experiment_id with saw_variant_screen = 1;
+        country_code <> 'CN'.
+      src: S3
+    - id: active_in_window
+      plain: Had at least one recorded activity day in days 1-28 after assignment.
+      exact: >
+        per_user is built with an INNER JOIN from assigned to activity on act.activity_date >
+        assigned_date and act.activity_date <= DATE_ADD(assigned_date, 28), so users with no
+        activity_date in that interval are not in the final COUNT(*).
+      n_after: 83482
+      src: [S3, S4]
+  anchor:
+    kind: per_unit_event
+    label: Assignment date
+    plain: Each user's clock starts on their assignment date.
+    exact: "assigned_date = CAST(a.assigned_at AS DATE)."
+    src: S3
+  windows:
+    - id: assignment_entry
+      label: Assignment window
+      start: 0
+      end: 14
+      unit: day
+      role: eligibility
+      plain: The experiment admitted users assigned from 4 May through 17 May 2026.
+      exact: "assigned_at >= 2026-05-04 00:00:00 and assigned_at < 2026-05-18 00:00:00."
+      src: S3
+    - id: active_days_1_28
+      label: Days 1-28 after assignment
+      start: 1
+      end: 29
+      unit: day
+      role: outcome
+      plain: The 28 calendar dates after the assignment date, excluding assignment day.
+      exact: "act.activity_date > assigned_date AND act.activity_date <= DATE_ADD(assigned_date, 28)."
+      src: S3
+  measures:
+    - id: active_days
+      label: Active days
+      kind: count
+      window: active_days_1_28
+      primary: true
+      plain: Counts how many different dates had any app activity in the outcome window.
+      exact: >
+        COUNT(DISTINCT act.activity_date), where activity_date is DATE(e.event_ts) from
+        app.events grouped by user_id and UTC-derived activity_date.
+      src: S3
+  aggregate:
+    kind: mean
+    measure: active_days
+    numerator: sum of per-user active_days
+    denominator: users retained in each arm's per_user table
+    plain: Average the active-day counts within each experiment arm.
+    exact: "AVG(active_days) grouped by arm; denominator is COUNT(*) from per_user."
+    src: S3
+  groups:
+    - id: control
+      label: Control
+      role: control
+      plain: Users assigned to the control arm who passed the implemented filters.
+      exact: "arm = 'control' in the per_user export."
+      src: S4
+    - id: treatment
+      label: Home v2
+      role: treated
+      plain: Users assigned to the Home v2 treatment arm who passed the implemented filters.
+      exact: "arm = 'treatment' in the per_user export."
+      src: S4
+  comparison:
+    kind: difference
+    target: descriptive
+    plain: Subtract the control average from the treatment average.
+    exact: "diff = treatment.mean() - control.mean(); from the summary table, 6.63 - 6.42 = 0.21 days."
+    formula: "mean_active_days_treatment - mean_active_days_control"
+    src: [S4, S5]
+  uncertainty:
+    method: Welch t-test normal-approximation interval
+    level: 0.95
+    plain: >
+      The saved interval uses the spread of per-user active days in each arm to estimate sampling
+      uncertainty around the treatment-control difference.
+    exact: >
+      se = sqrt(var_treatment / n_treatment + var_control / n_control); interval = diff +/- 1.96 * se.
+      p comes from scipy.stats.ttest_ind(..., equal_var=False).
+    known_gaps: >
+      The interval does not cover bias from post-assignment filtering, UTC-vs-local date mismatch,
+      missing events, or whether zero-activity assigned users were dropped.
+    src: [S4, S5]
+
+results:
+  status: measured
+  as_of: "2026-06-20"
+  unit: days
+  data_complete_through: "2026-06-20"
+  latest_anchor: "2026-05-17"
+  measure: active_days
+  cells:
+    - {group: control, value: 6.42, n: 41880}
+    - {group: treatment, value: 6.63, n: 41602}
+  estimate: {value: 0.21, low: 0.05, high: 0.37}
+
+example:
+  name: Alex
+  intro: >
+    Alex is assigned to Home v2 on 10 May 2026, sees the variant screen, is outside China, and
+    has app activity on several later dates.
+  anchor_date: "2026-05-10"
+  events:
+    - {at: 0, label: "Assigned to Home v2 and sees the variant screen"}
+    - {at: 0, label: "Uses the app on assignment day; this date does not count", counts: false}
+    - {at: 1, label: "Uses the app the next day", counts: true}
+    - {at: 28, label: "Uses the app on day 28", counts: true}
+    - {at: 29, label: "Uses the app on day 29; outside the window", counts: false}
+  outcome: >
+    Alex contributes 2 active days to the treatment average. Assignment-day activity and day-29
+    activity do not count.
+
+fine_print:
+  judgment_calls:
+    - decision: What to treat as the headline
+      choice: >
+        Use the 0.21-day treatment-control difference, because both readouts emphasize that number
+        and the CSV stores the matching difference and interval.
+      alternatives: >
+        A card could instead headline the treatment mean (6.63 days), the relative lift (+3.3%),
+        or an intent-to-treat rerun if zero-activity assigned users were available.
+      why: The user asked for the headline number readers see, and the readout repeats +0.21 days.
+      impact: >
+        The card focuses on the difference in means and treats the relative lift as a secondary
+        restatement.
+      src: [S1, S2, S4]
+    - decision: How to state causality
+      choice: >
+        Mark the saved result as associational, even though the experiment assignment was randomized.
+      alternatives: >
+        If the analysis were rerun on all assigned users as true intent-to-treat, the claim strength
+        could be causal for the randomized population.
+      why: >
+        The implemented SQL applies post-assignment exposure and activity filters, so the analyzed
+        denominator may no longer preserve the original randomization.
+      impact: >
+        This prevents the card from repeating the readout's broader causal claim until the denominator
+        is verified or rerun.
+      src: [S2, S3]
+  caveats:
+    - title: Not pure intent-to-treat
+      text: >
+        The readout says every assigned user is analyzed in their assigned arm, but the query keeps only
+        users with a matching exposure row and at least one post-assignment activity day. If Home v2
+        changes exposure or whether a user has any activity at all, the reported mean is conditional
+        on a post-randomization outcome.
+      effect: limits_scope
+      severity: high
+      src: [S1, S3]
+    - title: Zero-activity users are not in the denominator
+      text: >
+        Because per_user uses an inner join to activity, users with no recorded active days in days
+        1-28 are absent rather than counted as zero active days. This likely overstates each arm's
+        average active days; the direction for the treatment-control difference is unknown.
+      effect: unknown_direction
+      severity: high
+      src: S3
+    - title: Time zone mismatch
+      text: >
+        The readout says activity is counted in each user's local time zone. The query turns UTC event
+        times into dates before counting active days.
+      effect: unknown_direction
+      severity: medium
+      src: [S1, S3]
+    - title: Scope is narrower than all new users
+      text: >
+        The implemented population excludes China and requires seeing the variant screen. The saved
+        result should not be generalized to all new users without checking those exclusions.
+      effect: limits_scope
+      severity: medium
+      src: [S2, S3]
+  misreadings:
+    - wrong: "Home v2 caused all new users to be active 0.21 more days per month."
+      right: >
+        The saved analysis shows a 0.21-day difference among exposed, non-CN users retained in the
+        per_user table over days 1-28 after assignment.
+    - wrong: "0.21 days is a 0.21% lift."
+      right: >
+        It is an absolute difference in days. Relative to the 6.42-day control average, it is about
+        a 3.3% lift.
+    - wrong: "The denominator is all assigned users."
+      right: >
+        The SQL denominator is users in per_user, after the exposure join, China exclusion, and inner
+        join to activity.
+    - wrong: "Days 1-28 are local-calendar days."
+      right: >
+        The SQL derives dates with DATE(event_ts), and the source comment says event_ts is stored in UTC.
+  discrepancies:
+    - topic: Intent-to-treat denominator
+      described: >
+        README says every assigned user is analyzed in the arm they were assigned to.
+      implemented: >
+        assigned joins to exposures with saw_variant_screen = 1, then per_user inner joins to activity,
+        excluding assigned users without a matching exposure row or without activity in days 1-28.
+      impact: >
+        Narrows the denominator from all assigned users to exposed active users. The impact on the
+        +0.21-day difference is unknown from saved outputs.
+      src: [S1, S3]
+    - topic: Geographic scope
+      described: >
+        The readouts describe randomized users or all new users without a country exclusion.
+      implemented: "The SQL filters a.country_code <> 'CN'."
+      impact: Results do not cover China. Direction and size of any difference are unknown.
+      src: [S2, S3]
+    - topic: Time zone for active dates
+      described: >
+        README says active days use the user's local time zone.
+      implemented: >
+        activity_date is DATE(e.event_ts), and the SQL comment says event_ts is stored in UTC.
+      impact: >
+        Activity near local midnight can land on a different date. The effect on distinct active-day
+        counts is unknown.
+      src: [S1, S3]
+    - topic: Breadth of causal claim
+      described: >
+        Readout says Home v2 causes users to be active 0.21 more days a month and applies to all new users.
+      implemented: >
+        The code estimates a treatment-control difference over days 1-28 among exposed, non-CN users
+        who had at least one activity day in the outcome window.
+      impact: >
+        The implemented result is narrower than the readout claim. A true all-assigned ITT estimate
+        could be smaller or larger.
+      src: [S2, S3]
+
+spec:
+  estimand:
+    population: >
+      Users assigned to home_v2 from 2026-05-04 through 2026-05-17, excluding China, joined to a
+      saw_variant_screen exposure row, and present in app.events on at least one date in days 1-28.
+    exposure: Home v2 treatment assignment versus control assignment, as labeled by arm.
+    time_zero: CAST(assigned_at AS DATE) for each user.
+    variable: >
+      Count of distinct UTC-derived app activity dates greater than assigned_date and less than or
+      equal to assigned_date plus 28 days.
+    intercurrent_events: >
+      The saved SQL does not specify special handling for uninstall, churn, travel, or missing events.
+      Users with no activity in the window are excluded by the inner join rather than retained with zero.
+    summary: >
+      Difference in arm-level means, treatment minus control, with a Welch t-test confidence interval.
+  parameters:
+    - {name: experiment_id, value: home_v2, meaning: Experiment analyzed}
+    - {name: assignment_start, value: "2026-05-04 00:00:00", meaning: Inclusive assignment start}
+    - {name: assignment_end, value: "2026-05-18 00:00:00", meaning: Exclusive assignment end}
+    - {name: outcome_start, value: 1, meaning: First included day after assignment}
+    - {name: outcome_end, value: 28, meaning: Last included day after assignment}
+    - {name: excluded_country, value: CN, meaning: Country excluded in SQL}
+  lineage:
+    - name: exp.assignments
+      role: Experiment assignment and arm labels
+      grain: user_id x experiment assignment
+      filters: "experiment_id = home_v2; assigned_at in [2026-05-04, 2026-05-18); country_code <> CN"
+      src: S3
+    - name: exp.exposures
+      role: Exposure filter
+      grain: user_id x experiment exposure
+      filters: "same experiment_id; saw_variant_screen = 1"
+      src: S3
+    - name: app.events
+      role: Daily app activity
+      grain: event
+      filters: "grouped to one activity_date per user_id using DATE(event_ts)"
+      src: S3
+    - name: results/ab_summary.csv
+      role: Saved arm summaries, difference, interval, p-value, and data completeness date
+      grain: arm summary plus estimate rows
+      src: S4
+  code:
+    - purpose: Implemented population filters
+      lang: sql
+      src: S3
+      excerpt: |
+        FROM exp.assignments a
+        JOIN exp.exposures x
+          ON x.user_id = a.user_id
+         AND x.experiment_id = a.experiment_id
+         AND x.saw_variant_screen = 1
+        WHERE a.experiment_id = 'home_v2'
+          AND a.assigned_at >= TIMESTAMP '2026-05-04 00:00:00'
+          AND a.assigned_at <  TIMESTAMP '2026-05-18 00:00:00'
+          AND a.country_code <> 'CN'
+    - purpose: Active-day outcome window
+      lang: sql
+      src: S3
+      excerpt: |
+        SELECT e.user_id, DATE(e.event_ts) AS activity_date      -- event_ts is stored in UTC
+        FROM app.events e
+        GROUP BY e.user_id, DATE(e.event_ts)
+        ...
+        AND act.activity_date >  s.assigned_date
+        AND act.activity_date <= DATE_ADD(s.assigned_date, 28)
+    - purpose: Difference and uncertainty
+      lang: python
+      src: S5
+      excerpt: |
+        diff = treatment.mean() - control.mean()
+        se = np.sqrt(treatment.var(ddof=1) / len(treatment) + control.var(ddof=1) / len(control))
+        t, p = stats.ttest_ind(treatment, control, equal_var=False)
+        return {"diff": diff, "ci_low": diff - 1.96 * se, "ci_high": diff + 1.96 * se, "p": p}
+  reproduce:
+    steps:
+      - Run sql/experiment_metric.sql to produce arm-level users, mean_active_days, and sd_active_days.
+      - Export or summarize per-user active_days by arm and run src/analysis.py's summarize(control, treatment).
+      - Compare the resulting arm summaries with results/ab_summary.csv.
+    receipts:
+      - "CSV arithmetic check: treatment mean 6.63 - control mean 6.42 = +0.21 active days."
+      - "Saved rows report n = 41,880 control and 41,602 treatment, total n = 83,482."
+      - "Saved interval is 0.05 to 0.37 with p = 0.011 and data_complete_through = 2026-06-20."
+    data_complete_through: "2026-06-20"
+    tests: >
+      No executable test files were present in the fixture. The card was linted and rendered with
+      the mcard tooling.
+
+glossary:
+  - term: active day
+    aliases: [active days]
+    plain: A calendar date with at least one recorded app activity event.
+    exact: "One distinct DATE(event_ts) in app.events after grouping by user_id."
+  - term: Home v2
+    plain: The treatment version of the app home screen in this experiment.
+  - term: control
+    plain: The comparison arm that did not get Home v2.
+  - term: treatment
+    aliases: [treatment users]
+    plain: The arm assigned to Home v2.
+  - term: intent-to-treat
+    aliases: [ITT]
+    plain: >
+      An experiment analysis that keeps everyone in the group they were assigned to, whether or
+      not they fully saw or used the treatment.
+  - term: exposure row
+    aliases: [exposure]
+    plain: A record that the user saw the variant screen for the experiment.
+  - term: UTC
+    plain: >
+      A global time standard. If dates are cut in UTC instead of a user's local time, events near
+      midnight can fall on a different date.
+  - term: 95% confidence interval
+    aliases: [95% CI, confidence interval, CI]
+    plain: >
+      A range of effect sizes that fit the saved data under the statistical model. It does not
+      include every possible source of bias.
+  - term: Welch t-test
+    aliases: [Welch test]
+    plain: A statistical comparison of two averages that allows the two groups to have different spreads.
+  - term: relative lift
+    plain: >
+      The difference divided by the comparison value. Here, 0.21 extra days divided by 6.42 control
+      days is about 3.3%.
+
+quiz:
+  - kind: gist
+    q: "What is the safest reading of the +0.21 headline?"
+    options:
+      - "Home v2 users in the saved analysis averaged 0.21 more active days than control users."
+      - "Every new user will be active 0.21 more days per month."
+      - "The active-day rate rose by 0.21%."
+    answer: 0
+    why: >
+      The headline is a difference in average days among users retained in the saved analysis table,
+      not a percent and not automatically a claim about every new user.
+  - kind: verbatim
+    q: "Which users are missing from the implemented denominator?"
+    options:
+      - "Users with no activity date in days 1-28 after assignment."
+      - "Users with exactly 28 active days."
+      - "Users assigned on 10 May 2026."
+    answer: 0
+    why: >
+      The per_user table inner joins assigned users to activity in the outcome window, so zero-activity
+      users do not contribute a zero.
+  - kind: transfer
+    q: >
+      A user is assigned on 10 May, uses the app on 10 May, 11 May, and 8 June. Which dates count?
+    options:
+      - "10 May and 11 May only."
+      - "11 May only."
+      - "11 May and 7 June only; 8 June is day 29."
+    answer: 1
+    why: >
+      The implemented window excludes assignment day and includes dates through assigned_date + 28.
+      For a 10 May assignment, 11 May is day 1 and 7 June is day 28; 8 June is outside.
+
+changelog:
+  - {date: "2026-05-17", change: "Last assignment date included in the experiment window."}
+  - {date: "2026-06-20", change: "Saved result data complete through this date."}
+  - {date: "2026-10-04", change: "Metric card written from fixture syn-b; four description-code discrepancies recorded."}
+
+sources:
+  - id: S1
+    path: "eval/fixtures/syn-b/README.md"
+    lines: "1-15"
+    note: "Experiment design, stated ITT, primary metric definition, and reported result"
+  - id: S2
+    path: "eval/fixtures/syn-b/readout.md"
+    lines: "1-4"
+    note: "Headline leadership readout"
+  - id: S3
+    path: "eval/fixtures/syn-b/sql/experiment_metric.sql"
+    lines: "1-30"
+    note: "Implemented population, activity-date derivation, outcome window, and aggregation"
+  - id: S4
+    path: "eval/fixtures/syn-b/results/ab_summary.csv"
+    lines: "1-8"
+    note: "Saved group means, sample sizes, interval, p-value, and data completeness date"
+  - id: S5
+    path: "eval/fixtures/syn-b/src/analysis.py"
+    lines: "1-9"
+    note: "Welch t-test calculation"

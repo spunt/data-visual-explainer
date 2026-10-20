@@ -1,0 +1,131 @@
+{
+  "K": {
+    "A1": {
+      "pass": false,
+      "evidence": "Headline shows \"15.2% trial users converted to paid\" even though it also says \"6,894 of 48,210\" and later \"14.3%\"."
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R7", "R8"],
+      "evidence": "Correctly states product/platform and MIN trial start: \"product = 'PIXELPRESS_PRO' and platform IN ('ios', 'android')\"; cohort \"2026-03-02 through 2026-03-09 inclusive\"; charges with \"amount_usd > 0\"; distinct numerator/denominator formula; data complete through \"2026-04-17\". It contradicts R6 with repeated 30-day/window claims."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "It flags \"Prose and SQL use different conversion windows\"; \"cohort is 2026-03-02 through 2026-03-08, but the query uses...2026-03-09\"; \"internal and test accounts are excluded and refunded charges do not count\" but SQL only filters product/platform/positive charge. It does not surface D5 as an undocumented first-ever-trial rule."
+    },
+    "A4": {
+      "pass": false,
+      "fabrications": [
+        "Headline/result claims \"15.2%\" instead of the supported 14.30%.",
+        "Claims \"trial users with a first_charge row≈ 7,328\"; the saved CSV supports 6,894 converted users.",
+        "Claims \"The saved query uses a 30-day conversion parameter\"; SQL sets conversion_days = 14.",
+        "Claims the SQL conversion watch window is \"days 0–29\" / \"[0, 30) days\"; implemented window is days 0–14 inclusive.",
+        "Claims rule text \"charge_date BETWEEN trial_start_date AND DATE_ADD(trial_start_date, 30)\"; source SQL uses DATE_ADD(..., p.conversion_days) with p.conversion_days = 14.",
+        "Claims the latest SQL conversion window ends \"07 Apr 2026\"; with the implemented 14-day offset from 2026-03-09 it ends 2026-03-23.",
+        "Claims the March SQL cohort value is \"15.2\"; saved output is 14.30.",
+        "Claims rebuild should count users in an \"inclusive 30-day SQL outcome window\"; implemented SQL uses a 14-day offset inclusive."
+      ]
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "Rejects causal/lift claims: \"The saved files show a descriptive March rate. They do not provide a causal design or a reproducible February comparison.\""
+    }
+  },
+  "M": {
+    "A1": {
+      "pass": true,
+      "evidence": "States \"14.3%\" and \"6,894 of 48,210 users\"."
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "States product/platform, MIN trial start, 2026-03-02 through 2026-03-09, amount_usd > 0, day 0 through day 14 inclusive, distinct numerator/denominator, and \"Data are complete through 17 Apr 2026, so every window is fully observed.\""
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "Lists description/code gaps for \"30-day\" vs \"14\" days, README through 8 March vs SQL through 9 March, claimed internal/test exclusions absent in SQL, and refund/net-paid prose vs amount_usd > 0 SQL. It does not surface D5 as an undocumented first-ever-trial rule."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "States \"The supplied files do not support a causal claim\" and that the files provide only March's rate plus a prose February comparison."
+    }
+  },
+  "P": {
+    "A1": {
+      "pass": true,
+      "evidence": "Headline says \"14.3%\" and the diagram says \"6,894 users\" of \"48,210 users\" with \"Conversion rate = 6,894 / 48,210 = 14.30%\"."
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "Specifies `PIXELPRESS_PRO`, `ios`/`android`, `MIN(trial_start_date)` by user, inclusive 2026-03-02 to 2026-03-09, `amount_usd > 0`, charge date through DATE_ADD(..., 14) inclusive, distinct counts, and data complete through 2026-04-17."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "Discrepancy table covers 30 vs 14 days, 03-08 vs 03-09 inclusive, internal/test excluded vs no SQL exclusion, and refunds/net-paid vs only amount_usd > 0. It does not surface D5 as an undocumented first-ever-trial rule."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "Says \"No February or causal-comparison logic is present\" and \"the lift claim is not reproducible from the provided files alone.\""
+    }
+  },
+  "R": {
+    "A1": {
+      "pass": true,
+      "evidence": "Headline/gist says \"14.3%\" and \"6,894 of 48,210 trial users converted\"."
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "Rules section states `PIXELPRESS_PRO`, `ios`/`android`, MIN trial_start_date, inclusive 2026-03-02 to 2026-03-09, `amount_usd > 0`, offsets 0 through 14 inclusive, distinct converted/cohort users, and data complete through 2026-04-17 with windows fully observed."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "Where-code-disagrees section lists conversion window 30 vs 14, cohort end 03-08 vs 03-09, missing internal/test filters, and missing refund/net-paid filter. It does not surface D5 as an undocumented first-ever-trial rule."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "States \"The saved files show a descriptive March rate\" and \"do not provide a causal design or a reproducible February comparison.\""
+    }
+  },
+  "T": {
+    "A1": {
+      "pass": true,
+      "evidence": "Headline says \"14.30% ... (6,894 of 48,210).\""
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "States PixelPress Pro on iOS/Android, first-ever trial, 2026-03-02 to 2026-03-09 inclusive, amount_usd > 0, days 0-14 inclusive, distinct users, and data complete through 2026-04-17 with every window fully observed."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4", "D5"],
+      "evidence": "Lists all five: 30 days vs 14; 03-08 vs 03-09; no internal/test filter; no refund check; first-ever trial kept but undocumented."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "States onboarding lift is \"not supported\" and February 12.9% \"has no source in the files.\""
+    }
+  }
+}

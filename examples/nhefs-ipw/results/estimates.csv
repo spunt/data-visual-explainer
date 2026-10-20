@@ -1,0 +1,5 @@
+estimate,value,low,high,mean_quit,mean_no_quit,n,se
+Unadjusted difference (Program 12.1),2.5406,1.6558,3.4254,4.5251,1.9845,1566,
+"IP weighted, nonstabilized (Program 12.2)",3.4405,2.4106,4.4705,5.2205,1.78,1566,0.5255
+"IP weighted, stabilized (Program 12.3)",3.4405,2.4106,4.4705,5.2205,1.78,1566,0.5255
+IP weighted for treatment and censoring (Program 12.7),3.4965,2.4663,4.5267,5.1585,1.662,1566,0.5256

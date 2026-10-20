@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home v2 active-days lift · Metric card</title>
+<meta name="description" content="Among users kept by the saved analysis, Home v2 users had 0.21 more active days than control users in days 1-28 after they were assigned.">
+<style>:root{
+  --bg:#f7f7f4; --paper:#ffffff; --ink:#1b1f29; --ink-2:#4a5262; --muted:#6b7385; --line:#e3e4e0; --line-2:#d2d4ce;
+  --focal:#2650d8; --focal-soft:#e7ecfd; --base:#9aa1b0; --base-soft:#eef0f3;
+  --accent:#c2410c; --accent-soft:#fdede4; --good:#13795b; --good-soft:#e5f4ee; --bad:#b42318; --bad-soft:#fdeceb;
+  --warn:#a15c00; --warn-soft:#fff4dc;
+  --win-out:#2650d8; --win-exp:#7c3aed; --win-look:#9aa1b0;
+  --serif: "Charter","Iowan Old Style","Source Serif Pro",Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#111318; --paper:#181b22; --ink:#eceef3; --ink-2:#c3c8d3; --muted:#9aa2b2; --line:#2a2f3a; --line-2:#363c49;
+    --focal:#7d9bff; --focal-soft:#1f2a4d; --base:#7d8596; --base-soft:#232733; --accent:#ff8a4c; --accent-soft:#3a2418;
+    --good:#4cc79c; --good-soft:#15302a; --bad:#ff7b72; --bad-soft:#3a1d1d; --warn:#f2b84b; --warn-soft:#352a12;
+    --win-out:#7d9bff; --win-exp:#b79cff; --win-look:#7d8596; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+a{color:var(--focal)}
+code{font:0.88em/1.4 var(--mono); background:var(--base-soft); padding:1px 5px; border-radius:5px}
+.muted{color:var(--muted)}
+.note{color:var(--muted); font-size:.92rem}
+.skip{position:absolute; left:-999px}.skip:focus{left:12px; top:12px; background:var(--paper); padding:8px 12px; z-index:99}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+
+/* masthead */
+.masthead{padding:36px 0 22px; background:var(--paper); border-bottom:1px solid var(--line)}
+.crumbs{font-size:.85rem; color:var(--muted)} .crumbs a{color:var(--muted); text-decoration:none}
+.masthead h1{font:600 2.3rem/1.15 var(--serif); margin:.35rem 0 .3rem; letter-spacing:-.01em}
+.subtitle{margin:0; color:var(--ink-2); font-size:1.08rem}
+.meta{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--muted); font-size:.88rem; align-items:center}
+.pill{display:inline-block; padding:2px 10px; border-radius:99px; font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; background:var(--base-soft); color:var(--ink-2)}
+.status-validated,.status-in-use{background:var(--good-soft); color:var(--good)}
+.status-provisional,.status-proposed,.status-draft{background:var(--warn-soft); color:var(--warn)}
+.status-superseded{background:var(--bad-soft); color:var(--bad)}
+
+/* depth rail */
+.rail{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.rail-inner{display:flex; align-items:center; gap:14px; min-height:54px}
+.rail-title{font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+.rail ol{list-style:none; display:flex; gap:4px; margin:0; padding:0; overflow-x:auto}
+.rail a{display:flex; align-items:center; gap:7px; padding:7px 12px; border-radius:10px; text-decoration:none; color:var(--ink-2); white-space:nowrap; font-size:.92rem}
+.rail a b{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--base-soft); font-size:.78rem}
+.rail a small{color:var(--muted); font-size:.75rem}
+.rail a:hover{background:var(--base-soft)}
+.rail a.active{background:var(--focal-soft); color:var(--focal)} .rail a.active b{background:var(--focal); color:#fff}
+.rail .rail-extra a{color:var(--muted)}
+.progress{height:2px; background:transparent}.progress span{display:block; height:2px; width:0; background:var(--focal); transition:width .1s}
+
+/* levels */
+.level{padding:56px 0; border-bottom:1px solid var(--line)}
+.level-1{background:var(--paper)}
+.level-3{background:var(--paper)}
+.eyebrow{font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 6px; display:flex; align-items:center; gap:8px}
+.lvl{display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); color:var(--paper); font-weight:700; letter-spacing:0}
+.level h2{font:600 1.85rem/1.2 var(--serif); margin:0 0 22px; letter-spacing:-.01em}
+.level h2.question{font-size:1.65rem; color:var(--ink-2); font-weight:500; max-width:52ch}
+h3.sub{font:600 1.15rem/1.3 var(--sans); margin:38px 0 12px}
+
+/* gist */
+.gist-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:44px; align-items:start}
+.headline{margin:4px 0 18px}
+.hl-number{font:700 4.4rem/1 var(--serif); letter-spacing:-.03em; color:var(--focal)}
+.hl-label{font-size:1.15rem; color:var(--ink); margin-top:6px; font-weight:500}
+.hl-range{margin-top:8px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.hl-range span{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-right:6px}
+.lede{font:400 1.2rem/1.55 var(--serif); margin:0 0 12px}
+.context{color:var(--ink-2); margin:0 0 10px}
+.frequency{background:var(--base-soft); border-radius:10px; padding:10px 14px 10px 36px; margin:0 0 14px; position:relative}
+.frequency .icon{font-weight:700; color:var(--focal); position:absolute; left:14px}
+.claim{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--line-2); border-radius:12px; padding:12px 14px; font-size:.95rem}
+.claim-meter{display:flex; gap:3px; padding-top:6px}
+.claim-meter span{width:14px; height:8px; border-radius:2px; background:var(--line-2)}
+.claim-meter span.on{background:var(--ink-2)}
+.gist-fig{margin:0; background:var(--bg); border-radius:var(--r); padding:18px 16px 12px}
+.gist-fig figcaption{font-size:.9rem; color:var(--ink-2); margin-top:8px}
+.trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
+.trio>div{border-radius:var(--r); padding:14px 16px}
+.trio h3{margin:0 0 6px; font-size:.8rem; text-transform:uppercase; letter-spacing:.08em}
+.trio p{margin:0}
+.say{background:var(--good-soft)} .say h3{color:var(--good)}
+.dont{background:var(--bad-soft)} .dont h3{color:var(--bad)}
+.caveat{background:var(--warn-soft)} .caveat h3{color:var(--warn)}
+.deeper{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px}
+.deeper a{display:grid; grid-template-columns:auto 1fr; gap:2px 12px; padding:14px 16px; border:1px solid var(--line-2); border-radius:var(--r); text-decoration:none; color:var(--ink); transition:border-color .15s, transform .15s}
+.deeper a:hover{border-color:var(--focal); transform:translateY(-2px)}
+.deeper span{grid-row:span 2; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--base-soft); font-weight:700}
+.deeper small{color:var(--muted)}
+
+/* figures */
+.fig{width:100%; height:auto; display:block; font-family:var(--sans); overflow:visible}
+.v-label{font-size:12.5px; fill:var(--ink-2)} .v-strong{font-weight:650; fill:var(--ink)}
+.v-tick{font-size:11px; fill:var(--muted)}
+.v-axis{stroke:var(--line-2); stroke-width:1.2} .v-grid{stroke:var(--line); stroke-width:1}
+.v-zero{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:3 3}
+.v-break{stroke:var(--muted); stroke-width:1.4; fill:none}
+.v-anchor{stroke:var(--ink); stroke-width:1.6}
+.v-win-outcome{fill:var(--win-out); fill-opacity:.16; stroke:var(--win-out); stroke-width:1.2}
+.v-win-exposure{fill:var(--win-exp); fill-opacity:.15; stroke:var(--win-exp); stroke-width:1.2}
+.v-win-look{fill:var(--win-look); fill-opacity:.16; stroke:var(--win-look); stroke-width:1.2}
+.v-dim{opacity:.35}
+.v-on-band{fill:var(--ink)}
+.v-event{fill:var(--paper); stroke:var(--ink-2); stroke-width:1.5}
+.v-event-on{fill:var(--accent); stroke:var(--accent)}
+.v-event-num{font-size:10.5px; font-weight:700; fill:var(--ink)}
+.v-event-on + .v-event-num{fill:#fff}
+.v-event-stem{stroke:var(--ink-2); stroke-width:1; stroke-dasharray:2 3; opacity:.6}
+.v-line-base{stroke:var(--base); stroke-width:2.5}
+.v-line-focal{stroke:var(--focal); stroke-width:3.5}
+.v-line-cf{stroke:var(--focal); stroke-width:2; stroke-dasharray:6 5; opacity:.6}
+.v-dot-base{fill:var(--base)} .v-dot-focal{fill:var(--focal)} .v-dot-cf{fill:var(--paper); stroke:var(--focal); stroke-width:2}
+.v-base-text{fill:var(--muted)} .v-focal-text{fill:var(--focal)} .v-cf-text{fill:var(--focal); opacity:.75}
+.v-accent-text{fill:var(--accent)}
+.v-bracket{stroke:var(--accent); stroke-width:2; fill:none}
+.v-bar-focal{fill:var(--focal)} .v-bar-base{fill:var(--base)} .v-bar-adj{fill:var(--ink-2)} .v-bar-raw{fill:var(--base); opacity:.45}
+.v-bar-rest{fill:var(--base-soft); stroke:var(--line-2)}
+.v-qdot{fill:var(--focal); fill-opacity:.85}
+.v-whisker{stroke:var(--base); stroke-width:3; stroke-linecap:round} .v-whisker-focal{stroke:var(--focal)}
+
+/* example */
+.example{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:22px 24px; margin-bottom:36px}
+.example h3{margin:0 0 6px; font:600 1.25rem/1.3 var(--serif)}
+.example figure{margin:12px 0}
+.events{list-style:none; padding:0; margin:6px 0 10px; display:grid; gap:6px}
+.events li{display:flex; gap:10px; align-items:baseline}
+.events .num{display:inline-grid; place-items:center; min-width:22px; height:22px; border-radius:50%; border:1.5px solid var(--ink-2); font-size:.75rem; font-weight:700}
+.events li.counts .num{background:var(--accent); border-color:var(--accent); color:#fff}
+.events .when{font:600 .8rem var(--mono); color:var(--muted); min-width:58px}
+.tag{font-style:normal; font-size:.72rem; font-weight:700; text-transform:uppercase; color:var(--accent); letter-spacing:.06em}
+.outcome{background:var(--base-soft); padding:10px 14px; border-radius:10px; margin:0}
+.lead-in{color:var(--ink-2); max-width:62ch}
+
+/* scrolly */
+.scrolly{display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:40px; align-items:start}
+.steps{list-style:none; margin:0; padding:0}
+.step{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px; margin:0 0 22px; transition:border-color .2s, box-shadow .2s, opacity .2s}
+.step h3{margin:2px 0 8px; font:600 1.2rem/1.3 var(--serif)}
+.kicker{margin:0; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.windows,.measures{padding-left:0; list-style:none; display:grid; gap:6px}
+.swatch{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; background:var(--win-look); opacity:.6}
+.swatch.role-outcome,.swatch.role-observation{background:var(--win-out)} .swatch.role-exposure{background:var(--win-exp)}
+.formula{font:600 1.05rem var(--mono); background:var(--base-soft); padding:8px 12px; border-radius:8px; display:inline-block}
+.worked code{font-size:.85rem}
+.target{background:var(--focal-soft); padding:8px 12px; border-radius:8px}
+.gaps{background:var(--warn-soft); padding:8px 12px; border-radius:8px}
+details.exact{margin-top:10px; border-top:1px dashed var(--line-2); padding-top:8px}
+details.exact summary{cursor:pointer; font-weight:600; color:var(--focal); font-size:.9rem}
+details.exact p{font-size:.93rem; color:var(--ink-2)}
+.src{display:inline-block; font:600 .72rem var(--mono); background:var(--base-soft); color:var(--ink-2); border:1px solid var(--line-2); border-radius:6px; padding:0 6px; margin-right:4px; cursor:help; text-decoration:none}
+.step-fig figure{margin:14px 0 0}
+.step-fig figcaption,.stage figcaption{font-size:.85rem; color:var(--muted)}
+.stage{display:none}
+.js .scrolly .stage{display:block; position:sticky; top:84px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:20px; min-height:240px}
+.stage figure{margin:0}
+.js .scrolly .step .step-fig{display:none}
+.js .scrolly .step{opacity:.55}
+.js .scrolly .step.active{opacity:1; border-color:var(--focal); box-shadow:0 6px 24px -14px var(--focal)}
+.stage .fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+.flow{display:flex; flex-direction:column; align-items:stretch; gap:0; margin:0}
+.flow-box{border:1.5px solid var(--line-2); border-radius:10px; padding:10px 12px; background:var(--paper); font-size:.93rem; display:flex; flex-direction:column; gap:2px}
+.flow-start{background:var(--base-soft); font-weight:600}
+.flow-end{background:var(--focal-soft); border-color:var(--focal); color:var(--focal); font-weight:600}
+.flow-k{font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted)}
+.flow-n{font:600 .85rem var(--mono); color:var(--focal)}
+.flow-arrow{height:18px; width:2px; background:var(--line-2); margin:0 auto; position:relative}
+.flow-arrow:after{content:""; position:absolute; bottom:-2px; left:-4px; border:5px solid transparent; border-top-color:var(--line-2)}
+.fraction{display:flex; align-items:center; gap:22px; margin:6px 0}
+.frac{flex:1; text-align:center}
+.frac-top,.frac-bot{display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px; color:var(--ink-2)}
+.frac b{font:700 1.5rem var(--serif); color:var(--ink)}
+.frac-bar{height:3px; background:var(--ink); border-radius:2px}
+.frac-eq{font:400 1.4rem var(--serif)} .frac-eq b{font-size:2.2rem; color:var(--focal)} .frac-eq small{display:block; font:.8rem var(--sans); color:var(--muted)}
+.chips-h{margin:0 0 6px; font-weight:600; font-size:.9rem}
+.chips{list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px}
+.chips li{background:var(--base-soft); border-radius:99px; padding:3px 10px; font-size:.82rem}
+.literal{margin-top:26px; border-left:4px solid var(--ink-2); padding:6px 0 6px 20px}
+.literal h3{margin:0; font-size:1.05rem}
+.literal ol{color:var(--ink-2); font-size:.95rem}
+
+/* level 3 */
+.maturity{border-radius:var(--r); padding:12px 16px; margin-bottom:6px}
+.maturity-ok{background:var(--good-soft)} .maturity-immature{background:var(--bad-soft)} .maturity-unknown{background:var(--warn-soft)}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.82rem; color:var(--muted); margin-bottom:12px}
+.fx{display:inline-grid; place-items:center; width:24px; height:24px; border-radius:7px; font-weight:800; font-size:.9rem; background:var(--base-soft); color:var(--ink-2); flex:none}
+.fx-overstates{background:var(--bad-soft); color:var(--bad)} .fx-understates{background:var(--focal-soft); color:var(--focal)}
+.fx-wider_uncertainty{background:var(--warn-soft); color:var(--warn)}
+.caveats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.cav{display:flex; gap:12px; border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.cav.sev-high{border-left:4px solid var(--bad)} .cav.sev-medium{border-left:4px solid var(--warn)} .cav.sev-low{border-left:4px solid var(--line-2)}
+.cav h4{margin:0 0 4px; font-size:1rem}
+.cav p{margin:0 0 6px}
+.cav-meta{font-size:.82rem; color:var(--muted)}
+table{border-collapse:collapse; width:100%; font-size:.94rem}
+th,td{text-align:left; vertical-align:top; padding:9px 12px; border-bottom:1px solid var(--line)}
+thead th{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); border-bottom:1.5px solid var(--line-2)}
+.misread td:first-child{color:var(--bad); text-decoration:line-through; text-decoration-color:color-mix(in srgb, var(--bad) 45%, transparent)}
+.calls{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.calls article{border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; background:var(--bg)}
+.calls h4{margin:0 0 6px} .calls p{margin:4px 0; font-size:.94rem}
+.sens-notes{font-size:.9rem; color:var(--ink-2)}
+
+/* level 4 */
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px}
+.btn{display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:10px; background:var(--ink); color:var(--paper); border:1px solid var(--ink); font:600 .9rem var(--sans); text-decoration:none; cursor:pointer}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line-2)}
+.btn:hover{filter:brightness(1.1)}
+.kv th{width:200px; color:var(--ink-2)}
+.discrep{display:grid; gap:14px}
+.discrep article{border:1px solid var(--line-2); border-radius:var(--r); padding:14px 16px; background:var(--paper)}
+.discrep h4{margin:0 0 8px}
+.dv{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.dv>div{background:var(--bg); border-radius:10px; padding:10px 12px}
+.dv span{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted)}
+.dv>div:last-child{background:var(--focal-soft)}
+.dv p{margin:4px 0 0; font-size:.93rem}
+.impact{font-size:.93rem; margin:10px 0 4px}
+.rules th{width:200px}
+.lineage{list-style:none; padding:0; position:relative}
+.lineage li{counter-increment:l; position:relative; padding:0 0 14px 42px}
+.lineage li:before{content:counter(l); position:absolute; left:0; top:0; width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--paper); display:grid; place-items:center; font-size:.8rem; font-weight:700}
+.lineage li:not(:last-child):after{content:""; position:absolute; left:12px; top:28px; bottom:2px; width:2px; background:var(--line-2)}
+.lineage{counter-reset:l}
+.lineage p{margin:2px 0}
+figure.code{margin:12px 0 18px; border:1px solid var(--line-2); border-radius:12px; overflow:hidden}
+figure.code figcaption{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:8px 12px; background:var(--base-soft); font-size:.85rem}
+figure.code .path{font:.78rem var(--mono); color:var(--muted)}
+figure.code .copy{margin-left:auto; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); border-radius:7px; padding:2px 10px; cursor:pointer; font-size:.8rem}
+figure.code pre{margin:0; padding:14px 16px; overflow:auto; background:var(--paper); font:.84rem/1.55 var(--mono)}
+figure.code pre code{background:none; padding:0}
+.checklist{list-style:none; padding:0} .checklist li{margin:6px 0}
+.sources{padding-left:0; list-style:none} .sources li{margin:4px 0; font-size:.9rem}
+.changelog{list-style:none; padding:0} .changelog time{font:600 .82rem var(--mono); color:var(--muted); margin-right:8px}
+details.quality{margin-top:30px; border:1px dashed var(--line-2); border-radius:12px; padding:10px 14px; font-size:.9rem}
+details.quality summary{cursor:pointer; font-weight:600}
+.lint-error b{color:var(--bad)} .lint-warn b{color:var(--warn)} .lint-info b{color:var(--muted)}
+
+/* check */
+.quiz{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px}
+.q{border:1px solid var(--line); border-radius:var(--r); padding:16px; margin:0; background:var(--paper)}
+.q legend{font-weight:600; padding:0; margin-bottom:8px; float:left; width:100%}
+.q legend + *{clear:both}
+.qkind{display:block; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:700; margin-bottom:4px}
+.q label{display:flex; gap:8px; align-items:flex-start; padding:6px 8px; border-radius:8px; cursor:pointer}
+.q label:hover{background:var(--base-soft)}
+.q label.right{background:var(--good-soft)} .q label.wrong{background:var(--bad-soft)}
+.why{font-size:.92rem; color:var(--ink-2); border-top:1px solid var(--line); padding-top:8px}
+.teachback{margin-top:24px; background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:18px 20px}
+.teachback h3{margin:0 0 4px}
+.teachback textarea{width:100%; border:1px solid var(--line-2); border-radius:10px; padding:10px; font:inherit; background:var(--bg); color:var(--ink); margin:6px 0 10px}
+.tb-list{list-style:none; padding:0} .tb-list li{margin:6px 0}
+
+/* glossary */
+.glossary dl{display:grid; grid-template-columns:repeat(2,1fr); gap:10px 28px; margin:0}
+.glossary dt{font-weight:650} .glossary dd{margin:2px 0 0; color:var(--ink-2)}
+.term{all:unset; cursor:help; border-bottom:1.5px dotted var(--focal); color:inherit}
+.term:focus-visible{outline:2px solid var(--focal); outline-offset:2px; border-radius:2px}
+.tip{position:absolute; z-index:50; max-width:340px; background:var(--ink); color:var(--paper); padding:10px 12px; border-radius:10px; font-size:.88rem; line-height:1.45; box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.tip b{display:block; margin-bottom:2px}
+.foot{padding:28px 0 60px; color:var(--muted); font-size:.85rem}
+.linkish{all:unset; color:var(--focal); cursor:pointer; text-decoration:underline}
+
+/* index */
+.index-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:18px; padding:30px 0 60px}
+.index-card{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:10px; transition:transform .15s, box-shadow .15s}
+.index-card:hover{transform:translateY(-3px); box-shadow:0 14px 30px -20px rgba(0,0,0,.35)}
+.index-card h2{font:600 1.25rem/1.25 var(--serif); margin:0}
+.index-card .iq{color:var(--ink-2); font-size:.95rem; margin:0}
+.index-card .hl{font:700 2.2rem/1 var(--serif); color:var(--focal)}
+.index-card .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:auto; font-size:.9rem}
+.intro{max-width:70ch; color:var(--ink-2)}
+.layers{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0 0}
+.layers div{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:.9rem}
+.layers b{display:block}
+
+@media (max-width: 900px){
+  .gist-grid,.scrolly,.trio,.deeper,.caveats,.calls,.dv,.glossary dl,.layers{grid-template-columns:1fr}
+  .js .scrolly .stage{display:none} .js .scrolly .step .step-fig{display:block} .js .scrolly .step{opacity:1}
+  .hl-number{font-size:3.4rem}
+  .rail a small{display:none}
+}
+@media print{
+  .rail,.actions,.skip,.teachback,.foot button,.stage{display:none !important}
+  body{background:#fff} .level{padding:24px 0}
+  .js .scrolly .step .step-fig{display:block !important} .js .scrolly .step{opacity:1 !important}
+  .scrolly{grid-template-columns:1fr}
+  .q .why{display:block !important}
+}
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important; scroll-behavior:auto !important} }
+.headline.not-run .hl-number{font-size:2.4rem; color:var(--muted)}
+</style>
+</head>
+<body class="explorer">
+<a class="skip" href="#gist">Skip to the gist</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Metric cards</a> <span aria-hidden="true">/</span> <span>home-v2-active-days</span></div>
+    <h1>Home v2 active-days lift</h1>
+<p class="subtitle">Treatment-control difference in mean active days after assignment</p>    <ul class="meta">
+      <li><span class="pill status-provisional">provisional</span></li>
+<li>Owner: Product analytics</li><li>Updated 2026-10-04</li><li>Data as of 2026-06-20</li>      <li><a href="home-v2-active-days.label.html">One-page label</a></li>
+      <li><a href="home-v2-active-days.methods.html">Methods section</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Depth">
+  <div class="wrap rail-inner">
+    <span class="rail-title">Depth</span>
+    <ol>
+      <li><a href="#gist" data-level="1"><b>1</b> The gist <small>1 min</small></a></li>
+      <li><a href="#build" data-level="2"><b>2</b> How it's built <small>3 min</small></a></li>
+      <li><a href="#mind" data-level="3"><b>3</b> Keep in mind <small>3 min</small></a></li>
+      <li><a href="#reproduce" data-level="4"><b>4</b> Reproduce it <small>2 min</small></a></li>
+      <li class="rail-extra"><a href="#check">Check yourself</a></li>
+      <li class="rail-extra"><a href="#glossary">Glossary</a></li>
+    </ol>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+</nav>
+
+<main>
+
+<section id="gist" class="level level-1" aria-labelledby="gist-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">1</span> The gist · for everyone</p>
+    <h2 id="gist-h" class="question">Did users assigned to Home v2 have more active app days after assignment than users assigned to control?</h2>
+    <div class="gist-grid">
+      <div class="gist-main">
+        <div class="headline" aria-label="Headline result">
+          <div class="hl-number">+0.21 days</div>
+          <div class="hl-label">more <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">active days</button> per <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">treatment</button> user</div>
+<div class="hl-range"><span>Plausible range</span> +0.05 days to +0.37 days</div>        </div>
+        <p class="lede">Among users kept by the saved analysis, <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">Home v2</button> users had 0.21 more active days than <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">control</button> users in days 1-28 after they were assigned.</p>
+<p class="context">Control users averaged 6.42 active days; treatment users averaged 6.63.</p><p class="frequency"><span class="icon" aria-hidden="true">≈</span>For every 100 users in the analysis table, Home v2 adds about 21 active user-days over the 28-day follow-up window.</p>        <div class="claim claim-associational">
+          <div class="claim-meter" aria-hidden="true">
+<span class="on"></span><span class="on"></span><span class=""></span><span class=""></span>          </div>
+          <div><strong>What kind of claim: Shows a link.</strong> Groups are compared, but nothing rules out other differences between them. Treat it as a link, not a cause.</div>
+        </div>
+      </div>
+      <figure class="gist-fig">
+        <svg viewBox="0 0 520 158" role="img" aria-label="Comparison of groups" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="156.0" x2="156.0" y1="10" y2="106" class="v-grid"/><text x="156.0" y="122.0" class="v-tick" text-anchor="middle" >0 days</text><line x1="219.0" x2="219.0" y1="10" y2="106" class="v-grid"/><text x="219.0" y="122.0" class="v-tick" text-anchor="middle" >2 days</text><line x1="282.1" x2="282.1" y1="10" y2="106" class="v-grid"/><text x="282.1" y="122.0" class="v-tick" text-anchor="middle" >4 days</text><line x1="345.1" x2="345.1" y1="10" y2="106" class="v-grid"/><text x="345.1" y="122.0" class="v-tick" text-anchor="middle" >6 days</text><rect x="156" y="22" width="208.9" height="26" rx="4" class="v-bar-focal"/><text x="146.0" y="39.0" class="v-label" text-anchor="end" >Home v2</text><text x="372.9" y="39.0" class="v-label v-strong" text-anchor="start" >6.63 days  ·  n=41,602</text><rect x="156" y="68" width="202.3" height="26" rx="4" class="v-bar-base"/><text x="146.0" y="85.0" class="v-label" text-anchor="end" >Control</text><text x="366.3" y="85.0" class="v-label" text-anchor="start" >6.42 days  ·  n=41,880</text><text x="156.0" y="146.0" class="v-label v-accent-text v-strong" text-anchor="start" >Difference vs Control: +0.21 days</text></svg>
+        <figcaption>Subtract the control average from the treatment average.</figcaption>
+      </figure>
+    </div>
+
+    <div class="trio">
+      <div class="say"><h3><span aria-hidden="true">✓</span> Safe to say</h3><p>&quot;In the saved analysis, treatment users averaged 0.21 more active days than control users over days 1-28 after assignment.&quot;</p></div>
+<div class="dont"><h3><span aria-hidden="true">✗</span> Not this</h3><p>&quot;Home v2 caused all new users to be active 0.21 more days per month.&quot;</p></div>      <div class="caveat"><h3><span aria-hidden="true">!</span> Before you repeat it</h3><p>The query is not pure <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">intent-to-treat</button>: it keeps only users joined to an <button type="button" class="term" data-tip="g5" aria-describedby="tip-g5">exposure row</button>, excludes China, and drops users with zero recorded activity days in the outcome window.</p></div>
+    </div>
+
+    <div class="deeper" aria-label="Go deeper">
+      <a href="#build"><span>2</span><b>Who exactly is counted, and when?</b><small>Follow one user through the rules</small></a>
+      <a href="#mind"><span>3</span><b>What could make this misleading?</b><small>4 caveats · 4 common misreadings</small></a>
+      <a href="#reproduce"><span>4</span><b>How would I rebuild it?</b><small>Exact rules, data, code · 4 doc-vs-code gaps</small></a>
+    </div>
+  </div>
+</section>
+
+
+<section id="build" class="level level-2" aria-labelledby="build-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">2</span> How it's built · for the curious</p>
+    <h2 id="build-h">How the number is made</h2>
+
+    <article class="example">
+      <h3>Follow one user: Alex</h3>
+<p>Alex is assigned to <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">Home v2</button> on 10 May 2026, sees the variant screen, is outside China, and has app activity on several later dates.</p>      <figure><svg viewBox="0 0 1000 150" role="img" aria-label="Timeline of windows relative to Assignment date" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="980.0" y1="120" y2="120" class="v-axis"/><rect x="71.4" y="34" width="400.0" height="30" rx="5" class="v-win-look"/><text x="79.4" y="53.0" class="v-label v-on-band" text-anchor="start" >Assignment window · days 0–13</text><rect x="100.0" y="74" width="800.0" height="30" rx="5" class="v-win-outcome"/><text x="108.0" y="93.0" class="v-label v-on-band" text-anchor="start" >Days 1-28 after assignment · days 1–28</text><line x1="71.4" x2="71.4" y1="12" y2="124" class="v-anchor"/><text x="61.4" y="140.0" class="v-label v-strong" text-anchor="start" >Assignment date (day 0)</text><circle cx="85.7" cy="20" r="9" class="v-event"/><text x="85.7" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="85.7" x2="85.7" y1="29" y2="120" class="v-event-stem"/><circle cx="85.7" cy="20" r="9" class="v-event"/><text x="85.7" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="85.7" x2="85.7" y1="29" y2="120" class="v-event-stem"/><circle cx="114.3" cy="20" r="9" class="v-event-on"/><text x="114.3" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="114.3" x2="114.3" y1="29" y2="120" class="v-event-stem"/><circle cx="885.7" cy="20" r="9" class="v-event-on"/><text x="885.7" y="24.0" class="v-event-num" text-anchor="middle" >4</text><line x1="885.7" x2="885.7" y1="29" y2="120" class="v-event-stem"/><circle cx="914.3" cy="20" r="9" class="v-event"/><text x="914.3" y="24.0" class="v-event-num" text-anchor="middle" >5</text><line x1="914.3" x2="914.3" y1="29" y2="120" class="v-event-stem"/><line x1="471.4" x2="471.4" y1="120" y2="124" class="v-axis"/><text x="471.4" y="140.0" class="v-tick" text-anchor="middle" >day 13</text><line x1="900.0" x2="900.0" y1="120" y2="124" class="v-axis"/><text x="900.0" y="140.0" class="v-tick" text-anchor="middle" >day 28</text></svg></figure>
+      <ol class="events">
+        <li class=""><span class="num">1</span><span class="when">day 0</span> Assigned to Home v2 and sees the variant screen</li>
+        <li class=""><span class="num">2</span><span class="when">day 0</span> Uses the app on assignment day; this date does not count</li>
+        <li class="counts"><span class="num">3</span><span class="when">day 1</span> Uses the app the next day <em class="tag">counts</em></li>
+        <li class="counts"><span class="num">4</span><span class="when">day 28</span> Uses the app on day 28 <em class="tag">counts</em></li>
+        <li class=""><span class="num">5</span><span class="when">day 29</span> Uses the app on day 29; outside the window</li>
+      </ol>
+      <p class="outcome"><strong>Result:</strong> Alex contributes 2 <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">active days</button> to the <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">treatment</button> average. Assignment-day activity and day-29 activity do not count.</p>
+    </article>
+
+    <p class="lead-in">Now the general rule, one step at a time. Each step has the plain version, with the exact version one click away.</p>
+    <div class="scrolly">
+      <ol class="steps">
+        <li class="step" id="step-who" data-step="0">
+          <p class="kicker">Step 1 · Who is counted</p>
+          <h3>Start with users, then apply each rule</h3>
+<p>One app user in the Home v2 experiment analysis table.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>One user_id from exp.assignments for experiment_id = &#x27;home_v2&#x27;, after joining to exp.exposures with saw_variant_screen = 1, excluding country_code = &#x27;CN&#x27;, and requiring at least one joined app.events activity_date in the outcome window.</p>
+<span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>          </details>
+          <div class="step-fig"><figure class="flow">
+  <div class="flow-box flow-start">All users</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Assigned to the Home v2 experiment from 4 May through 17 May 2026.</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Saw the variant screen and was not in China.</div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box"><span class="flow-k">Keep if</span> Had at least one recorded activity day in days 1-28 after assignment.<span class="flow-n">83,482 remain</span></div>
+  <div class="flow-arrow" aria-hidden="true"></div>
+  <div class="flow-box flow-end">Counted in the denominator</div>
+</figure>
+</div>
+        </li>
+        <li class="step" id="step-clock" data-step="1">
+          <p class="kicker">Step 2 · When the clock starts</p>
+          <h3>Time zero: assignment date</h3>
+<p>Each user&#x27;s clock starts on their assignment date.</p>          <ul class="windows"><li><span class="swatch role-eligibility" aria-hidden="true"></span><b>Assignment window</b>: The experiment admitted users assigned from 4 May through 17 May 2026. <span class="muted">(days 0–13)</span></li><li><span class="swatch role-outcome" aria-hidden="true"></span><b>Days 1-28 after assignment</b>: The 28 calendar dates after the assignment date, excluding assignment day. <span class="muted">(days 1–28)</span></li></ul>
+          <details class="exact"><summary>Exactly</summary>
+            <p>assigned_date = CAST(a.assigned_at AS DATE).</p>
+<span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 130" role="img" aria-label="Timeline of windows relative to Assignment date" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="520.0" y1="100" y2="100" class="v-axis"/><rect x="46.8" y="14" width="215.5" height="30" rx="5" class="v-win-look"/><text x="54.8" y="33.0" class="v-label v-on-band" text-anchor="start" >Assignment window · days 0–13</text><rect x="62.2" y="54" width="431.0" height="30" rx="5" class="v-win-outcome"/><text x="70.2" y="73.0" class="v-label v-on-band" text-anchor="start" >Days 1-28 after assignment · days 1–28</text><line x1="46.8" x2="46.8" y1="8" y2="104" class="v-anchor"/><text x="36.8" y="120.0" class="v-label v-strong" text-anchor="start" >Assignment date (day 0)</text><line x1="262.3" x2="262.3" y1="100" y2="104" class="v-axis"/><text x="262.3" y="120.0" class="v-tick" text-anchor="middle" >day 13</text><line x1="493.2" x2="493.2" y1="100" y2="104" class="v-axis"/><text x="493.2" y="120.0" class="v-tick" text-anchor="middle" >day 28</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-counts" data-step="2">
+          <p class="kicker">Step 3 · What counts</p>
+          <h3>Active days</h3>
+<p>Counts how many different dates had any app activity in the outcome window.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>COUNT(DISTINCT act.activity_date), where activity_date is DATE(e.event_ts) from app.events grouped by user_id and UTC-derived activity_date.</p>
+<span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 150" role="img" aria-label="Timeline of windows relative to Assignment date" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="20.0" x2="520.0" y1="120" y2="120" class="v-axis"/><rect x="46.8" y="34" width="208.3" height="30" rx="5" class="v-win-look v-dim"/><text x="54.8" y="53.0" class="v-label v-on-band v-dim" text-anchor="start" >Assignment window · days 0–13</text><rect x="61.7" y="74" width="416.7" height="30" rx="5" class="v-win-outcome"/><text x="69.7" y="93.0" class="v-label v-on-band" text-anchor="start" >Days 1-28 after assignment · days 1–28</text><line x1="46.8" x2="46.8" y1="12" y2="124" class="v-anchor"/><text x="36.8" y="140.0" class="v-label v-strong" text-anchor="start" >Assignment date (day 0)</text><circle cx="54.2" cy="20" r="9" class="v-event"/><text x="54.2" y="24.0" class="v-event-num" text-anchor="middle" >1</text><line x1="54.2" x2="54.2" y1="29" y2="120" class="v-event-stem"/><circle cx="54.2" cy="20" r="9" class="v-event"/><text x="54.2" y="24.0" class="v-event-num" text-anchor="middle" >2</text><line x1="54.2" x2="54.2" y1="29" y2="120" class="v-event-stem"/><circle cx="69.1" cy="20" r="9" class="v-event-on"/><text x="69.1" y="24.0" class="v-event-num" text-anchor="middle" >3</text><line x1="69.1" x2="69.1" y1="29" y2="120" class="v-event-stem"/><circle cx="470.9" cy="20" r="9" class="v-event-on"/><text x="470.9" y="24.0" class="v-event-num" text-anchor="middle" >4</text><line x1="470.9" x2="470.9" y1="29" y2="120" class="v-event-stem"/><circle cx="485.8" cy="20" r="9" class="v-event"/><text x="485.8" y="24.0" class="v-event-num" text-anchor="middle" >5</text><line x1="485.8" x2="485.8" y1="29" y2="120" class="v-event-stem"/><line x1="255.1" x2="255.1" y1="120" y2="124" class="v-axis"/><text x="255.1" y="140.0" class="v-tick" text-anchor="middle" >day 13</text><line x1="478.3" x2="478.3" y1="120" y2="124" class="v-axis"/><text x="478.3" y="140.0" class="v-tick" text-anchor="middle" >day 28</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-combine" data-step="3">
+          <p class="kicker">Step 4 · Combine</p>
+          <h3>Average across people</h3>
+<p>Average the active-day counts within each experiment arm.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>AVG(active_days) grouped by arm; denominator is COUNT(*) from per_user.</p>
+<span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>          </details>
+          <div class="step-fig"><figure class="fraction">
+  <div class="frac">
+    <div class="frac-top">sum of per-user active_days</div>
+    <div class="frac-bar" aria-hidden="true"></div>
+    <div class="frac-bot">users retained in each arm&#39;s per_user table<b>41,602</b></div>
+  </div>
+<div class="frac-eq">= <b>6.63 days</b><small>Home v2</small></div></figure>
+</div>
+        </li>
+        <li class="step" id="step-compare" data-step="4">
+          <p class="kicker">Step 5 · Compare</p>
+          <h3>Take the difference</h3>
+<p>Subtract the <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">control</button> average from the treatment average.</p><p class="formula">mean_active_days_treatment - mean_active_days_control</p><p class="worked">With the real numbers: <code>6.63 − 6.42 = 0.210</code></p><p class="target"><b>Whose effect?</b> No causal target; a comparison of observed numbers.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>diff = treatment.mean() - control.mean(); from the summary table, 6.63 - 6.42 = 0.21 days.</p>
+<span class="src" title="eval/fixtures/syn-b/results/ab_summary.csv">S4</span><span class="src" title="eval/fixtures/syn-b/src/analysis.py">S5</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 158" role="img" aria-label="Comparison of groups" xmlns="http://www.w3.org/2000/svg" class="fig"><line x1="162.0" x2="162.0" y1="10" y2="106" class="v-grid"/><text x="162.0" y="122.0" class="v-tick" text-anchor="middle" >0 days</text><line x1="228.8" x2="228.8" y1="10" y2="106" class="v-grid"/><text x="228.8" y="122.0" class="v-tick" text-anchor="middle" >2 days</text><line x1="295.6" x2="295.6" y1="10" y2="106" class="v-grid"/><text x="295.6" y="122.0" class="v-tick" text-anchor="middle" >4 days</text><line x1="362.4" x2="362.4" y1="10" y2="106" class="v-grid"/><text x="362.4" y="122.0" class="v-tick" text-anchor="middle" >6 days</text><rect x="162" y="22" width="221.4" height="26" rx="4" class="v-bar-focal"/><text x="152.0" y="39.0" class="v-label" text-anchor="end" >Home v2</text><text x="391.4" y="39.0" class="v-label v-strong" text-anchor="start" >6.63 days  ·  n=41,602</text><rect x="162" y="68" width="214.4" height="26" rx="4" class="v-bar-base"/><text x="152.0" y="85.0" class="v-label" text-anchor="end" >Control</text><text x="384.4" y="85.0" class="v-label" text-anchor="start" >6.42 days  ·  n=41,880</text><text x="162.0" y="146.0" class="v-label v-accent-text v-strong" text-anchor="start" >Difference vs Control: +0.21 days</text></svg></figure>
+</div>
+        </li>
+        <li class="step" id="step-sure" data-step="5">
+          <p class="kicker">Step 6 · How sure</p>
+          <h3>Show the range of plausible values</h3>
+<p>The saved interval uses the spread of per-user active days in each arm to estimate sampling uncertainty around the treatment-control difference.</p><p class="gaps"><b>Not covered by this range:</b> The interval does not cover bias from post-assignment filtering, UTC-vs-local date mismatch, missing events, or whether zero-activity assigned users were dropped.</p>          <details class="exact"><summary>Exactly</summary>
+            <p>se = sqrt(var_treatment / n_treatment + var_control / n_control); interval = diff +/- 1.96 * se. p comes from scipy.stats.ttest_ind(..., equal_var=False).</p>
+<span class="src" title="eval/fixtures/syn-b/results/ab_summary.csv">S4</span><span class="src" title="eval/fixtures/syn-b/src/analysis.py">S5</span>          </details>
+          <div class="step-fig"><figure><svg viewBox="0 0 540 154" role="img" aria-label="Twenty equally likely values for the more active days per treatment user" xmlns="http://www.w3.org/2000/svg" class="fig"><circle cx="163.0" cy="111.0" r="9" class="v-qdot"/><circle cx="182.0" cy="111.0" r="9" class="v-qdot"/><circle cx="201.0" cy="111.0" r="9" class="v-qdot"/><circle cx="220.0" cy="111.0" r="9" class="v-qdot"/><circle cx="220.0" cy="92.0" r="9" class="v-qdot"/><circle cx="239.0" cy="111.0" r="9" class="v-qdot"/><circle cx="239.0" cy="92.0" r="9" class="v-qdot"/><circle cx="258.0" cy="111.0" r="9" class="v-qdot"/><circle cx="258.0" cy="92.0" r="9" class="v-qdot"/><circle cx="258.0" cy="73.0" r="9" class="v-qdot"/><circle cx="277.0" cy="111.0" r="9" class="v-qdot"/><circle cx="277.0" cy="92.0" r="9" class="v-qdot"/><circle cx="296.0" cy="111.0" r="9" class="v-qdot"/><circle cx="296.0" cy="92.0" r="9" class="v-qdot"/><circle cx="296.0" cy="73.0" r="9" class="v-qdot"/><circle cx="315.0" cy="111.0" r="9" class="v-qdot"/><circle cx="315.0" cy="92.0" r="9" class="v-qdot"/><circle cx="334.0" cy="111.0" r="9" class="v-qdot"/><circle cx="353.0" cy="111.0" r="9" class="v-qdot"/><circle cx="372.0" cy="111.0" r="9" class="v-qdot"/><line x1="30" x2="510" y1="124" y2="124" class="v-axis"/><line x1="126.8" x2="126.8" y1="124" y2="129" class="v-axis"/><text x="126.8" y="144.0" class="v-tick" text-anchor="middle" >0.00 days</text><line x1="263.2" x2="263.2" y1="124" y2="129" class="v-axis"/><text x="263.2" y="144.0" class="v-tick" text-anchor="middle" >+0.20 days</text><line x1="399.5" x2="399.5" y1="124" y2="129" class="v-axis"/><text x="399.5" y="144.0" class="v-tick" text-anchor="middle" >+0.40 days</text><line x1="126.8" x2="126.8" y1="40" y2="124" class="v-zero"/><text x="126.8" y="36.0" class="v-tick" text-anchor="middle" >no difference</text></svg><figcaption>Each dot is one of 20 equally likely values, given sampling noise alone (normal approximation to the interval).</figcaption></figure>
+</div>
+        </li>
+      </ol>
+      <div class="stage" aria-hidden="true"></div>
+    </div>
+
+    <aside class="literal">
+      <h3>The same definition, assembled mechanically from the spec</h3>
+      <p class="note">Generated from the structured definition, not written by hand. If it disagrees with the summary above, the summary is wrong.</p>
+      <ol><li>The unit is one user. One app user in the Home v2 experiment analysis table.</li><li>Keep users that meet every rule, in order: assigned to the Home v2 experiment from 4 May through 17 May 2026; saw the variant screen and was not in China; had at least one recorded activity day in days 1-28 after assignment.</li><li>Time zero is the assignment date: Each user&#39;s clock starts on their assignment date.</li><li>Assignment window (eligibility): days 0–13, counting the assignment date as day 0.</li><li>Days 1-28 after assignment (outcome): days 1–28 after the assignment date.</li><li>For each user, record active days (headline) as a count within the days 1-28 after assignment: Counts how many different dates had any app activity in the outcome window.</li><li>Average the active-day counts within each experiment arm.</li><li>Do this separately for each group: Control, Home v2.</li><li>Subtract the control average from the treatment average.</li><li>The saved interval uses the spread of per-user active days in each arm to estimate sampling uncertainty around the treatment-control difference.</li></ol>
+    </aside>
+  </div>
+</section>
+
+
+<section id="mind" class="level level-3" aria-labelledby="mind-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">3</span> Keep in mind · before you act on it</p>
+    <h2 id="mind-h">What could make this misleading</h2>
+
+    <div class="maturity maturity-ok">
+      <strong>Complete.</strong>
+      The latest assignment date is 17 May 2026; its days 1-28 after assignment ends 14 Jun 2026. Data are complete through 20 Jun 2026, so every window is fully observed. This number should not move as more data arrive.
+    </div>
+
+    <h3 class="sub">Caveats</h3>
+    <div class="legend"><span><b class="fx fx-overstates">↑</b> May make the number look bigger than it really is</span><span><b class="fx fx-understates">↓</b> May make the number look smaller than it really is</span><span><b class="fx fx-wider_uncertainty">±</b> The true uncertainty is larger than shown</span><span><b class="fx fx-unknown_direction">↕</b> Could push the number either way</span><span><b class="fx fx-limits_scope">◎</b> Limits what the number can be used to conclude</span></div>
+    <div class="caveats">
+      <article class="cav sev-high">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>Not pure intent-to-treat</h4>          <p>The readout says every assigned user is analyzed in their assigned arm, but the query keeps only users with a matching <button type="button" class="term" data-tip="g5" aria-describedby="tip-g5">exposure row</button> and at least one post-assignment activity day. If <button type="button" class="term" data-tip="g1" aria-describedby="tip-g1">Home v2</button> changes exposure or whether a user has any activity at all, the reported mean is conditional on a post-randomization outcome.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · high importance <span class="src" title="eval/fixtures/syn-b/README.md">S1</span> <span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-high">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Zero-activity users are not in the denominator</h4>          <p>Because per_user uses an inner join to activity, users with no recorded <button type="button" class="term" data-tip="g0" aria-describedby="tip-g0">active days</button> in days 1-28 are absent rather than counted as zero active days. This likely overstates each arm&#x27;s average active days; the direction for the treatment-control difference is unknown.</p>
+          <p class="cav-meta">Could push the number either way · high importance <span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-unknown_direction" title="Could push the number either way">↕</b>
+        <div>
+<h4>Time zone mismatch</h4>          <p>The readout says activity is counted in each user&#x27;s local time zone. The query turns <button type="button" class="term" data-tip="g6" aria-describedby="tip-g6">UTC</button> event times into dates before counting active days.</p>
+          <p class="cav-meta">Could push the number either way · medium importance <span class="src" title="eval/fixtures/syn-b/README.md">S1</span> <span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></p>
+        </div>
+      </article>
+      <article class="cav sev-medium">
+        <b class="fx fx-limits_scope" title="Limits what the number can be used to conclude">◎</b>
+        <div>
+<h4>Scope is narrower than all new users</h4>          <p>The implemented population excludes China and requires seeing the variant screen. The saved result should not be generalized to all new users without checking those exclusions.</p>
+          <p class="cav-meta">Limits what the number can be used to conclude · medium importance <span class="src" title="eval/fixtures/syn-b/readout.md">S2</span> <span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></p>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub">Common misreadings</h3>
+    <table class="misread">
+      <thead><tr><th scope="col">Tempting, but wrong</th><th scope="col">Accurate</th></tr></thead>
+      <tbody><tr><td>Home v2 caused all new users to be active 0.21 more days per month.</td><td>The saved analysis shows a 0.21-day difference among exposed, non-CN users retained in the per_user table over days 1-28 after assignment.</td></tr><tr><td>0.21 days is a 0.21% lift.</td><td>It is an absolute difference in days. Relative to the 6.42-day <button type="button" class="term" data-tip="g2" aria-describedby="tip-g2">control</button> average, it is about a 3.3% lift.</td></tr><tr><td>The denominator is all assigned users.</td><td>The SQL denominator is users in per_user, after the exposure join, China exclusion, and inner join to activity.</td></tr><tr><td>Days 1-28 are local-calendar days.</td><td>The SQL derives dates with DATE(event_ts), and the source comment says event_ts is stored in UTC.</td></tr></tbody>
+    </table>
+
+
+    <h3 class="sub">Judgment calls</h3>
+    <div class="calls">
+      <article>
+        <h4>What to treat as the headline</h4>
+        <p><b>Chose:</b> Use the 0.21-day treatment-control difference, because both readouts emphasize that number and the CSV stores the matching difference and interval.</p>
+<p><b>Could have chosen:</b> A card could instead headline the <button type="button" class="term" data-tip="g3" aria-describedby="tip-g3">treatment</button> mean (6.63 days), the <button type="button" class="term" data-tip="g9" aria-describedby="tip-g9">relative lift</button> (+3.3%), or an <button type="button" class="term" data-tip="g4" aria-describedby="tip-g4">intent-to-treat</button> rerun if zero-activity assigned users were available.</p><p><b>Why:</b> The user asked for the headline number readers see, and the readout repeats +0.21 days.</p><p><b>What it changes:</b> The card focuses on the difference in means and treats the relative lift as a secondary restatement.</p>      </article>
+      <article>
+        <h4>How to state causality</h4>
+        <p><b>Chose:</b> Mark the saved result as associational, even though the experiment assignment was randomized.</p>
+<p><b>Could have chosen:</b> If the analysis were rerun on all assigned users as true intent-to-treat, the claim strength could be causal for the randomized population.</p><p><b>Why:</b> The implemented SQL applies post-assignment exposure and activity filters, so the analyzed denominator may no longer preserve the original randomization.</p><p><b>What it changes:</b> This prevents the card from repeating the readout&#x27;s broader causal claim until the denominator is verified or rerun.</p>      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="reproduce" class="level level-4" aria-labelledby="rep-h">
+  <div class="wrap">
+    <p class="eyebrow"><span class="lvl">4</span> Reproduce it · for specialists</p>
+    <h2 id="rep-h">The exact specification</h2>
+    <div class="actions">
+      <a class="btn" href="data:text/yaml;base64,c2NoZW1hOiBtZXRyaWMtY2FyZC8xCmlkOiBob21lLXYyLWFjdGl2ZS1kYXlzCnRpdGxlOiBIb21lIHYyIGFjdGl2ZS1kYXlzIGxpZnQKc3VidGl0bGU6IFRyZWF0bWVudC1jb250cm9sIGRpZmZlcmVuY2UgaW4gbWVhbiBhY3RpdmUgZGF5cyBhZnRlciBhc3NpZ25tZW50CnN0YXR1czogcHJvdmlzaW9uYWwKb3duZXI6IFByb2R1Y3QgYW5hbHl0aWNzCnVwZGF0ZWQ6ICIyMDI2LTEwLTA0IgpxdWVzdGlvbjogPgogIERpZCB1c2VycyBhc3NpZ25lZCB0byBIb21lIHYyIGhhdmUgbW9yZSBhY3RpdmUgYXBwIGRheXMgYWZ0ZXIgYXNzaWdubWVudCB0aGFuIHVzZXJzIGFzc2lnbmVkCiAgdG8gY29udHJvbD8KCmdpc3Q6CiAgc2VudGVuY2U6ID4KICAgIEFtb25nIHVzZXJzIGtlcHQgYnkgdGhlIHNhdmVkIGFuYWx5c2lzLCBIb21lIHYyIHVzZXJzIGhhZCAwLjIxIG1vcmUgYWN0aXZlIGRheXMgdGhhbgogICAgY29udHJvbCB1c2VycyBpbiBkYXlzIDEtMjggYWZ0ZXIgdGhleSB3ZXJlIGFzc2lnbmVkLgogIGhlYWRsaW5lOgogICAgdmFsdWU6IDAuMjEKICAgIGxvdzogMC4wNQogICAgaGlnaDogMC4zNwogICAgdW5pdDogZGF5cwogICAgZGVjaW1hbHM6IDIKICAgIGxhYmVsOiBtb3JlIGFjdGl2ZSBkYXlzIHBlciB0cmVhdG1lbnQgdXNlcgogICAgY29udGV4dDogIkNvbnRyb2wgdXNlcnMgYXZlcmFnZWQgNi40MiBhY3RpdmUgZGF5czsgdHJlYXRtZW50IHVzZXJzIGF2ZXJhZ2VkIDYuNjMuIgogIGZyZXF1ZW5jeTogPgogICAgRm9yIGV2ZXJ5IDEwMCB1c2VycyBpbiB0aGUgYW5hbHlzaXMgdGFibGUsIEhvbWUgdjIgYWRkcyBhYm91dCAyMSBhY3RpdmUgdXNlci1kYXlzIG92ZXIKICAgIHRoZSAyOC1kYXkgZm9sbG93LXVwIHdpbmRvdy4KICByZWFkaW5nOgogICAgZGlyZWN0aW9uOiBoaWdoZXJfaXNfYmV0dGVyCiAgICBzYXk6ID4KICAgICAgIkluIHRoZSBzYXZlZCBhbmFseXNpcywgdHJlYXRtZW50IHVzZXJzIGF2ZXJhZ2VkIDAuMjEgbW9yZSBhY3RpdmUgZGF5cyB0aGFuIGNvbnRyb2wgdXNlcnMKICAgICAgb3ZlciBkYXlzIDEtMjggYWZ0ZXIgYXNzaWdubWVudC4iCiAgICBkb250X3NheTogPgogICAgICAiSG9tZSB2MiBjYXVzZWQgYWxsIG5ldyB1c2VycyB0byBiZSBhY3RpdmUgMC4yMSBtb3JlIGRheXMgcGVyIG1vbnRoLiIKICBrZXlfY2F2ZWF0OiA+CiAgICBUaGUgcXVlcnkgaXMgbm90IHB1cmUgaW50ZW50LXRvLXRyZWF0OiBpdCBrZWVwcyBvbmx5IHVzZXJzIGpvaW5lZCB0byBhbiBleHBvc3VyZSByb3csIGV4Y2x1ZGVzCiAgICBDaGluYSwgYW5kIGRyb3BzIHVzZXJzIHdpdGggemVybyByZWNvcmRlZCBhY3Rpdml0eSBkYXlzIGluIHRoZSBvdXRjb21lIHdpbmRvdy4KICBjbGFpbV9zdHJlbmd0aDogYXNzb2NpYXRpb25hbAoKZ3JhbW1hcjoKICB1bml0OgogICAgc2luZ3VsYXI6IHVzZXIKICAgIHBsdXJhbDogdXNlcnMKICAgIHBsYWluOiBPbmUgYXBwIHVzZXIgaW4gdGhlIEhvbWUgdjIgZXhwZXJpbWVudCBhbmFseXNpcyB0YWJsZS4KICAgIGV4YWN0OiA+CiAgICAgIE9uZSB1c2VyX2lkIGZyb20gZXhwLmFzc2lnbm1lbnRzIGZvciBleHBlcmltZW50X2lkID0gJ2hvbWVfdjInLCBhZnRlciBqb2luaW5nIHRvCiAgICAgIGV4cC5leHBvc3VyZXMgd2l0aCBzYXdfdmFyaWFudF9zY3JlZW4gPSAxLCBleGNsdWRpbmcgY291bnRyeV9jb2RlID0gJ0NOJywgYW5kIHJlcXVpcmluZwogICAgICBhdCBsZWFzdCBvbmUgam9pbmVkIGFwcC5ldmVudHMgYWN0aXZpdHlfZGF0ZSBpbiB0aGUgb3V0Y29tZSB3aW5kb3cuCiAgICBzcmM6IFMzCiAgcG9wdWxhdGlvbjoKICAgIC0gaWQ6IGFzc2lnbmVkX3dpbmRvdwogICAgICBwbGFpbjogQXNzaWduZWQgdG8gdGhlIEhvbWUgdjIgZXhwZXJpbWVudCBmcm9tIDQgTWF5IHRocm91Z2ggMTcgTWF5IDIwMjYuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgYS5leHBlcmltZW50X2lkID0gJ2hvbWVfdjInIGFuZCBhc3NpZ25lZF9hdCA+PSBUSU1FU1RBTVAgJzIwMjYtMDUtMDQgMDA6MDA6MDAnCiAgICAgICAgYW5kIGFzc2lnbmVkX2F0IDwgVElNRVNUQU1QICcyMDI2LTA1LTE4IDAwOjAwOjAwJy4KICAgICAgc3JjOiBTMwogICAgLSBpZDogZXhwb3NlZF9ub25fY24KICAgICAgcGxhaW46IFNhdyB0aGUgdmFyaWFudCBzY3JlZW4gYW5kIHdhcyBub3QgaW4gQ2hpbmEuCiAgICAgIGV4YWN0OiA+CiAgICAgICAgSU5ORVIgSk9JTiBleHAuZXhwb3N1cmVzIG9uIHVzZXJfaWQgYW5kIGV4cGVyaW1lbnRfaWQgd2l0aCBzYXdfdmFyaWFudF9zY3JlZW4gPSAxOwogICAgICAgIGNvdW50cnlfY29kZSA8PiAnQ04nLgogICAgICBzcmM6IFMzCiAgICAtIGlkOiBhY3RpdmVfaW5fd2luZG93CiAgICAgIHBsYWluOiBIYWQgYXQgbGVhc3Qgb25lIHJlY29yZGVkIGFjdGl2aXR5IGRheSBpbiBkYXlzIDEtMjggYWZ0ZXIgYXNzaWdubWVudC4KICAgICAgZXhhY3Q6ID4KICAgICAgICBwZXJfdXNlciBpcyBidWlsdCB3aXRoIGFuIElOTkVSIEpPSU4gZnJvbSBhc3NpZ25lZCB0byBhY3Rpdml0eSBvbiBhY3QuYWN0aXZpdHlfZGF0ZSA+CiAgICAgICAgYXNzaWduZWRfZGF0ZSBhbmQgYWN0LmFjdGl2aXR5X2RhdGUgPD0gREFURV9BREQoYXNzaWduZWRfZGF0ZSwgMjgpLCBzbyB1c2VycyB3aXRoIG5vCiAgICAgICAgYWN0aXZpdHlfZGF0ZSBpbiB0aGF0IGludGVydmFsIGFyZSBub3QgaW4gdGhlIGZpbmFsIENPVU5UKCopLgogICAgICBuX2FmdGVyOiA4MzQ4MgogICAgICBzcmM6IFtTMywgUzRdCiAgYW5jaG9yOgogICAga2luZDogcGVyX3VuaXRfZXZlbnQKICAgIGxhYmVsOiBBc3NpZ25tZW50IGRhdGUKICAgIHBsYWluOiBFYWNoIHVzZXIncyBjbG9jayBzdGFydHMgb24gdGhlaXIgYXNzaWdubWVudCBkYXRlLgogICAgZXhhY3Q6ICJhc3NpZ25lZF9kYXRlID0gQ0FTVChhLmFzc2lnbmVkX2F0IEFTIERBVEUpLiIKICAgIHNyYzogUzMKICB3aW5kb3dzOgogICAgLSBpZDogYXNzaWdubWVudF9lbnRyeQogICAgICBsYWJlbDogQXNzaWdubWVudCB3aW5kb3cKICAgICAgc3RhcnQ6IDAKICAgICAgZW5kOiAxNAogICAgICB1bml0OiBkYXkKICAgICAgcm9sZTogZWxpZ2liaWxpdHkKICAgICAgcGxhaW46IFRoZSBleHBlcmltZW50IGFkbWl0dGVkIHVzZXJzIGFzc2lnbmVkIGZyb20gNCBNYXkgdGhyb3VnaCAxNyBNYXkgMjAyNi4KICAgICAgZXhhY3Q6ICJhc3NpZ25lZF9hdCA+PSAyMDI2LTA1LTA0IDAwOjAwOjAwIGFuZCBhc3NpZ25lZF9hdCA8IDIwMjYtMDUtMTggMDA6MDA6MDAuIgogICAgICBzcmM6IFMzCiAgICAtIGlkOiBhY3RpdmVfZGF5c18xXzI4CiAgICAgIGxhYmVsOiBEYXlzIDEtMjggYWZ0ZXIgYXNzaWdubWVudAogICAgICBzdGFydDogMQogICAgICBlbmQ6IDI5CiAgICAgIHVuaXQ6IGRheQogICAgICByb2xlOiBvdXRjb21lCiAgICAgIHBsYWluOiBUaGUgMjggY2FsZW5kYXIgZGF0ZXMgYWZ0ZXIgdGhlIGFzc2lnbm1lbnQgZGF0ZSwgZXhjbHVkaW5nIGFzc2lnbm1lbnQgZGF5LgogICAgICBleGFjdDogImFjdC5hY3Rpdml0eV9kYXRlID4gYXNzaWduZWRfZGF0ZSBBTkQgYWN0LmFjdGl2aXR5X2RhdGUgPD0gREFURV9BREQoYXNzaWduZWRfZGF0ZSwgMjgpLiIKICAgICAgc3JjOiBTMwogIG1lYXN1cmVzOgogICAgLSBpZDogYWN0aXZlX2RheXMKICAgICAgbGFiZWw6IEFjdGl2ZSBkYXlzCiAgICAgIGtpbmQ6IGNvdW50CiAgICAgIHdpbmRvdzogYWN0aXZlX2RheXNfMV8yOAogICAgICBwcmltYXJ5OiB0cnVlCiAgICAgIHBsYWluOiBDb3VudHMgaG93IG1hbnkgZGlmZmVyZW50IGRhdGVzIGhhZCBhbnkgYXBwIGFjdGl2aXR5IGluIHRoZSBvdXRjb21lIHdpbmRvdy4KICAgICAgZXhhY3Q6ID4KICAgICAgICBDT1VOVChESVNUSU5DVCBhY3QuYWN0aXZpdHlfZGF0ZSksIHdoZXJlIGFjdGl2aXR5X2RhdGUgaXMgREFURShlLmV2ZW50X3RzKSBmcm9tCiAgICAgICAgYXBwLmV2ZW50cyBncm91cGVkIGJ5IHVzZXJfaWQgYW5kIFVUQy1kZXJpdmVkIGFjdGl2aXR5X2RhdGUuCiAgICAgIHNyYzogUzMKICBhZ2dyZWdhdGU6CiAgICBraW5kOiBtZWFuCiAgICBtZWFzdXJlOiBhY3RpdmVfZGF5cwogICAgbnVtZXJhdG9yOiBzdW0gb2YgcGVyLXVzZXIgYWN0aXZlX2RheXMKICAgIGRlbm9taW5hdG9yOiB1c2VycyByZXRhaW5lZCBpbiBlYWNoIGFybSdzIHBlcl91c2VyIHRhYmxlCiAgICBwbGFpbjogQXZlcmFnZSB0aGUgYWN0aXZlLWRheSBjb3VudHMgd2l0aGluIGVhY2ggZXhwZXJpbWVudCBhcm0uCiAgICBleGFjdDogIkFWRyhhY3RpdmVfZGF5cykgZ3JvdXBlZCBieSBhcm07IGRlbm9taW5hdG9yIGlzIENPVU5UKCopIGZyb20gcGVyX3VzZXIuIgogICAgc3JjOiBTMwogIGdyb3VwczoKICAgIC0gaWQ6IGNvbnRyb2wKICAgICAgbGFiZWw6IENvbnRyb2wKICAgICAgcm9sZTogY29udHJvbAogICAgICBwbGFpbjogVXNlcnMgYXNzaWduZWQgdG8gdGhlIGNvbnRyb2wgYXJtIHdobyBwYXNzZWQgdGhlIGltcGxlbWVudGVkIGZpbHRlcnMuCiAgICAgIGV4YWN0OiAiYXJtID0gJ2NvbnRyb2wnIGluIHRoZSBwZXJfdXNlciBleHBvcnQuIgogICAgICBzcmM6IFM0CiAgICAtIGlkOiB0cmVhdG1lbnQKICAgICAgbGFiZWw6IEhvbWUgdjIKICAgICAgcm9sZTogdHJlYXRlZAogICAgICBwbGFpbjogVXNlcnMgYXNzaWduZWQgdG8gdGhlIEhvbWUgdjIgdHJlYXRtZW50IGFybSB3aG8gcGFzc2VkIHRoZSBpbXBsZW1lbnRlZCBmaWx0ZXJzLgogICAgICBleGFjdDogImFybSA9ICd0cmVhdG1lbnQnIGluIHRoZSBwZXJfdXNlciBleHBvcnQuIgogICAgICBzcmM6IFM0CiAgY29tcGFyaXNvbjoKICAgIGtpbmQ6IGRpZmZlcmVuY2UKICAgIHRhcmdldDogZGVzY3JpcHRpdmUKICAgIHBsYWluOiBTdWJ0cmFjdCB0aGUgY29udHJvbCBhdmVyYWdlIGZyb20gdGhlIHRyZWF0bWVudCBhdmVyYWdlLgogICAgZXhhY3Q6ICJkaWZmID0gdHJlYXRtZW50Lm1lYW4oKSAtIGNvbnRyb2wubWVhbigpOyBmcm9tIHRoZSBzdW1tYXJ5IHRhYmxlLCA2LjYzIC0gNi40MiA9IDAuMjEgZGF5cy4iCiAgICBmb3JtdWxhOiAibWVhbl9hY3RpdmVfZGF5c190cmVhdG1lbnQgLSBtZWFuX2FjdGl2ZV9kYXlzX2NvbnRyb2wiCiAgICBzcmM6IFtTNCwgUzVdCiAgdW5jZXJ0YWludHk6CiAgICBtZXRob2Q6IFdlbGNoIHQtdGVzdCBub3JtYWwtYXBwcm94aW1hdGlvbiBpbnRlcnZhbAogICAgbGV2ZWw6IDAuOTUKICAgIHBsYWluOiA+CiAgICAgIFRoZSBzYXZlZCBpbnRlcnZhbCB1c2VzIHRoZSBzcHJlYWQgb2YgcGVyLXVzZXIgYWN0aXZlIGRheXMgaW4gZWFjaCBhcm0gdG8gZXN0aW1hdGUgc2FtcGxpbmcKICAgICAgdW5jZXJ0YWludHkgYXJvdW5kIHRoZSB0cmVhdG1lbnQtY29udHJvbCBkaWZmZXJlbmNlLgogICAgZXhhY3Q6ID4KICAgICAgc2UgPSBzcXJ0KHZhcl90cmVhdG1lbnQgLyBuX3RyZWF0bWVudCArIHZhcl9jb250cm9sIC8gbl9jb250cm9sKTsgaW50ZXJ2YWwgPSBkaWZmICsvLSAxLjk2ICogc2UuCiAgICAgIHAgY29tZXMgZnJvbSBzY2lweS5zdGF0cy50dGVzdF9pbmQoLi4uLCBlcXVhbF92YXI9RmFsc2UpLgogICAga25vd25fZ2FwczogPgogICAgICBUaGUgaW50ZXJ2YWwgZG9lcyBub3QgY292ZXIgYmlhcyBmcm9tIHBvc3QtYXNzaWdubWVudCBmaWx0ZXJpbmcsIFVUQy12cy1sb2NhbCBkYXRlIG1pc21hdGNoLAogICAgICBtaXNzaW5nIGV2ZW50cywgb3Igd2hldGhlciB6ZXJvLWFjdGl2aXR5IGFzc2lnbmVkIHVzZXJzIHdlcmUgZHJvcHBlZC4KICAgIHNyYzogW1M0LCBTNV0KCnJlc3VsdHM6CiAgc3RhdHVzOiBtZWFzdXJlZAogIGFzX29mOiAiMjAyNi0wNi0yMCIKICB1bml0OiBkYXlzCiAgZGF0YV9jb21wbGV0ZV90aHJvdWdoOiAiMjAyNi0wNi0yMCIKICBsYXRlc3RfYW5jaG9yOiAiMjAyNi0wNS0xNyIKICBtZWFzdXJlOiBhY3RpdmVfZGF5cwogIGNlbGxzOgogICAgLSB7Z3JvdXA6IGNvbnRyb2wsIHZhbHVlOiA2LjQyLCBuOiA0MTg4MH0KICAgIC0ge2dyb3VwOiB0cmVhdG1lbnQsIHZhbHVlOiA2LjYzLCBuOiA0MTYwMn0KICBlc3RpbWF0ZToge3ZhbHVlOiAwLjIxLCBsb3c6IDAuMDUsIGhpZ2g6IDAuMzd9CgpleGFtcGxlOgogIG5hbWU6IEFsZXgKICBpbnRybzogPgogICAgQWxleCBpcyBhc3NpZ25lZCB0byBIb21lIHYyIG9uIDEwIE1heSAyMDI2LCBzZWVzIHRoZSB2YXJpYW50IHNjcmVlbiwgaXMgb3V0c2lkZSBDaGluYSwgYW5kCiAgICBoYXMgYXBwIGFjdGl2aXR5IG9uIHNldmVyYWwgbGF0ZXIgZGF0ZXMuCiAgYW5jaG9yX2RhdGU6ICIyMDI2LTA1LTEwIgogIGV2ZW50czoKICAgIC0ge2F0OiAwLCBsYWJlbDogIkFzc2lnbmVkIHRvIEhvbWUgdjIgYW5kIHNlZXMgdGhlIHZhcmlhbnQgc2NyZWVuIn0KICAgIC0ge2F0OiAwLCBsYWJlbDogIlVzZXMgdGhlIGFwcCBvbiBhc3NpZ25tZW50IGRheTsgdGhpcyBkYXRlIGRvZXMgbm90IGNvdW50IiwgY291bnRzOiBmYWxzZX0KICAgIC0ge2F0OiAxLCBsYWJlbDogIlVzZXMgdGhlIGFwcCB0aGUgbmV4dCBkYXkiLCBjb3VudHM6IHRydWV9CiAgICAtIHthdDogMjgsIGxhYmVsOiAiVXNlcyB0aGUgYXBwIG9uIGRheSAyOCIsIGNvdW50czogdHJ1ZX0KICAgIC0ge2F0OiAyOSwgbGFiZWw6ICJVc2VzIHRoZSBhcHAgb24gZGF5IDI5OyBvdXRzaWRlIHRoZSB3aW5kb3ciLCBjb3VudHM6IGZhbHNlfQogIG91dGNvbWU6ID4KICAgIEFsZXggY29udHJpYnV0ZXMgMiBhY3RpdmUgZGF5cyB0byB0aGUgdHJlYXRtZW50IGF2ZXJhZ2UuIEFzc2lnbm1lbnQtZGF5IGFjdGl2aXR5IGFuZCBkYXktMjkKICAgIGFjdGl2aXR5IGRvIG5vdCBjb3VudC4KCmZpbmVfcHJpbnQ6CiAganVkZ21lbnRfY2FsbHM6CiAgICAtIGRlY2lzaW9uOiBXaGF0IHRvIHRyZWF0IGFzIHRoZSBoZWFkbGluZQogICAgICBjaG9pY2U6ID4KICAgICAgICBVc2UgdGhlIDAuMjEtZGF5IHRyZWF0bWVudC1jb250cm9sIGRpZmZlcmVuY2UsIGJlY2F1c2UgYm90aCByZWFkb3V0cyBlbXBoYXNpemUgdGhhdCBudW1iZXIKICAgICAgICBhbmQgdGhlIENTViBzdG9yZXMgdGhlIG1hdGNoaW5nIGRpZmZlcmVuY2UgYW5kIGludGVydmFsLgogICAgICBhbHRlcm5hdGl2ZXM6ID4KICAgICAgICBBIGNhcmQgY291bGQgaW5zdGVhZCBoZWFkbGluZSB0aGUgdHJlYXRtZW50IG1lYW4gKDYuNjMgZGF5cyksIHRoZSByZWxhdGl2ZSBsaWZ0ICgrMy4zJSksCiAgICAgICAgb3IgYW4gaW50ZW50LXRvLXRyZWF0IHJlcnVuIGlmIHplcm8tYWN0aXZpdHkgYXNzaWduZWQgdXNlcnMgd2VyZSBhdmFpbGFibGUuCiAgICAgIHdoeTogVGhlIHVzZXIgYXNrZWQgZm9yIHRoZSBoZWFkbGluZSBudW1iZXIgcmVhZGVycyBzZWUsIGFuZCB0aGUgcmVhZG91dCByZXBlYXRzICswLjIxIGRheXMuCiAgICAgIGltcGFjdDogPgogICAgICAgIFRoZSBjYXJkIGZvY3VzZXMgb24gdGhlIGRpZmZlcmVuY2UgaW4gbWVhbnMgYW5kIHRyZWF0cyB0aGUgcmVsYXRpdmUgbGlmdCBhcyBhIHNlY29uZGFyeQogICAgICAgIHJlc3RhdGVtZW50LgogICAgICBzcmM6IFtTMSwgUzIsIFM0XQogICAgLSBkZWNpc2lvbjogSG93IHRvIHN0YXRlIGNhdXNhbGl0eQogICAgICBjaG9pY2U6ID4KICAgICAgICBNYXJrIHRoZSBzYXZlZCByZXN1bHQgYXMgYXNzb2NpYXRpb25hbCwgZXZlbiB0aG91Z2ggdGhlIGV4cGVyaW1lbnQgYXNzaWdubWVudCB3YXMgcmFuZG9taXplZC4KICAgICAgYWx0ZXJuYXRpdmVzOiA+CiAgICAgICAgSWYgdGhlIGFuYWx5c2lzIHdlcmUgcmVydW4gb24gYWxsIGFzc2lnbmVkIHVzZXJzIGFzIHRydWUgaW50ZW50LXRvLXRyZWF0LCB0aGUgY2xhaW0gc3RyZW5ndGgKICAgICAgICBjb3VsZCBiZSBjYXVzYWwgZm9yIHRoZSByYW5kb21pemVkIHBvcHVsYXRpb24uCiAgICAgIHdoeTogPgogICAgICAgIFRoZSBpbXBsZW1lbnRlZCBTUUwgYXBwbGllcyBwb3N0LWFzc2lnbm1lbnQgZXhwb3N1cmUgYW5kIGFjdGl2aXR5IGZpbHRlcnMsIHNvIHRoZSBhbmFseXplZAogICAgICAgIGRlbm9taW5hdG9yIG1heSBubyBsb25nZXIgcHJlc2VydmUgdGhlIG9yaWdpbmFsIHJhbmRvbWl6YXRpb24uCiAgICAgIGltcGFjdDogPgogICAgICAgIFRoaXMgcHJldmVudHMgdGhlIGNhcmQgZnJvbSByZXBlYXRpbmcgdGhlIHJlYWRvdXQncyBicm9hZGVyIGNhdXNhbCBjbGFpbSB1bnRpbCB0aGUgZGVub21pbmF0b3IKICAgICAgICBpcyB2ZXJpZmllZCBvciByZXJ1bi4KICAgICAgc3JjOiBbUzIsIFMzXQogIGNhdmVhdHM6CiAgICAtIHRpdGxlOiBOb3QgcHVyZSBpbnRlbnQtdG8tdHJlYXQKICAgICAgdGV4dDogPgogICAgICAgIFRoZSByZWFkb3V0IHNheXMgZXZlcnkgYXNzaWduZWQgdXNlciBpcyBhbmFseXplZCBpbiB0aGVpciBhc3NpZ25lZCBhcm0sIGJ1dCB0aGUgcXVlcnkga2VlcHMgb25seQogICAgICAgIHVzZXJzIHdpdGggYSBtYXRjaGluZyBleHBvc3VyZSByb3cgYW5kIGF0IGxlYXN0IG9uZSBwb3N0LWFzc2lnbm1lbnQgYWN0aXZpdHkgZGF5LiBJZiBIb21lIHYyCiAgICAgICAgY2hhbmdlcyBleHBvc3VyZSBvciB3aGV0aGVyIGEgdXNlciBoYXMgYW55IGFjdGl2aXR5IGF0IGFsbCwgdGhlIHJlcG9ydGVkIG1lYW4gaXMgY29uZGl0aW9uYWwKICAgICAgICBvbiBhIHBvc3QtcmFuZG9taXphdGlvbiBvdXRjb21lLgogICAgICBlZmZlY3Q6IGxpbWl0c19zY29wZQogICAgICBzZXZlcml0eTogaGlnaAogICAgICBzcmM6IFtTMSwgUzNdCiAgICAtIHRpdGxlOiBaZXJvLWFjdGl2aXR5IHVzZXJzIGFyZSBub3QgaW4gdGhlIGRlbm9taW5hdG9yCiAgICAgIHRleHQ6ID4KICAgICAgICBCZWNhdXNlIHBlcl91c2VyIHVzZXMgYW4gaW5uZXIgam9pbiB0byBhY3Rpdml0eSwgdXNlcnMgd2l0aCBubyByZWNvcmRlZCBhY3RpdmUgZGF5cyBpbiBkYXlzCiAgICAgICAgMS0yOCBhcmUgYWJzZW50IHJhdGhlciB0aGFuIGNvdW50ZWQgYXMgemVybyBhY3RpdmUgZGF5cy4gVGhpcyBsaWtlbHkgb3ZlcnN0YXRlcyBlYWNoIGFybSdzCiAgICAgICAgYXZlcmFnZSBhY3RpdmUgZGF5czsgdGhlIGRpcmVjdGlvbiBmb3IgdGhlIHRyZWF0bWVudC1jb250cm9sIGRpZmZlcmVuY2UgaXMgdW5rbm93bi4KICAgICAgZWZmZWN0OiB1bmtub3duX2RpcmVjdGlvbgogICAgICBzZXZlcml0eTogaGlnaAogICAgICBzcmM6IFMzCiAgICAtIHRpdGxlOiBUaW1lIHpvbmUgbWlzbWF0Y2gKICAgICAgdGV4dDogPgogICAgICAgIFRoZSByZWFkb3V0IHNheXMgYWN0aXZpdHkgaXMgY291bnRlZCBpbiBlYWNoIHVzZXIncyBsb2NhbCB0aW1lIHpvbmUuIFRoZSBxdWVyeSB0dXJucyBVVEMgZXZlbnQKICAgICAgICB0aW1lcyBpbnRvIGRhdGVzIGJlZm9yZSBjb3VudGluZyBhY3RpdmUgZGF5cy4KICAgICAgZWZmZWN0OiB1bmtub3duX2RpcmVjdGlvbgogICAgICBzZXZlcml0eTogbWVkaXVtCiAgICAgIHNyYzogW1MxLCBTM10KICAgIC0gdGl0bGU6IFNjb3BlIGlzIG5hcnJvd2VyIHRoYW4gYWxsIG5ldyB1c2VycwogICAgICB0ZXh0OiA+CiAgICAgICAgVGhlIGltcGxlbWVudGVkIHBvcHVsYXRpb24gZXhjbHVkZXMgQ2hpbmEgYW5kIHJlcXVpcmVzIHNlZWluZyB0aGUgdmFyaWFudCBzY3JlZW4uIFRoZSBzYXZlZAogICAgICAgIHJlc3VsdCBzaG91bGQgbm90IGJlIGdlbmVyYWxpemVkIHRvIGFsbCBuZXcgdXNlcnMgd2l0aG91dCBjaGVja2luZyB0aG9zZSBleGNsdXNpb25zLgogICAgICBlZmZlY3Q6IGxpbWl0c19zY29wZQogICAgICBzZXZlcml0eTogbWVkaXVtCiAgICAgIHNyYzogW1MyLCBTM10KICBtaXNyZWFkaW5nczoKICAgIC0gd3Jvbmc6ICJIb21lIHYyIGNhdXNlZCBhbGwgbmV3IHVzZXJzIHRvIGJlIGFjdGl2ZSAwLjIxIG1vcmUgZGF5cyBwZXIgbW9udGguIgogICAgICByaWdodDogPgogICAgICAgIFRoZSBzYXZlZCBhbmFseXNpcyBzaG93cyBhIDAuMjEtZGF5IGRpZmZlcmVuY2UgYW1vbmcgZXhwb3NlZCwgbm9uLUNOIHVzZXJzIHJldGFpbmVkIGluIHRoZQogICAgICAgIHBlcl91c2VyIHRhYmxlIG92ZXIgZGF5cyAxLTI4IGFmdGVyIGFzc2lnbm1lbnQuCiAgICAtIHdyb25nOiAiMC4yMSBkYXlzIGlzIGEgMC4yMSUgbGlmdC4iCiAgICAgIHJpZ2h0OiA+CiAgICAgICAgSXQgaXMgYW4gYWJzb2x1dGUgZGlmZmVyZW5jZSBpbiBkYXlzLiBSZWxhdGl2ZSB0byB0aGUgNi40Mi1kYXkgY29udHJvbCBhdmVyYWdlLCBpdCBpcyBhYm91dAogICAgICAgIGEgMy4zJSBsaWZ0LgogICAgLSB3cm9uZzogIlRoZSBkZW5vbWluYXRvciBpcyBhbGwgYXNzaWduZWQgdXNlcnMuIgogICAgICByaWdodDogPgogICAgICAgIFRoZSBTUUwgZGVub21pbmF0b3IgaXMgdXNlcnMgaW4gcGVyX3VzZXIsIGFmdGVyIHRoZSBleHBvc3VyZSBqb2luLCBDaGluYSBleGNsdXNpb24sIGFuZCBpbm5lcgogICAgICAgIGpvaW4gdG8gYWN0aXZpdHkuCiAgICAtIHdyb25nOiAiRGF5cyAxLTI4IGFyZSBsb2NhbC1jYWxlbmRhciBkYXlzLiIKICAgICAgcmlnaHQ6ID4KICAgICAgICBUaGUgU1FMIGRlcml2ZXMgZGF0ZXMgd2l0aCBEQVRFKGV2ZW50X3RzKSwgYW5kIHRoZSBzb3VyY2UgY29tbWVudCBzYXlzIGV2ZW50X3RzIGlzIHN0b3JlZCBpbiBVVEMuCiAgZGlzY3JlcGFuY2llczoKICAgIC0gdG9waWM6IEludGVudC10by10cmVhdCBkZW5vbWluYXRvcgogICAgICBkZXNjcmliZWQ6ID4KICAgICAgICBSRUFETUUgc2F5cyBldmVyeSBhc3NpZ25lZCB1c2VyIGlzIGFuYWx5emVkIGluIHRoZSBhcm0gdGhleSB3ZXJlIGFzc2lnbmVkIHRvLgogICAgICBpbXBsZW1lbnRlZDogPgogICAgICAgIGFzc2lnbmVkIGpvaW5zIHRvIGV4cG9zdXJlcyB3aXRoIHNhd192YXJpYW50X3NjcmVlbiA9IDEsIHRoZW4gcGVyX3VzZXIgaW5uZXIgam9pbnMgdG8gYWN0aXZpdHksCiAgICAgICAgZXhjbHVkaW5nIGFzc2lnbmVkIHVzZXJzIHdpdGhvdXQgYSBtYXRjaGluZyBleHBvc3VyZSByb3cgb3Igd2l0aG91dCBhY3Rpdml0eSBpbiBkYXlzIDEtMjguCiAgICAgIGltcGFjdDogPgogICAgICAgIE5hcnJvd3MgdGhlIGRlbm9taW5hdG9yIGZyb20gYWxsIGFzc2lnbmVkIHVzZXJzIHRvIGV4cG9zZWQgYWN0aXZlIHVzZXJzLiBUaGUgaW1wYWN0IG9uIHRoZQogICAgICAgICswLjIxLWRheSBkaWZmZXJlbmNlIGlzIHVua25vd24gZnJvbSBzYXZlZCBvdXRwdXRzLgogICAgICBzcmM6IFtTMSwgUzNdCiAgICAtIHRvcGljOiBHZW9ncmFwaGljIHNjb3BlCiAgICAgIGRlc2NyaWJlZDogPgogICAgICAgIFRoZSByZWFkb3V0cyBkZXNjcmliZSByYW5kb21pemVkIHVzZXJzIG9yIGFsbCBuZXcgdXNlcnMgd2l0aG91dCBhIGNvdW50cnkgZXhjbHVzaW9uLgogICAgICBpbXBsZW1lbnRlZDogIlRoZSBTUUwgZmlsdGVycyBhLmNvdW50cnlfY29kZSA8PiAnQ04nLiIKICAgICAgaW1wYWN0OiBSZXN1bHRzIGRvIG5vdCBjb3ZlciBDaGluYS4gRGlyZWN0aW9uIGFuZCBzaXplIG9mIGFueSBkaWZmZXJlbmNlIGFyZSB1bmtub3duLgogICAgICBzcmM6IFtTMiwgUzNdCiAgICAtIHRvcGljOiBUaW1lIHpvbmUgZm9yIGFjdGl2ZSBkYXRlcwogICAgICBkZXNjcmliZWQ6ID4KICAgICAgICBSRUFETUUgc2F5cyBhY3RpdmUgZGF5cyB1c2UgdGhlIHVzZXIncyBsb2NhbCB0aW1lIHpvbmUuCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgYWN0aXZpdHlfZGF0ZSBpcyBEQVRFKGUuZXZlbnRfdHMpLCBhbmQgdGhlIFNRTCBjb21tZW50IHNheXMgZXZlbnRfdHMgaXMgc3RvcmVkIGluIFVUQy4KICAgICAgaW1wYWN0OiA+CiAgICAgICAgQWN0aXZpdHkgbmVhciBsb2NhbCBtaWRuaWdodCBjYW4gbGFuZCBvbiBhIGRpZmZlcmVudCBkYXRlLiBUaGUgZWZmZWN0IG9uIGRpc3RpbmN0IGFjdGl2ZS1kYXkKICAgICAgICBjb3VudHMgaXMgdW5rbm93bi4KICAgICAgc3JjOiBbUzEsIFMzXQogICAgLSB0b3BpYzogQnJlYWR0aCBvZiBjYXVzYWwgY2xhaW0KICAgICAgZGVzY3JpYmVkOiA+CiAgICAgICAgUmVhZG91dCBzYXlzIEhvbWUgdjIgY2F1c2VzIHVzZXJzIHRvIGJlIGFjdGl2ZSAwLjIxIG1vcmUgZGF5cyBhIG1vbnRoIGFuZCBhcHBsaWVzIHRvIGFsbCBuZXcgdXNlcnMuCiAgICAgIGltcGxlbWVudGVkOiA+CiAgICAgICAgVGhlIGNvZGUgZXN0aW1hdGVzIGEgdHJlYXRtZW50LWNvbnRyb2wgZGlmZmVyZW5jZSBvdmVyIGRheXMgMS0yOCBhbW9uZyBleHBvc2VkLCBub24tQ04gdXNlcnMKICAgICAgICB3aG8gaGFkIGF0IGxlYXN0IG9uZSBhY3Rpdml0eSBkYXkgaW4gdGhlIG91dGNvbWUgd2luZG93LgogICAgICBpbXBhY3Q6ID4KICAgICAgICBUaGUgaW1wbGVtZW50ZWQgcmVzdWx0IGlzIG5hcnJvd2VyIHRoYW4gdGhlIHJlYWRvdXQgY2xhaW0uIEEgdHJ1ZSBhbGwtYXNzaWduZWQgSVRUIGVzdGltYXRlCiAgICAgICAgY291bGQgYmUgc21hbGxlciBvciBsYXJnZXIuCiAgICAgIHNyYzogW1MyLCBTM10KCnNwZWM6CiAgZXN0aW1hbmQ6CiAgICBwb3B1bGF0aW9uOiA+CiAgICAgIFVzZXJzIGFzc2lnbmVkIHRvIGhvbWVfdjIgZnJvbSAyMDI2LTA1LTA0IHRocm91Z2ggMjAyNi0wNS0xNywgZXhjbHVkaW5nIENoaW5hLCBqb2luZWQgdG8gYQogICAgICBzYXdfdmFyaWFudF9zY3JlZW4gZXhwb3N1cmUgcm93LCBhbmQgcHJlc2VudCBpbiBhcHAuZXZlbnRzIG9uIGF0IGxlYXN0IG9uZSBkYXRlIGluIGRheXMgMS0yOC4KICAgIGV4cG9zdXJlOiBIb21lIHYyIHRyZWF0bWVudCBhc3NpZ25tZW50IHZlcnN1cyBjb250cm9sIGFzc2lnbm1lbnQsIGFzIGxhYmVsZWQgYnkgYXJtLgogICAgdGltZV96ZXJvOiBDQVNUKGFzc2lnbmVkX2F0IEFTIERBVEUpIGZvciBlYWNoIHVzZXIuCiAgICB2YXJpYWJsZTogPgogICAgICBDb3VudCBvZiBkaXN0aW5jdCBVVEMtZGVyaXZlZCBhcHAgYWN0aXZpdHkgZGF0ZXMgZ3JlYXRlciB0aGFuIGFzc2lnbmVkX2RhdGUgYW5kIGxlc3MgdGhhbiBvcgogICAgICBlcXVhbCB0byBhc3NpZ25lZF9kYXRlIHBsdXMgMjggZGF5cy4KICAgIGludGVyY3VycmVudF9ldmVudHM6ID4KICAgICAgVGhlIHNhdmVkIFNRTCBkb2VzIG5vdCBzcGVjaWZ5IHNwZWNpYWwgaGFuZGxpbmcgZm9yIHVuaW5zdGFsbCwgY2h1cm4sIHRyYXZlbCwgb3IgbWlzc2luZyBldmVudHMuCiAgICAgIFVzZXJzIHdpdGggbm8gYWN0aXZpdHkgaW4gdGhlIHdpbmRvdyBhcmUgZXhjbHVkZWQgYnkgdGhlIGlubmVyIGpvaW4gcmF0aGVyIHRoYW4gcmV0YWluZWQgd2l0aCB6ZXJvLgogICAgc3VtbWFyeTogPgogICAgICBEaWZmZXJlbmNlIGluIGFybS1sZXZlbCBtZWFucywgdHJlYXRtZW50IG1pbnVzIGNvbnRyb2wsIHdpdGggYSBXZWxjaCB0LXRlc3QgY29uZmlkZW5jZSBpbnRlcnZhbC4KICBwYXJhbWV0ZXJzOgogICAgLSB7bmFtZTogZXhwZXJpbWVudF9pZCwgdmFsdWU6IGhvbWVfdjIsIG1lYW5pbmc6IEV4cGVyaW1lbnQgYW5hbHl6ZWR9CiAgICAtIHtuYW1lOiBhc3NpZ25tZW50X3N0YXJ0LCB2YWx1ZTogIjIwMjYtMDUtMDQgMDA6MDA6MDAiLCBtZWFuaW5nOiBJbmNsdXNpdmUgYXNzaWdubWVudCBzdGFydH0KICAgIC0ge25hbWU6IGFzc2lnbm1lbnRfZW5kLCB2YWx1ZTogIjIwMjYtMDUtMTggMDA6MDA6MDAiLCBtZWFuaW5nOiBFeGNsdXNpdmUgYXNzaWdubWVudCBlbmR9CiAgICAtIHtuYW1lOiBvdXRjb21lX3N0YXJ0LCB2YWx1ZTogMSwgbWVhbmluZzogRmlyc3QgaW5jbHVkZWQgZGF5IGFmdGVyIGFzc2lnbm1lbnR9CiAgICAtIHtuYW1lOiBvdXRjb21lX2VuZCwgdmFsdWU6IDI4LCBtZWFuaW5nOiBMYXN0IGluY2x1ZGVkIGRheSBhZnRlciBhc3NpZ25tZW50fQogICAgLSB7bmFtZTogZXhjbHVkZWRfY291bnRyeSwgdmFsdWU6IENOLCBtZWFuaW5nOiBDb3VudHJ5IGV4Y2x1ZGVkIGluIFNRTH0KICBsaW5lYWdlOgogICAgLSBuYW1lOiBleHAuYXNzaWdubWVudHMKICAgICAgcm9sZTogRXhwZXJpbWVudCBhc3NpZ25tZW50IGFuZCBhcm0gbGFiZWxzCiAgICAgIGdyYWluOiB1c2VyX2lkIHggZXhwZXJpbWVudCBhc3NpZ25tZW50CiAgICAgIGZpbHRlcnM6ICJleHBlcmltZW50X2lkID0gaG9tZV92MjsgYXNzaWduZWRfYXQgaW4gWzIwMjYtMDUtMDQsIDIwMjYtMDUtMTgpOyBjb3VudHJ5X2NvZGUgPD4gQ04iCiAgICAgIHNyYzogUzMKICAgIC0gbmFtZTogZXhwLmV4cG9zdXJlcwogICAgICByb2xlOiBFeHBvc3VyZSBmaWx0ZXIKICAgICAgZ3JhaW46IHVzZXJfaWQgeCBleHBlcmltZW50IGV4cG9zdXJlCiAgICAgIGZpbHRlcnM6ICJzYW1lIGV4cGVyaW1lbnRfaWQ7IHNhd192YXJpYW50X3NjcmVlbiA9IDEiCiAgICAgIHNyYzogUzMKICAgIC0gbmFtZTogYXBwLmV2ZW50cwogICAgICByb2xlOiBEYWlseSBhcHAgYWN0aXZpdHkKICAgICAgZ3JhaW46IGV2ZW50CiAgICAgIGZpbHRlcnM6ICJncm91cGVkIHRvIG9uZSBhY3Rpdml0eV9kYXRlIHBlciB1c2VyX2lkIHVzaW5nIERBVEUoZXZlbnRfdHMpIgogICAgICBzcmM6IFMzCiAgICAtIG5hbWU6IHJlc3VsdHMvYWJfc3VtbWFyeS5jc3YKICAgICAgcm9sZTogU2F2ZWQgYXJtIHN1bW1hcmllcywgZGlmZmVyZW5jZSwgaW50ZXJ2YWwsIHAtdmFsdWUsIGFuZCBkYXRhIGNvbXBsZXRlbmVzcyBkYXRlCiAgICAgIGdyYWluOiBhcm0gc3VtbWFyeSBwbHVzIGVzdGltYXRlIHJvd3MKICAgICAgc3JjOiBTNAogIGNvZGU6CiAgICAtIHB1cnBvc2U6IEltcGxlbWVudGVkIHBvcHVsYXRpb24gZmlsdGVycwogICAgICBsYW5nOiBzcWwKICAgICAgc3JjOiBTMwogICAgICBleGNlcnB0OiB8CiAgICAgICAgRlJPTSBleHAuYXNzaWdubWVudHMgYQogICAgICAgIEpPSU4gZXhwLmV4cG9zdXJlcyB4CiAgICAgICAgICBPTiB4LnVzZXJfaWQgPSBhLnVzZXJfaWQKICAgICAgICAgQU5EIHguZXhwZXJpbWVudF9pZCA9IGEuZXhwZXJpbWVudF9pZAogICAgICAgICBBTkQgeC5zYXdfdmFyaWFudF9zY3JlZW4gPSAxCiAgICAgICAgV0hFUkUgYS5leHBlcmltZW50X2lkID0gJ2hvbWVfdjInCiAgICAgICAgICBBTkQgYS5hc3NpZ25lZF9hdCA+PSBUSU1FU1RBTVAgJzIwMjYtMDUtMDQgMDA6MDA6MDAnCiAgICAgICAgICBBTkQgYS5hc3NpZ25lZF9hdCA8ICBUSU1FU1RBTVAgJzIwMjYtMDUtMTggMDA6MDA6MDAnCiAgICAgICAgICBBTkQgYS5jb3VudHJ5X2NvZGUgPD4gJ0NOJwogICAgLSBwdXJwb3NlOiBBY3RpdmUtZGF5IG91dGNvbWUgd2luZG93CiAgICAgIGxhbmc6IHNxbAogICAgICBzcmM6IFMzCiAgICAgIGV4Y2VycHQ6IHwKICAgICAgICBTRUxFQ1QgZS51c2VyX2lkLCBEQVRFKGUuZXZlbnRfdHMpIEFTIGFjdGl2aXR5X2RhdGUgICAgICAtLSBldmVudF90cyBpcyBzdG9yZWQgaW4gVVRDCiAgICAgICAgRlJPTSBhcHAuZXZlbnRzIGUKICAgICAgICBHUk9VUCBCWSBlLnVzZXJfaWQsIERBVEUoZS5ldmVudF90cykKICAgICAgICAuLi4KICAgICAgICBBTkQgYWN0LmFjdGl2aXR5X2RhdGUgPiAgcy5hc3NpZ25lZF9kYXRlCiAgICAgICAgQU5EIGFjdC5hY3Rpdml0eV9kYXRlIDw9IERBVEVfQUREKHMuYXNzaWduZWRfZGF0ZSwgMjgpCiAgICAtIHB1cnBvc2U6IERpZmZlcmVuY2UgYW5kIHVuY2VydGFpbnR5CiAgICAgIGxhbmc6IHB5dGhvbgogICAgICBzcmM6IFM1CiAgICAgIGV4Y2VycHQ6IHwKICAgICAgICBkaWZmID0gdHJlYXRtZW50Lm1lYW4oKSAtIGNvbnRyb2wubWVhbigpCiAgICAgICAgc2UgPSBucC5zcXJ0KHRyZWF0bWVudC52YXIoZGRvZj0xKSAvIGxlbih0cmVhdG1lbnQpICsgY29udHJvbC52YXIoZGRvZj0xKSAvIGxlbihjb250cm9sKSkKICAgICAgICB0LCBwID0gc3RhdHMudHRlc3RfaW5kKHRyZWF0bWVudCwgY29udHJvbCwgZXF1YWxfdmFyPUZhbHNlKQogICAgICAgIHJldHVybiB7ImRpZmYiOiBkaWZmLCAiY2lfbG93IjogZGlmZiAtIDEuOTYgKiBzZSwgImNpX2hpZ2giOiBkaWZmICsgMS45NiAqIHNlLCAicCI6IHB9CiAgcmVwcm9kdWNlOgogICAgc3RlcHM6CiAgICAgIC0gUnVuIHNxbC9leHBlcmltZW50X21ldHJpYy5zcWwgdG8gcHJvZHVjZSBhcm0tbGV2ZWwgdXNlcnMsIG1lYW5fYWN0aXZlX2RheXMsIGFuZCBzZF9hY3RpdmVfZGF5cy4KICAgICAgLSBFeHBvcnQgb3Igc3VtbWFyaXplIHBlci11c2VyIGFjdGl2ZV9kYXlzIGJ5IGFybSBhbmQgcnVuIHNyYy9hbmFseXNpcy5weSdzIHN1bW1hcml6ZShjb250cm9sLCB0cmVhdG1lbnQpLgogICAgICAtIENvbXBhcmUgdGhlIHJlc3VsdGluZyBhcm0gc3VtbWFyaWVzIHdpdGggcmVzdWx0cy9hYl9zdW1tYXJ5LmNzdi4KICAgIHJlY2VpcHRzOgogICAgICAtICJDU1YgYXJpdGhtZXRpYyBjaGVjazogdHJlYXRtZW50IG1lYW4gNi42MyAtIGNvbnRyb2wgbWVhbiA2LjQyID0gKzAuMjEgYWN0aXZlIGRheXMuIgogICAgICAtICJTYXZlZCByb3dzIHJlcG9ydCBuID0gNDEsODgwIGNvbnRyb2wgYW5kIDQxLDYwMiB0cmVhdG1lbnQsIHRvdGFsIG4gPSA4Myw0ODIuIgogICAgICAtICJTYXZlZCBpbnRlcnZhbCBpcyAwLjA1IHRvIDAuMzcgd2l0aCBwID0gMC4wMTEgYW5kIGRhdGFfY29tcGxldGVfdGhyb3VnaCA9IDIwMjYtMDYtMjAuIgogICAgZGF0YV9jb21wbGV0ZV90aHJvdWdoOiAiMjAyNi0wNi0yMCIKICAgIHRlc3RzOiA+CiAgICAgIE5vIGV4ZWN1dGFibGUgdGVzdCBmaWxlcyB3ZXJlIHByZXNlbnQgaW4gdGhlIGZpeHR1cmUuIFRoZSBjYXJkIHdhcyBsaW50ZWQgYW5kIHJlbmRlcmVkIHdpdGgKICAgICAgdGhlIG1jYXJkIHRvb2xpbmcuCgpnbG9zc2FyeToKICAtIHRlcm06IGFjdGl2ZSBkYXkKICAgIGFsaWFzZXM6IFthY3RpdmUgZGF5c10KICAgIHBsYWluOiBBIGNhbGVuZGFyIGRhdGUgd2l0aCBhdCBsZWFzdCBvbmUgcmVjb3JkZWQgYXBwIGFjdGl2aXR5IGV2ZW50LgogICAgZXhhY3Q6ICJPbmUgZGlzdGluY3QgREFURShldmVudF90cykgaW4gYXBwLmV2ZW50cyBhZnRlciBncm91cGluZyBieSB1c2VyX2lkLiIKICAtIHRlcm06IEhvbWUgdjIKICAgIHBsYWluOiBUaGUgdHJlYXRtZW50IHZlcnNpb24gb2YgdGhlIGFwcCBob21lIHNjcmVlbiBpbiB0aGlzIGV4cGVyaW1lbnQuCiAgLSB0ZXJtOiBjb250cm9sCiAgICBwbGFpbjogVGhlIGNvbXBhcmlzb24gYXJtIHRoYXQgZGlkIG5vdCBnZXQgSG9tZSB2Mi4KICAtIHRlcm06IHRyZWF0bWVudAogICAgYWxpYXNlczogW3RyZWF0bWVudCB1c2Vyc10KICAgIHBsYWluOiBUaGUgYXJtIGFzc2lnbmVkIHRvIEhvbWUgdjIuCiAgLSB0ZXJtOiBpbnRlbnQtdG8tdHJlYXQKICAgIGFsaWFzZXM6IFtJVFRdCiAgICBwbGFpbjogPgogICAgICBBbiBleHBlcmltZW50IGFuYWx5c2lzIHRoYXQga2VlcHMgZXZlcnlvbmUgaW4gdGhlIGdyb3VwIHRoZXkgd2VyZSBhc3NpZ25lZCB0bywgd2hldGhlciBvcgogICAgICBub3QgdGhleSBmdWxseSBzYXcgb3IgdXNlZCB0aGUgdHJlYXRtZW50LgogIC0gdGVybTogZXhwb3N1cmUgcm93CiAgICBhbGlhc2VzOiBbZXhwb3N1cmVdCiAgICBwbGFpbjogQSByZWNvcmQgdGhhdCB0aGUgdXNlciBzYXcgdGhlIHZhcmlhbnQgc2NyZWVuIGZvciB0aGUgZXhwZXJpbWVudC4KICAtIHRlcm06IFVUQwogICAgcGxhaW46ID4KICAgICAgQSBnbG9iYWwgdGltZSBzdGFuZGFyZC4gSWYgZGF0ZXMgYXJlIGN1dCBpbiBVVEMgaW5zdGVhZCBvZiBhIHVzZXIncyBsb2NhbCB0aW1lLCBldmVudHMgbmVhcgogICAgICBtaWRuaWdodCBjYW4gZmFsbCBvbiBhIGRpZmZlcmVudCBkYXRlLgogIC0gdGVybTogOTUlIGNvbmZpZGVuY2UgaW50ZXJ2YWwKICAgIGFsaWFzZXM6IFs5NSUgQ0ksIGNvbmZpZGVuY2UgaW50ZXJ2YWwsIENJXQogICAgcGxhaW46ID4KICAgICAgQSByYW5nZSBvZiBlZmZlY3Qgc2l6ZXMgdGhhdCBmaXQgdGhlIHNhdmVkIGRhdGEgdW5kZXIgdGhlIHN0YXRpc3RpY2FsIG1vZGVsLiBJdCBkb2VzIG5vdAogICAgICBpbmNsdWRlIGV2ZXJ5IHBvc3NpYmxlIHNvdXJjZSBvZiBiaWFzLgogIC0gdGVybTogV2VsY2ggdC10ZXN0CiAgICBhbGlhc2VzOiBbV2VsY2ggdGVzdF0KICAgIHBsYWluOiBBIHN0YXRpc3RpY2FsIGNvbXBhcmlzb24gb2YgdHdvIGF2ZXJhZ2VzIHRoYXQgYWxsb3dzIHRoZSB0d28gZ3JvdXBzIHRvIGhhdmUgZGlmZmVyZW50IHNwcmVhZHMuCiAgLSB0ZXJtOiByZWxhdGl2ZSBsaWZ0CiAgICBwbGFpbjogPgogICAgICBUaGUgZGlmZmVyZW5jZSBkaXZpZGVkIGJ5IHRoZSBjb21wYXJpc29uIHZhbHVlLiBIZXJlLCAwLjIxIGV4dHJhIGRheXMgZGl2aWRlZCBieSA2LjQyIGNvbnRyb2wKICAgICAgZGF5cyBpcyBhYm91dCAzLjMlLgoKcXVpejoKICAtIGtpbmQ6IGdpc3QKICAgIHE6ICJXaGF0IGlzIHRoZSBzYWZlc3QgcmVhZGluZyBvZiB0aGUgKzAuMjEgaGVhZGxpbmU/IgogICAgb3B0aW9uczoKICAgICAgLSAiSG9tZSB2MiB1c2VycyBpbiB0aGUgc2F2ZWQgYW5hbHlzaXMgYXZlcmFnZWQgMC4yMSBtb3JlIGFjdGl2ZSBkYXlzIHRoYW4gY29udHJvbCB1c2Vycy4iCiAgICAgIC0gIkV2ZXJ5IG5ldyB1c2VyIHdpbGwgYmUgYWN0aXZlIDAuMjEgbW9yZSBkYXlzIHBlciBtb250aC4iCiAgICAgIC0gIlRoZSBhY3RpdmUtZGF5IHJhdGUgcm9zZSBieSAwLjIxJS4iCiAgICBhbnN3ZXI6IDAKICAgIHdoeTogPgogICAgICBUaGUgaGVhZGxpbmUgaXMgYSBkaWZmZXJlbmNlIGluIGF2ZXJhZ2UgZGF5cyBhbW9uZyB1c2VycyByZXRhaW5lZCBpbiB0aGUgc2F2ZWQgYW5hbHlzaXMgdGFibGUsCiAgICAgIG5vdCBhIHBlcmNlbnQgYW5kIG5vdCBhdXRvbWF0aWNhbGx5IGEgY2xhaW0gYWJvdXQgZXZlcnkgbmV3IHVzZXIuCiAgLSBraW5kOiB2ZXJiYXRpbQogICAgcTogIldoaWNoIHVzZXJzIGFyZSBtaXNzaW5nIGZyb20gdGhlIGltcGxlbWVudGVkIGRlbm9taW5hdG9yPyIKICAgIG9wdGlvbnM6CiAgICAgIC0gIlVzZXJzIHdpdGggbm8gYWN0aXZpdHkgZGF0ZSBpbiBkYXlzIDEtMjggYWZ0ZXIgYXNzaWdubWVudC4iCiAgICAgIC0gIlVzZXJzIHdpdGggZXhhY3RseSAyOCBhY3RpdmUgZGF5cy4iCiAgICAgIC0gIlVzZXJzIGFzc2lnbmVkIG9uIDEwIE1heSAyMDI2LiIKICAgIGFuc3dlcjogMAogICAgd2h5OiA+CiAgICAgIFRoZSBwZXJfdXNlciB0YWJsZSBpbm5lciBqb2lucyBhc3NpZ25lZCB1c2VycyB0byBhY3Rpdml0eSBpbiB0aGUgb3V0Y29tZSB3aW5kb3csIHNvIHplcm8tYWN0aXZpdHkKICAgICAgdXNlcnMgZG8gbm90IGNvbnRyaWJ1dGUgYSB6ZXJvLgogIC0ga2luZDogdHJhbnNmZXIKICAgIHE6ID4KICAgICAgQSB1c2VyIGlzIGFzc2lnbmVkIG9uIDEwIE1heSwgdXNlcyB0aGUgYXBwIG9uIDEwIE1heSwgMTEgTWF5LCBhbmQgOCBKdW5lLiBXaGljaCBkYXRlcyBjb3VudD8KICAgIG9wdGlvbnM6CiAgICAgIC0gIjEwIE1heSBhbmQgMTEgTWF5IG9ubHkuIgogICAgICAtICIxMSBNYXkgb25seS4iCiAgICAgIC0gIjExIE1heSBhbmQgNyBKdW5lIG9ubHk7IDggSnVuZSBpcyBkYXkgMjkuIgogICAgYW5zd2VyOiAxCiAgICB3aHk6ID4KICAgICAgVGhlIGltcGxlbWVudGVkIHdpbmRvdyBleGNsdWRlcyBhc3NpZ25tZW50IGRheSBhbmQgaW5jbHVkZXMgZGF0ZXMgdGhyb3VnaCBhc3NpZ25lZF9kYXRlICsgMjguCiAgICAgIEZvciBhIDEwIE1heSBhc3NpZ25tZW50LCAxMSBNYXkgaXMgZGF5IDEgYW5kIDcgSnVuZSBpcyBkYXkgMjg7IDggSnVuZSBpcyBvdXRzaWRlLgoKY2hhbmdlbG9nOgogIC0ge2RhdGU6ICIyMDI2LTA1LTE3IiwgY2hhbmdlOiAiTGFzdCBhc3NpZ25tZW50IGRhdGUgaW5jbHVkZWQgaW4gdGhlIGV4cGVyaW1lbnQgd2luZG93LiJ9CiAgLSB7ZGF0ZTogIjIwMjYtMDYtMjAiLCBjaGFuZ2U6ICJTYXZlZCByZXN1bHQgZGF0YSBjb21wbGV0ZSB0aHJvdWdoIHRoaXMgZGF0ZS4ifQogIC0ge2RhdGU6ICIyMDI2LTEwLTA0IiwgY2hhbmdlOiAiTWV0cmljIGNhcmQgd3JpdHRlbiBmcm9tIGZpeHR1cmUgc3luLWI7IGZvdXIgZGVzY3JpcHRpb24tY29kZSBkaXNjcmVwYW5jaWVzIHJlY29yZGVkLiJ9Cgpzb3VyY2VzOgogIC0gaWQ6IFMxCiAgICBwYXRoOiAiZXZhbC9maXh0dXJlcy9zeW4tYi9SRUFETUUubWQiCiAgICBsaW5lczogIjEtMTUiCiAgICBub3RlOiAiRXhwZXJpbWVudCBkZXNpZ24sIHN0YXRlZCBJVFQsIHByaW1hcnkgbWV0cmljIGRlZmluaXRpb24sIGFuZCByZXBvcnRlZCByZXN1bHQiCiAgLSBpZDogUzIKICAgIHBhdGg6ICJldmFsL2ZpeHR1cmVzL3N5bi1iL3JlYWRvdXQubWQiCiAgICBsaW5lczogIjEtNCIKICAgIG5vdGU6ICJIZWFkbGluZSBsZWFkZXJzaGlwIHJlYWRvdXQiCiAgLSBpZDogUzMKICAgIHBhdGg6ICJldmFsL2ZpeHR1cmVzL3N5bi1iL3NxbC9leHBlcmltZW50X21ldHJpYy5zcWwiCiAgICBsaW5lczogIjEtMzAiCiAgICBub3RlOiAiSW1wbGVtZW50ZWQgcG9wdWxhdGlvbiwgYWN0aXZpdHktZGF0ZSBkZXJpdmF0aW9uLCBvdXRjb21lIHdpbmRvdywgYW5kIGFnZ3JlZ2F0aW9uIgogIC0gaWQ6IFM0CiAgICBwYXRoOiAiZXZhbC9maXh0dXJlcy9zeW4tYi9yZXN1bHRzL2FiX3N1bW1hcnkuY3N2IgogICAgbGluZXM6ICIxLTgiCiAgICBub3RlOiAiU2F2ZWQgZ3JvdXAgbWVhbnMsIHNhbXBsZSBzaXplcywgaW50ZXJ2YWwsIHAtdmFsdWUsIGFuZCBkYXRhIGNvbXBsZXRlbmVzcyBkYXRlIgogIC0gaWQ6IFM1CiAgICBwYXRoOiAiZXZhbC9maXh0dXJlcy9zeW4tYi9zcmMvYW5hbHlzaXMucHkiCiAgICBsaW5lczogIjEtOSIKICAgIG5vdGU6ICJXZWxjaCB0LXRlc3QgY2FsY3VsYXRpb24iCg==" download="home-v2-active-days.yaml">Download the spec (YAML)</a>
+      <button class="btn ghost" type="button" data-copy="#spec-yaml">Copy spec</button>
+      <a class="btn ghost" href="home-v2-active-days.methods.html">Methods section</a>
+    </div>
+    <textarea id="spec-yaml" hidden>schema: metric-card/1
+id: home-v2-active-days
+title: Home v2 active-days lift
+subtitle: Treatment-control difference in mean active days after assignment
+status: provisional
+owner: Product analytics
+updated: &#34;2026-10-04&#34;
+question: &gt;
+  Did users assigned to Home v2 have more active app days after assignment than users assigned
+  to control?
+
+gist:
+  sentence: &gt;
+    Among users kept by the saved analysis, Home v2 users had 0.21 more active days than
+    control users in days 1-28 after they were assigned.
+  headline:
+    value: 0.21
+    low: 0.05
+    high: 0.37
+    unit: days
+    decimals: 2
+    label: more active days per treatment user
+    context: &#34;Control users averaged 6.42 active days; treatment users averaged 6.63.&#34;
+  frequency: &gt;
+    For every 100 users in the analysis table, Home v2 adds about 21 active user-days over
+    the 28-day follow-up window.
+  reading:
+    direction: higher_is_better
+    say: &gt;
+      &#34;In the saved analysis, treatment users averaged 0.21 more active days than control users
+      over days 1-28 after assignment.&#34;
+    dont_say: &gt;
+      &#34;Home v2 caused all new users to be active 0.21 more days per month.&#34;
+  key_caveat: &gt;
+    The query is not pure intent-to-treat: it keeps only users joined to an exposure row, excludes
+    China, and drops users with zero recorded activity days in the outcome window.
+  claim_strength: associational
+
+grammar:
+  unit:
+    singular: user
+    plural: users
+    plain: One app user in the Home v2 experiment analysis table.
+    exact: &gt;
+      One user_id from exp.assignments for experiment_id = &#39;home_v2&#39;, after joining to
+      exp.exposures with saw_variant_screen = 1, excluding country_code = &#39;CN&#39;, and requiring
+      at least one joined app.events activity_date in the outcome window.
+    src: S3
+  population:
+    - id: assigned_window
+      plain: Assigned to the Home v2 experiment from 4 May through 17 May 2026.
+      exact: &gt;
+        a.experiment_id = &#39;home_v2&#39; and assigned_at &gt;= TIMESTAMP &#39;2026-05-04 00:00:00&#39;
+        and assigned_at &lt; TIMESTAMP &#39;2026-05-18 00:00:00&#39;.
+      src: S3
+    - id: exposed_non_cn
+      plain: Saw the variant screen and was not in China.
+      exact: &gt;
+        INNER JOIN exp.exposures on user_id and experiment_id with saw_variant_screen = 1;
+        country_code &lt;&gt; &#39;CN&#39;.
+      src: S3
+    - id: active_in_window
+      plain: Had at least one recorded activity day in days 1-28 after assignment.
+      exact: &gt;
+        per_user is built with an INNER JOIN from assigned to activity on act.activity_date &gt;
+        assigned_date and act.activity_date &lt;= DATE_ADD(assigned_date, 28), so users with no
+        activity_date in that interval are not in the final COUNT(*).
+      n_after: 83482
+      src: [S3, S4]
+  anchor:
+    kind: per_unit_event
+    label: Assignment date
+    plain: Each user&#39;s clock starts on their assignment date.
+    exact: &#34;assigned_date = CAST(a.assigned_at AS DATE).&#34;
+    src: S3
+  windows:
+    - id: assignment_entry
+      label: Assignment window
+      start: 0
+      end: 14
+      unit: day
+      role: eligibility
+      plain: The experiment admitted users assigned from 4 May through 17 May 2026.
+      exact: &#34;assigned_at &gt;= 2026-05-04 00:00:00 and assigned_at &lt; 2026-05-18 00:00:00.&#34;
+      src: S3
+    - id: active_days_1_28
+      label: Days 1-28 after assignment
+      start: 1
+      end: 29
+      unit: day
+      role: outcome
+      plain: The 28 calendar dates after the assignment date, excluding assignment day.
+      exact: &#34;act.activity_date &gt; assigned_date AND act.activity_date &lt;= DATE_ADD(assigned_date, 28).&#34;
+      src: S3
+  measures:
+    - id: active_days
+      label: Active days
+      kind: count
+      window: active_days_1_28
+      primary: true
+      plain: Counts how many different dates had any app activity in the outcome window.
+      exact: &gt;
+        COUNT(DISTINCT act.activity_date), where activity_date is DATE(e.event_ts) from
+        app.events grouped by user_id and UTC-derived activity_date.
+      src: S3
+  aggregate:
+    kind: mean
+    measure: active_days
+    numerator: sum of per-user active_days
+    denominator: users retained in each arm&#39;s per_user table
+    plain: Average the active-day counts within each experiment arm.
+    exact: &#34;AVG(active_days) grouped by arm; denominator is COUNT(*) from per_user.&#34;
+    src: S3
+  groups:
+    - id: control
+      label: Control
+      role: control
+      plain: Users assigned to the control arm who passed the implemented filters.
+      exact: &#34;arm = &#39;control&#39; in the per_user export.&#34;
+      src: S4
+    - id: treatment
+      label: Home v2
+      role: treated
+      plain: Users assigned to the Home v2 treatment arm who passed the implemented filters.
+      exact: &#34;arm = &#39;treatment&#39; in the per_user export.&#34;
+      src: S4
+  comparison:
+    kind: difference
+    target: descriptive
+    plain: Subtract the control average from the treatment average.
+    exact: &#34;diff = treatment.mean() - control.mean(); from the summary table, 6.63 - 6.42 = 0.21 days.&#34;
+    formula: &#34;mean_active_days_treatment - mean_active_days_control&#34;
+    src: [S4, S5]
+  uncertainty:
+    method: Welch t-test normal-approximation interval
+    level: 0.95
+    plain: &gt;
+      The saved interval uses the spread of per-user active days in each arm to estimate sampling
+      uncertainty around the treatment-control difference.
+    exact: &gt;
+      se = sqrt(var_treatment / n_treatment + var_control / n_control); interval = diff +/- 1.96 * se.
+      p comes from scipy.stats.ttest_ind(..., equal_var=False).
+    known_gaps: &gt;
+      The interval does not cover bias from post-assignment filtering, UTC-vs-local date mismatch,
+      missing events, or whether zero-activity assigned users were dropped.
+    src: [S4, S5]
+
+results:
+  status: measured
+  as_of: &#34;2026-06-20&#34;
+  unit: days
+  data_complete_through: &#34;2026-06-20&#34;
+  latest_anchor: &#34;2026-05-17&#34;
+  measure: active_days
+  cells:
+    - {group: control, value: 6.42, n: 41880}
+    - {group: treatment, value: 6.63, n: 41602}
+  estimate: {value: 0.21, low: 0.05, high: 0.37}
+
+example:
+  name: Alex
+  intro: &gt;
+    Alex is assigned to Home v2 on 10 May 2026, sees the variant screen, is outside China, and
+    has app activity on several later dates.
+  anchor_date: &#34;2026-05-10&#34;
+  events:
+    - {at: 0, label: &#34;Assigned to Home v2 and sees the variant screen&#34;}
+    - {at: 0, label: &#34;Uses the app on assignment day; this date does not count&#34;, counts: false}
+    - {at: 1, label: &#34;Uses the app the next day&#34;, counts: true}
+    - {at: 28, label: &#34;Uses the app on day 28&#34;, counts: true}
+    - {at: 29, label: &#34;Uses the app on day 29; outside the window&#34;, counts: false}
+  outcome: &gt;
+    Alex contributes 2 active days to the treatment average. Assignment-day activity and day-29
+    activity do not count.
+
+fine_print:
+  judgment_calls:
+    - decision: What to treat as the headline
+      choice: &gt;
+        Use the 0.21-day treatment-control difference, because both readouts emphasize that number
+        and the CSV stores the matching difference and interval.
+      alternatives: &gt;
+        A card could instead headline the treatment mean (6.63 days), the relative lift (+3.3%),
+        or an intent-to-treat rerun if zero-activity assigned users were available.
+      why: The user asked for the headline number readers see, and the readout repeats +0.21 days.
+      impact: &gt;
+        The card focuses on the difference in means and treats the relative lift as a secondary
+        restatement.
+      src: [S1, S2, S4]
+    - decision: How to state causality
+      choice: &gt;
+        Mark the saved result as associational, even though the experiment assignment was randomized.
+      alternatives: &gt;
+        If the analysis were rerun on all assigned users as true intent-to-treat, the claim strength
+        could be causal for the randomized population.
+      why: &gt;
+        The implemented SQL applies post-assignment exposure and activity filters, so the analyzed
+        denominator may no longer preserve the original randomization.
+      impact: &gt;
+        This prevents the card from repeating the readout&#39;s broader causal claim until the denominator
+        is verified or rerun.
+      src: [S2, S3]
+  caveats:
+    - title: Not pure intent-to-treat
+      text: &gt;
+        The readout says every assigned user is analyzed in their assigned arm, but the query keeps only
+        users with a matching exposure row and at least one post-assignment activity day. If Home v2
+        changes exposure or whether a user has any activity at all, the reported mean is conditional
+        on a post-randomization outcome.
+      effect: limits_scope
+      severity: high
+      src: [S1, S3]
+    - title: Zero-activity users are not in the denominator
+      text: &gt;
+        Because per_user uses an inner join to activity, users with no recorded active days in days
+        1-28 are absent rather than counted as zero active days. This likely overstates each arm&#39;s
+        average active days; the direction for the treatment-control difference is unknown.
+      effect: unknown_direction
+      severity: high
+      src: S3
+    - title: Time zone mismatch
+      text: &gt;
+        The readout says activity is counted in each user&#39;s local time zone. The query turns UTC event
+        times into dates before counting active days.
+      effect: unknown_direction
+      severity: medium
+      src: [S1, S3]
+    - title: Scope is narrower than all new users
+      text: &gt;
+        The implemented population excludes China and requires seeing the variant screen. The saved
+        result should not be generalized to all new users without checking those exclusions.
+      effect: limits_scope
+      severity: medium
+      src: [S2, S3]
+  misreadings:
+    - wrong: &#34;Home v2 caused all new users to be active 0.21 more days per month.&#34;
+      right: &gt;
+        The saved analysis shows a 0.21-day difference among exposed, non-CN users retained in the
+        per_user table over days 1-28 after assignment.
+    - wrong: &#34;0.21 days is a 0.21% lift.&#34;
+      right: &gt;
+        It is an absolute difference in days. Relative to the 6.42-day control average, it is about
+        a 3.3% lift.
+    - wrong: &#34;The denominator is all assigned users.&#34;
+      right: &gt;
+        The SQL denominator is users in per_user, after the exposure join, China exclusion, and inner
+        join to activity.
+    - wrong: &#34;Days 1-28 are local-calendar days.&#34;
+      right: &gt;
+        The SQL derives dates with DATE(event_ts), and the source comment says event_ts is stored in UTC.
+  discrepancies:
+    - topic: Intent-to-treat denominator
+      described: &gt;
+        README says every assigned user is analyzed in the arm they were assigned to.
+      implemented: &gt;
+        assigned joins to exposures with saw_variant_screen = 1, then per_user inner joins to activity,
+        excluding assigned users without a matching exposure row or without activity in days 1-28.
+      impact: &gt;
+        Narrows the denominator from all assigned users to exposed active users. The impact on the
+        +0.21-day difference is unknown from saved outputs.
+      src: [S1, S3]
+    - topic: Geographic scope
+      described: &gt;
+        The readouts describe randomized users or all new users without a country exclusion.
+      implemented: &#34;The SQL filters a.country_code &lt;&gt; &#39;CN&#39;.&#34;
+      impact: Results do not cover China. Direction and size of any difference are unknown.
+      src: [S2, S3]
+    - topic: Time zone for active dates
+      described: &gt;
+        README says active days use the user&#39;s local time zone.
+      implemented: &gt;
+        activity_date is DATE(e.event_ts), and the SQL comment says event_ts is stored in UTC.
+      impact: &gt;
+        Activity near local midnight can land on a different date. The effect on distinct active-day
+        counts is unknown.
+      src: [S1, S3]
+    - topic: Breadth of causal claim
+      described: &gt;
+        Readout says Home v2 causes users to be active 0.21 more days a month and applies to all new users.
+      implemented: &gt;
+        The code estimates a treatment-control difference over days 1-28 among exposed, non-CN users
+        who had at least one activity day in the outcome window.
+      impact: &gt;
+        The implemented result is narrower than the readout claim. A true all-assigned ITT estimate
+        could be smaller or larger.
+      src: [S2, S3]
+
+spec:
+  estimand:
+    population: &gt;
+      Users assigned to home_v2 from 2026-05-04 through 2026-05-17, excluding China, joined to a
+      saw_variant_screen exposure row, and present in app.events on at least one date in days 1-28.
+    exposure: Home v2 treatment assignment versus control assignment, as labeled by arm.
+    time_zero: CAST(assigned_at AS DATE) for each user.
+    variable: &gt;
+      Count of distinct UTC-derived app activity dates greater than assigned_date and less than or
+      equal to assigned_date plus 28 days.
+    intercurrent_events: &gt;
+      The saved SQL does not specify special handling for uninstall, churn, travel, or missing events.
+      Users with no activity in the window are excluded by the inner join rather than retained with zero.
+    summary: &gt;
+      Difference in arm-level means, treatment minus control, with a Welch t-test confidence interval.
+  parameters:
+    - {name: experiment_id, value: home_v2, meaning: Experiment analyzed}
+    - {name: assignment_start, value: &#34;2026-05-04 00:00:00&#34;, meaning: Inclusive assignment start}
+    - {name: assignment_end, value: &#34;2026-05-18 00:00:00&#34;, meaning: Exclusive assignment end}
+    - {name: outcome_start, value: 1, meaning: First included day after assignment}
+    - {name: outcome_end, value: 28, meaning: Last included day after assignment}
+    - {name: excluded_country, value: CN, meaning: Country excluded in SQL}
+  lineage:
+    - name: exp.assignments
+      role: Experiment assignment and arm labels
+      grain: user_id x experiment assignment
+      filters: &#34;experiment_id = home_v2; assigned_at in [2026-05-04, 2026-05-18); country_code &lt;&gt; CN&#34;
+      src: S3
+    - name: exp.exposures
+      role: Exposure filter
+      grain: user_id x experiment exposure
+      filters: &#34;same experiment_id; saw_variant_screen = 1&#34;
+      src: S3
+    - name: app.events
+      role: Daily app activity
+      grain: event
+      filters: &#34;grouped to one activity_date per user_id using DATE(event_ts)&#34;
+      src: S3
+    - name: results/ab_summary.csv
+      role: Saved arm summaries, difference, interval, p-value, and data completeness date
+      grain: arm summary plus estimate rows
+      src: S4
+  code:
+    - purpose: Implemented population filters
+      lang: sql
+      src: S3
+      excerpt: |
+        FROM exp.assignments a
+        JOIN exp.exposures x
+          ON x.user_id = a.user_id
+         AND x.experiment_id = a.experiment_id
+         AND x.saw_variant_screen = 1
+        WHERE a.experiment_id = &#39;home_v2&#39;
+          AND a.assigned_at &gt;= TIMESTAMP &#39;2026-05-04 00:00:00&#39;
+          AND a.assigned_at &lt;  TIMESTAMP &#39;2026-05-18 00:00:00&#39;
+          AND a.country_code &lt;&gt; &#39;CN&#39;
+    - purpose: Active-day outcome window
+      lang: sql
+      src: S3
+      excerpt: |
+        SELECT e.user_id, DATE(e.event_ts) AS activity_date      -- event_ts is stored in UTC
+        FROM app.events e
+        GROUP BY e.user_id, DATE(e.event_ts)
+        ...
+        AND act.activity_date &gt;  s.assigned_date
+        AND act.activity_date &lt;= DATE_ADD(s.assigned_date, 28)
+    - purpose: Difference and uncertainty
+      lang: python
+      src: S5
+      excerpt: |
+        diff = treatment.mean() - control.mean()
+        se = np.sqrt(treatment.var(ddof=1) / len(treatment) + control.var(ddof=1) / len(control))
+        t, p = stats.ttest_ind(treatment, control, equal_var=False)
+        return {&#34;diff&#34;: diff, &#34;ci_low&#34;: diff - 1.96 * se, &#34;ci_high&#34;: diff + 1.96 * se, &#34;p&#34;: p}
+  reproduce:
+    steps:
+      - Run sql/experiment_metric.sql to produce arm-level users, mean_active_days, and sd_active_days.
+      - Export or summarize per-user active_days by arm and run src/analysis.py&#39;s summarize(control, treatment).
+      - Compare the resulting arm summaries with results/ab_summary.csv.
+    receipts:
+      - &#34;CSV arithmetic check: treatment mean 6.63 - control mean 6.42 = +0.21 active days.&#34;
+      - &#34;Saved rows report n = 41,880 control and 41,602 treatment, total n = 83,482.&#34;
+      - &#34;Saved interval is 0.05 to 0.37 with p = 0.011 and data_complete_through = 2026-06-20.&#34;
+    data_complete_through: &#34;2026-06-20&#34;
+    tests: &gt;
+      No executable test files were present in the fixture. The card was linted and rendered with
+      the mcard tooling.
+
+glossary:
+  - term: active day
+    aliases: [active days]
+    plain: A calendar date with at least one recorded app activity event.
+    exact: &#34;One distinct DATE(event_ts) in app.events after grouping by user_id.&#34;
+  - term: Home v2
+    plain: The treatment version of the app home screen in this experiment.
+  - term: control
+    plain: The comparison arm that did not get Home v2.
+  - term: treatment
+    aliases: [treatment users]
+    plain: The arm assigned to Home v2.
+  - term: intent-to-treat
+    aliases: [ITT]
+    plain: &gt;
+      An experiment analysis that keeps everyone in the group they were assigned to, whether or
+      not they fully saw or used the treatment.
+  - term: exposure row
+    aliases: [exposure]
+    plain: A record that the user saw the variant screen for the experiment.
+  - term: UTC
+    plain: &gt;
+      A global time standard. If dates are cut in UTC instead of a user&#39;s local time, events near
+      midnight can fall on a different date.
+  - term: 95% confidence interval
+    aliases: [95% CI, confidence interval, CI]
+    plain: &gt;
+      A range of effect sizes that fit the saved data under the statistical model. It does not
+      include every possible source of bias.
+  - term: Welch t-test
+    aliases: [Welch test]
+    plain: A statistical comparison of two averages that allows the two groups to have different spreads.
+  - term: relative lift
+    plain: &gt;
+      The difference divided by the comparison value. Here, 0.21 extra days divided by 6.42 control
+      days is about 3.3%.
+
+quiz:
+  - kind: gist
+    q: &#34;What is the safest reading of the +0.21 headline?&#34;
+    options:
+      - &#34;Home v2 users in the saved analysis averaged 0.21 more active days than control users.&#34;
+      - &#34;Every new user will be active 0.21 more days per month.&#34;
+      - &#34;The active-day rate rose by 0.21%.&#34;
+    answer: 0
+    why: &gt;
+      The headline is a difference in average days among users retained in the saved analysis table,
+      not a percent and not automatically a claim about every new user.
+  - kind: verbatim
+    q: &#34;Which users are missing from the implemented denominator?&#34;
+    options:
+      - &#34;Users with no activity date in days 1-28 after assignment.&#34;
+      - &#34;Users with exactly 28 active days.&#34;
+      - &#34;Users assigned on 10 May 2026.&#34;
+    answer: 0
+    why: &gt;
+      The per_user table inner joins assigned users to activity in the outcome window, so zero-activity
+      users do not contribute a zero.
+  - kind: transfer
+    q: &gt;
+      A user is assigned on 10 May, uses the app on 10 May, 11 May, and 8 June. Which dates count?
+    options:
+      - &#34;10 May and 11 May only.&#34;
+      - &#34;11 May only.&#34;
+      - &#34;11 May and 7 June only; 8 June is day 29.&#34;
+    answer: 1
+    why: &gt;
+      The implemented window excludes assignment day and includes dates through assigned_date + 28.
+      For a 10 May assignment, 11 May is day 1 and 7 June is day 28; 8 June is outside.
+
+changelog:
+  - {date: &#34;2026-05-17&#34;, change: &#34;Last assignment date included in the experiment window.&#34;}
+  - {date: &#34;2026-06-20&#34;, change: &#34;Saved result data complete through this date.&#34;}
+  - {date: &#34;2026-10-04&#34;, change: &#34;Metric card written from fixture syn-b; four description-code discrepancies recorded.&#34;}
+
+sources:
+  - id: S1
+    path: &#34;eval/fixtures/syn-b/README.md&#34;
+    lines: &#34;1-15&#34;
+    note: &#34;Experiment design, stated ITT, primary metric definition, and reported result&#34;
+  - id: S2
+    path: &#34;eval/fixtures/syn-b/readout.md&#34;
+    lines: &#34;1-4&#34;
+    note: &#34;Headline leadership readout&#34;
+  - id: S3
+    path: &#34;eval/fixtures/syn-b/sql/experiment_metric.sql&#34;
+    lines: &#34;1-30&#34;
+    note: &#34;Implemented population, activity-date derivation, outcome window, and aggregation&#34;
+  - id: S4
+    path: &#34;eval/fixtures/syn-b/results/ab_summary.csv&#34;
+    lines: &#34;1-8&#34;
+    note: &#34;Saved group means, sample sizes, interval, p-value, and data completeness date&#34;
+  - id: S5
+    path: &#34;eval/fixtures/syn-b/src/analysis.py&#34;
+    lines: &#34;1-9&#34;
+    note: &#34;Welch t-test calculation&#34;
+</textarea>
+
+    <h3 class="sub">Estimand</h3>
+    <table class="kv">
+      <tr><th scope="row">Population</th><td>Users assigned to home_v2 from 2026-05-04 through 2026-05-17, excluding China, joined to a saw_variant_screen exposure row, and present in app.events on at least one date in days 1-28.</td></tr>
+<tr><th scope="row">Exposure / contrast</th><td>Home v2 treatment assignment versus control assignment, as labeled by arm.</td></tr><tr><th scope="row">Time zero</th><td>CAST(assigned_at AS DATE) for each user.</td></tr>      <tr><th scope="row">Variable</th><td>Count of distinct UTC-derived app activity dates greater than assigned_date and less than or equal to assigned_date plus 28 days.</td></tr>
+<tr><th scope="row">Intercurrent events</th><td>The saved SQL does not specify special handling for uninstall, churn, travel, or missing events. Users with no activity in the window are excluded by the inner join rather than retained with zero.</td></tr>      <tr><th scope="row">Summary measure</th><td>Difference in arm-level means, treatment minus control, with a Welch t-test confidence interval.</td></tr>
+<tr><th scope="row">Target</th><td>descriptive: No causal target; a comparison of observed numbers</td></tr>    </table>
+
+    <h3 class="sub">Where the description and the code disagree</h3>
+    <div class="discrep">
+      <article>
+        <h4>Intent-to-treat denominator</h4>
+        <div class="dv"><div><span>Described</span><p>README says every assigned user is analyzed in the arm they were assigned to.</p></div><div><span>Implemented</span><p>assigned joins to exposures with saw_variant_screen = 1, then per_user inner joins to activity, excluding assigned users without a matching exposure row or without activity in days 1-28.</p></div></div>
+<p class="impact"><b>Impact:</b> Narrows the denominator from all assigned users to exposed active users. The impact on the +0.21-day difference is unknown from saved outputs.</p><span class="src" title="eval/fixtures/syn-b/README.md">S1</span><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>      </article>
+      <article>
+        <h4>Geographic scope</h4>
+        <div class="dv"><div><span>Described</span><p>The readouts describe randomized users or all new users without a country exclusion.</p></div><div><span>Implemented</span><p>The SQL filters a.country_code &lt;&gt; &#x27;CN&#x27;.</p></div></div>
+<p class="impact"><b>Impact:</b> Results do not cover China. Direction and size of any difference are unknown.</p><span class="src" title="eval/fixtures/syn-b/readout.md">S2</span><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>      </article>
+      <article>
+        <h4>Time zone for active dates</h4>
+        <div class="dv"><div><span>Described</span><p>README says active days use the user&#x27;s local time zone.</p></div><div><span>Implemented</span><p>activity_date is DATE(e.event_ts), and the SQL comment says event_ts is stored in UTC.</p></div></div>
+<p class="impact"><b>Impact:</b> Activity near local midnight can land on a different date. The effect on distinct active-day counts is unknown.</p><span class="src" title="eval/fixtures/syn-b/README.md">S1</span><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>      </article>
+      <article>
+        <h4>Breadth of causal claim</h4>
+        <div class="dv"><div><span>Described</span><p>Readout says Home v2 causes users to be active 0.21 more days a month and applies to all new users.</p></div><div><span>Implemented</span><p>The code estimates a treatment-control difference over days 1-28 among exposed, non-CN users who had at least one activity day in the outcome window.</p></div></div>
+<p class="impact"><b>Impact:</b> The implemented result is narrower than the readout claim. A true all-assigned ITT estimate could be smaller or larger.</p><span class="src" title="eval/fixtures/syn-b/readout.md">S2</span><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span>      </article>
+    </div>
+
+    <h3 class="sub">Rules as implemented</h3>
+    <table class="rules">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Exact rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+<tr><th scope="row">Eligibility 1</th><td>a.experiment_id = &#x27;home_v2&#x27; and assigned_at &gt;= TIMESTAMP &#x27;2026-05-04 00:00:00&#x27; and assigned_at &lt; TIMESTAMP &#x27;2026-05-18 00:00:00&#x27;.</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr><tr><th scope="row">Eligibility 2</th><td>INNER JOIN exp.exposures on user_id and experiment_id with saw_variant_screen = 1; country_code &lt;&gt; &#x27;CN&#x27;.</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr><tr><th scope="row">Eligibility 3<br><span class="muted">83,482 remain</span></th><td>per_user is built with an INNER JOIN from assigned to activity on act.activity_date &gt; assigned_date and act.activity_date &lt;= DATE_ADD(assigned_date, 28), so users with no activity_date in that interval are not in the final COUNT(*).</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span><span class="src" title="eval/fixtures/syn-b/results/ab_summary.csv">S4</span></td></tr>      <tr><th scope="row">Time zero</th><td>assigned_date = CAST(a.assigned_at AS DATE).</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr>
+<tr><th scope="row">Assignment window<br><span class="muted">[0, 14) days</span></th><td>assigned_at &gt;= 2026-05-04 00:00:00 and assigned_at &lt; 2026-05-18 00:00:00.</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr><tr><th scope="row">Days 1-28 after assignment<br><span class="muted">[1, 29) days</span></th><td>act.activity_date &gt; assigned_date AND act.activity_date &lt;= DATE_ADD(assigned_date, 28).</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr><tr><th scope="row">Active days<br><span class="muted">count</span></th><td>COUNT(DISTINCT act.activity_date), where activity_date is DATE(e.event_ts) from app.events grouped by user_id and UTC-derived activity_date.</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr>      <tr><th scope="row">Aggregate</th><td>AVG(active_days) grouped by arm; denominator is COUNT(*) from per_user.</td><td><span class="src" title="eval/fixtures/syn-b/sql/experiment_metric.sql">S3</span></td></tr>
+<tr><th scope="row">Comparison</th><td>diff = treatment.mean() - control.mean(); from the summary table, 6.63 - 6.42 = 0.21 days.</td><td><span class="src" title="eval/fixtures/syn-b/results/ab_summary.csv">S4</span><span class="src" title="eval/fixtures/syn-b/src/analysis.py">S5</span></td></tr><tr><th scope="row">Uncertainty</th><td>se = sqrt(var_treatment / n_treatment + var_control / n_control); interval = diff +/- 1.96 * se. p comes from scipy.stats.ttest_ind(..., equal_var=False).</td><td><span class="src" title="eval/fixtures/syn-b/results/ab_summary.csv">S4</span><span class="src" title="eval/fixtures/syn-b/src/analysis.py">S5</span></td></tr>      </tbody>
+    </table>
+
+    <h3 class="sub">Numbers per group</h3>
+    <table class="data">
+      <thead><tr><th scope="col">Group</th><th scope="col">Definition</th><th scope="col">Value</th><th scope="col">n</th></tr></thead>
+      <tbody><tr><th scope="row">Control</th><td>arm = &#x27;control&#x27; in the per_user export.</td><td>6.42</td><td>41,880</td></tr><tr><th scope="row">Home v2</th><td>arm = &#x27;treatment&#x27; in the per_user export.</td><td>6.63</td><td>41,602</td></tr></tbody>
+    </table>
+<p class="note">Check: <code>6.63 − 6.42 = 0.210</code> (headline 0.21).</p>
+    <h3 class="sub">Parameters</h3>
+    <table class="data"><thead><tr><th scope="col">Name</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead>
+      <tbody><tr><td><code>experiment_id</code></td><td>home_v2</td><td>Experiment analyzed</td></tr><tr><td><code>assignment_start</code></td><td>2026-05-04 00:00:00</td><td>Inclusive assignment start</td></tr><tr><td><code>assignment_end</code></td><td>2026-05-18 00:00:00</td><td>Exclusive assignment end</td></tr><tr><td><code>outcome_start</code></td><td>1</td><td>First included day after assignment</td></tr><tr><td><code>outcome_end</code></td><td>28</td><td>Last included day after assignment</td></tr><tr><td><code>excluded_country</code></td><td>CN</td><td>Country excluded in SQL</td></tr></tbody></table>
+
+    <h3 class="sub">Data lineage</h3>
+    <ol class="lineage">
+      <li><code>exp.assignments</code><p>Experiment assignment and arm labels</p><p class="muted">Grain: user_id x experiment assignment · Filters: experiment_id = home_v2; assigned_at in [2026-05-04, 2026-05-18); country_code &lt;&gt; CN</p></li>
+      <li><code>exp.exposures</code><p>Exposure filter</p><p class="muted">Grain: user_id x experiment exposure · Filters: same experiment_id; saw_variant_screen = 1</p></li>
+      <li><code>app.events</code><p>Daily app activity</p><p class="muted">Grain: event · Filters: grouped to one activity_date per user_id using DATE(event_ts)</p></li>
+      <li><code>results/ab_summary.csv</code><p>Saved arm summaries, difference, interval, p-value, and data completeness date</p><p class="muted">Grain: arm summary plus estimate rows</p></li>
+    </ol>
+
+    <h3 class="sub">Code that defines it</h3>
+    <figure class="code">
+      <figcaption><span>Implemented population filters</span><span class="path">eval/fixtures/syn-b/sql/experiment_metric.sql:1-30</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sql">FROM exp.assignments a
+JOIN exp.exposures x
+  ON x.user_id = a.user_id
+ AND x.experiment_id = a.experiment_id
+ AND x.saw_variant_screen = 1
+WHERE a.experiment_id = &#39;home_v2&#39;
+  AND a.assigned_at &gt;= TIMESTAMP &#39;2026-05-04 00:00:00&#39;
+  AND a.assigned_at &lt;  TIMESTAMP &#39;2026-05-18 00:00:00&#39;
+  AND a.country_code &lt;&gt; &#39;CN&#39;</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>Active-day outcome window</span><span class="path">eval/fixtures/syn-b/sql/experiment_metric.sql:1-30</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-sql">SELECT e.user_id, DATE(e.event_ts) AS activity_date      -- event_ts is stored in UTC
+FROM app.events e
+GROUP BY e.user_id, DATE(e.event_ts)
+...
+AND act.activity_date &gt;  s.assigned_date
+AND act.activity_date &lt;= DATE_ADD(s.assigned_date, 28)</code></pre>
+    </figure>
+    <figure class="code">
+      <figcaption><span>Difference and uncertainty</span><span class="path">eval/fixtures/syn-b/src/analysis.py:1-9</span><button type="button" class="copy" data-copy-next>Copy</button></figcaption>
+      <pre><code class="lang-python">diff = treatment.mean() - control.mean()
+se = np.sqrt(treatment.var(ddof=1) / len(treatment) + control.var(ddof=1) / len(control))
+t, p = stats.ttest_ind(treatment, control, equal_var=False)
+return {&#34;diff&#34;: diff, &#34;ci_low&#34;: diff - 1.96 * se, &#34;ci_high&#34;: diff + 1.96 * se, &#34;p&#34;: p}</code></pre>
+    </figure>
+
+    <h3 class="sub">Rebuild it</h3>
+<ol class="checklist"><li><label><input type="checkbox"> Run sql/experiment_metric.sql to produce arm-level users, mean_active_days, and sd_active_days.</label></li><li><label><input type="checkbox"> Export or summarize per-user active_days by arm and run src/analysis.py&#x27;s summarize(control, treatment).</label></li><li><label><input type="checkbox"> Compare the resulting arm summaries with results/ab_summary.csv.</label></li></ol><p><b>Data complete through:</b> 2026-06-20</p><p><b>Receipts:</b></p><ul><li>CSV arithmetic check: treatment mean 6.63 - control mean 6.42 = +0.21 active days.</li><li>Saved rows report n = 41,880 control and 41,602 treatment, total n = 83,482.</li><li>Saved interval is 0.05 to 0.37 with p = 0.011 and data_complete_through = 2026-06-20.</li></ul><p><b>Tests:</b> No executable test files were present in the fixture. The card was linted and rendered with the mcard tooling.</p>
+    <h3 class="sub">Sources</h3>
+    <ol class="sources"><li id="src-S1"><span class="src">S1</span> <code>eval/fixtures/syn-b/README.md</code> <span class="muted">lines 1-15</span> · Experiment design, stated ITT, primary metric definition, and reported result</li><li id="src-S2"><span class="src">S2</span> <code>eval/fixtures/syn-b/readout.md</code> <span class="muted">lines 1-4</span> · Headline leadership readout</li><li id="src-S3"><span class="src">S3</span> <code>eval/fixtures/syn-b/sql/experiment_metric.sql</code> <span class="muted">lines 1-30</span> · Implemented population, activity-date derivation, outcome window, and aggregation</li><li id="src-S4"><span class="src">S4</span> <code>eval/fixtures/syn-b/results/ab_summary.csv</code> <span class="muted">lines 1-8</span> · Saved group means, sample sizes, interval, p-value, and data completeness date</li><li id="src-S5"><span class="src">S5</span> <code>eval/fixtures/syn-b/src/analysis.py</code> <span class="muted">lines 1-9</span> · Welch t-test calculation</li></ol>
+
+    <h3 class="sub">Change log</h3>
+    <ul class="changelog"><li><time>2026-05-17</time> Last assignment date included in the experiment window.</li><li><time>2026-06-20</time> Saved result data complete through this date.</li><li><time>2026-10-04</time> Metric card written from fixture syn-b; four description-code discrepancies recorded.</li></ul>
+
+    <details class="quality">
+      <summary>Card quality checks: 0 errors · 0 warnings</summary>
+      <ul><li class="lint-info"><b>info</b> <code>recompute</code> estimate reproduced from cells: 6.63 − 6.42 = 0.210</li></ul>
+    </details>
+  </div>
+</section>
+
+
+<section id="check" class="level level-check" aria-labelledby="check-h">
+  <div class="wrap">
+    <p class="eyebrow">Check yourself</p>
+    <h2 id="check-h">Could you explain it to a colleague?</h2>
+    <div class="quiz">
+      <fieldset class="q" data-answer="0">
+        <legend><span class="qkind">Big picture</span>What is the safest reading of the +0.21 headline?</legend>
+<label><input type="radio" name="q0" value="0"> Home v2 users in the saved analysis averaged 0.21 more active days than control users.</label><label><input type="radio" name="q0" value="1"> Every new user will be active 0.21 more days per month.</label><label><input type="radio" name="q0" value="2"> The active-day rate rose by 0.21%.</label>        <p class="why" hidden>The headline is a difference in average days among users retained in the saved analysis table, not a percent and not automatically a claim about every new user.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="0">
+        <legend><span class="qkind">Detail</span>Which users are missing from the implemented denominator?</legend>
+<label><input type="radio" name="q1" value="0"> Users with no activity date in days 1-28 after assignment.</label><label><input type="radio" name="q1" value="1"> Users with exactly 28 active days.</label><label><input type="radio" name="q1" value="2"> Users assigned on 10 May 2026.</label>        <p class="why" hidden>The per_user table inner joins assigned users to activity in the outcome window, so zero-activity users do not contribute a zero.</p>
+      </fieldset>
+      <fieldset class="q" data-answer="1">
+        <legend><span class="qkind">Apply it</span>A user is assigned on 10 May, uses the app on 10 May, 11 May, and 8 June. Which dates count?</legend>
+<label><input type="radio" name="q2" value="0"> 10 May and 11 May only.</label><label><input type="radio" name="q2" value="1"> 11 May only.</label><label><input type="radio" name="q2" value="2"> 11 May and 7 June only; 8 June is day 29.</label>        <p class="why" hidden>The implemented window excludes assignment day and includes dates through assigned_date + 28. For a 10 May assignment, 11 May is day 1 and 7 June is day 28; 8 June is outside.</p>
+      </fieldset>
+    </div>
+    <div class="teachback">
+      <h3>Explain it back</h3>
+      <p>Write one or two sentences as if telling a colleague. Then compare with the checklist.</p>
+      <label class="sr" for="tb">Your explanation</label>
+      <textarea id="tb" rows="3" placeholder="This number is…"></textarea>
+      <button type="button" class="btn" data-reveal="#tb-check">Compare</button>
+      <div id="tb-check" hidden>
+        <p>A complete explanation mentions:</p>
+        <ul class="tb-list"><li><label><input type="checkbox"> <b>Who is counted</b> — assigned to the Home v2 experiment from 4 May through 17 May 2026; saw the variant screen and was not in China; had at least one recorded activity day in days 1-28 after assignment</label></li><li><label><input type="checkbox"> <b>Over what time</b> — Days 1-28 after assignment: days 1–28 after the assignment date</label></li><li><label><input type="checkbox"> <b>What counts</b> — Counts how many different dates had any app activity in the outcome window.</label></li><li><label><input type="checkbox"> <b>Compared with what</b> — Subtract the control average from the treatment average.</label></li><li><label><input type="checkbox"> <b>The main limitation</b> — The query is not pure intent-to-treat: it keeps only users joined to an exposure row, excludes China, and drops users with zero recorded activity days in the outcome window.</label></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="glossary" class="level glossary" aria-labelledby="gl-h">
+  <div class="wrap">
+    <h2 id="gl-h">Glossary</h2>
+    <dl>
+      <div><dt>95% confidence interval <span class="muted">(95% CI, confidence interval, CI)</span></dt><dd>A range of effect sizes that fit the saved data under the statistical model. It does not include every possible source of bias.</dd></div>
+      <div><dt>active day <span class="muted">(active days)</span></dt><dd>A calendar date with at least one recorded app activity event.<br><code>One distinct DATE(event_ts) in app.events after grouping by user_id.</code></dd></div>
+      <div><dt>control</dt><dd>The comparison arm that did not get Home v2.</dd></div>
+      <div><dt>exposure row <span class="muted">(exposure)</span></dt><dd>A record that the user saw the variant screen for the experiment.</dd></div>
+      <div><dt>Home v2</dt><dd>The treatment version of the app home screen in this experiment.</dd></div>
+      <div><dt>intent-to-treat <span class="muted">(ITT)</span></dt><dd>An experiment analysis that keeps everyone in the group they were assigned to, whether or not they fully saw or used the treatment.</dd></div>
+      <div><dt>relative lift</dt><dd>The difference divided by the comparison value. Here, 0.21 extra days divided by 6.42 control days is about 3.3%.</dd></div>
+      <div><dt>treatment <span class="muted">(treatment users)</span></dt><dd>The arm assigned to Home v2.</dd></div>
+      <div><dt>UTC</dt><dd>A global time standard. If dates are cut in UTC instead of a user&#39;s local time, events near midnight can fall on a different date.</dd></div>
+      <div><dt>Welch t-test <span class="muted">(Welch test)</span></dt><dd>A statistical comparison of two averages that allows the two groups to have different spreads.</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Generated from <code>home-v2-active-days.yaml</code> by mcard. Self-contained: works offline, prints cleanly. <button type="button" class="linkish" onclick="window.print()">Print</button></div></footer>
+
+<div class="tips">
+  <div class="tip" role="tooltip" id="tip-g0" hidden><b>active day</b> A calendar date with at least one recorded app activity event.</div>
+  <div class="tip" role="tooltip" id="tip-g1" hidden><b>Home v2</b> The treatment version of the app home screen in this experiment.</div>
+  <div class="tip" role="tooltip" id="tip-g2" hidden><b>control</b> The comparison arm that did not get Home v2.</div>
+  <div class="tip" role="tooltip" id="tip-g3" hidden><b>treatment</b> The arm assigned to Home v2.</div>
+  <div class="tip" role="tooltip" id="tip-g4" hidden><b>intent-to-treat</b> An experiment analysis that keeps everyone in the group they were assigned to, whether or not they fully saw or used the treatment.</div>
+  <div class="tip" role="tooltip" id="tip-g5" hidden><b>exposure row</b> A record that the user saw the variant screen for the experiment.</div>
+  <div class="tip" role="tooltip" id="tip-g6" hidden><b>UTC</b> A global time standard. If dates are cut in UTC instead of a user&#39;s local time, events near midnight can fall on a different date.</div>
+  <div class="tip" role="tooltip" id="tip-g7" hidden><b>95% confidence interval</b> A range of effect sizes that fit the saved data under the statistical model. It does not include every possible source of bias.</div>
+  <div class="tip" role="tooltip" id="tip-g8" hidden><b>Welch t-test</b> A statistical comparison of two averages that allows the two groups to have different spreads.</div>
+  <div class="tip" role="tooltip" id="tip-g9" hidden><b>relative lift</b> The difference divided by the comparison value. Here, 0.21 extra days divided by 6.42 control days is about 3.3%.</div>
+</div>
+<script>(function () {
+  "use strict";
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var wide = window.matchMedia("(min-width: 901px)");
+
+  // ---- depth rail: active section + reading progress
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  var bar = document.querySelector(".progress span");
+  function onScroll() {
+    var y = window.scrollY + 90, current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s; });
+    links.forEach(function (a) { a.classList.toggle("active", current && a.getAttribute("href") === "#" + current.id); });
+    if (bar) {
+      var max = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? Math.min(100, 100 * window.scrollY / max) : 0) + "%";
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ---- scrollytelling: the sticky stage shows the active step's figure
+  var stage = document.querySelector(".scrolly .stage");
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".scrolly .step"));
+  function activate(step) {
+    if (!step || step.classList.contains("active")) return;
+    steps.forEach(function (s) { s.classList.remove("active"); });
+    step.classList.add("active");
+    if (stage && wide.matches) {
+      var fig = step.querySelector(".step-fig");
+      stage.innerHTML = '<div class="fade">' + (fig ? fig.innerHTML : "") + "</div>";
+      stage.setAttribute("aria-hidden", "true");
+      bindTerms(stage);
+    }
+  }
+  if ("IntersectionObserver" in window && steps.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+    steps.forEach(function (s) { io.observe(s); });
+    activate(steps[0]);
+  }
+
+  // ---- glossary toggletips (WCAG 2.2 SC 1.4.13: dismissible, hoverable, persistent)
+  var openTip = null, pinned = false, hideTimer = null;
+  function place(tip, trigger) {
+    var r = trigger.getBoundingClientRect();
+    tip.hidden = false;
+    var w = tip.offsetWidth;
+    var left = Math.max(8, Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - w - 8));
+    tip.style.left = left + "px";
+    tip.style.top = (window.scrollY + r.bottom + 8) + "px";
+  }
+  function show(trigger, pin) {
+    clearTimeout(hideTimer);
+    var tip = document.getElementById("tip-" + trigger.getAttribute("data-tip"));
+    if (!tip) return;
+    if (openTip && openTip !== tip) openTip.hidden = true;
+    openTip = tip; pinned = !!pin;
+    place(tip, trigger);
+    trigger.setAttribute("aria-expanded", "true");
+  }
+  function hide(force) {
+    if (!openTip || (pinned && !force)) return;
+    openTip.hidden = true; openTip = null; pinned = false;
+    document.querySelectorAll('.term[aria-expanded="true"]').forEach(function (t) { t.setAttribute("aria-expanded", "false"); });
+  }
+  function bindTerms(root) {
+    root.querySelectorAll(".term").forEach(function (t) {
+      if (t.dataset.bound) return;
+      t.dataset.bound = "1";
+      t.setAttribute("aria-expanded", "false");
+      t.addEventListener("mouseenter", function () { show(t, false); });
+      t.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 250); });
+      t.addEventListener("focus", function () { show(t, false); });
+      t.addEventListener("blur", function () { hideTimer = setTimeout(function () { hide(false); }, 150); });
+      t.addEventListener("click", function (ev) { ev.stopPropagation(); if (openTip && pinned) { hide(true); } else { show(t, true); } });
+    });
+  }
+  bindTerms(document);
+  document.querySelectorAll(".tip").forEach(function (tip) {
+    tip.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+    tip.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { hide(false); }, 200); });
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hide(true); });
+  document.addEventListener("click", function (e) { if (openTip && !openTip.contains(e.target)) hide(true); });
+
+  // ---- quiz
+  document.querySelectorAll("fieldset.q").forEach(function (fs) {
+    var answer = fs.getAttribute("data-answer");
+    fs.addEventListener("change", function (e) {
+      fs.querySelectorAll("label").forEach(function (l) { l.classList.remove("right", "wrong"); });
+      var label = e.target.closest("label");
+      label.classList.add(e.target.value === answer ? "right" : "wrong");
+      var correct = fs.querySelector('input[value="' + answer + '"]');
+      if (correct) correct.closest("label").classList.add("right");
+      var why = fs.querySelector(".why");
+      if (why) { why.hidden = false; why.setAttribute("role", "status"); }
+    });
+  });
+
+  // ---- reveal + copy
+  document.querySelectorAll("[data-reveal]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-reveal")); if (t) t.hidden = false; });
+  });
+  function copy(text, btn) {
+    var done = function () { var o = btn.textContent; btn.textContent = "Copied"; setTimeout(function () { btn.textContent = o; }, 1400); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done); return; }
+    var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = document.querySelector(b.getAttribute("data-copy")); if (t) copy(t.value || t.textContent, b); });
+  });
+  document.querySelectorAll("[data-copy-next]").forEach(function (b) {
+    b.addEventListener("click", function () { var pre = b.closest("figure").querySelector("pre"); if (pre) copy(pre.textContent, b); });
+  });
+})();
+</script>
+</body>
+</html>

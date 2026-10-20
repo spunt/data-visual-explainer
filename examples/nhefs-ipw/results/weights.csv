@@ -1,0 +1,4 @@
+weights,min,max,mean,n
+W (nonstabilized),1.0537,16.7001,1.9963,1566
+SW (stabilized),0.3312,4.2977,0.9988,1566
+SW_A x SW_C,0.3546,4.0931,0.9962,1566

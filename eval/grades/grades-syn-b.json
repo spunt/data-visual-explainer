@@ -1,0 +1,78 @@
+{
+  "A": {
+    "A1": {
+      "pass": false,
+      "evidence": "Fails the headline check because the displayed headline says \"+0.31 days\" even though it also quotes the correct support values: \"Control users averaged 6.42 active days; treatment users averaged 6.63\" and \"Plausible range +0.05 days to +0.37 days.\""
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "States the implemented assignment filter (\"experiment_id = 'home_v2'\" and assigned_at through \"2026-05-18\"), exposure join (\"saw_variant_screen = 1\"), China exclusion (\"country_code <> 'CN'\"), time zero (\"assigned_date = CAST(a.assigned_at AS DATE)\"), window (\"act.activity_date > assigned_date AND act.activity_date <= DATE_ADD(assigned_date, 28)\"), UTC dates (\"DATE(e.event_ts)\" where event_ts is UTC), dropped zero-activity users (\"INNER JOIN from assigned to activity... users with no activity_date... are not in the final COUNT(*)\"), and Welch/difference logic (\"diff = treatment.mean() - control.mean()\" and \"scipy.stats.ttest_ind(..., equal_var=False)\")."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "D1: \"readout says every assigned user... query keeps only users with a matching exposure row\"; D2: \"readout says activity is counted in each user's local time zone... query turns UTC event times into dates\"; D3: \"users with no recorded active days... are absent rather than counted as zero active days\"; D4: \"implemented population excludes China.\""
+    },
+    "A4": {
+      "pass": false,
+      "fabrications": [
+        "Unsupported headline/result value: \"+0.31 days\"; the source result is +0.21.",
+        "Unsupported count of discrepancies: \"Exact rules, data, code · 2 doc-vs-code gaps\" despite the source/key supporting four planted description-vs-implementation gaps.",
+        "Unsupported causal safety language: \"What kind of claim: Supports a cause\" and \"Safe to say \\\"Home v2 causes users to be active 0.21 more days, and this applies to all new users.\\\"\" contradict the implemented post-assignment filtering and restricted population."
+      ]
+    },
+    "A5": {
+      "pass": false,
+      "evidence": "Fails because it explicitly says \"What kind of claim: Supports a cause\" and marks as \"Safe to say\" that \"Home v2 causes users to be active 0.21 more days, and this applies to all new users,\" despite later caveats about post-assignment filtering."
+    }
+  },
+  "D": {
+    "A1": {
+      "pass": true,
+      "evidence": "Matches the key: \"Difference +0.21 days,\" \"Control 6.42 days,\" \"Home v2 6.63 days,\" and \"95% confidence interval | +0.05 to +0.37.\""
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "Correctly states the SQL filters for home_v2 and the May 4-17 assignment window, the exposure join with \"saw_variant_screen = 1,\" \"country_code <> 'CN',\" \"assigned_date = CAST(a.assigned_at AS DATE),\" the days 1-28 join condition, UTC-derived \"DATE(event_ts),\" dropped zero-activity users through the inner join, and \"diff = treatment.mean() - control.mean()\" with Welch unequal-variance testing."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "Lists all four caveats: \"Intent-to-treat vs exposed-user filter,\" \"Local time zone vs UTC,\" \"Zero-active-day users,\" and \"Country exclusion.\""
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "Passes because causal language is caveated and the restricted population is stated: \"the SQL implementation additionally filters\" to exposed non-CN users, and caveats say the implemented population is \"not all assigned users,\" zero-active users are excluded, and \"The safest population statement is therefore the analyzed non-CN, exposed experiment population.\""
+    }
+  },
+  "F": {
+    "A1": {
+      "pass": true,
+      "evidence": "Matches the key: headline \"+0.21 days,\" \"Control users averaged 6.42 active days; treatment users averaged 6.63,\" and \"Plausible range +0.05 days to +0.37 days.\""
+    },
+    "A2": {
+      "pass": true,
+      "rules_correct": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+      "evidence": "States the implemented filters and computations: \"experiment_id = 'home_v2'\" with assigned_at in [2026-05-04, 2026-05-18), \"INNER JOIN exp.exposures... saw_variant_screen = 1,\" \"country_code <> 'CN',\" \"CAST(a.assigned_at AS DATE),\" days 1-28 activity condition, \"DATE(e.event_ts)\" from UTC, inner-join dropping zero-active users, and treatment-minus-control Welch/normal-approximation interval."
+    },
+    "A3": {
+      "pass": true,
+      "found": ["D1", "D2", "D3", "D4"],
+      "evidence": "D1/D3: \"Intent-to-treat denominator\" says the code excludes users without exposure rows or activity in days 1-28; D4: \"Geographic scope\" notes \"country_code <> 'CN'\"; D2: \"Time zone for active dates\" notes UTC dates; it also flags \"Breadth of causal claim\" as narrower than all new users."
+    },
+    "A4": {
+      "pass": true,
+      "fabrications": []
+    },
+    "A5": {
+      "pass": true,
+      "evidence": "Passes because it explicitly rejects a clean causal/all-user claim: \"Shows a link... Treat it as a link, not a cause,\" \"Not this: Home v2 caused all new users...,\" and states the population as \"exposed, non-CN users retained in the per_user table.\""
+    }
+  }
+}

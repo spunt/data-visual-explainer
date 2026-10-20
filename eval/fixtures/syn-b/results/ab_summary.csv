@@ -1,0 +1,8 @@
+arm,users,mean_active_days,sd_active_days
+control,41880,6.42,5.31
+treatment,41602,6.63,5.36
+diff,,0.21,
+ci_low,,0.05,
+ci_high,,0.37,
+p_value,,0.011,
+data_complete_through,,2026-06-20,

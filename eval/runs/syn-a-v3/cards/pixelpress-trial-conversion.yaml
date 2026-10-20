@@ -1,0 +1,502 @@
+schema: metric-card/1
+id: pixelpress-trial-conversion
+title: PixelPress Pro mobile trial conversion
+subtitle: March 2026 first-trial cohort, as implemented in the saved SQL
+status: provisional
+owner: Growth analytics
+updated: "2026-10-04"
+question: >
+  What share of people who start a PixelPress Pro free trial become paying
+  subscribers?
+
+gist:
+  sentence: >
+    Among PixelPress Pro mobile users whose first recorded trial started from 2
+    through 9 March 2026, 14.3% had a positive charge on days 0-14 after trial
+    start.
+  headline:
+    value: 14.3
+    unit: percent
+    decimals: 1
+    label: mobile trial conversion rate
+    context: "6,894 of 48,210 trial users had a positive charge in the implemented window."
+  frequency: >
+    About 14 in every 100 users in the implemented first-trial mobile cohort had
+    a positive charge by day 14.
+  reading:
+    direction: higher_is_better
+    say: >
+      "In the saved March run, 14.3% of first recorded PixelPress Pro mobile
+      trial users had a positive charge on days 0-14 after trial start."
+    dont_say: >
+      "The new onboarding caused a 1.4-point lift," or "the metric used a 30-day
+      window ending 8 March."
+  key_caveat: >
+    The SQL does not match the readout: it uses a 14-day parameter, includes
+    starts on 9 March, and does not show the test-account or refund exclusions
+    described in the README.
+  claim_strength: descriptive
+
+grammar:
+  unit:
+    singular: user
+    plural: users
+    plain: One PixelPress Pro mobile user.
+    exact: >
+      One distinct user_id from app.trial_events after taking
+      MIN(trial_start_date) per user for product = 'PIXELPRESS_PRO' and platform
+      IN ('ios', 'android').
+    src: S3
+  population:
+    - id: pixelpress_pro_mobile
+      plain: Users with at least one PixelPress Pro trial event on iOS or Android.
+      exact: >
+        app.trial_events rows where product = 'PIXELPRESS_PRO' and platform IN
+        ('ios', 'android').
+      src: S3
+    - id: first_recorded_trial
+      plain: Each user is assigned their first recorded PixelPress Pro mobile trial date.
+      exact: >
+        The trials CTE groups by user_id and sets trial_start_date to
+        MIN(t.trial_start_date).
+      src: S3
+    - id: march_cohort
+      plain: The first recorded trial date is from 2 through 9 March 2026.
+      exact: >
+        cohort keeps rows where trial_start_date BETWEEN DATE '2026-03-02' AND
+        DATE '2026-03-09', inclusive.
+      n_after: 48210
+      src: [S3, S4]
+  anchor:
+    kind: per_unit_event
+    label: First recorded trial start
+    plain: Each user's clock starts on their first recorded PixelPress Pro mobile trial date.
+    exact: >
+      trial_start_date is MIN(t.trial_start_date) per user_id from the trials CTE.
+    src: S3
+  windows:
+    - id: charge_days_0_14
+      label: Positive-charge window
+      start: 0
+      end: 15
+      unit: day
+      role: outcome
+      plain: >
+        Trial start day through day 14 after trial start. A charge on day 14
+        still counts.
+      exact: >
+        b.charge_date BETWEEN c.trial_start_date AND
+        DATE_ADD(c.trial_start_date, p.conversion_days), with
+        conversion_days = 14. Because BETWEEN is inclusive, this is day offsets
+        0 through 14.
+      src: S3
+  measures:
+    - id: converted_to_paid
+      label: Had a positive charge
+      kind: indicator
+      window: charge_days_0_14
+      primary: true
+      plain: Counts a user if they had at least one charge above zero dollars in the window.
+      exact: >
+        first_charge joins billing.charges where b.user_id = c.user_id,
+        b.amount_usd > 0, and b.charge_date falls in the inclusive charge
+        window, then groups to MIN(b.charge_date). The final summary counts
+        DISTINCT f.user_id.
+      src: S3
+  aggregate:
+    kind: proportion
+    measure: converted_to_paid
+    numerator: users with at least one qualifying positive charge
+    denominator: all users in the implemented March first-trial mobile cohort
+    plain: Divide users with a positive charge by all users in the implemented cohort.
+    exact: >
+      ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2)
+      AS conversion_rate_pct.
+    src: S3
+  groups:
+    - id: march_2026_first_trial_mobile
+      label: March 2026 first-trial mobile cohort
+      role: focal
+      period: "2026-03-02..2026-03-09"
+      year: "2026"
+      plain: PixelPress Pro mobile users whose first recorded trial date was from 2 through 9 March 2026.
+      exact: >
+        product = 'PIXELPRESS_PRO', platform IN ('ios', 'android'),
+        MIN(trial_start_date) BETWEEN DATE '2026-03-02' AND DATE '2026-03-09'.
+      src: S3
+  uncertainty:
+    method: Not estimated in the saved output
+    plain: No confidence interval or standard error was reported for the 14.3% headline.
+    exact: >
+      conversion_summary.csv reports trial_users, converted_users,
+      conversion_rate_pct, run_date, and data_complete_through only.
+    known_gaps: >
+      Random uncertainty, data-quality uncertainty, and uncertainty from the
+      definition discrepancies are not quantified.
+    src: S4
+
+results:
+  status: measured
+  as_of: "2026-04-18"
+  unit: percent
+  data_complete_through: "2026-04-17"
+  latest_anchor: "2026-03-09"
+  measure: converted_to_paid
+  cells:
+    - group: march_2026_first_trial_mobile
+      value: 14.30
+      n: 48210
+      note: "6,894 converted users in conversion_summary.csv."
+
+example:
+  name: Jordan
+  intro: >
+    Jordan starts a first recorded PixelPress Pro mobile trial on 4 March 2026,
+    so day 14 is 18 March.
+  anchor_date: "2026-03-04"
+  events:
+    - {at: 0, label: "Trial starts; Jordan enters the cohort"}
+    - {at: 14, label: "A positive charge posts", counts: true}
+    - {at: 15, label: "Another positive charge posts outside the implemented window", counts: false}
+  outcome: >
+    Jordan counts as converted because the day-14 positive charge is inside the
+    SQL's inclusive window. A first charge on day 15 would not count.
+
+fine_print:
+  judgment_calls:
+    - decision: Which headline to document
+      choice: >
+        Use the 14.3% March conversion rate as the headline, because it is the
+        first number in the readout and is backed by the saved CSV.
+      alternatives: >
+        Write a separate card for the 1.4-point March-versus-February lift.
+      why: >
+        The February rate and lift are quoted in the readout but no February
+        output or comparison code is included in the fixture.
+      impact: >
+        The card explains the measured March level and treats the lift as
+        readout-only, not independently reproducible.
+      src: [S2, S4]
+    - decision: How to express the outcome window
+      choice: >
+        Describe the implemented SQL as days 0-14, rather than repeating the
+        README's 30-day definition.
+      alternatives: >
+        Treat the README as authoritative and mark the saved SQL/result as
+        incompatible with the stated metric.
+      why: The skill says to trace the number to code and write from the implemented rule.
+      impact: >
+        Readers see that the 14.3% number is not evidence for a 30-day
+        conversion rate.
+      src: [S1, S2, S3]
+  caveats:
+    - title: The saved SQL is not a 30-day metric
+      text: >
+        The README and readout define conversion as payment within 30 days, but
+        the SQL parameter is 14 and the inclusive date comparison counts days
+        0-14.
+      effect: understates
+      severity: high
+      src: [S1, S2, S3]
+    - title: The cohort end date differs
+      text: >
+        The README says the cohort runs through 8 March, while the SQL includes
+        first recorded trial starts through 9 March.
+      effect: unknown_direction
+      severity: high
+      src: [S1, S3]
+    - title: Described exclusions are not visible in SQL
+      text: >
+        The README says internal, test, and refunded accounts are excluded, but
+        the SQL shown here only requires amount_usd > 0 and does not filter
+        internal users, test users, or refunds.
+      effect: unknown_direction
+      severity: high
+      src: [S1, S3]
+    - title: The February comparison is not reproducible from these files
+      text: >
+        The readout quotes a 12.9% February rate and a 1.4-point lift, but the
+        fixture includes no February result, comparison SQL, or uncertainty.
+      effect: limits_scope
+      severity: medium
+      src: S2
+    - title: No uncertainty interval saved
+      text: >
+        The saved output reports a point estimate only. It does not include a
+        confidence interval, standard error, or sensitivity run.
+      effect: wider_uncertainty
+      severity: low
+      src: S4
+  misreadings:
+    - wrong: "14.3% is the 30-day trial conversion rate."
+      right: >
+        The saved SQL result is a positive-charge rate on days 0-14 after first
+        recorded mobile trial start.
+    - wrong: "The new onboarding caused a 1.4-point lift."
+      right: >
+        The files show a March rate and a quoted February comparison, but no
+        design that isolates the onboarding effect.
+    - wrong: "The cohort is exactly 2-8 March."
+      right: >
+        The SQL includes first recorded trial starts from 2 through 9 March,
+        inclusive.
+    - wrong: "Every trial start in the week is counted."
+      right: >
+        The SQL first reduces each user to their earliest recorded PixelPress Pro
+        mobile trial, then keeps users whose earliest trial is in the cohort.
+    - wrong: "A positive charge always means a net-paid subscriber."
+      right: >
+        The SQL checks amount_usd > 0. The refund exclusion described in the
+        README is not visible in the SQL.
+  discrepancies:
+    - topic: Outcome window length
+      described: >
+        README and readout define conversion as paying within 30 days of trial
+        start.
+      implemented: >
+        params sets conversion_days = 14, and first_charge keeps charge_date
+        BETWEEN trial_start_date AND DATE_ADD(trial_start_date, 14), inclusive.
+      impact: >
+        A shorter window likely understates the 30-day conversion rate. The size
+        is unknown from the saved files.
+      src: [S1, S2, S3]
+    - topic: Cohort date range
+      described: README says trials started 2026-03-02 through 2026-03-08.
+      implemented: >
+        SQL sets cohort_end to DATE '2026-03-09' and uses BETWEEN, so 9 March
+        starts are included.
+      impact: >
+        The implemented denominator can include an extra start date. Direction
+        and size are unknown.
+      src: [S1, S3]
+    - topic: Internal and test account exclusions
+      described: README says internal and test accounts are excluded.
+      implemented: >
+        No internal-account or test-account filter appears in the saved SQL.
+      impact: >
+        If such accounts exist in app.trial_events, they remain in the result.
+        Direction and size are unknown.
+      src: [S1, S3]
+    - topic: Refund exclusion
+      described: README says refunded charges do not count.
+      implemented: >
+        SQL joins billing.charges with b.amount_usd > 0, but shows no refund,
+        reversal, or net-paid filter.
+      impact: >
+        Refunded positive charges could overstate net-paid conversion. The size
+        is unknown.
+      src: [S1, S3]
+    - topic: First trial versus any trial
+      described: Descriptions say users who started a trial in the cohort week.
+      implemented: >
+        SQL first takes MIN(trial_start_date) per user across PixelPress Pro
+        mobile trial events, then filters that first recorded trial into the
+        cohort.
+      impact: >
+        Users with an earlier PixelPress Pro mobile trial and another trial in
+        March are excluded. Direction and size are unknown.
+      src: [S1, S2, S3]
+    - topic: Onboarding lift claim
+      described: >
+        The readout says the new onboarding is driving a 1.4-point lift and
+        recommends rolling it out to web.
+      implemented: >
+        The saved SQL computes a single March cohort rate only. No February
+        cohort SQL, web cohort, counterfactual, adjustment, or uncertainty is
+        included.
+      impact: >
+        The fixture supports a descriptive March rate, not a causal onboarding
+        claim or web rollout inference.
+      src: [S2, S3, S4]
+
+spec:
+  estimand:
+    population: >
+      Users whose earliest recorded PixelPress Pro iOS or Android trial started
+      from 2026-03-02 through 2026-03-09, inclusive.
+    exposure: None. This is a single-cohort descriptive rate.
+    time_zero: Each user's earliest recorded PixelPress Pro mobile trial_start_date.
+    variable: >
+      Indicator for at least one billing.charges row with amount_usd > 0 and
+      charge_date on day offsets 0 through 14 after time zero.
+    intercurrent_events: >
+      Refunds, internal/test status, and later trial starts are not handled in
+      the saved SQL except that later trial starts do not change time zero.
+    summary: >
+      Proportion of implemented-cohort users with converted_to_paid = 1,
+      reported as a percent rounded to two decimals.
+  parameters:
+    - {name: cohort_start, value: "2026-03-02", meaning: First included first recorded trial date}
+    - {name: cohort_end, value: "2026-03-09", meaning: Last included first recorded trial date in SQL}
+    - {name: conversion_days, value: 14, meaning: Inclusive DATE_ADD endpoint for qualifying charges}
+    - {name: product, value: PIXELPRESS_PRO, meaning: Trial event product kept by SQL}
+    - {name: platforms, value: "ios, android", meaning: Trial event platforms kept by SQL}
+  lineage:
+    - name: app.trial_events
+      role: Trial starts and cohort assignment
+      grain: trial event
+      filters: "product = 'PIXELPRESS_PRO'; platform IN ('ios', 'android'); MIN(trial_start_date) per user_id"
+      src: S3
+    - name: billing.charges
+      role: Positive-charge outcome
+      grain: charge event
+      filters: "amount_usd > 0; charge_date on days 0-14 after trial_start_date"
+      src: S3
+    - name: results/conversion_summary.csv
+      role: Saved summary used for the headline
+      grain: one-row summary
+      filters: "trial_users = 48,210; converted_users = 6,894; conversion_rate_pct = 14.30"
+      src: S4
+  code:
+    - purpose: Cohort parameters
+      lang: sql
+      src: S3
+      excerpt: |
+        WITH params AS (
+          SELECT DATE '2026-03-02' AS cohort_start,
+                 DATE '2026-03-09' AS cohort_end,
+                 14                AS conversion_days
+        )
+    - purpose: First recorded mobile trial per user
+      lang: sql
+      src: S3
+      excerpt: |
+        SELECT t.user_id,
+               MIN(t.trial_start_date) AS trial_start_date
+        FROM app.trial_events t
+        WHERE t.product = 'PIXELPRESS_PRO'
+          AND t.platform IN ('ios', 'android')
+        GROUP BY t.user_id
+    - purpose: Cohort date filter
+      lang: sql
+      src: S3
+      excerpt: |
+        WHERE tr.trial_start_date BETWEEN p.cohort_start AND p.cohort_end
+    - purpose: Positive-charge outcome
+      lang: sql
+      src: S3
+      excerpt: |
+        JOIN billing.charges b
+          ON b.user_id = c.user_id
+         AND b.amount_usd > 0
+        WHERE b.charge_date BETWEEN c.trial_start_date
+                                AND DATE_ADD(c.trial_start_date, p.conversion_days)
+    - purpose: Conversion-rate aggregation
+      lang: sql
+      src: S3
+      excerpt: |
+        COUNT(DISTINCT c.user_id) AS trial_users,
+        COUNT(DISTINCT f.user_id) AS converted_users,
+        ROUND(100.0 * COUNT(DISTINCT f.user_id) / COUNT(DISTINCT c.user_id), 2) AS conversion_rate_pct
+  reproduce:
+    steps:
+      - Run sql/trial_conversion.sql against the app.trial_events and billing.charges tables.
+      - Save the one-row summary to results/conversion_summary.csv.
+      - Recompute converted_users / trial_users * 100 from the saved CSV.
+    receipts:
+      - >
+        conversion_summary.csv reports 48,210 trial users, 6,894 converted
+        users, and 14.30%.
+      - >
+        Independent arithmetic: 6,894 / 48,210 * 100 = 14.2999%, which rounds
+        to 14.30%.
+    data_complete_through: "2026-04-17"
+    tests: >
+      No repository tests were included for this fixture. The card reproduces
+      the headline from the saved CSV and records SQL-description discrepancies.
+
+glossary:
+  - term: PixelPress Pro
+    plain: The product whose trial users are counted in this metric.
+  - term: mobile
+    aliases: [iOS, Android]
+    plain: The app platforms included by the SQL.
+  - term: trial
+    aliases: [free trial]
+    plain: A temporary product start before a paid charge.
+  - term: first recorded trial
+    aliases: [earliest trial]
+    plain: The earliest PixelPress Pro mobile trial date seen for a user in the trial table.
+  - term: conversion rate
+    aliases: [trial conversion rate]
+    plain: The share of users in the cohort who have the qualifying paid event.
+  - term: positive charge
+    aliases: [charge above zero dollars]
+    plain: A billing row where the charged amount is greater than zero.
+  - term: cohort
+    aliases: [March cohort]
+    plain: The group of users whose first recorded trial starts in the chosen date range.
+  - term: day 0
+    aliases: [days 0-14]
+    plain: The trial start day. Day 14 is two weeks after that start day.
+  - term: percentage point
+    aliases: [point, points, pp]
+    plain: >
+      The direct difference between two percentages. Moving from 12.9% to 14.3%
+      is 1.4 percentage points.
+  - term: confidence interval
+    aliases: [interval]
+    plain: >
+      A range that shows how much random noise could move an estimate. This
+      saved result does not include one.
+  - term: SQL
+    plain: The query language used here to define the cohort and calculate the rate.
+  - term: README
+    plain: A project note that describes an analysis for readers.
+  - term: descriptive rate
+    aliases: [descriptive]
+    plain: A number that describes what happened in one group without showing what caused it.
+
+quiz:
+  - kind: gist
+    q: "What is the safest reading of the 14.3% headline?"
+    options:
+      - "It is the saved March first-trial mobile positive-charge rate on days 0-14."
+      - "It proves the new onboarding caused a 1.4-point lift."
+      - "It is a 30-day rate for starts from 2-8 March."
+    answer: 0
+    why: >
+      The CSV supports the March rate, while the SQL uses days 0-14 and includes
+      starts through 9 March.
+  - kind: verbatim
+    q: "Which trial starts are included by the SQL cohort filter?"
+    options:
+      - "2 March through 8 March only."
+      - "2 March through 9 March, inclusive."
+      - "All March trial starts."
+    answer: 1
+    why: >
+      The SQL sets cohort_end to 2026-03-09 and uses inclusive BETWEEN.
+  - kind: transfer
+    q: >
+      A user starts their first recorded mobile trial on 4 March and first pays
+      on 19 March, day 15. Do they count as converted in the saved SQL?
+    options:
+      - "Yes, because 19 March is within 30 days."
+      - "No, because day 15 is outside the implemented days 0-14 window."
+    answer: 1
+    why: >
+      The saved SQL counts charges from trial start through day 14 only, even
+      though the README describes a 30-day rule.
+
+changelog:
+  - {date: "2026-04-18", change: "Saved conversion_summary.csv with 48,210 trial users, 6,894 converted users, and 14.30% conversion."}
+  - {date: "2026-10-04", change: "Metric card written from the saved SQL and CSV; description-vs-code discrepancies recorded."}
+
+sources:
+  - id: S1
+    path: "eval/fixtures/syn-a/README.md"
+    lines: "1-21"
+    note: "Question, prose definition, cohort dates, exclusions, and file list"
+  - id: S2
+    path: "eval/fixtures/syn-a/readout.md"
+    lines: "1-9"
+    note: "Headline, February comparison, onboarding claim, and 30-day definition"
+  - id: S3
+    path: "eval/fixtures/syn-a/sql/trial_conversion.sql"
+    lines: "1-43"
+    note: "Implemented cohort, charge window, and aggregation"
+  - id: S4
+    path: "eval/fixtures/syn-a/results/conversion_summary.csv"
+    lines: "1-2"
+    note: "Saved result row"
